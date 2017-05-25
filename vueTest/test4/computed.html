@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+</head>
+<body>
+	<div id="computed">
+		<p>{{title}}</p>
+		<p>{{reverseValue}}</p>
+	</div>
+
+	<hr>
+
+	<div id="computed-1">
+		<p>fullName:{{fullName}}</p>
+		<p>firstName:{{firstName}}</p>
+		<p>lastName:{{lastName}}</p>
+	</div>
+
+	<div id="watch">
+		<p>
+			Ask a yes/no question:
+			<input type="text" v-model="question">
+		</p>
+		<p>{{answer}}</p>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<script>
+	var computed = new Vue({
+		el:'#computed',
+		data: {
+			title:'Hello,World',
+		},
+
+		computed: {
+			reverseValue() {
+				return this.title.split('').reverse().join('');
+			},
+		}
+	});
+
+	var computed1 = new Vue({
+		el:'#computed-1',
+		data: {
+			firstName:'dai',
+			lastName:'wei',
+		},
+
+		computed:{
+			fullName: {
+				get() {
+					return this.firstName +' '+ this.lastName;
+				},
+
+				set(newName) {
+					var value = newName.split(' ');
+					this.firstName = value[0];
+					this.lastName = value[value.length-1];
+				}
+			}
+		}
+	});
+
+	var watch = new Vue({
+		el:'#watch',
+		data: {
+			question:'',
+			answer:'I cannot give you an answer until you ask a question!',
+		},
+		watch: {
+			// 如果 question 发生改变，这个函数就会运行
+			question(newQuestion) {
+				this.answer = 'Waiting for you to stop typing...';
+				this.getAnswer();
+		    }
+		},
+		methods:{
+			getAnswer: _.debounce(function(){
+				var vm = this;
+				if (this.question.indexOf('?') === -1) {
+					vm.answer = 'Questions usually contain a question mark. ;-)';
+          			return;
+				}
+
+				vm.answer = 'Thinking...';
+				axios.get('https://yesno.wtf/api').then((response)=>{
+					vm.answer = _.capitalize(reverse.data.answer)
+				}).catch((err)=>{
+					vm.answer = 'Error! Could not reach the API. ' + error;
+				})
+
+			},500)
+		}
+	});
+</script>
+</html>

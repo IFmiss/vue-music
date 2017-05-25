@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>components</title>
+</head>
+<body>
+	<div id="comp">
+		<ol>
+			<todo-item v-for="item in groceryList" :todo="item"></todo-item>
+		</ol>
+	</div>
+	<hr>
+
+	<div id="comp-1">
+		<compone :mycomp="message"></compone>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	Vue.component('todo-item',{
+		props:['todo'],
+		template:'<li>{{todo.text}}</li>'
+	});
+
+	var comp = new Vue({
+		el:'#comp',
+		data: {
+			groceryList:[
+				{
+					text:'蔬菜'
+				},{
+					text:'奶酪'
+				},{
+					text:'随便其他人吃的什么东西'
+				}
+			]
+		}
+	});
+
+
+	Vue.component('compone',{
+		props:['mycomp'],
+		template:'<p>{{mycomp}}</p>'
+	});
+
+	var comp = new Vue({
+		el:'#comp-1',
+		data: {
+			message:'this is test info',
+		}
+	});
+</script>
+</html>

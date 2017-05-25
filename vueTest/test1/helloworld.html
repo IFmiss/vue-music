@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello vue</title>
+</head>
+<body>
+	<div id="test">
+		{{ message }}
+	</div>
+	<hr>
+
+	<div id="test-2">
+		<span :title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>
+	<hr>
+
+	<div id="test-3">
+		<input type="button" @click = "showToggleTest3" value="点击显示隐藏">
+		<span v-if="see">现在你能看到我了</span>
+	</div>
+	<hr>
+
+	<div id="test-4">
+		<ol>
+			<li v-for="list in lists">
+				<span>{{ list.name }}</span>
+				<span>{{ list.age }}</span>
+				<span>{{ list.sex }}</span>
+			</li>
+		</ol>
+	</div>
+	<hr>
+
+	<div id="test-5">
+		<p>{{message}}</p>
+		<button v-on:click="changeStr">点击我倒序显示字符</button>
+	</div>
+	<hr>
+
+	<div id="test-6">
+		<p>{{message}}</p>
+		<input type="text" v-model="message">
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	//第一个vue
+	var test = new Vue({
+		el:'#test',
+		data: {
+			message:'Hello Vue!'
+		}
+	});
+
+	//指令  bind
+	var test2 = new Vue({
+		el:'#test-2',
+		data: {
+			message:'页面加载于 '+ new Date()
+		}
+	});
+
+	//指令  if
+	var test3 = new Vue({
+		el:'#test-3',
+		data: {
+			see:true
+		},
+		methods: {
+			showToggleTest3() {
+				this.see = !this.see;
+			}
+		}
+	});
+
+	//指令  for
+	var test4 = new Vue({
+		el:'#test-4',
+		data: {
+			lists:[
+				{
+					name:'daiwei',
+					age:24,
+					sex:'男'
+				},{
+					name:'fan',
+					age:24,
+					sex:'男'
+				},{
+					name:'xuefei.wu',
+					age:25,
+					sex:'男'
+				},{
+					name:'girl',
+					age:22,
+					sex:'女'
+				}
+			]
+		},
+	});
+
+	// 指令  on
+	var test5 = new Vue({
+		el:'#test-5',
+		data: {
+			message:'I love vue.js!!!'
+		},
+
+		methods: {
+			changeStr() {
+				this.message = this.message.split('').reverse().join('');
+			}
+		},
+	});
+
+	//指令 model
+	var test6 = new Vue({
+		el:'#test-6',
+		data: {
+			message:'hello vue.js !!!'
+		}
+	});
+</script>
+<style>
+	hr{
+		border-color: #D3F7F3;
+	}
+
+	ol li span{
+		width: 100px;
+		display: inline-block;
+	}
+</style>
+</html>

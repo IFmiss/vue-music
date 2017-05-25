@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>life cycle</title>
+</head>
+<body>
+	<div id="life">
+		<span>{{title}}</span>
+		<p v-once>{{title}}</p>
+	</div>
+	<div id="bind">
+		<button :disabled="disable">{{disable?'点不到我':'点我'}}</button>
+		<span v-if="!disable">我显示出来就相当于你可以点击左边的按钮</span>
+	</div>
+
+	<div id="guolv">
+		<p v-text="bigName"></p>
+		<span>{{name|upperCase}}</span>
+		<input type="text" v-model="name">
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var life = new Vue({
+		el:'#life',
+		data: {
+			title:'hello life'
+		},
+		created() {
+			console.log('title is:'+ this.title);
+		},
+		updated() {
+			console.log('title is:'+ this.title);
+		},
+
+		mounted() {
+			console.log('title is:'+ this.title);
+		}
+	});
+
+	var bind = new Vue({
+		el:'#bind',
+		data: {
+			disable:false,
+			title:'此时可以点击',
+		},
+
+		created() {
+			let _this = this;
+			setInterval(()=>{
+				_this.disable = !_this.disable;
+				_this.title = _this.disable? '此时不可以点击':'此时可以点击';
+			},3000);
+		},
+	});
+
+	var guolv = new Vue({
+		el:'#guolv',
+		data:{
+			name:'daiwei.dai'
+		},
+
+		computed: {
+			bigName() {
+				return this.name.toUpperCase();
+			},
+		},
+
+		filters: {
+			upperCase(value) {
+				if(!value)return '';
+				value = value.toString();
+				return value.toUpperCase();
+			},
+		}
+	});
+
+	Vue.filter('colorRed',{})
+</script>
+
+</html>
