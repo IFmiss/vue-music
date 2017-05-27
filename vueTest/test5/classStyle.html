@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class & style</title>
+</head>
+<body>
+	<div id="colorStyle">
+		<div v-bind:class="{ active: isActive }" class="like"></div>
+		<p :class="{active:isActive,'text-danger':hasError}">你这个信息有误的呀  老铁</p>
+		<div v-bind:class="classObject"></div>
+	</div>
+
+	<div id="colorStyle-1">
+		<div :class="[isActive ? activeClass:'',textError]">aaaaaaaaaaaaaa</div>
+	</div>
+
+	<div id="colorStyle-2">
+		<color-comp1 :class="{active:isActive}" >
+			
+		</color-comp1>
+	</div>
+
+	<div id="colorStyle-3" :style="styleObject">
+		这是测试内联样式用的
+	</div>
+
+	<div id="colorStyle-4" style="color: red; background:blue">
+		aaaaaaaaaaaaaaaaaaa
+		<p :style="{background: pBg,color:pColor,display:pDisplay,transform:transform}">这是ppppppppppppppppppp</p>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var colorStyle = new Vue({
+		el:'#colorStyle',
+		data: {
+			isActive:true,
+			hasError:false,
+			error:null,
+			'text-danger':false
+		},
+		computed: {
+			classObject: function() {
+				return{
+					active:this.isActive && !this.error,
+					'text-danger': this.error && this.error.type === "fatal",
+				}
+			}
+		}
+	});
+
+	var colorStyle1 = new Vue({
+		el:'#colorStyle-1',
+		data: {
+			isActive:true,
+			activeClass: 'active',
+			textError: 'text-danger'
+		}
+	});
+
+	Vue.component('color-comp1',{
+		template:'<p class="baz boo">HI</p>',
+	});
+
+	var colorStyle2 = new Vue({
+		el:'#colorStyle-2',
+		data: {
+			isActive:'active',
+		}
+	});
+
+	var colorStyle3 = new Vue({
+		el:'#colorStyle-3',
+		data: {
+			styleObject:{
+				color:'red',
+				background:'#aaa',
+				fontSize:'12px',
+				height:'20px',
+			}
+		}
+	});
+
+	var colorStyle4 = new Vue({
+		el:'#colorStyle-4',
+		data: {
+			pBg:'green',
+			pColor:'#fff',
+			pDisplay:'block',
+			transform:'translate(-50%,-50%)'
+		}
+	})
+
+</script>
+
+<style>
+	div.active{
+		background: red;
+		min-height: 20px;
+		margin-bottom: 10px;
+		width: 400px;
+	}
+
+	p{
+		display: none;
+	}
+
+	p.text-danger{
+		display: block;
+		color: red;
+	}
+</style>
+</html>

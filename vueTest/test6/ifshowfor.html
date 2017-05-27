@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+</head>
+<body>
+	<div id="test">
+		<div v-if="ok">我有没有显示是受你控制的</div>
+		<div v-else>NONONONONONONONONONO</div>
+		<button @click="toggleOk">点击我切换上面的div</button>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var test = new Vue({
+		el:'#test',
+		data: {
+			ok:false
+		},
+
+		methods: {
+			toggleOk() {
+				this.ok = !this.ok;
+			}
+		}
+	});
+</script>
+</html>
