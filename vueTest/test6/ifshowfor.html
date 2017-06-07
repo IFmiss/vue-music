@@ -9,21 +9,65 @@
 		<div v-if="ok">我有没有显示是受你控制的</div>
 		<div v-else>NONONONONONONONONONO</div>
 		<button @click="toggleOk">点击我切换上面的div</button>
+		<hr>
+		<my-comp :login-type="logintype"></my-comp>
+		<button @click="toggleInput">toggle text or email</button>
+
+		<!-- <div>
+			<div v-if="logintype === logintype1">
+				<label>Username</label><input placeholder="Enter your username" key="username-input">
+			</div>
+			<div v-else>
+				<label>Email</label><input placeholder="Enter your email address" key="email-input">
+			</div>
+		</div> -->
+		<!-- <button @click="toggleInput">toggle text or email</button> -->
 	</div>
 </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
+	// import test from "./components/test";
+	Vue.component('my-comp',{
+		props: {
+			loginType:{
+				type:String,
+				default: 'username'
+			}
+		},
+		data() {
+			return{
+				logintype1:'username',
+			}
+		},
+		template:'<div v-if="loginType === logintype1"><label>Username</label><input placeholder="Enter your username" key="2" ></div>'+
+		'<div v-else><label>Email</label><input placeholder="Enter your email address" key="1"></div>'
+	});
+
 	var test = new Vue({
 		el:'#test',
-		data: {
-			ok:false
+		data() {
+			return{
+				ok: false,
+				logintype: 'aaaa',
+				logintype1:'username',
+			}
 		},
 
 		methods: {
 			toggleOk() {
 				this.ok = !this.ok;
+			},
+
+			toggleInput() {
+				if(this.logintype === this.logintype1){
+					this.logintype = 'email';
+				}else{
+					this.logintype = 'username';
+				}
+				console.log(this.logintype+' ===== '+ this.logintype1);
 			}
-		}
+		},
 	});
+
 </script>
 </html>
