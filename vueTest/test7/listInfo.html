@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表渲染</title>
+</head>
+<body>
+	<div id="testlist">
+		<ul>
+			<li v-for="(item,index) of items">{{parentMessage}}.{{index+1}}. {{item.message}}</li>
+		</ul>
+	</div>
+
+	<div id="testlist1">
+		<ul id="repeat-object" class="demo">
+		  <li v-for="(value,key,index) in object">
+		    {{index}}、{{ value }}:{{key}}
+		  </li>
+		</ul>
+	</div>
+
+	<div id="testlist2">
+		<input type="text" v-model="newTodoText" @keyup.enter="addNewTodo" placeholder="add a todo">
+		<ul>
+			<li is="todo-item" v-for="(todo,index) in todos" @remove="removeList(index)" :title="todo"></li>
+		</ul>
+	</div>
+
+	<div id="testlist3">
+		<ul>
+			<li v-for="(list,index) in lists" v-show="selectWomen(index)">
+				{{index + 1}}.  姓名:{{list.name}} 性别:{{list.isMan?'男':'女'}} 年龄: {{list.age}} 毕业院校 : {{list.schoolName === ''?'高中毕业' : list.schoolName}}
+			</li>
+		</ul>
+	</div>
+
+	<div id="testlist4">
+		<ul>
+			<li v-for="n in evenNumbers">{{ n }}</li>
+			<li v-for="n in evenNumbersMethods(numbers)">{{ n }}</li>
+		</ul>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var test1 = new Vue({
+		el: '#testlist',
+		data: {
+			parentMessage:'parent',
+			items: [{
+				message:'Foo'
+			},{
+				message:'Bar'
+			}]
+		}
+	});
+
+	var test2 = new Vue({
+		el:'#testlist1',
+		data: {
+			object: {
+				FirstName:'dai',
+				LastName:'wei',
+				Age:30
+			}
+		}
+	})
+
+	Vue.component('todo-item',{
+		template:'<li>{{title}} <button @click=remove($event)> X </button></li>',
+		methods:{
+			remove(event) {
+				this.$emit('remove',event)
+			}
+		},
+		props: ['title']
+	});
+
+	var test3 = new Vue ({
+		el:'#testlist2',
+		data: {
+			newTodoText:'',
+			todos: [
+				'Do the dishes',
+				'Take out the trash',
+				'Mov the lawn'
+			]
+		},
+
+		methods: {
+			removeList(index) {
+				this.todos.splice(index,1);
+			},
+
+			addNewTodo() {
+				this.todos.push(this.newTodoText);
+				this.newTodoText = '';
+			}
+		}
+	});
+
+	var test4 = new Vue({
+		el:'#testlist3',
+		data: {
+			lists:[
+				{
+					name:'戴伟',
+					isMan:true,
+					age:24,
+					schoolName:'安徽商贸职业技术学院'
+				},{
+					name:'张三',
+					isMan:true,
+					age:24,
+					schoolName:'安徽工程大学',
+				},{
+					name:'小红',
+					isMan:false,
+					age:22,
+					schoolName:'',
+				}
+			]
+		},
+		methods: {
+			selectMan(index) {
+				return this.lists[index].isMan;
+			},
+
+			selectWomen(index) {
+				return !this.lists[index].isMan;
+			},
+		}
+	});
+
+	var test5 = new Vue ({
+		el:'#testlist4',
+		data: {
+			numbers:[1,2,3,4,5,6,7,8,9,0]
+		},
+
+		computed: {
+			evenNumbers() {
+				return this.numbers.filter(function(number){
+					return number % 2 === 0;
+				});
+			}
+		},
+
+		methods: {
+			evenNumbersMethods(numbers) {
+				return numbers.filter(function(number){
+					return number % 2 != 0;
+				})
+			}
+		}
+	});
+</script>
+</html>

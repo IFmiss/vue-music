@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+</head>
+<body>
+	<div id="test-1">
+		<button @click="count += 1">增加 1</button>
+		<p>这个按钮被点击了 {{count}} 次</p>
+	</div>
+
+	<hr>
+
+	<div id="test-2">
+		<button @click="add">增加 1</button>
+		<p>这个按钮被点击了 {{count}} 次</p>
+	</div>
+
+	<div id="test-3">
+		<button v-on:click="warn('Form cannot be submitted yet.',$event)">原生html</button>
+		<button v-on:click.stop="warn('Form cannot be submitted yet.',$event)">阻止单击事件冒泡.stop</button>
+		<button v-on:click.once="warn('Form cannot be submitted yet.',$event)">只执行一次.once</button>
+		<input type="text" @keyup.13="justtest" placeholder="按键修饰符 13 enter">
+		<input type="text" @keyup.tab="justtest" placeholder="按键修饰符 tab">
+		<input type="text" @keyup.delete="justtest" placeholder="按键修饰符 delete">
+		<input type="text" @keyup.esc="justtest" placeholder="按键修饰符 esc">
+		<input type="text" @keyup.space="justtest" placeholder="按键修饰符 space">
+		<input type="text" @keyup.up="justtest" placeholder="按键修饰符 up">
+		<input type="text" @keyup.down="justtest" placeholder="按键修饰符 down">
+		<input type="text" @keyup.left="justtest" placeholder="按键修饰符 left">
+		<input type="text" @keyup.right="justtest" placeholder="按键修饰符 right">
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	var test1 = new Vue({
+		el:'#test-1',
+		data: {
+			count: 0
+		}
+	});
+
+	var test2 = new Vue({
+		el:'#test-2',
+		data: {
+			count: 0
+		},
+		methods: {
+			add(event) {
+				this.count = this.count + 1;
+				console.log(event.target);
+			}
+		}
+	});
+
+	var test3 = new Vue({
+		el:"#test-3",
+		data:{
+
+		},
+		methods: {
+			warn(message,event) {
+				if (event) event.preventDefault();
+    			alert(message);
+			},
+			justtest() {
+				alert('事件触发了!');
+			}
+		}
+	});
+</script>
+</html>
