@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+</head>
+<body>
+	<div id="test1">
+		<my-comp></my-comp>
+	</div>
+
+	<hr>
+
+	<div id="test2">
+		<my-comp></my-comp>
+	</div>
+
+	<hr>
+
+	<div id="test3">
+		<my-count></my-count>
+		<my-count></my-count>
+		<my-count></my-count>
+	</div>
+	
+	<hr>
+
+	<div id="test4">
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+	</div>
+
+	<hr>
+	
+	<div id="test5">
+		<input type="text" v-model="message">
+		<my-child :my-message="message" :obj-info="myinfo"></my-child>
+	</div>
+
+	<hr>
+
+	<div id="test6">
+		<p>{{total}}</p>
+		<button-add @addallcount="addAllCount"></button-add>
+		<button-add @addallcount="addAllCount"></button-add>
+	</div>
+
+	<hr>
+
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+	Vue.component('my-comp',{
+		template:'<h1>{{message}}</h1>',
+		data() {
+			return{
+				message:'world'
+			}
+		}
+	})
+
+	var test1 = new Vue({
+		el:'#test1',
+	});
+
+
+	var Child = {
+		template:'<div>An example !!!</div>'
+	};
+
+	var test2 = new Vue ({
+		el:'#test2',
+		components: {
+			'my-comp':Child,
+		}
+	});
+
+	var data = { counter: 0 };
+
+	var setCount = {
+		data: function () {
+		    return data
+		},
+		template:'<button @click="counter += 1">{{counter}}</button>',
+	}
+
+
+	var test3 = new Vue({
+		el:'#test3',
+		components: {
+			'my-count':setCount,
+		}
+	});
+
+
+	Vue.component('simple-counter',{
+		template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+		data() {
+			return {
+				counter: 0 
+			}
+		}
+	});
+
+	var test4 = new Vue({
+		el:'#test4'
+	});
+
+
+	var myChild = {
+		props:{
+			myMessage: {
+				type:String,
+				default:'daiweizzz'
+			},
+
+			objInfo: {
+				type:Object,
+				default:function(){
+					return{
+						message:'hello',
+					}
+				}
+			}
+		},
+		template:'<div><div>{{myNewMessage}}</div> <p>{{objInfo.message}}</p></div> ',
+		computed:{
+			myNewMessage:function() {
+				return this.myMessage.trim().toUpperCase();
+			}
+		}
+	}
+
+	var test5 = new Vue({
+		data() {
+			return {
+				message:'daiwei',
+
+				myinfo: {
+					message:'daiweidaiweiMessage',
+					age:12	
+				}
+			}
+		},
+		el:'#test5',
+		components: {
+			'my-child':myChild,
+		}
+	});
+
+
+	var buttonAdd = {
+		data() {
+			return{
+				selftotal:0
+			}
+		},
+		template:'<button @click="add">{{selftotal}}</button>',
+		methods:{
+			add() {
+				this.selftotal ++ ;
+				this.$emit('addallcount');
+			}
+		}
+	}
+
+	var test6 = new Vue({
+		el:'#test6',
+		data:{
+			total:0,
+		},
+		methods:{
+			addAllCount(){
+				return this.total ++ ;
+			}
+		},
+		components: {
+			'button-add':buttonAdd
+		}
+	});
+
+
+</script>
+</html>

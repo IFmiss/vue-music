@@ -45,6 +45,7 @@
 		<input type="radio" id="two" value="Two" v-model="picked">
 		<label for="two">Two</label>
 		<input type="radio" id="three" value="Three" v-model="picked">
+		<label for="three">Three</label>
 		<p>Pick:{{picked}}</p>
 	</div>
 
@@ -53,6 +54,15 @@
 			<option>A</option>
 			<option>B</option>
 			<option>C</option>
+		</select>
+		<span>Select: {{selected}}</span>
+	</div>
+	
+	<hr>
+
+	<div id="test7">
+		<select v-model="selected">
+			<option v-for="item in items" :value="item.value">{{item.text}}</option>
 		</select>
 		<span>Select: {{selected}}</span>
 	</div>
@@ -99,6 +109,23 @@
 		data: {
 			selected:'A'
 		}
-	})
+	});
+
+	var test7 = new Vue ({
+		el:'#test7',
+		data: {
+			selected:'',
+			items: [{
+				value:'A',
+				text:'One'
+			},{
+				value:'B',
+				text:'Two'
+			},{
+				value:'C',
+				text:'three'
+			}]
+		}
+	});
 </script>
 </html>

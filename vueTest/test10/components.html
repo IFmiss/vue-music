@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Compoents</title>
+</head>
+<body>
+	<div id="app">
+		<currency-input label="Price" v-model="price"></currency-input>
+		<currency-input label="Shipping" v-model="shipping"></currency-input>
+		<currency-input label="Handling" v-model="handling"></currency-input>
+		<currency-input label="Discount" v-model="discount"></currency-input>
+	</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>
+
+<script>
+	var currencyInput = {
+		template:'<div>\
+					<label v-if="label">{{label}}</label>\
+				  	$\
+				  	<input type="text" ref="input" :value="value" @input ="updateValue($event.target.value)"\
+						:focus="selectAll"\
+						:blue="formateValue"\
+				  	/>\
+				  </div>',
+		props: {
+			value:{
+				type:Number,
+				default:0
+			},
+
+			label:{
+				type:String,
+				default:''
+			}
+		},
+
+		mounted() {
+			this.formateValue();
+		},
+
+		methods:{
+			updateValue(value) {
+				var result = currency
+			}
+		}
+	}
+</script>
+</html>
