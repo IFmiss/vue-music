@@ -3,7 +3,10 @@
     <v-header></v-header>
     <side-bar></side-bar>
     <bottom-bar></bottom-bar>  
-     <router-link tag="li" to="/search">
+      <router-link tag="li" to="/musiclist">
+        <a>Home</a>
+      </router-link>
+      <router-link tag="li" to="/search">
         <a>Search</a>
       </router-link>
   </div>
