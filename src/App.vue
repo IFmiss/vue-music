@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :index="2"></v-header>
     <side-bar></side-bar>
     <bottom-bar></bottom-bar>  
       <router-link tag="li" to="/musiclist">
@@ -9,6 +9,7 @@
       <router-link tag="li" to="/search">
         <a>Search</a>
       </router-link>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -27,6 +28,11 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+body,html
+  margin:0
+  padding:0
+  box-sizing:border-box
+
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased

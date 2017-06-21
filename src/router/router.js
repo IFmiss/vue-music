@@ -21,6 +21,9 @@ Vue.use(VueRouter)
 var router = new VueRouter({
   routes: [
     {
+      path: '/'
+    },
+    {
       path: '/musiclist',
       component: Musiclist
     },
