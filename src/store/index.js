@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Sidebar from './modules/sidebar.js'
 
 Vue.use(Vuex)
 
@@ -20,12 +21,26 @@ const store = new Vuex.Store({
   mutations: {
     increment (state, payload) {
       state.count += payload.count
+    },
+
+    myaction (state, payload) {
+		// alert(payload)
+		state.count += payload.count
     }
   },
   actions: {
-	myactions (context) {
-		context.commit('myactions')
-	}
+	myactionAsync ({ commit }, value) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				commit('myaction', value)
+				resolve()
+			}, 1000)
+		})
+    }
+  },
+
+  modules: {
+	sideBar: Sidebar
   }
 })
 

@@ -17,8 +17,12 @@
 import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
 import bottombar from './components/bottombar/bottombar.vue'
+// import store from './store'
 
 export default {
+  methods: {
+  },
+
   components: {
     'v-header': header,
     'side-bar': sidebar,

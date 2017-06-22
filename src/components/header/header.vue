@@ -1,8 +1,8 @@
 <template>
 	<div class="header">
 		<div class="header-warpper">
-			<i class="menu icon-menu" @click="add"></i>
-			<div class="centermenu">
+			<i class="menu icon-menu" @click="showMueu"></i>
+			<div class="centermenu" @click="hideMenu">
 				<i class="music icon-music" :class= "selectIndex===0?'active':''" ></i>
 				<i class="find icon-wangyiyun"></i>
 				<i class="community icon-community"></i>
@@ -16,7 +16,7 @@
 </template>
 <script>
 	import store from '../../store'
-	import { mapState, mapMutations } from 'vuex'
+	import { mapState, mapMutations, mapActions } from 'vuex'
 
 	const Counter = {
 		template: `<div><p>{{ getdone }}</p><p>{{countAlias}}</p><p>{{countPlusLocalState}}</p></div>`,
@@ -63,22 +63,42 @@
 		},
 
 		methods: {
-			toggleMueu () {
-				store.commit({
-					type: 'increment',
-					count: 2,
-					silent: true
+			showMueu () {
+				store.dispatch({
+					type: 'showSideBar'
 				})
-				// this.$store.commit('increment')
-				// alert(store.state.count)
 			},
+			hideMenu () {
+				store.dispatch({
+					type: 'hideSideBar'
+				})
+			},
+
 			...mapMutations({
 				adds: 'increment'
 			}),
 
+			...mapActions({}),
 			add () {
-				store.dispatch('myactions')
+				this.$store.dispatch({
+					type: 'myactionAsync',
+					count: 10
+				})
 			}
+
+			// sideBar () {
+			// 	alert(store.state.sideBar.isShow)
+			// }
+			// add () {
+			// 	try {
+			// 		store.dispatch({
+			// 			type: 'myactionAsync',
+			// 			count: 10
+			// 		})
+			// 	} catch (error) {
+			// 		alert(error)
+			// 	}
+			// }
 		},
 
 		components: {
