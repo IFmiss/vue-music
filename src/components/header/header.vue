@@ -10,7 +10,7 @@
 			<router-link tag="i" to="/search">
 				<i class="search icon-search"></i>
 			</router-link>
-			<Counter class="counter"></Counter>
+			<!-- <Counter class="counter"></Counter> -->
 		</div>
 	</div>
 </template>
