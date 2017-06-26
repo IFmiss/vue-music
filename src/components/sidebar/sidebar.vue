@@ -8,17 +8,17 @@
 			<div class="menu-content">
 				<div class="menu-detail">
 					<div class="menu-userInfo">
-						<img class="avatar" src="../../assets/images/userlogo.jpg" width="56" height="56">
+						<img class="avatar" :src="info.avatar" width="56" height="56">
 						<div class="user-detail">
-							<span class="name">未曾遗忘的青春</span>
+							<span class="name">{{info.name}}</span>
 							<img class="isvip" src="../../assets/images/vip.png" alt="">
-							<span class="progress">Lv.8</span>
+							<span class="progress">Lv.{{info.grade}}</span>
 						</div>
-						<span class="sign"><i v-show="true" class="icon-coin"></i>签到</span>
+						<span class="sign" @click="signClick"><i v-show="showIcon" class="icon-coin"></i>{{sign}}</span>
 					</div>
 				</div>
 				<div class="content">
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-music" sidetitle="你好" disc=""></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
@@ -26,6 +26,10 @@
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<split background="#f0f0f0" height="5" border="#eee"></split>
+					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
 				</div>
@@ -56,6 +60,17 @@
 	import split from './../split/split'
 	import sidelist from './../sidelist/sidelist'
 	export default {
+		props: {
+			info: {
+				type: Object
+			}
+		},
+		data () {
+			return {
+				sign: '签到',
+				userInfo: ''
+			}
+		},
 		methods: {
 			stopTouch (event) {
 				return
@@ -67,11 +82,21 @@
 			},
 			enter () {
 				alert(1)
+			},
+			signClick () {
+				this.sign = '已签到'
 			}
 		},
 		computed: {
 			isReallShow () {
 				return store.state.sideBar.isShow
+			},
+			showIcon () {
+				if (this.sign === '签到') {
+					return true
+				} else {
+					return false
+				}
 			}
 		},
 		components: {
@@ -93,9 +118,11 @@
 			bottom:0
 			right:0
 			opacity: 1
+			z-index:10
 			background:rgba(0,0,0,0.5)
-			&.fade-enter-active, &.fade-leave-active
-				transition: opacity 11s
+			transfrom:translateZ(0)
+			&.fade-enter-active
+				transition: opacity 1s
 			&.fade-enter, &.fade-leave-active
 				opacity: 0
 		.menu-content
@@ -105,8 +132,11 @@
 			top:0
 			left:0
 			bottom:0
-			background:#fff	
-			transfrom:translate3d(0,0,0)
+			z-index:11
+			overflow-y:scroll
+			transfrom:translateZ(0)
+			background:#fff
+			-webkit-overflow-scrolling:touch
 			&.side-enter-to, &.side-leave-to
 				transition: all 1s ease;
 			&.side-enter, &.side-leave-to
@@ -148,11 +178,14 @@
 						padding:1px 4px 
 						border-radius:8px
 						color:#fff
+						font-weight:400
 						border:1px solid #fff
 						margin-left:6px
 						vertical-align:middle
 				.sign
 					display:inline-block
+					height:14px
+					line-height:14px
 					position:absolute
 					bottom:15px
 					right:15px
@@ -160,11 +193,16 @@
 					border:1px solid #e1e1e1
 					border-radius:12px
 					color:#fff
+					&:active
+						background:$rgba_active
 					i
-						margin-right:3px
+						height:14px
+						margin-right:5px
 						vertical-align:top
 			.content
+				background:#fff
 				display:block
+				padding-bottom:40px
 			.footer
 				background:red
 				position:fixed

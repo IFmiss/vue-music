@@ -49,6 +49,7 @@
 		font-size:0
 		padding:0 15px
 		box-sizing:border-box
+		// background:#fff
 		
 		&:active
 			background:$list_active
@@ -66,6 +67,7 @@
 		.disc
 			position:absolute
 			right:15px
+			font-weight:400
 			top:50%
 			transform:translate3d(0,-50%,0)
 			color:#9c9c9c
