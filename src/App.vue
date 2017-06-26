@@ -2,7 +2,7 @@
   <div id="app">
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
-    <bottom-bar :video="videoele"></bottom-bar>
+    <bottom-bar :audio="audioele"></bottom-bar>
       <router-link tag="li" to="/musiclist">
         <a>Home</a>
       </router-link>
@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       info: {},
-      videoele: {}
+      audioele: {}
     }
   },
   methods: {
@@ -45,10 +45,10 @@ export default {
     }, (err) => {
       alert(err)
     })
-    const myvideo = new Vue({
-      el: '#myvideo'
+    const myaudio = new Vue({
+      el: '#myaudio'
     })
-    this.videoele = myvideo.$el
+    this.audioele = myaudio.$el
   }
 }
 

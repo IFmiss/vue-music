@@ -16,21 +16,21 @@
 <script>
 	export default {
 		props: {
-			video: {}
+			audio: {}
 		},
 		data () {
 			return {
-				myvideo: {}
+				myaudio: {}
 			}
 		},
 		methods: {
 			playpause () {
-				this.myvideo.setAttribute('src', 'http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%80%E5%8D%83%E5%B9%B4%E4%BB%A5%E5%90%8E.mp3')
-				this.myvideo.play()
+				this.myaudio.setAttribute('src', 'http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%80%E5%8D%83%E5%B9%B4%E4%BB%A5%E5%90%8E.mp3')
+				this.myaudio.play()
 			}
 		},
 		mounted () {
-			this.myvideo = this.video
+			this.myaudio = this.audio
 		}
 	}
 </script>
