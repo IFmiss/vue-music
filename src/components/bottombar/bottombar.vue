@@ -1,36 +1,78 @@
 <template>
 	<div class="bottom-bar">
 		<div class="music-info">
-			<img class="music-pic" src="http://oiq8j9er1.bkt.clouddn.com/music_imissyou.jpg" alt="">
+			<img class="music-pic" :src="musicImage" alt="">
 			<div class="music-detail">
-				<p class="music-name">I miss you</p>
-				<p class="music-singer">罗百吉</p>
+				<p class="music-name" v-if="musicName">{{musicName}}</p>
+				<p class="music-singer" v-if="musicSinger">{{musicSinger}}</p>
 			</div>
 		</div>
 		<div class="playpause" @click="playpause">
-			<i class="icon-music"></i>
+			<i :class="iconPlayPause?'icon-menu':'icon-music'"></i>
 		</div>
-		<i class="music-list icon-menu"></i>
+		<i class="music-list icon-menu" @click="showMusicListUp"></i>
 	</div>
 </template>
 <script>
+	import store from '../../store'
+	// import { mapState } from 'vuex'
 	export default {
-		props: {
-			audio: {}
-		},
 		data () {
 			return {
-				myaudio: {}
+				audioInfo: {
+				},
+				myaudio: {},
+				state: {
+					isplaying: false,
+					loading: false,
+					currentIndex: 0
+				}
 			}
 		},
 		methods: {
+			// 控制音乐播放暂停
 			playpause () {
-				this.myaudio.setAttribute('src', 'http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%80%E5%8D%83%E5%B9%B4%E4%BB%A5%E5%90%8E.mp3')
-				this.myaudio.play()
+				if (this.audioInfo.playing) {
+					store.commit('pause')
+					this.audioInfo.audioelement.pause()
+				} else {
+					store.commit('play')
+					this.audioInfo.audioelement.play()
+				}
+			},
+			// 显示播放列表
+			showMusicListUp () {
+				store.dispatch({
+					type: 'showSideBar'
+				})
+			}
+		},
+		computed: {
+			iconPlayPause () {
+				return this.audioInfo.playing
+			},
+			// 获取音乐名称
+			musicName () {
+				return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic.name : ''
+			},
+			// 获取歌手名称
+			musicSinger () {
+				return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic.singer : ''
+			},
+			// 获取音乐封面地址
+			musicImage () {
+				return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic.img_url : ''
+			},
+			// 获取音乐播放地址
+			musicUrl () {
+				return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic.url : ''
 			}
 		},
 		mounted () {
-			this.myaudio = this.audio
+			// 所有的audio的 vuex 的状态信息
+			this.audioInfo = this.$store.state.audioInfo
+			// 音乐是否play
+			this.state.isplaying = this.audioInfo.playing
 		}
 	}
 </script>
@@ -58,15 +100,15 @@
 				display:flex
 				flex-direction:column
 				justify-content:space-around
-				@media screen and (max-width: 320px)
-					p
-						max-width:160px
-				@media screen and (max-width: 375px)
-					p
-						max-width:210px
 				@media screen and (max-width: 414px)
 					p
 						max-width:250px
+				@media screen and (max-width: 375px)
+					p
+						max-width:210px
+				@media screen and (max-width: 320px)
+					p
+						max-width:160px
 				@media screen and (min-width: 768px)
 					p
 						max-width:580px

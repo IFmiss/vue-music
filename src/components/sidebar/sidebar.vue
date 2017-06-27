@@ -68,6 +68,7 @@
 		data () {
 			return {
 				sign: '签到',
+				showIcon: true,
 				userInfo: ''
 			}
 		},
@@ -75,6 +76,7 @@
 			stopTouch (event) {
 				return
 			},
+			// 显示菜单
 			hideMenu () {
 				store.dispatch({
 					type: 'hideSideBar'
@@ -83,20 +85,16 @@
 			enter () {
 				alert(1)
 			},
+			// 点击签到
 			signClick () {
 				this.sign = '已签到'
+				this.showIcon = false
 			}
 		},
 		computed: {
+			// 显示
 			isReallShow () {
 				return store.state.sideBar.isShow
-			},
-			showIcon () {
-				if (this.sign === '签到') {
-					return true
-				} else {
-					return false
-				}
 			}
 		},
 		components: {

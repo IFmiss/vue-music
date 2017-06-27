@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <audio id="myaudio" ref="audio"></audio>
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
-    <bottom-bar :audio="audioele"></bottom-bar>
+    <bottom-bar></bottom-bar>
       <router-link tag="li" to="/musiclist">
         <a>Home</a>
       </router-link>
@@ -20,15 +21,14 @@ import bottombar from './components/bottombar/bottombar.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
-// import store from './store'
+import store from './store'
 
 Vue.use(Vueaxios, axios)
 
 export default {
   data () {
     return {
-      info: {},
-      audioele: {}
+      info: {}
     }
   },
   methods: {
@@ -41,14 +41,17 @@ export default {
   created () {
     let LocalAPI = './../static/data.json'
     axios.get(LocalAPI).then((res) => {
+      // data.user的信息赋值给info  再通过组件的数据传递传给sideBar
       this.info = res.data.user
+      // 把所有的音乐数据给vuex的musicList
+      store.dispatch('set_MusicList', res.data.music)
+      // 设置音乐的地址  初始化 根据vuex的currentIndex来决定
+      this.$refs.audio.setAttribute('src', store.getters.getCurrentMusic.url)
+      // 给audio元素存在vuex 的state里面  方便日后调用
+      store.dispatch('set_AudioElement', this.$refs.audio)
     }, (err) => {
       alert(err)
     })
-    const myaudio = new Vue({
-      el: '#myaudio'
-    })
-    this.audioele = myaudio.$el
   }
 }
 
