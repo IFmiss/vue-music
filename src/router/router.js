@@ -5,24 +5,8 @@ import Musiclist from './../components/musiclist/musiclist'
 
 Vue.use(VueRouter)
 
-// export default new VueRouter({
-//   routes: [
-//     {
-//       path: '/musiclist',
-//       component: Musiclist
-//     },
-//     {
-//       path: '/search',
-//       name: 'Search',
-//       component: Search
-//     }
-//   ]
-// })
-var router = new VueRouter({
+export default new VueRouter({
   routes: [
-    {
-      path: '/'
-    },
     {
       path: '/musiclist',
       component: Musiclist
@@ -34,5 +18,3 @@ var router = new VueRouter({
     }
   ]
 })
-
-export default router

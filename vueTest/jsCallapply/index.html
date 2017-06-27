@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+</body>
+
+<script>
+	function add (a,b) {
+		alert ( a + b );
+	}
+
+	function reduce (a,b) {
+		alert ( a - b );
+	}
+	// reduce.call(add,3,1); 		reduce 替换add的上下文
+	// add.apply(reduce,[3,1]);
+</script>
+<script>
+	function Animal() {
+		this.name = "Animal";
+		this.showName = function (){
+			alert(this.name);
+		}
+	}
+
+	function Cat () {
+		this.name = "Cat";
+	}
+
+	// var animal = new Animal();
+	// var cat = new Cat();
+
+	// animal.showName.call(cat,",");    
+</script>
+
+<script>
+//继承
+	function Animal1(name) {
+		this.name = name;
+		this.showName = function() {
+			alert (this.name);
+		};
+		this.message = function() {
+			alert (this.name+" 这是随便写的");
+		}
+	}
+
+	function Cat1(name) {
+		Animal1.call(this,name);
+	}
+
+	// var cat1 = new Cat1("miao");
+	// cat1.showName();
+	// cat1.message();
+</script>
+
+<script>
+	function Class10(){
+		this.showReduce = function(a,b){
+			alert(a-b);
+		}
+	}
+
+	function Class11() {
+		this.showAdd = function(a,b){
+			alert(a+b);
+		}
+	}
+
+	function Class12() {
+		Class10.call(this);
+		Class11.call(this);
+	}
+
+	var class12 = new Class12();
+	class12.showReduce(2,1);
+	class12.showAdd(4,6);
+</script>
+</html>

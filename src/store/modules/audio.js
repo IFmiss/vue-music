@@ -54,10 +54,12 @@ const audioInfo = {
 		// play设置
 		play (state) {
 			state.playing = true
+			state.audioelement.play()
 		},
 		// 暂停设置
 		pause (state) {
 			state.playing = false
+			state.audioelement.pause()
 		},
 		// 开关显示底部列表
 		toggerMusicDetail (state) {
@@ -91,6 +93,7 @@ const audioInfo = {
 				state.currentIndex = 0
 			}
 			state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+			state.playing = true
 			state.audioelement.load()
 			state.audioelement.play()
 		},
@@ -103,6 +106,7 @@ const audioInfo = {
 				state.currentIndex = length - 1
 			}
 			state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+			state.playing = true
 			state.audioelement.load()
 			state.audioelement.play()
 		}

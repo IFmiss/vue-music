@@ -4,8 +4,8 @@
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <bottom-bar></bottom-bar>
-    <div></div>
-     <!--  <router-link tag="li" to="/musiclist">
+    <my-music></my-music>
+<!--       <router-link tag="li" to="/musiclist">
         <a>Home</a>
       </router-link>
       <router-link tag="li" to="/search">
@@ -19,6 +19,7 @@
 import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
 import bottombar from './components/bottombar/bottombar.vue'
+import mymusic from './components/mymusic/mymusic.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
@@ -37,7 +38,8 @@ export default {
   components: {
     'v-header': header,
     'side-bar': sidebar,
-    'bottom-bar': bottombar
+    'bottom-bar': bottombar,
+    'my-music': mymusic
   },
   created () {
     let LocalAPI = './../static/data.json'

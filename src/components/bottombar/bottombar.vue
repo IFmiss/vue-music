@@ -34,10 +34,8 @@
 			playpause () {
 				if (this.audioInfo.playing) {
 					store.commit('pause')
-					this.audioInfo.audioelement.pause()
 				} else {
 					store.commit('play')
-					this.audioInfo.audioelement.play()
 				}
 			},
 			// 显示播放列表

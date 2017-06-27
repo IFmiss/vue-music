@@ -110,7 +110,12 @@
 	@import "../../common/font-icon/font.css"
 	@import "../../common/stylus/global.styl"
 	.header
+		position:fixed
+		top:0
+		left:0
+		right:0
 		height:50px
+		z-index:9
 		background:$primarycolor
 		.header-warpper
 			height:100%
