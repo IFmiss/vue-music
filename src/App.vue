@@ -4,13 +4,14 @@
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <bottom-bar></bottom-bar>
-      <router-link tag="li" to="/musiclist">
+    <div></div>
+     <!--  <router-link tag="li" to="/musiclist">
         <a>Home</a>
       </router-link>
       <router-link tag="li" to="/search">
         <a>Search</a>
       </router-link>
-      <router-view></router-view>
+      <router-view></router-view> -->
   </div>
 </template>
 
