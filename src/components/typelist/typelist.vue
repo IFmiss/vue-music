@@ -1,5 +1,5 @@
 <template>
-	<div class="typelist" :style="{background:typelistbg}">	
+	<div class="typelist" @click="alert1" :style="{background:typelistbg}">	
 		<i class="info" :class="iconInfo"></i>
 		<div class="typelist-detail">
 			<span class="name">{{listName}}</span>
@@ -44,6 +44,11 @@
 				isPlaying: false,
 				iconInfo: '',
 				typelistbg: ''
+			}
+		},
+		methods: {
+			alert1 () {
+				alert(1)
 			}
 		},
 		computed: {
