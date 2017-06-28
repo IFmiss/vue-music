@@ -1,11 +1,11 @@
 <template>
 	<div class="typelist">	
-		<i class="icon-music"></i>
+		<i class="info icon-music"></i>
 		<div class="typelist-detail">
 			<span class="name">{{listName}}</span>
 			<span class="count">({{listCount}})</span>
 			<p v-if="showBorder" class="border-1px"></p>
-			<i v-if="isPlaying" class="icon-menu"></i>
+			<i v-if="isPlaying" class="isPlaying icon-menu"></i>
 		</div>
 	</div>
 </template>
@@ -55,7 +55,7 @@
 		position:relative
 		&:active
 			background:$list_active
-		.icon-music
+		.info
 			font-size:20px
 			position:absolute
 			top:50%
@@ -79,7 +79,7 @@
 				vertical-align:middle
 			.border-1px
 				border-1px($border_1px)
-		.icon-menu
+		.isPlaying
 			font-size:14px
 			position:absolute
 			top:50%

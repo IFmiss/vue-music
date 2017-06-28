@@ -5,13 +5,21 @@
 		<type-list name="下载管理" count="32"></type-list>
 		<type-list name="我的收藏" count="3"></type-list>
 		<type-list name="我的电台" count="1" :has-border="false"></type-list>
+		<musicsheet v-for="(item, index) in items" :item="item" :index="index" :key="item.id"></musicsheet>
 	</div>
 </template>
 <script>
+	import musicsheet from '../musicsheet/musicsheet.vue'
 	import typelist from '../typelist/typelist.vue'
 	export default {
+		computed: {
+			items () {
+				return this.$store.getters.getMusicAllList.sheets
+			}
+		},
 		components: {
-			'type-list': typelist
+			'type-list': typelist,
+			musicsheet
 		}
 	}
 </script>

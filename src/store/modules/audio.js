@@ -16,17 +16,11 @@ const audioInfo = {
 		// 是否显示audio的列表
 		showMusicDetail: false,
 		// 当前音乐的index索引
-		currentIndex: 0,
-		// 所有的音乐信息
-		musicList: [{
-			id: 0,
-			name: '未曾遗忘的青春',
-			singer: 'iFmiss',
-			url: '',
-			img_url: 'http://www.daiwei.org/index/images/img/indeximg3.jpg',
-			type: '华语',
-			lyric: ''
-		}],
+		currentIndex: 7,
+		// 全部音乐信息  包括歌单等等
+		musicAllList: [],
+		// 音乐播放信息
+		musicList: [],
 		// 是否正在播放
 		playing: false,
 		// 是否正在加载
@@ -39,8 +33,10 @@ const audioInfo = {
 		getAudioInfo: state => state.audio,
 		// 获取当前播放的索引
 		getCurrentIndex: state => state.currentIndex,
-		// 获取音乐的所有信息
+		// 获取音乐播放列表信息
 		getMusicList: state => state.musicList,
+		// 获取音乐全部信息
+		getMusicAllList: state => state.musicAllList,
 		// 获取音乐是否播放
 		getIsPlaying: state => state.playing,
 		// 获取音乐是否加载
@@ -73,9 +69,14 @@ const audioInfo = {
 				alert(2)
 			}
 		},
-		// 插入音乐信息
+		// 插入播放列表信息
 		setMusicList (state, obj) {
 			state.musicList = obj
+		},
+		// 插入所有音乐信息
+		setMusicAllList (state, obj) {
+			state.musicAllList = obj
+			state.musicList = obj.all
 		},
 		// 获取音乐元素 Dom
 		setAudioElement (state, ele) {
@@ -117,6 +118,9 @@ const audioInfo = {
 		},
 		set_ShowMusicDetail ({commit}) {
 			commit('setShowMusicDetail')
+		},
+		set_MusicAllList ({commit}, obj) {
+			commit('setMusicAllList', obj)
 		},
 		set_MusicList ({commit}, obj) {
 			commit('setMusicList', obj)
