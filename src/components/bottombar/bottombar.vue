@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="playpause" @click="playpause">
-			<i :class="iconPlayPause?'icon-menu':'icon-music'"></i>
+			<i :class="iconPlayPause?'icon-pause':'icon-play'"></i>
 		</div>
 		<i class="music-list icon-menu" @click="playNext"></i>
 	</div>
@@ -85,6 +85,7 @@
 		left:0
 		right:0
 		display:flex
+		align-items: center
 		.music-info
 			position:relative
 			flex:1 1 auto
@@ -128,16 +129,38 @@
 				flex:0 0 36px
 				width:36px
 				height:36px
-		.playpause i,.music-list
+		.playpause
+			border:2px solid #999
+			border-radius:50%
+			width:28px
+			height:28px
+			position:relative
+			&:active
+				background:$list_active
+			i
+				display:block
+				position:absolute
+				top:50%
+				left:55%
+				transform:translate3d(-50%,-50%,0)
+				width:22px
+				font-size:14px
+				color:#333
+				text-align:center
+				&.icon-pause
+					left:50%
+					font-size:20px
+					color:$primarycolor
+		.music-list
+			margin-left:10px
 			display:block
 			flex:0 0 36px
 			width:36px
 			height:100%
 			line-height:36px
 			text-align:center
-			margin-left:10px
-			font-size:28px
+			font-size:26px
+			color:#333
 			&:active
-				background:$list_active
-		
+					background:$list_active
 </style>

@@ -1,11 +1,11 @@
 <template>
 	<div class="typelist">	
-		<i class="info icon-music"></i>
+		<i class="info" :class="iconInfo"></i>
 		<div class="typelist-detail">
 			<span class="name">{{listName}}</span>
 			<span class="count">({{listCount}})</span>
 			<p v-if="showBorder" class="border-1px"></p>
-			<i v-if="isPlaying" class="isPlaying icon-menu"></i>
+			<i v-if="isPlaying" class="isPlaying icon-volume-medium"></i>
 		</div>
 	</div>
 </template>
@@ -27,6 +27,9 @@
 			playing: {
 				type: Boolean,
 				default: false
+			},
+			iconinfo: {
+				type: String
 			}
 		},
 		data () {
@@ -34,7 +37,8 @@
 				listName: '',
 				listCount: '0',
 				showBorder: true,
-				isPlaying: false
+				isPlaying: false,
+				iconInfo: ''
 			}
 		},
 		mounted () {
@@ -42,6 +46,7 @@
 			this.listCount = this.count
 			this.showBorder = this.hasBorder
 			this.isPlaying = this.playing
+			this.iconInfo = this.iconinfo
 		}
 	}
 </script>
@@ -59,6 +64,7 @@
 			font-size:20px
 			position:absolute
 			top:50%
+			color:$primarycolor
 			left:15px
 			transform:translate(0,-50%)
 		.typelist-detail
@@ -83,6 +89,13 @@
 			font-size:14px
 			position:absolute
 			top:50%
-			right:15px
+			color:$primarycolor
+			right:5px
+			width:36px
+			height:36px
+			line-height:36px
+			text-align:center
 			transform:translate(0,-50%)
+			&:active
+				background:$list_active
 </style>

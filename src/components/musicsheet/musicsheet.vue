@@ -2,11 +2,11 @@
 		<div>
 			<div class="musicsheet">
 				<div class="title" @click="toggleSheets($event)">
-					<i class="toggle icon-menu"></i>
+					<i class="toggle icon-down" ref="toggleicon"></i>
 					<div class="detail">
 						<span class="name">{{data_item.name}}</span>
 						<span class="count">({{data_item.count}})</span>
-						<i class="setting icon-music"></i>
+						<i class="setting icon-setting"></i>
 					</div>
 				</div>
 				<div v-show="showSheets" v-for="(list, listindex) in data_item.detail">
@@ -14,8 +14,8 @@
 						<img class="sheetimg" :src="list.info[0].img_url" alt="">
 						<div class="detail">
 							<p class="name">{{list.name}}</p>
-							<p class="count">{{list.count}} 首歌曲</p>
-							<i class="setting icon-menu"></i>
+							<p class="count">{{list.count}}首歌曲</p>
+							<i class="setting icon-list-circle" @click.stop="showSheetInfo"></i>
 							<p v-show="data_item.detail.length != listindex + 1" class="border-1px"></p>
 						</div>
 					</div>
@@ -32,7 +32,7 @@
 				type: Object
 			},
 			index: {
-				type: String
+				type: Number
 			}
 		},
 		data () {
@@ -49,7 +49,11 @@
 		},
 		methods: {
 			toggleSheets (event) {
+				this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) translate3d(50%, 0, 0)' : 'rotate(0) translate3d(0, -50%, 0)'
 				this.showSheets = !this.showSheets
+			},
+			showSheetInfo () {
+				// alert(1)
 			}
 		},
 		mounted () {
@@ -69,8 +73,8 @@
 		background:#f7f7f7
 		.title
 			display:block
-			height:26px
-			line-height:26px
+			height:28px
+			line-height:28px
 			background:#e1e1e1
 			position:relative
 			.toggle
@@ -79,6 +83,7 @@
 				left:10px
 				font-size:16px
 				color:#666
+				transition:all 0.5s;
 				transform:translate3d(0,-50%,0)
 			.detail
 				margin-left:35px
@@ -93,7 +98,7 @@
 					font-weight:300
 					font-size:10px
 				.setting
-					font-size:14px
+					font-size:16px
 					position:absolute
 					top:50%
 					right:15px
@@ -136,8 +141,15 @@
 					border-1px($border_1px)
 				.setting
 					position:absolute
-					right:15px
+					right:5px
+					width:36px
+					height:36px
+					line-height:36px
+					text-align:center
 					top:50%
+					color:$icon_color
 					transform:translate3d(0,-50%,0)
+					&:active
+						background:$list_active
 				
 </style>

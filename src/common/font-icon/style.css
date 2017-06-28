@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?4apvsq');
-  src:  url('fonts/icomoon.eot?4apvsq#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?4apvsq') format('truetype'),
-    url('fonts/icomoon.woff?4apvsq') format('woff'),
-    url('fonts/icomoon.svg?4apvsq#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ib5w7s');
+  src:  url('fonts/icomoon.eot?ib5w7s#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ib5w7s') format('truetype'),
+    url('fonts/icomoon.woff?ib5w7s') format('woff'),
+    url('fonts/icomoon.svg?ib5w7s#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,64 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-wangyi:before {
+  content: "\e90e";
+}
+.icon-SHARE:before {
+  content: "\e90f";
+}
+.icon-play:before {
+  content: "\e910";
+}
+.icon-list-circle:before {
+  content: "\e911";
+}
+.icon-list-music:before {
+  content: "\e913";
+}
+.icon-setting:before {
+  content: "\e914";
+}
+.icon-theme:before {
+  content: "\e915";
+}
+.icon-friend:before {
+  content: "\e916";
+}
+.icon-set-time:before {
+  content: "\e917";
+}
+.icon-lock:before {
+  content: "\e918";
+}
+.icon-car:before {
+  content: "\e919";
+}
+.icon-cloud:before {
+  content: "\e91a";
+}
+.icon-night:before {
+  content: "\e91b";
+  color: #ff7878;
+}
+.icon-exit:before {
+  content: "\e91c";
+}
+.icon-place:before {
+  content: "\e909";
+}
+.icon-SHARE2:before {
+  content: "\e90a";
+}
+.icon-zuijinplay:before {
+  content: "\e90b";
+}
+.icon-diantai:before {
+  content: "\e90c";
+}
+.icon-collect:before {
+  content: "\e90d";
+}
 .icon-coin:before {
   content: "\e908";
 }
@@ -50,4 +108,25 @@
 }
 .icon-wangyiyun:before {
   content: "\e907";
+}
+.icon-close:before {
+  content: "\e912";
+}
+.icon-down:before {
+  content: "\e922";
+}
+.icon-left:before {
+  content: "\e940";
+}
+.icon-pause:before {
+  content: "\e955";
+}
+.icon-right:before {
+  content: "\e963";
+}
+.icon-up:before {
+  content: "\e978";
+}
+.icon-volume-medium:before {
+  content: "\ea27";
 }

@@ -18,35 +18,33 @@
 					</div>
 				</div>
 				<div class="content">
-					<sidelist iconclass="icon-music" sidetitle="你好" disc=""></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-message" sidetitle="我的消息" disc=""></sidelist>
+					<sidelist iconclass="icon-vip" sidetitle="我的会员" disc="2018.05.10到期"></sidelist>
+					<sidelist iconclass="icon-market" sidetitle="商城" ></sidelist>
 					<split background="#f0f0f0" height="5" border="#eee"></split>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-friend" sidetitle="我的好友" ></sidelist>
+					<sidelist iconclass="icon-place" sidetitle="附近的人"></sidelist>
 					<split background="#f0f0f0" height="5" border="#eee"></split>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
-					<sidelist iconclass="icon-music" sidetitle="你好" disc="2012"></sidelist>
+					<sidelist iconclass="icon-theme" sidetitle="个性换肤" disc="官方红"></sidelist>
+					<sidelist iconclass="icon-set-time" sidetitle="定时播放"></sidelist>
+					<sidelist iconclass="icon-lock" sidetitle="音乐闹钟"></sidelist>
+					<sidelist iconclass="icon-car" sidetitle="驾驶模式"></sidelist>
+					<sidelist iconclass="icon-cloud" sidetitle="音乐云盘"></sidelist>
 				</div>
 				<div class="footer">
 					<p class="border-1px"></p>
 					<div class="nightmode">
-						<i class="icon-music"></i>
+						<i class="icon-night"></i>
 						<span>夜间模式</span>
 					</div>
 
 					<div class="setting">
-						<i class="icon-music"></i>
+						<i class="icon-setting"></i>
 						<span>设置</span>
 					</div>
 
 					<div class="exit">
-						<i class="icon-music"></i>
+						<i class="icon-exit"></i>
 						<span>退出</span>
 					</div>
 				</div>
@@ -131,7 +129,7 @@
 			left:0
 			bottom:0
 			z-index:11
-			overflow-y:scroll
+			overflow-y:auto
 			transfrom:translateZ(0)
 			background:#fff
 			-webkit-overflow-scrolling:touch
@@ -218,6 +216,7 @@
 					height:100%
 					text-align:center
 					i
+						color:$icon_color
 						font-size:18px
 						vertical-align:middle
 					span
