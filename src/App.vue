@@ -3,6 +3,7 @@
     <audio id="myaudio" ref="audio"></audio>
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
+    <menu-list></menu-list>
     <bottom-bar></bottom-bar>
     <my-music></my-music>
 <!--       <router-link tag="li" to="/musiclist">
@@ -20,6 +21,7 @@ import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
 import bottombar from './components/bottombar/bottombar.vue'
 import mymusic from './components/mymusic/mymusic.vue'
+import menulist from './components/menulist/menulist.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
@@ -39,7 +41,8 @@ export default {
     'v-header': header,
     'side-bar': sidebar,
     'bottom-bar': bottombar,
-    'my-music': mymusic
+    'my-music': mymusic,
+    'menu-list': menulist
   },
   created () {
     let LocalAPI = './../static/data.json'

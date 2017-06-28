@@ -1,9 +1,9 @@
 <template>
-	<div class="typelist">	
+	<div class="typelist" :style="{background:typelistbg}">	
 		<i class="info" :class="iconInfo"></i>
 		<div class="typelist-detail">
 			<span class="name">{{listName}}</span>
-			<span class="count">({{listCount}})</span>
+			<span class="count" v-show="showCount">({{listCount}})</span>
 			<p v-if="showBorder" class="border-1px"></p>
 			<i v-if="isPlaying" class="isPlaying icon-volume-medium"></i>
 		</div>
@@ -30,6 +30,10 @@
 			},
 			iconinfo: {
 				type: String
+			},
+			bgcolor: {
+				type: String,
+				default: '#f7f7f7'
 			}
 		},
 		data () {
@@ -38,7 +42,13 @@
 				listCount: '0',
 				showBorder: true,
 				isPlaying: false,
-				iconInfo: ''
+				iconInfo: '',
+				typelistbg: ''
+			}
+		},
+		computed: {
+			showCount () {
+				return this.count !== 'none'
 			}
 		},
 		mounted () {
@@ -47,6 +57,7 @@
 			this.showBorder = this.hasBorder
 			this.isPlaying = this.playing
 			this.iconInfo = this.iconinfo
+			this.typelistbg = this.bgcolor
 		}
 	}
 </script>

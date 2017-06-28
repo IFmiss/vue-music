@@ -10,7 +10,7 @@
 		<div class="playpause" @click="playpause">
 			<i :class="iconPlayPause?'icon-pause':'icon-play'"></i>
 		</div>
-		<i class="music-list icon-menu" @click="playNext"></i>
+		<i class="music-list icon-list-music" @click="playNext"></i>
 	</div>
 </template>
 <script>
@@ -160,7 +160,7 @@
 			line-height:36px
 			text-align:center
 			font-size:26px
-			color:#333
+			color:#999
 			&:active
 					background:$list_active
 </style>

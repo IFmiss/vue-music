@@ -15,7 +15,7 @@
 						<div class="detail">
 							<p class="name">{{list.name}}</p>
 							<p class="count">{{list.count}}首歌曲</p>
-							<i class="setting icon-list-circle" @click.stop="showSheetInfo"></i>
+							<i class="setting icon-list-circle" @click.stop="showMenu"></i>
 							<p v-show="data_item.detail.length != listindex + 1" class="border-1px"></p>
 						</div>
 					</div>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+	import store from './../../store'
+	import menuList from './../menulist/menulist.vue'
 	export default {
 		props: {
 			item: {
@@ -52,13 +54,18 @@
 				this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) translate3d(50%, 0, 0)' : 'rotate(0) translate3d(0, -50%, 0)'
 				this.showSheets = !this.showSheets
 			},
-			showSheetInfo () {
-				// alert(1)
+			showMenu () {
+				store.dispatch({
+					type: 'showMenuList'
+				})
 			}
 		},
 		mounted () {
 			this.data_item = this.item
 			this.data_index = this.index
+		},
+		components: {
+			'menu-list': menuList
 		}
 	}
 </script>

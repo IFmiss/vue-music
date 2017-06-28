@@ -1,11 +1,11 @@
 <template>
-	<div class="sideabr" @touchmove.stop="stopTouch($event)" v-show="isReallShow">
-		<transition name="fade" @enter="enter">
-			<div class="menu-mask" @click="hideMenu"></div>
+	<div class="sideabr" @touchmove.stop.prevent="stopTouch($event)">
+		<transition name="fade">
+			<div class="menu-mask" v-show="isReallShow" @click="hideMenu"></div>
 		</transition>	
 
 		<transition name="side">
-			<div class="menu-content">
+			<div class="menu-content" v-show="isReallShow">
 				<div class="menu-detail">
 					<div class="menu-userInfo">
 						<img class="avatar" :src="info.avatar" width="56" height="56">
@@ -80,9 +80,6 @@
 					type: 'hideSideBar'
 				})
 			},
-			enter () {
-				alert(1)
-			},
 			// 点击签到
 			signClick () {
 				this.sign = '已签到'
@@ -117,9 +114,9 @@
 			z-index:10
 			background:rgba(0,0,0,0.5)
 			transfrom:translateZ(0)
-			&.fade-enter-active
-				transition: opacity 1s
-			&.fade-enter, &.fade-leave-active
+			&.fade-enter-to, &.fade-leave-to
+				transition: opacity 0.3s
+			&.fade-enter, &.fade-leave-to
 				opacity: 0
 		.menu-content
 			position:fixed
@@ -130,13 +127,12 @@
 			bottom:0
 			z-index:11
 			overflow-y:auto
-			transfrom:translateZ(0)
 			background:#fff
-			-webkit-overflow-scrolling:touch
+			-webkit-overflow-scrolling:touch				
 			&.side-enter-to, &.side-leave-to
-				transition: all 1s ease;
+				transition: transform 0.3s
 			&.side-enter, &.side-leave-to
-				transfrom:translate3d(280px,0,0)
+				transform:translate3d(-286px,0,0)
 			.menu-userInfo
 				box-sizing:border-box
 				width:100%

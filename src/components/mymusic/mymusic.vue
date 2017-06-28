@@ -33,6 +33,6 @@
 		bottom:46px
 		left:0
 		right:0
-		z-index:7
+		z-index:9
 		-webkit-overflow-scrolling:touch
 </style>
