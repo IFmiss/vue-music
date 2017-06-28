@@ -6,5 +6,5 @@
 ### 6-28
 首页页面的基本实现，需要优化的地方还很多
 
-效果图
+效果图<br>
 ![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/wangyiyun.jpg) ![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/wangyiyun1.jpg)
