@@ -107,7 +107,7 @@
 	}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-	@import "../../common/font-icon/font.css"
+	@import "../../../static/font-icon/style.css"
 	@import "../../common/stylus/global.styl"
 	.header
 		position:fixed
