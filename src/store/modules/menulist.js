@@ -4,10 +4,16 @@ const HIDE_MENU = false
 
 const menulist = {
 	state: {
-		isShow: false
+		isShow: false,
+		content: {
+			title: 'title : by 未曾遗忘的青春',
+			content: [
+			]
+		}
 	},
 	mutations: {
-		showMenu (state) {
+		showMenu (state, obj) {
+			state.content = obj === undefined ? state.content : obj.amount
 			state.isShow = SHOW_MENU
 		},
 		hideMenu (state) {
@@ -15,17 +21,16 @@ const menulist = {
 		}
 	},
 	actions: {
-		showMenuList ({commit}) {
-			commit('showMenu')
+		showMenuList ({commit}, obj) {
+			commit('showMenu', obj)
 		},
 		hideMenuList ({commit}) {
 			commit('hideMenu')
 		}
 	},
 	getters: {
-		getShowMenuInfo () {
-			return this.state.isShow
-		}
+		getIsShow: state => state.isShow,
+		getShowMenuInfo: state => state.content
 	}
 }
 export default menulist

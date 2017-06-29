@@ -4,7 +4,7 @@
 			<i class="menu icon-menu" @click="showMueu"></i>
 			<div class="centermenu" @click="hideMenu">
 				<i class="music icon-music" :class= "selectIndex===0?'active':''" ></i>
-				<i class="find icon-wangyiyun"></i>
+				<i class="find icon-wangyi"></i>
 				<i class="community icon-community"></i>
 			</div>
 			<router-link tag="i" to="/search">

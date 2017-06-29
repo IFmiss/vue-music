@@ -10,7 +10,7 @@
 		<div class="playpause" @click="playpause">
 			<i :class="iconPlayPause?'icon-pause':'icon-play'"></i>
 		</div>
-		<i class="music-list icon-list-music" @click="playNext"></i>
+		<i class="music-list icon-list-music" @click.stop="showMusicList"></i>
 	</div>
 </template>
 <script>
@@ -39,6 +39,9 @@
 				}
 			},
 			// 显示播放列表
+			showMusicList () {
+				store.dispatch('showMusicList')
+			},
 			playNext () {
 				store.dispatch('play_Next')
 			}

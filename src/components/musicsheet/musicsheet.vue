@@ -6,7 +6,7 @@
 					<div class="detail">
 						<span class="name">{{data_item.name}}</span>
 						<span class="count">({{data_item.count}})</span>
-						<i class="setting icon-setting"></i>
+						<i class="setting icon-setting" @click.stop="showSheetMenu(data_item.name)"></i>
 					</div>
 				</div>
 				<div v-show="showSheets" v-for="(list, listindex) in data_item.detail">
@@ -15,7 +15,7 @@
 						<div class="detail">
 							<p class="name">{{list.name}}</p>
 							<p class="count">{{list.count}}首歌曲</p>
-							<i class="setting icon-list-circle" @click.stop="showMenu"></i>
+							<i class="setting icon-list-circle" @click.stop="showMenu(list.name)"></i>
 							<p v-show="data_item.detail.length != listindex + 1" class="border-1px"></p>
 						</div>
 					</div>
@@ -54,9 +54,48 @@
 				this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) translate3d(50%, 0, 0)' : 'rotate(0) translate3d(0, -50%, 0)'
 				this.showSheets = !this.showSheets
 			},
-			showMenu () {
+			showMenu (name) {
 				store.dispatch({
-					type: 'showMenuList'
+					type: 'showMenuList',
+					amount: {
+						title: `歌单:${name}`,
+						content: [
+							{
+								name: '分享',
+								iconinfo: 'icon-share',
+								count: 'none',
+								bgcolor: '#fff'
+							},
+							{
+								name: '编辑',
+								iconinfo: 'icon-menu',
+								count: 'none',
+								bgcolor: '#fff'
+							},
+							{
+								name: '删除',
+								iconinfo: 'icon-share',
+								count: 'none',
+								bgcolor: '#fff'
+							}
+						]
+					}
+				})
+			},
+			showSheetMenu (name) {
+				store.dispatch({
+					type: 'showMenuList',
+					amount: {
+						title: `歌单:${name}`,
+						content: [
+							{
+								name: '删除',
+								iconinfo: 'icon-share',
+								count: 'none',
+								bgcolor: '#fff'
+							}
+						]
+					}
 				})
 			}
 		},

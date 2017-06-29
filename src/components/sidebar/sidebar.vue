@@ -1,6 +1,6 @@
 <template>
-	<div class="sideabr" @touchmove.stop.prevent="stopTouch($event)">
-		<transition name="fade">
+	<div class="sideabr">
+		<transition name="fade" @touchmove.stop.prevent="stopTouch($event)">
 			<div class="menu-mask" v-show="isReallShow" @click="hideMenu"></div>
 		</transition>	
 

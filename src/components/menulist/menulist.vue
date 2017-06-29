@@ -3,11 +3,11 @@
 		<transition name="sideUp">
 			<div class="content" v-show="showMenu">
 				<p class="title">
-					歌单:操作自己想操作的内容
+					{{menuList.title}}
 				</p>
-				<type-list name="分享" iconinfo="icon-SHARE" count="none" bgcolor="#fff"></type-list>
-				<type-list name="编辑" iconinfo="icon-zuijinplay" count="none" bgcolor="#fff"></type-list>
-				<type-list name="删除" iconinfo="icon-diantai" count="none" bgcolor="#fff"></type-list>
+				<div v-for="(item, index) in menuList.content">
+					<type-list :item="item" :index="index" :key="item.id" :name="item.name" :iconinfo="item.iconinfo" :count="item.count" :bgcolor="item.bgcolor"></type-list>
+				</div>
 			</div>
 		</transition>
 		<transition name="fade">
@@ -33,7 +33,10 @@
 		},
 		computed: {
 			showMenu () {
-				return this.$store.state.menuList.isShow
+				return this.$store.getters.getIsShow ? this.$store.getters.getIsShow : ''
+			},
+			menuList () {
+				return this.$store.getters.getShowMenuInfo ? this.$store.getters.getShowMenuInfo : ''
 			}
 		},
 		components: {
