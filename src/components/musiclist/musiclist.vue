@@ -6,7 +6,7 @@
 					<div class="play-type">
 						<i class="icon-music"></i>
 						<span>列表循环</span>
-						<span>(200)</span>
+						<span>({{musiclist.length}})</span>
 					</div>
 					<div class="right">
 						<div class="collect">
@@ -20,124 +20,12 @@
 					</div>
 					<div class="border-1px"></div>
 				</div>
-				<ul class="container">
-					<li class="list">
+				<ul class="container" ref="musiclistContent">
+					<li class="list" v-for="(item, index) in musiclist" :data-index="index" :class="index === getCurrentIndex ? 'active' : ''" @click.stop="playIndex(index)">
 						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
-						<i class="close"></i>
-						<div class="border-1px"></div>
-					</li>
-					<li class="list">
-						<div class="border-1px"></div>
-						<i class="play"></i>
-						<span class="name">难念的经</span>
-						<span class="singer">-周华建</span>
+						<i v-show="index === getCurrentIndex" class="playingicon icon-volume-medium"></i>
+						<span class="name">{{item.name}}</span>
+						<span class="singer">{{item.singer}}</span>
 						<i class="close"></i>
 						<div class="border-1px"></div>
 					</li>
@@ -162,12 +50,36 @@
 				store.dispatch({
 					type: 'hideMusicList'
 				})
+			},
+			playIndex (index) {
+				store.dispatch({
+					type: 'play_Index',
+					index: index
+				})
+				store.dispatch({
+					type: 'hideMusicList'
+				})
 			}
 		},
 		computed: {
 			isShowMusicList () {
 				return this.$store.getters.getIsShowMusicList
+			},
+			musiclist () {
+				return this.$store.getters.getMusicList
+			},
+			getCurrentIndex () {
+				return this.$store.getters.getCurrentIndex
+			},
+			getScrollTop () {
+				return this.$store.getters.getScrollTop
 			}
+		},
+		mounted () {
+			store.dispatch({
+				type: 'set_RefScrollMusicList',
+				refs: this.$refs.musiclistContent
+			})
 		}
 	}
 </script>
@@ -247,6 +159,10 @@
 					height:42px
 					line-height:42px
 					padding:0 15px
+					.playingicon
+						font-size: 14px
+						vertical-align: middle
+						color:$primarycolor
 					&:active
 						background:$list_active
 					.border-1px

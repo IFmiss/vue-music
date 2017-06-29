@@ -110,6 +110,15 @@ const audioInfo = {
 			state.playing = true
 			state.audioelement.load()
 			state.audioelement.play()
+		},
+
+		// 设置当前的播放索引
+		playIndex (state, index) {
+			state.currentIndex = index
+			state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+			state.playing = true
+			state.audioelement.load()
+			state.audioelement.play()
 		}
 	},
 	actions: {
@@ -127,6 +136,9 @@ const audioInfo = {
 		},
 		play_Next ({commit}) {
 			commit('playNext')
+		},
+		play_Index ({commit}, obj) {
+			commit('playIndex', obj.index)
 		}
 		// hideSideBar ({commit}) {
 		// 	commit('hideBar')

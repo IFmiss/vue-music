@@ -60,7 +60,7 @@
 			right:0
 			padding:25px 0 10px 0
 			&.sideUp-enter-to,&.sideUp-leave-to
-				transition: transform 0.3s
+				transition: all 0.3s
 			&.sideUp-enter,&.sideUp-leave-to
 				transform:translate3d(0,100%,0)
 			.title
@@ -76,7 +76,7 @@
 			opacity:1
 			background:$maskBackground
 			&.fade-enter-to,&.fade-leave-to
-				transition: opacity 0.3s
+				transition: all 0.3s
 			&.fade-enter,&.fade-leave-to
 				opacity:0
 </style>
