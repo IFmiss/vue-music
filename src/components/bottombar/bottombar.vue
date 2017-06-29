@@ -131,7 +131,7 @@
 					&.music-singer
 						color:#aaa
 						font-size:10px
-						font-weight:200
+						font-weight:400
 						padding:2px 0
 			.music-pic
 				flex:0 0 36px
