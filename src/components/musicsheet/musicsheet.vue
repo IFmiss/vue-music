@@ -68,13 +68,13 @@
 							},
 							{
 								name: '编辑',
-								iconinfo: 'icon-menu',
+								iconinfo: 'icon-edit',
 								count: 'none',
 								bgcolor: '#fff'
 							},
 							{
 								name: '删除',
-								iconinfo: 'icon-share',
+								iconinfo: 'icon-delete',
 								count: 'none',
 								bgcolor: '#fff'
 							}
@@ -86,11 +86,11 @@
 				store.dispatch({
 					type: 'showMenuList',
 					amount: {
-						title: `歌单:${name}`,
+						title: `${name}`,
 						content: [
 							{
 								name: '删除',
-								iconinfo: 'icon-share',
+								iconinfo: 'icon-delete',
 								count: 'none',
 								bgcolor: '#fff'
 							}
@@ -182,6 +182,7 @@
 					font-size:14px
 				.count
 					margin-bottom:5px
+					font-weight:400
 				.border-1px
 					margin:0
 					border-1px($border_1px)

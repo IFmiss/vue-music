@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?asm3a3');
-  src:  url('fonts/icomoon.eot?asm3a3#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?asm3a3') format('truetype'),
-    url('fonts/icomoon.woff?asm3a3') format('woff'),
-    url('fonts/icomoon.svg?asm3a3#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?y4dwez');
+  src:  url('fonts/icomoon.eot?y4dwez#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?y4dwez') format('truetype'),
+    url('fonts/icomoon.woff?y4dwez') format('woff'),
+    url('fonts/icomoon.svg?y4dwez#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-edit-paper:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e91b";
+}
+.icon-delete:before {
+  content: "\e923";
+}
+.icon-add-project:before {
+  content: "\e913";
+}
+.icon-add:before {
+  content: "\e921";
+}
 .icon-list-music:before {
   content: "\e91d";
 }
@@ -128,6 +143,15 @@
 }
 .icon-up:before {
   content: "\e978";
+}
+.icon-music-danqu1:before {
+  content: "\e94a";
+}
+.icon-music-random:before {
+  content: "\e94b";
+}
+.icon-music-shuxu:before {
+  content: "\e94c";
 }
 .icon-volume-medium:before {
   content: "\ea27";

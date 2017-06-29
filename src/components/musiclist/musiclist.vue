@@ -10,11 +10,11 @@
 					</div>
 					<div class="right">
 						<div class="collect">
-							<i class="icon-menu"></i>
+							<i class="icon-add-project"></i>
 							<span>收藏</span>
 						</div>
 						<div class="delete">
-							<i class="icon-music"></i>
+							<i class="icon-delete"></i>
 							<span>清空</span>
 						</div>
 					</div>

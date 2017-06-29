@@ -5,9 +5,7 @@
 				<p class="title">
 					{{menuList.title}}
 				</p>
-				<div v-for="(item, index) in menuList.content">
-					<type-list :item="item" :index="index" :key="item.id" :name="item.name" :iconinfo="item.iconinfo" :count="item.count" :bgcolor="item.bgcolor"></type-list>
-				</div>
+				<type-list v-for="(item, index) in menuList.content" :item="item" :index="index" :key="item.id" :name="item.name" :iconinfo="item.iconinfo" :count="item.count" :bgcolor="item.bgcolor"></type-list>
 			</div>
 		</transition>
 		<transition name="fade">

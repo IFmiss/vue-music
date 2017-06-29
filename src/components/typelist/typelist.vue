@@ -56,7 +56,7 @@
 				return this.count !== 'none'
 			}
 		},
-		mounted () {
+		created () {
 			this.listName = this.name
 			this.listCount = this.count
 			this.showBorder = this.hasBorder
