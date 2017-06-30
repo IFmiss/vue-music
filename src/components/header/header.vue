@@ -3,13 +3,20 @@
 		<div class="header-warpper">
 			<i class="menu icon-menu" @click="showMueu"></i>
 			<div class="centermenu" @click="hideMenu">
-				<i class="music icon-music" :class= "selectIndex===0?'active':''" ></i>
-				<i class="find icon-wangyi"></i>
-				<i class="community icon-community"></i>
+				<router-link tag="i" to="/mymusic">
+					<i class="music icon-music" :class= "selectIndex===0?'active':''" ></i>
+				</router-link>
+				<router-link tag="i" to="/findmusic">
+					<i class="find icon-wangyi"></i>
+				</router-link>
+				<router-link tag="i" to="/community">
+					<i class="community icon-community"></i>
+				</router-link>
 			</div>
 			<router-link tag="i" to="/search">
 				<i class="search icon-search"></i>
 			</router-link>
+			<router-view></router-view>
 			<!-- <Counter class="counter"></Counter> -->
 		</div>
 	</div>
@@ -115,7 +122,7 @@
 		left:0
 		right:0
 		height:50px
-		z-index:9
+		z-index:10
 		background:$primarycolor
 		.header-warpper
 			height:100%
@@ -132,6 +139,9 @@
 				i
 					margin:0 5px
 					color:#eee
+					&.router-link-active
+						i
+							color:#CCAFAF
 					&.active
 						color:#4AE0A8
 

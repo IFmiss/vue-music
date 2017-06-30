@@ -140,8 +140,8 @@
 		.playpause
 			border:2px solid #999
 			border-radius:50%
-			width:28px
-			height:28px
+			width:24px
+			height:24px
 			position:relative
 			&:active
 				background:$list_active
@@ -157,7 +157,7 @@
 				text-align:center
 				&.icon-pause
 					left:50%
-					font-size:20px
+					font-size:18px
 					color:$primarycolor
 		.music-list
 			margin-left:10px

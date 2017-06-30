@@ -1,15 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Search from './../components/search/search'
-import Musiclist from './../components/musiclist/musiclist'
+import MyMusic from './../components/mymusic/mymusic'
+import FindMusic from './../components/findmusic/findmusic'
+import Community from './../components/community/community'
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
   routes: [
     {
-      path: '/musiclist',
-      component: Musiclist
+      path: '/mymusic',
+      component: MyMusic
+    },
+    {
+      path: '/findmusic',
+      component: FindMusic
+    },
+    {
+      path: '/community',
+      component: Community
     },
     {
       path: '/search',
