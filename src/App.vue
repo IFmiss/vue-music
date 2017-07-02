@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <audio id="myaudio" ref="audio"></audio>
+    <audio id="myaudio" ref="audio" @ended="musicEnded"></audio>
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <menu-list></menu-list>
     <music-list></music-list>
     <bottom-bar></bottom-bar>
     <my-music></my-music>
-<!--       <router-link tag="li" to="/musiclist">
-        <a>Home</a>
-      </router-link>
-      <router-link tag="li" to="/search">
-        <a>Search</a>
-      </router-link>
-      <router-view></router-view> -->
+    <music-detail></music-detail>
   </div>
 </template>
 
@@ -24,6 +18,7 @@ import bottombar from './components/bottombar/bottombar.vue'
 import mymusic from './components/mymusic/mymusic.vue'
 import menulist from './components/menulist/menulist.vue'
 import musiclist from './components/musiclist/musiclist.vue'
+import musicdetail from './components/musicdetail/musicdetail.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
@@ -38,6 +33,9 @@ export default {
     }
   },
   methods: {
+    musicEnded () {
+      store.dispatch('play_Next')
+    }
   },
   components: {
     'v-header': header,
@@ -45,7 +43,8 @@ export default {
     'bottom-bar': bottombar,
     'my-music': mymusic,
     'menu-list': menulist,
-    'music-list': musiclist
+    'music-list': musiclist,
+    'music-detail': musicdetail
   },
   created () {
     let LocalAPI = './../static/data.json'

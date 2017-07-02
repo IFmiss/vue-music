@@ -1,6 +1,6 @@
 <template>
 	<div class="myCommunity">
-		尽情期待!
+		尽情期待!Community
 	</div>
 </template>
 <script>

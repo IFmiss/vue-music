@@ -146,8 +146,12 @@
 				.setting
 					font-size:16px
 					position:absolute
+					width: 28px;
+					line-height: 28px;
+					text-align: center;
+					height: 28px;
 					top:50%
-					right:15px
+					right:10px
 					transform:translate(0,-50%)
 		.content
 			height:60px

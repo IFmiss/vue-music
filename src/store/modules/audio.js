@@ -83,14 +83,14 @@ const audioInfo = {
 			state.audioelement = ele
 		},
 		// 关闭底部列表
-		setShowMusicDetail (state) {
-			state.showMusicDetail = false
+		setMusicDetail (state, obj) {
+			state.showMusicDetail = obj.isShow
 		},
 		// 播放下一曲
 		playNext (state) {
 			state.currentIndex ++
 			const length = state.musicList.length
-			if (state.currentIndex > length) {
+			if (state.currentIndex >= length) {
 				state.currentIndex = 0
 			}
 			state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
@@ -125,8 +125,8 @@ const audioInfo = {
 		set_AudioElement ({commit}, ele) {
 			commit('setAudioElement', ele)
 		},
-		set_ShowMusicDetail ({commit}) {
-			commit('setShowMusicDetail')
+		set_MusicDetail ({commit}, obj) {
+			commit('setMusicDetail', obj)
 		},
 		set_MusicAllList ({commit}, obj) {
 			commit('setMusicAllList', obj)

@@ -1,5 +1,5 @@
 <template>
-	<div class="bottom-bar">
+	<div class="bottom-bar" @click="showMusicDetail">
 		<div class="music-info">
 			<img class="music-pic" :src="musicImage" alt="">
 			<div class="music-detail">
@@ -7,7 +7,7 @@
 				<p class="music-singer" v-if="musicSinger">{{musicSinger}}</p>
 			</div>
 		</div>
-		<div class="playpause" @click="playpause">
+		<div class="playpause" @click.stop="playpause">
 			<i :class="iconPlayPause?'icon-pause':'icon-play'"></i>
 		</div>
 		<i class="music-list icon-list-music" @click.stop="showMusicList"></i>
@@ -49,6 +49,12 @@
 			},
 			playNext () {
 				store.dispatch('play_Next')
+			},
+			showMusicDetail () {
+				store.dispatch({
+					type: 'set_MusicDetail',
+					isShow: true
+				})
 			}
 		},
 		computed: {
