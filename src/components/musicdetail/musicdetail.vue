@@ -33,7 +33,7 @@
 						<i class="prev icon-music" @click.stop="playPrev"></i>
 						<i class="playPause icon-music" @click.stop="playPause"></i>
 						<i class="next icon-music" @click.stop="playNext"></i>
-						<i class="menu icon-menu" @click.stop="showMusicList"></i>
+						<i class="menu icon-list-music" @click.stop="showMusicList"></i>
 					</div>
 				</div>
 			</div>
