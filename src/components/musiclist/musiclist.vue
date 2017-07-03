@@ -25,7 +25,7 @@
 						<div class="border-1px"></div>
 						<i v-show="index === getCurrentIndex" class="playingicon icon-volume-medium"></i>
 						<span class="name">{{item.name}}</span>
-						<span class="singer">{{item.singer}}</span>
+						<span class="singer"> - {{item.singer}}</span>
 						<i class="close"></i>
 						<div class="border-1px"></div>
 					</li>

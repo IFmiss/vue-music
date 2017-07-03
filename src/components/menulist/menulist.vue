@@ -58,6 +58,7 @@
 			bottom:0
 			left:0
 			right:0
+			transform:translate3d(0,0,0)
 			padding:25px 0 10px 0
 			&.sideUp-enter-to,&.sideUp-leave-to
 				transition: all 0.3s

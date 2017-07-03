@@ -1,6 +1,6 @@
 <template>
 	<div class="findmusic">
-		尽情期待!
+		尽情期待!findmusic
 	</div>
 </template>
 <script>
