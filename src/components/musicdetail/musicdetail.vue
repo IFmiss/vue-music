@@ -7,13 +7,13 @@
 				<div class="content-header">
 					<i class="back icon-back" @click="hideMusicDetail"></i>
 					<div class="musicTopDetail">
-						<p class="name">不为谁而唱的歌</p>
-						<p class="singer">林俊杰</p>
+						<p class="name">{{getCurrentMusic.name}}</p>
+						<p class="singer">{{getCurrentMusic.singer}}</p>
 					</div>
 					<i class="share icon-share"></i>
 				</div>
 				<div class="content-wrapper">
-					<div class="cd" @click="playPause">
+					<div class="cd">
 						<div class="swith-line">
 							<div class="triger" :class="isPlaying ? '' : 'pause'"></div>
 						</div>
@@ -26,13 +26,23 @@
 						
 					</div> -->
 				</div>
-				<div class="content-footer">这是底部播放信息的内容</div>
+				<div class="content-footer">
+					<range></range>
+					<div class="musicDetailCtrl">
+						<i class="playType" :class="musicPlayType" @click.stop="setPlayType"></i>
+						<i class="prev icon-music" @click.stop="playPrev"></i>
+						<i class="playPause icon-music" @click.stop="playPause"></i>
+						<i class="next icon-music" @click.stop="playNext"></i>
+						<i class="menu icon-menu" @click.stop="showMusicList"></i>
+					</div>
+				</div>
 			</div>
 		</div>
 	</transition>
 </template>
 <script>
 	import store from './../../store'
+	import range from './../range/range'
 	export default {
 		methods: {
 			hideMusicDetail () {
@@ -43,11 +53,26 @@
 			},
 			playPause () {
 				// 控制音乐播放暂停
-				if (this.isPlaying) {
-					store.commit('pause')
-				} else {
-					store.commit('play')
-				}
+				store.commit('togglePlay')
+			},
+			playNext () {
+				store.dispatch('play_Next')
+			},
+			playPrev () {
+				store.dispatch('play_Prev')
+			},
+			// 显示音乐列表
+			showMusicList () {
+				let scrollTop = (this.$store.getters.getCurrentIndex + 1 - 3) * 42
+				store.dispatch({
+					type: 'set_ScrollTop',
+					scrollTop: scrollTop
+				})
+				store.dispatch('showMusicList')
+			},
+			// 设置播放类型
+			setPlayType () {
+				store.dispatch('set_PlayType')
 			}
 		},
 		computed: {
@@ -63,10 +88,31 @@
 			styleDetailBg () {
 				return {
 					'background': 'url(' + this.getCurrentMusic.img_url + ')',
-					'background-size': '150%',
-					'background-position': 'center center'
+					'backgroundSize': '150%',
+					'backgroundPosition': 'center center'
 				}
+			},
+			musicPlayType () {
+				let playType = this.$store.getters.getMusicPlayType ? this.$store.getters.getMusicPlayType : -1
+				let className = ''
+				switch (playType) {
+					case 1:
+						className = 'icon-music-shuxu'
+						break
+					case 2:
+						className = 'icon-music-danqu1'
+						break
+					case 3:
+						className = 'icon-music-random'
+						break
+					default:
+						className = ''
+				}
+				return className
 			}
+		},
+		components: {
+			'range': range
 		}
 	}
 </script>
@@ -100,6 +146,7 @@
 			top:0
 			left:0
 			bottom:0
+			transition:all 0.5s
 			right:0
 			z-index:16
 			filter: url(../../common/blur.svg#blur); 
@@ -121,9 +168,9 @@
 				right:0
 				display:flex
 				height:10vh
-				padding-top:2vh
+				padding-top:1vh
 				box-sizing:border-box
-				align-item:center
+				align-items:center
 				// background:red
 				.back,.share
 					width:50px
@@ -185,7 +232,7 @@
 						width:44vh
 						height:44vh
 						position:absolute
-						top:60px
+						top:70px
 						left:50%
 						transform:translate3d(-50%, 0, 0) rotate(0)
 						animation: goRotate 8s linear infinite;
@@ -208,19 +255,36 @@
 							width:28vh
 							height:28vh
 							top:8vh
+							transition:all 0.3s
 							left:50%
 							transform:translate3d(-50%,0,0)
 							z-index:1
-							
-
 			.content-footer
 				position:absolute
 				bottom:0
 				left:0
 				right:0
-				height:20vh
+				height:15vh
 				color:#fff
-				background:rgba(0,0,0,0.4)
+				background-image:-webkit-linear-gradient(to top, rgba(0,0,0,0.8),rgba(0,0,0,0.4),rgba(0,0,0,0),rgba(0,0,0,0)) 
+				background-image:linear-gradient(to top, rgba(0,0,0,0.8),rgba(0,0,0,0.4),rgba(0,0,0,0),rgba(0,0,0,0))
+				.musicDetailCtrl
+					height:10vh
+					width:100%
+					display:flex
+					align-items:center
+					justify-content:center
+					font-size:0
+					i
+						display:inline-block
+						font-size:24px
+						width:20vw
+						height:50px
+						line-height:50px
+						text-align:center
+						&.playPause
+							font-size:36px
+					
 				
 				
 		&.sliderUpHideRight-enter-to,&.sliderUpHideRight-leave-to

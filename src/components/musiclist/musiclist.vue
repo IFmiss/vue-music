@@ -3,9 +3,9 @@
 		<transition name="sideUp">
 			<div class="content" v-show="isShowMusicList">
 				<div class="title">
-					<div class="play-type">
-						<i class="icon-music"></i>
-						<span>列表循环</span>
+					<div class="play-type" @click.stop="setPlayType">
+						<i class="icon-music" :class="musicPlayType"></i>
+						<span>{{typeName}}</span>
 						<span>({{musiclist.length}})</span>
 					</div>
 					<div class="right">
@@ -42,6 +42,11 @@
 <script>
 	import store from './../../store'
 	export default {
+		data () {
+			return {
+				typeName: ''
+			}
+		},
 		methods: {
 			stopTouch (event) {
 				return
@@ -59,6 +64,9 @@
 				store.dispatch({
 					type: 'hideMusicList'
 				})
+			},
+			setPlayType () {
+				store.dispatch('set_PlayType')
 			}
 		},
 		computed: {
@@ -73,6 +81,27 @@
 			},
 			getScrollTop () {
 				return this.$store.getters.getScrollTop
+			},
+			musicPlayType () {
+				let playType = this.$store.getters.getMusicPlayType ? this.$store.getters.getMusicPlayType : -1
+				let className = ''
+				switch (playType) {
+					case 1:
+						className = 'icon-music-shuxu'
+						this.typeName = '列表循环'
+						break
+					case 2:
+						className = 'icon-music-danqu1'
+						this.typeName = '单曲循环'
+						break
+					case 3:
+						className = 'icon-music-random'
+						this.typeName = '随机播放'
+						break
+					default:
+						className = ''
+				}
+				return className
 			}
 		},
 		mounted () {
@@ -96,7 +125,7 @@
 			bottom:0
 			left:0
 			right:0
-			z-index:12
+			z-index:18
 			&.sideUp-enter-to,&.sideUp-leave-to
 				transition: transform 0.3s
 			&.sideUp-enter,&.sideUp-leave-to
@@ -174,7 +203,7 @@
 			left:0
 			bottom:0
 			right:0
-			z-index:11
+			z-index:17
 			opacity:1
 			background:$maskBackground
 			&.fade-enter-to,&.fade-leave-to

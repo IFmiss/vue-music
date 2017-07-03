@@ -24,7 +24,9 @@ const audioInfo = {
 		// 是否正在播放
 		playing: false,
 		// 是否正在加载
-		waiting: false
+		waiting: false,
+		// 播放类型   1是自动播放  2是循环播放  3是随机播放
+		playType: 3
 	},
 	getters: {
 		// 获取audio元素
@@ -44,7 +46,9 @@ const audioInfo = {
 		// 获取音乐是否打开底部音乐列表
 		getMusicDetail: state => state.showMusicDetail,
 		// 当前音乐详细信息
-		getCurrentMusic: state => state.musicList[state.currentIndex]
+		getCurrentMusic: state => state.musicList[state.currentIndex],
+		// 获取播放类型
+		getMusicPlayType: state => state.playType
 	},
 	mutations: {
 		// play设置
@@ -56,6 +60,15 @@ const audioInfo = {
 		pause (state) {
 			state.playing = false
 			state.audioelement.pause()
+		},
+		togglePlay (state) {
+			if (state.playing) {
+				state.playing = false
+				state.audioelement.pause()
+			} else {
+				state.playing = true
+				state.audioelement.play()
+			}
 		},
 		// 开关显示底部列表
 		toggerMusicDetail (state) {
@@ -85,6 +98,13 @@ const audioInfo = {
 		// 关闭底部列表
 		setMusicDetail (state, obj) {
 			state.showMusicDetail = obj.isShow
+		},
+		setPlayType (state) {
+			if (state.playType === 3) {
+				state.playType = 1
+			} else {
+				state.playType ++
+			}
 		},
 		// 播放下一曲
 		playNext (state) {
@@ -119,6 +139,35 @@ const audioInfo = {
 			state.playing = true
 			state.audioelement.load()
 			state.audioelement.play()
+		},
+
+		// 设置音乐结束自动播放播放类型的歌曲
+		playEnded (state) {
+			let type = state.playType
+			if (type === 1) {
+				state.currentIndex ++
+				const length = state.musicList.length
+				if (state.currentIndex >= length) {
+					state.currentIndex = 0
+				}
+				state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+				state.playing = true
+				state.audioelement.load()
+				state.audioelement.play()
+			}
+			if (type === 2) {
+				state.audioelement.currentTime = 0
+				state.playing = true
+				state.audioelement.play()
+			}
+			if (type === 3) {
+				const length = state.musicList.length
+				state.currentIndex = Math.floor(Math.random() * length)
+				state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+				state.playing = true
+				state.audioelement.load()
+				state.audioelement.play()
+			}
 		}
 	},
 	actions: {
@@ -134,11 +183,20 @@ const audioInfo = {
 		set_MusicList ({commit}, obj) {
 			commit('setMusicList', obj)
 		},
+		set_PlayType ({commit}) {
+			commit('setPlayType')
+		},
 		play_Next ({commit}) {
 			commit('playNext')
 		},
+		play_Prev ({commit}) {
+			commit('playPrev')
+		},
 		play_Index ({commit}, obj) {
 			commit('playIndex', obj.index)
+		},
+		play_Ended ({commit}) {
+			commit('playEnded')
 		}
 		// hideSideBar ({commit}) {
 		// 	commit('hideBar')

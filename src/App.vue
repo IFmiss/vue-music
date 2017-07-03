@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     musicEnded () {
-      store.dispatch('play_Next')
+      store.dispatch('play_Ended')
     }
   },
   components: {

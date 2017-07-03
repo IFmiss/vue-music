@@ -32,11 +32,7 @@
 		methods: {
 			// 控制音乐播放暂停
 			playpause () {
-				if (this.audioInfo.playing) {
-					store.commit('pause')
-				} else {
-					store.commit('play')
-				}
+				store.commit('togglePlay')
 			},
 			// 显示播放列表
 			showMusicList () {
