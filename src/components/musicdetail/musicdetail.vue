@@ -235,7 +235,7 @@
 						top:70px
 						left:50%
 						transform:translate3d(-50%, 0, 0) rotate(0)
-						animation: goRotate 8s linear infinite;
+						animation: goRotate 10s linear infinite 0.1s;
 						animation-play-state:paused
 						&.play
 							animation-play-state:running
