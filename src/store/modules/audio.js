@@ -26,7 +26,11 @@ const audioInfo = {
 		// 是否正在加载
 		waiting: false,
 		// 播放类型   1是自动播放  2是循环播放  3是随机播放
-		playType: 3
+		playType: 3,
+		// 当前播放的时间
+		currentTime: 0,
+		// 音乐的播放时长
+		musicDuration: 0
 	},
 	getters: {
 		// 获取audio元素
@@ -48,7 +52,11 @@ const audioInfo = {
 		// 当前音乐详细信息
 		getCurrentMusic: state => state.musicList[state.currentIndex],
 		// 获取播放类型
-		getMusicPlayType: state => state.playType
+		getMusicPlayType: state => state.playType,
+		// 获取当前的播放进度
+		getCurrentTime: state => state.currentTime,
+		// 获取音乐的播放时长
+		getMusicDuration: state => state.musicDuration
 	},
 	mutations: {
 		// play设置
@@ -168,6 +176,12 @@ const audioInfo = {
 				state.audioelement.load()
 				state.audioelement.play()
 			}
+		},
+		setCurrentTime (state, obj) {
+			state.currentTime = obj.time
+		},
+		setMusicDuration (state, obj) {
+			state.musicDuration = obj.duration
 		}
 	},
 	actions: {
@@ -186,6 +200,12 @@ const audioInfo = {
 		set_PlayType ({commit}) {
 			commit('setPlayType')
 		},
+		set_CurrentTime ({commit}, obj) {
+			commit('setCurrentTime', obj)
+		},
+		set_MusicDuration ({commit}, obj) {
+			commit('setMusicDuration', obj)
+		},
 		play_Next ({commit}) {
 			commit('playNext')
 		},
@@ -198,9 +218,6 @@ const audioInfo = {
 		play_Ended ({commit}) {
 			commit('playEnded')
 		}
-		// hideSideBar ({commit}) {
-		// 	commit('hideBar')
-		// }
 	}
 }
 export default audioInfo

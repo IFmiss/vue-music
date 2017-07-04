@@ -27,12 +27,14 @@
 					</div> -->
 				</div>
 				<div class="content-footer">
-					<range></range>
+					<div class="div-range">
+						<range></range>
+					</div>
 					<div class="musicDetailCtrl">
 						<i class="playType" :class="musicPlayType" @click.stop="setPlayType"></i>
-						<i class="prev icon-music" @click.stop="playPrev"></i>
-						<i class="playPause icon-music" @click.stop="playPause"></i>
-						<i class="next icon-music" @click.stop="playNext"></i>
+						<i class="prev icon-prevdetail" @click.stop="playPrev"></i>
+						<i class="playPause" :class="isPlaying ? 'icon-pause-detail' : 'icon-playdetail' " @click.stop="playPause"></i>
+						<i class="next icon-nextdetail" @click.stop="playNext"></i>
 						<i class="menu icon-list-music" @click.stop="showMusicList"></i>
 					</div>
 				</div>
@@ -97,7 +99,7 @@
 				let className = ''
 				switch (playType) {
 					case 1:
-						className = 'icon-music-shuxu'
+						className = 'icon-music-shunxu'
 						break
 					case 2:
 						className = 'icon-music-danqu1'
@@ -264,12 +266,14 @@
 				bottom:0
 				left:0
 				right:0
-				height:15vh
+				height:18vh
 				color:#fff
 				background-image:-webkit-linear-gradient(to top, rgba(0,0,0,0.8),rgba(0,0,0,0.4),rgba(0,0,0,0),rgba(0,0,0,0)) 
 				background-image:linear-gradient(to top, rgba(0,0,0,0.8),rgba(0,0,0,0.4),rgba(0,0,0,0),rgba(0,0,0,0))
+				.div-range
+					height:6vh
 				.musicDetailCtrl
-					height:10vh
+					height:12vh
 					width:100%
 					display:flex
 					align-items:center
@@ -277,13 +281,16 @@
 					font-size:0
 					i
 						display:inline-block
-						font-size:24px
+						font-size:28px
 						width:20vw
 						height:50px
 						line-height:50px
 						text-align:center
+						&.playType,&.menu
+							font-size:20px
+							color:#e1e1e1
 						&.playPause
-							font-size:36px
+							font-size:46px
 					
 				
 				

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <audio id="myaudio" ref="audio" @ended="musicEnded"></audio>
+    <audio id="myaudio" ref="audio" @timeupdate="musicTimeUpdate" @canplay="musicCanPlay" @playing="musicOnPlaying" @ended="musicEnded" @waiting="musicOnWaiting" @pause="musicOnPause"></audio>
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <menu-list></menu-list>
@@ -33,8 +33,35 @@ export default {
     }
   },
   methods: {
+    // 音频播放结束事件
     musicEnded () {
       store.dispatch('play_Ended')
+    },
+    // 音乐播放时间更新事件
+    musicTimeUpdate () {
+      store.dispatch({
+        type: 'set_CurrentTime',
+        time: Math.floor(this.$refs.audio.currentTime)
+      })
+    },
+    // 可以播放事件
+    musicCanPlay () {
+      store.dispatch({
+        type: 'set_MusicDuration',
+        duration: Math.floor(this.$refs.audio.duration)
+      })
+    },
+    // 音乐处于播放状态
+    musicOnPlaying () {
+      store.commit('play')
+    },
+    // 音乐处于watting状态
+    musicOnWaiting () {
+      // alert('音乐加载中')
+    },
+    // 音乐处于暂停状态
+    musicOnPause () {
+      store.commit('pause')
     }
   },
   components: {
@@ -71,6 +98,7 @@ body,html
   padding:0
   box-sizing:border-box
   background:#f0f0f0f0
+  user-select:none
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif

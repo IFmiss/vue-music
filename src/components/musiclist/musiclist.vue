@@ -4,7 +4,7 @@
 			<div class="content" v-show="isShowMusicList">
 				<div class="title">
 					<div class="play-type" @click.stop="setPlayType">
-						<i class="icon-music" :class="musicPlayType"></i>
+						<i :class="musicPlayType"></i>
 						<span>{{typeName}}</span>
 						<span>({{musiclist.length}})</span>
 					</div>
@@ -87,7 +87,7 @@
 				let className = ''
 				switch (playType) {
 					case 1:
-						className = 'icon-music-shuxu'
+						className = 'icon-music-shunxu'
 						this.typeName = '列表循环'
 						break
 					case 2:
