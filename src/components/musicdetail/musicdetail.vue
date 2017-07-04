@@ -223,7 +223,7 @@
 							transform: translate3d(-16px,0,0)
 							width:90px
 							height:140px
-							background-image:url('../../../static/images/swith.png')
+							background-image:url('/static/images/swith.png')
 							background-size:cover
 							transform-origin:14px 16px
 							transition:all 0.3s
@@ -237,7 +237,7 @@
 						top:70px
 						left:50%
 						transform:translate3d(-50%, 0, 0) rotate(0)
-						animation: goRotate 10s linear infinite 0.1s;
+						animation: goRotate 16s linear infinite 0.1s;
 						animation-play-state:paused
 						&.play
 							animation-play-state:running
@@ -248,7 +248,7 @@
 							top:0
 							left:50%
 							transform:translate3d(-50%,0,0)
-							background:url('../../../static/images/cd-mine.png')
+							background:url('/static/images/cd-mine.png')
 							background-size:100%
 							z-index:2
 						.img

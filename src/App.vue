@@ -74,7 +74,7 @@ export default {
     'music-detail': musicdetail
   },
   created () {
-    let LocalAPI = './../static/data.json'
+    let LocalAPI = 'static/data.json'
     axios.get(LocalAPI).then((res) => {
       // data.user的信息赋值给info  再通过组件的数据传递传给sideBar
       this.info = res.data.user
@@ -99,6 +99,7 @@ body,html
   box-sizing:border-box
   background:#f0f0f0f0
   user-select:none
+  -webkit-tap-highlight-color: transparent
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
