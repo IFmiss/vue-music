@@ -59,7 +59,7 @@ export default {
 				}
 			} else {
 				return {
-					'width': 'calc(' + (this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2) + '% - 7px)'
+					'width': 'calc(' + (this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2) + '% - 14px)'
 				}
 			}
 		}
@@ -78,7 +78,7 @@ export default {
 					persentWidth = persentWidth > 100 ? 100 : persentWidth
 					persentWidth = persentWidth < 0 ? 0 : persentWidth
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
+					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
 				}
 				if (this.type === 'volume') {
 					return
@@ -108,7 +108,7 @@ export default {
 					persentWidth = persentWidth > 100 ? 100 : persentWidth
 					persentWidth = persentWidth < 0 ? 0 : persentWidth
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
+					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
 				}
 				if (this.type === 'volume') {
 					return
@@ -139,7 +139,7 @@ export default {
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				if (isNaN(this.$store.getters.getAudioElement.duration)) return
 				this.$store.getters.getAudioElement.currentTime = Math.floor(this.$store.getters.getAudioElement.duration * persentWidth) / 100
-				this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
+				this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
 			}
 			if (this.type === 'volume') {
 				return
@@ -194,7 +194,6 @@ export default {
 				display:inline-block
 				width:14px
 				height:14px
-				margin-left:-7px
 				margin-top:-6px
 				background:#fff
 				border-radius:50%
