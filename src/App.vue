@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <audio id="myaudio" ref="audio" @timeupdate="musicTimeUpdate" @canplay="musicCanPlay" @playing="musicOnPlaying" @ended="musicEnded" @waiting="musicOnWaiting" @pause="musicOnPause"></audio>
+    <audio id="myaudio" ref="audio" @timeupdate="musicTimeUpdate" @canplay="musicCanPlay" @playing="musicOnPlaying" @ended="musicEnded" @waiting="musicOnWaiting" @pause="musicOnPause" @loadstart="loadStart"></audio>
     <v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <menu-list></menu-list>
@@ -50,6 +50,10 @@ export default {
         type: 'set_MusicDuration',
         duration: Math.floor(this.$refs.audio.duration)
       })
+      store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: false
+      })
     },
     // 音乐处于播放状态
     musicOnPlaying () {
@@ -62,6 +66,13 @@ export default {
     // 音乐处于暂停状态
     musicOnPause () {
       store.commit('pause')
+    },
+    // 音乐加载
+    loadStart () {
+      store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: true
+      })
     }
   },
   components: {

@@ -30,7 +30,9 @@ const audioInfo = {
 		// 当前播放的时间
 		currentTime: 0,
 		// 音乐的播放时长
-		musicDuration: 0
+		musicDuration: 0,
+		// 音乐是否在加载
+		musicLoadStart: false
 	},
 	getters: {
 		// 获取audio元素
@@ -56,7 +58,9 @@ const audioInfo = {
 		// 获取当前的播放进度
 		getCurrentTime: state => state.currentTime,
 		// 获取音乐的播放时长
-		getMusicDuration: state => state.musicDuration
+		getMusicDuration: state => state.musicDuration,
+		// 音乐开始加载
+		getIsLoadStart: state => state.musicLoadStart
 	},
 	mutations: {
 		// play设置
@@ -182,6 +186,9 @@ const audioInfo = {
 		},
 		setMusicDuration (state, obj) {
 			state.musicDuration = obj.duration
+		},
+		setMusicLoadStart (state, obj) {
+			state.musicLoadStart = obj.isloadstart
 		}
 	},
 	actions: {
