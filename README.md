@@ -8,11 +8,15 @@
 ###### 本人也是一枚小白,自学Vue,这个播放器有什么不足之处,希望各位可以提出意见建议,我们共同学习进步.学的不错的话  可以Star一下哦!!!
 
 效果图<br>
-### 首页侧边栏以及部分组件
+#### 首页侧边栏以及部分组件
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part1.gif) 
-### 视频播放以及浮层音乐列组件
+
+#### 视频播放以及浮层音乐列组件
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part2.gif)
-### 音乐详情页 播放暂停效果
+
+#### 音乐详情页 播放暂停效果
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part3.gif)
-### 音乐详情页切歌
+
+#### 音乐详情页切歌
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part4.gif)
+
