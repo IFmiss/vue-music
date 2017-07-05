@@ -5,10 +5,10 @@
 
 效果图<br>
 ### 首页侧边栏以及部分组件
-![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/part1.jpg) 
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part1.gif) 
 ### 视频播放以及浮层音乐列组件
-![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/part2.jpg)
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part2.jpg)
 ### 音乐详情页 播放暂停效果
-![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/part3.jpg)
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part3.jpg)
 ### 音乐详情页切歌
-![](https://github.com/IFmiss/WangYiCloudMusic/blob/master/static/images/showdemo/part4.jpg)
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part4.jpg)
