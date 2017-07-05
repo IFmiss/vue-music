@@ -10,6 +10,10 @@ Vue.use(VueRouter)
 export default new VueRouter({
   routes: [
     {
+      path: '/',
+      redirect: '/mymusic'
+    },
+    {
       path: '/mymusic',
       component: MyMusic
     },
