@@ -236,10 +236,10 @@
 						position:relative
 						margin: 0 auto
 						margin-top:70px
-						// animation-play-state:paused
+						animation: goRotate 16s linear infinite 0.1s;
+						animation-play-state:paused
 						&.play
-							animation: goRotate 16s linear infinite 0.1s;
-							// animation-play-state:running
+							animation-play-state:running
 						.cd-bg
 							width:44vh
 							height:44vh
