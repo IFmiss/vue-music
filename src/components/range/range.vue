@@ -46,7 +46,7 @@ export default {
 		},
 		progressWidth () {
 			return {
-				'width': (this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2) + '%'
+				'width': 'calc(' + (this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2) + '% - 7px)'
 			}
 		}
 	},
@@ -63,7 +63,7 @@ export default {
 				persentWidth = persentWidth > 100 ? 100 : persentWidth
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-				this.$refs.currentProgress.style.width = persentWidth + '%'
+				this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
 			} else {
 				return
 			}
@@ -88,7 +88,7 @@ export default {
 				persentWidth = persentWidth > 100 ? 100 : persentWidth
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-				this.$refs.currentProgress.style.width = persentWidth + '%'
+				this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
 			} else {
 				return
 			}
@@ -114,7 +114,7 @@ export default {
 			persentWidth = persentWidth < 0 ? 0 : persentWidth
 			if (isNaN(this.$store.getters.getAudioElement.duration)) return
 			this.$store.getters.getAudioElement.currentTime = Math.floor(this.$store.getters.getAudioElement.duration * persentWidth) / 100
-			this.$refs.currentProgress.style.width = persentWidth + '%'
+			this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 7px)'
 		},
 		timerFomart (time) {
 			if (isNaN(time)) return '00:00'

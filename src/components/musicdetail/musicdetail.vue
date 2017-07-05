@@ -121,13 +121,13 @@
 <style lang="stylus" rel="stylesheet/stylus">
 	@keyframes goRotate{
 		0%{
-			transform: translate3d(-50%, 0, 0) rotate(0)
+			transform: rotate(0)
 		}
 		50%{
-			transform: translate3d(-50%, 0, 0) rotate(180deg)
+			transform: rotate(180deg)
 		}
 		100%{
-			transform: translate3d(-50%, 0, 0) rotate(360deg)
+			transform: rotate(360deg)
 		}
 	}
 	.musicdetail
@@ -233,14 +233,13 @@
 					.cd-content
 						width:44vh
 						height:44vh
-						position:absolute
-						top:70px
-						left:50%
-						transform:translate3d(-50%, 0, 0) rotate(0)
-						animation: goRotate 16s linear infinite 0.1s;
-						animation-play-state:paused
+						position:relative
+						margin: 0 auto
+						margin-top:70px
+						// animation-play-state:paused
 						&.play
-							animation-play-state:running
+							animation: goRotate 16s linear infinite 0.1s;
+							// animation-play-state:running
 						.cd-bg
 							width:44vh
 							height:44vh
