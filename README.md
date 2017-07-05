@@ -7,7 +7,16 @@
 
 ###### 本人也是一枚小白,自学Vue,这个播放器有什么不足之处,希望各位可以提出意见建议,我们共同学习进步.学的不错的话  可以Star一下哦!!!
 
-效果图<br>
+项目下载到本地之后
+<pre>
+  npm install
+</pre>
+<pre>
+  npm run dev
+</pre>
+即可查看效果
+
+### 效果图<br>
 #### 首页侧边栏以及部分组件
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part1.gif) 
 
