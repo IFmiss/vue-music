@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/vue-2.2.6-4EDD96.svg) ![](https://img.shields.io/badge/stylus-0.54.5-F6B386.svg) 
+
 # studyVue
 学习vue ，从0开始！
 
