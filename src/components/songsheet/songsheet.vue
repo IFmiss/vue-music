@@ -1,14 +1,14 @@
 <template>
 	<transition name="sliderUpHideRight">
 		<div class="songsheet" v-show="showSongSheet">
-			<div class="songheader">
+			<div class="songheader" :style="{background:'url(' + getSongSheet.info[0].img_url + ') center center'}">
 				<i class="back icon-back" @click.stop="hideSongSheet"></i>
 				<p class="title">歌单</p>
 				<i class="search icon-search"></i>
 				<i class="menu icon-list-circle"></i>
 			</div>
 			<div class="content">
-				<div class="top" ref="top">
+				<div class="top" ref="top" :style="{background:'url(' + getSongSheet.info[0].img_url + ')', backgroundSize : '1800%', backgroundPosition : 'center 50px'}">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
 							<img :src="getSongSheet.info[0].img_url" alt="">
@@ -42,7 +42,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="bottom"></div>
+				<div class="bottom" style="height:1200px"></div>
 			</div>
 			<!-- 底部固定页 -->
     		<bottom-bar></bottom-bar>
@@ -50,7 +50,6 @@
 	</transition>
 </template>
 <script>
-	import {RGBaster} from './../../common/js/imagecolor'
 	import store from './../../store'
 	import bottombar from './../bottombar/bottombar.vue'
 	export default {
@@ -68,19 +67,15 @@
 			},
 			getSongSheet () {
 				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+			},
+			getImageColor () {
+				return this.$store.getters.getSongSheetImageColor ? this.$store.getters.getSongSheetImageColor : '#333'
 			}
 		},
 		components: {
 			'bottom-bar': bottombar
 		},
 		mounted () {
-			let img = this.$store.getters.getMusicSheetList.info[0].img_url
-			RGBaster.colors(img, {
-				success: function (payload) {
-					alert(payload.dominant)
-					this.$refs.top.background = payload.dominant
-				}
-			})
 		}
 	}
 </script>
@@ -101,6 +96,7 @@
 			left:0
 			right:0
 			height:50px
+			z-index:10
 			background:rgba(0,0,0,0.4)
 			display:flex
 			align-items:center
@@ -129,12 +125,11 @@
 		.content
 			min-height: calc(100vh - 46px)
 			background:#FFF
-			padding-top: 50px
 			box-sizing:border-box
 			.top
 				height:155px
 				background:#000
-				padding:20px 25px
+				padding:70px 25px 20px 25px
 				.songsheetdisc
 					height:100px
 					display:flex

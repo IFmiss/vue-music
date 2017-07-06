@@ -25,6 +25,8 @@ const audioInfo = {
 		musicList: [],
 		// 音乐歌单信息
 		musicSheetList: [],
+		// 图片获取颜色
+		songSheetImageColor: '#333',
 		// 是否正在播放
 		playing: false,
 		// 是否正在加载
@@ -68,7 +70,9 @@ const audioInfo = {
 		// 获取歌单列表的显示状态
 		getIsShowSongSheet: state => state.showSongSheet,
 		// 获取歌单信息
-		getMusicSheetList: state => state.musicSheetList
+		getMusicSheetList: state => state.musicSheetList,
+		// 获取歌单图片颜色
+		getSongSheetImageColor: state => state.songSheetImageColor
 	},
 	mutations: {
 		// play设置
@@ -203,6 +207,9 @@ const audioInfo = {
 		},
 		setMusicSheetList (state, obj) {
 			state.musicSheetList = obj.data
+		},
+		setSongSheetImageColor (state, obj) {
+			state.songSheetImageColor = obj.color
 		}
 	},
 	actions: {
@@ -229,6 +236,9 @@ const audioInfo = {
 		},
 		set_MusicSheetList ({commit}, obj) {
 			commit('setMusicSheetList', obj)
+		},
+		set_SongSheetImageColor ({commit}, obj) {
+			commit('setSongSheetImageColor', obj)
 		},
 		play_Next ({commit}) {
 			commit('playNext')

@@ -1,7 +1,7 @@
 <template>
 	<transition name="sliderUpHideRight">
 		<div class="musicdetail" v-show="isShowMusicDetail">
-			<div class="filterbg" :style="styleDetailBg">
+			<div class="filterbg" :style="{background : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : 'cover' , backgroundPosition : 'center center'}">
 			</div>
 			<div class="content">
 				<div class="content-header">
@@ -86,13 +86,6 @@
 			},
 			getCurrentMusic () {
 				return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic : ''
-			},
-			styleDetailBg () {
-				return {
-					'background': 'url(' + this.getCurrentMusic.img_url + ')',
-					'backgroundSize': '150%',
-					'backgroundPosition': 'center center'
-				}
 			},
 			musicPlayType () {
 				let playType = this.$store.getters.getMusicPlayType ? this.$store.getters.getMusicPlayType : -1

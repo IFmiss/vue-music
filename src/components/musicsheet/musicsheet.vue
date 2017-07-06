@@ -27,6 +27,7 @@
 
 <script>
 	import store from './../../store'
+	import {RGBaster} from './../../common/js/imagecolor'
 	import menuList from './../menulist/menulist.vue'
 	export default {
 		props: {
@@ -107,6 +108,18 @@
 					type: 'setIsShowSongSheet',
 					isShow: true
 				})
+				var _this = this
+				setTimeout(function () {
+					let img = _this.$store.getters.getMusicSheetList.info[0].img_url
+					RGBaster.colors(img, {
+						success: function (payload) {
+							store.dispatch({
+								type: 'set_SongSheetImageColor',
+								color: payload.dominant
+							})
+						}
+					})
+				}, 500)
 			}
 		},
 		mounted () {
