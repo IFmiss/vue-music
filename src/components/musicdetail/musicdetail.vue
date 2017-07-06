@@ -136,7 +136,7 @@
 		left:0
 		bottom:0
 		right:0
-		z-index:15
+		z-index:20
 		transform:translate3d(0,0,0)
 		background:cover
 		background-size:cover

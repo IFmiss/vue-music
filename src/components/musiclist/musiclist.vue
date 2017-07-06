@@ -125,7 +125,7 @@
 			bottom:0
 			left:0
 			right:0
-			z-index:18
+			z-index:22
 			&.sideUp-enter-to,&.sideUp-leave-to
 				transition: transform 0.3s
 			&.sideUp-enter,&.sideUp-leave-to
@@ -203,7 +203,7 @@
 			left:0
 			bottom:0
 			right:0
-			z-index:17
+			z-index:21
 			opacity:1
 			background:$maskBackground
 			&.fade-enter-to,&.fade-leave-to

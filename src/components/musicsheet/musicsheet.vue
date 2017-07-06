@@ -9,7 +9,7 @@
 						<i class="setting icon-setting" @click.stop="showSheetMenu(data_item.name)"></i>
 					</div>
 				</div>
-				<div v-show="showSheets" v-for="(list, listindex) in data_item.detail">
+				<div v-show="showSheets" v-for="(list, listindex) in data_item.detail" @click.stop="showSongSheet(list)">
 					<div class="content">
 						<img class="sheetimg" :src="list.info[0].img_url" alt="">
 						<div class="detail">
@@ -96,6 +96,16 @@
 							}
 						]
 					}
+				})
+			},
+			showSongSheet (data) {
+				store.commit({
+					type: 'setMusicSheetList',
+					data: data
+				})
+				store.commit({
+					type: 'setIsShowSongSheet',
+					isShow: true
 				})
 			}
 		},

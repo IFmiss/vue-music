@@ -1,7 +1,7 @@
 {
     "user": {
         "name": "未曾遗忘的青春",
-        "avatar": "../../static/images/userlogo.jpg",
+        "avatar": "/static/images/userlogo.jpg",
         "grade": "9"
     },
     "music": {
@@ -851,6 +851,10 @@
 				"detail": [
 					{
 						"name":"我喜欢的音乐",
+						"user":{
+							"name":"未曾遗忘的青春",
+							"avatar": "/static/images/userlogo.jpg"
+						},
 						"count":"30",
 						"info":[
 							{
@@ -1128,6 +1132,10 @@
 					{
 						"name":"在欧洲田园般的乡村上骑单车",
 						"count":"15",
+						"user":{
+							"name":"未曾遗忘的青春",
+							"avatar": "/static/images/userlogo.jpg"
+						},
 						"info":[
 							{
 						        "id": "61",
@@ -1269,6 +1277,10 @@
 					{
 						"name":"大卫爱上泰勒斯威夫特",
 						"count":"15",
+						"user":{
+							"name":"未曾遗忘的青春",
+							"avatar": "/static/images/userlogo.jpg"
+						},
 						"info": [
 						    {
 						        "id": "47",
@@ -1410,6 +1422,10 @@
 					{
 						"name":"【电音】抖腿必备",
 						"count":"19",
+						"user":{
+							"name":"未曾遗忘的青春",
+							"avatar": "/static/images/userlogo.jpg"
+						},
 						"info": [
 						    {
 						        "id": "96",
@@ -1587,6 +1603,10 @@
 					{
 						"name":"华语经典,是青春,是回忆",
 						"count":"36",
+						"user":{
+							"name":"未曾遗忘的青春",
+							"avatar": "/static/images/userlogo.jpg"
+						},
 						"info": [
 				    		{
 						        "id": "110",

@@ -1,13 +1,22 @@
 <template>
   <div id="app">
     <audio id="myaudio" ref="audio" @timeupdate="musicTimeUpdate" @canplay="musicCanPlay" @playing="musicOnPlaying" @ended="musicEnded" @waiting="musicOnWaiting" @pause="musicOnPause" @loadstart="loadStart"></audio>
+    <!-- 头部header -->
     <v-header :index="2"></v-header>
+    <!-- 侧边栏列表 -->
     <side-bar :info="info"></side-bar>
+    <!-- 底部显示的菜单列表 -->
     <menu-list></menu-list>
+    <!-- 底部显示的浮层页  音乐列表 -->
     <music-list></music-list>
+    <!-- 底部固定页 -->
     <bottom-bar></bottom-bar>
+    <!-- 我的音乐  首页 -->
     <my-music></my-music>
+    <!-- 音乐播放详情  显示cd页 -->
     <music-detail></music-detail>
+    <!-- 歌单详情页 -->
+    <song-sheet></song-sheet>
   </div>
 </template>
 
@@ -19,6 +28,7 @@ import mymusic from './components/mymusic/mymusic.vue'
 import menulist from './components/menulist/menulist.vue'
 import musiclist from './components/musiclist/musiclist.vue'
 import musicdetail from './components/musicdetail/musicdetail.vue'
+import songsheet from './components/songsheet/songsheet.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
@@ -82,7 +92,8 @@ export default {
     'my-music': mymusic,
     'menu-list': menulist,
     'music-list': musiclist,
-    'music-detail': musicdetail
+    'music-detail': musicdetail,
+    'song-sheet': songsheet
   },
   created () {
     let LocalAPI = 'static/data.json'

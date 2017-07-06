@@ -15,12 +15,16 @@ const audioInfo = {
 		},
 		// 是否显示audio的列表
 		showMusicDetail: false,
+		// 是否显示歌单列表
+		showSongSheet: true,
 		// 当前音乐的index索引
 		currentIndex: 7,
 		// 全部音乐信息  包括歌单等等
 		musicAllList: [],
 		// 音乐播放信息
 		musicList: [],
+		// 音乐歌单信息
+		musicSheetList: [],
 		// 是否正在播放
 		playing: false,
 		// 是否正在加载
@@ -60,7 +64,11 @@ const audioInfo = {
 		// 获取音乐的播放时长
 		getMusicDuration: state => state.musicDuration,
 		// 音乐开始加载
-		getIsLoadStart: state => state.musicLoadStart
+		getIsLoadStart: state => state.musicLoadStart,
+		// 获取歌单列表的显示状态
+		getIsShowSongSheet: state => state.showSongSheet,
+		// 获取歌单信息
+		getMusicSheetList: state => state.musicSheetList
 	},
 	mutations: {
 		// play设置
@@ -189,6 +197,12 @@ const audioInfo = {
 		},
 		setMusicLoadStart (state, obj) {
 			state.musicLoadStart = obj.isloadstart
+		},
+		setIsShowSongSheet (state, obj) {
+			state.showSongSheet = obj.isShow
+		},
+		setMusicSheetList (state, obj) {
+			state.musicSheetList = obj.data
 		}
 	},
 	actions: {
@@ -212,6 +226,9 @@ const audioInfo = {
 		},
 		set_MusicDuration ({commit}, obj) {
 			commit('setMusicDuration', obj)
+		},
+		set_MusicSheetList ({commit}, obj) {
+			commit('setMusicSheetList', obj)
 		},
 		play_Next ({commit}) {
 			commit('playNext')
