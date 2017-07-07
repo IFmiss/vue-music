@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="border-1px"></div>
-					<songlist v-if="getSongSheet.info" v-for="(item, index) in getSongSheet.info" :musicindex="index + 1" :key="item.id" :iscurrent="false" :musicname="item.name" :musicsinger="item.singer"></songlist>
+					<songlist></songlist>
 				</div>
 			</div>
 			<!-- 底部固定页 -->

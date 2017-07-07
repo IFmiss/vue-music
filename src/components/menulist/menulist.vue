@@ -53,7 +53,7 @@
 		.content
 			background:#fff
 			position:fixed
-			z-index:12
+			z-index:16
 			height:auto
 			bottom:0
 			left:0
@@ -73,7 +73,7 @@
 			left:0
 			bottom:0
 			right:0
-			z-index:11
+			z-index:15
 			opacity:1
 			background:$maskBackground
 			&.fade-enter-to,&.fade-leave-to

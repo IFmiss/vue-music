@@ -1,5 +1,5 @@
 <template>
-	<div class="sideabr">
+	<div class="sidebar">
 		<transition name="fade" @touchmove.stop.prevent="stopTouch($event)">
 			<div class="menu-mask" v-show="isReallShow" @click="hideMenu"></div>
 		</transition>	
@@ -103,7 +103,7 @@
 	@import "/static/font-icon/style.css"
 	@import "../../common/stylus/border-1px/index.styl"
 	@import "../../common/stylus/global.styl"
-	.sideabr
+	.sidebar
 		.menu-mask
 			position:fixed
 			top:0

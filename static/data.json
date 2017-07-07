@@ -2180,6 +2180,15 @@
 						"name":"欧美风格的音乐，安静的听",
 						"count":"13",
 						"info":[
+							{
+						        "id": "55",
+						        "name": "You're not alone",
+						        "singer": "Owl City",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_You%E2%80%99re%20Not%20Alone.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/Owl%20City,Britt%20Nicole%20-%20You%E2%80%99re%20Not%20Alone.mp3",
+						        "type": "Owl City 欧美",
+						    	"lyric": ""
+						    },
 						    {
 						        "id": "60",
 						        "name": "The Saltwater Room",
@@ -2222,15 +2231,6 @@
 						        "singer": "Owl City",
 						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Fuzzy%20Blue%20Lights.jpg",
 						        "url": "http://oiq8j9er1.bkt.clouddn.com/Owl%20City%20-%20Fuzzy%20Blue%20Lights.mp3",
-						        "type": "Owl City 欧美",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "55",
-						        "name": "You're not alone",
-						        "singer": "Owl City",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_You%E2%80%99re%20Not%20Alone.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Owl%20City,Britt%20Nicole%20-%20You%E2%80%99re%20Not%20Alone.mp3",
 						        "type": "Owl City 欧美",
 						    	"lyric": ""
 						    },

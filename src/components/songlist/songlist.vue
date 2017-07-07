@@ -1,59 +1,66 @@
 <template>
-	<div class="songlist">
-		<div class="listIndex">
-			<span class="index">{{musicIndex}}</span>
-			<!-- <i class="iconIndex icon-volume-medium"></i> -->
-		</div>
-		<div class="songInfo">
-			<div class="detail">
-				<p class="name">{{musicName}}</p>
-				<p class="singer">{{musicSinger}}</p>
+	<div>
+		<div class="songlist" v-if="getSongSheet.info" v-for="(item, index) in getSongSheet.info" @click="playIndex(index)">
+			<div class="listIndex">
+				<span v-show="!showVolume || getCurrentIndex !== index" class="index">{{index + 1}}</span>
+				<i v-show="showVolume && getCurrentIndex === index" class="iconIndex icon-volume-medium"></i>
 			</div>
-			<i class="rightSetting icon-list-circle"></i>
-			<div class="border-1px"></div>
+			<div class="songInfo">
+				<div class="detail">
+					<p class="name">{{item.name}}</p>
+					<p class="singer">{{item.singer}}</p>
+				</div>
+				<i class="rightSetting icon-list-circle" @click.stop="showmenu(item.name)"></i>
+				<div class="border-1px"></div>
+			</div>
 		</div>
 	</div>
 </template>
 <script>
+	import store from './../../store'
 	export default {
-		data () {
-			return {
-				isCurrentplay: false,
-				musicName: '',
-				musicSinger: '',
-				musicIndex: 0
+		methods: {
+			playIndex (index) {
+				store.dispatch({
+					type: 'play_Index',
+					index: index
+				})
+			},
+			showmenu (name) {
+				store.dispatch({
+					type: 'showMenuList',
+					amount: {
+						title: name,
+						content: [
+							{
+								name: '删除',
+								iconinfo: 'icon-delete',
+								count: 'none',
+								bgcolor: '#fff'
+							}
+						]
+					}
+				})
 			}
 		},
-		porps: {
-			iscurrent: {
-				type: Boolean,
-				default: false
+		computed: {
+			getSongSheet () {
+				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 			},
-			musicname: {
-				type: String,
-				default: '未曾遗忘的青春'
+			showVolume () {
+				let sheetType = this.$store.getters.getMusiSheetType
+				let thisSheetType = this.$store.getters.getMusicSheetList.type
+				if (sheetType === thisSheetType) {
+					return true
+				} else {
+					return false
+				}
 			},
-			musicsinger: {
-				type: String,
-				default: '未曾遗忘的青春'
-			},
-			musicindex: {
-				type: Number,
-				default: 1
+			getCurrentIndex () {
+				return this.$store.getters.getCurrentIndex
 			}
-		},
-		watch: {
-			// musicName: function (newz) {
-			// 	alert(newz)
-			// }
 		},
 		mounted () {
-			this.isCurrentplay = this.iscurrent
-			this.musicName = this.musicname
-			this.musicSinger = this.musicsinger
-			this.musicIndex = this.musicindex
-			// console.log(this.iscurrent)
-			console.log(this.musicname)
 		}
 	}
 </script>
@@ -124,6 +131,6 @@
 				font-size:14px
 				text-align:center
 				color:#aaa
-			&:active
-				background:$list_active
+				&:active
+					background:$list_active
 </style>
