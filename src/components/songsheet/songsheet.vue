@@ -1,14 +1,15 @@
 <template>
 	<transition name="sliderUpHideRight">
-		<div class="songsheet" v-show="showSongSheet">
-			<div class="songheader" :style="{background:'url(' + getSongSheet.info[0].img_url + ') center center'}">
+		<div class="songsheet" ref="songsheet" v-show="showSongSheet" @scroll="scrollEvent">
+			<div class="songheader">
 				<i class="back icon-back" @click.stop="hideSongSheet"></i>
 				<p class="title">歌单</p>
 				<i class="search icon-search"></i>
 				<i class="menu icon-list-circle"></i>
+				<div class="songheaderimg" ref="songheader"></div>
 			</div>
 			<div class="content">
-				<div class="top" ref="top" :style="{background:'url(' + getSongSheet.info[0].img_url + ')', backgroundSize : '1800%', backgroundPosition : 'center 50px'}">
+				<div class="top" ref="top">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
 							<img :src="getSongSheet.info[0].img_url" alt="">
@@ -42,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="bottom" style="height:1200px"></div>
+				<div class="bottom" style="height:16000px"></div>
 			</div>
 			<!-- 底部固定页 -->
     		<bottom-bar></bottom-bar>
@@ -53,23 +54,60 @@
 	import store from './../../store'
 	import bottombar from './../bottombar/bottombar.vue'
 	export default {
+		data () {
+			return {
+				isShow: false
+			}
+		},
 		methods: {
 			hideSongSheet () {
 				store.commit({
 					type: 'setIsShowSongSheet',
 					isShow: false
 				})
+			},
+			scrollEvent () {
+				// alert(this.$refs.songsheet.scrollTop)
+				let opacity = this.$refs.songsheet.scrollTop / (this.$refs.top.offsetHeight - this.$refs.songheader.offsetHeight)
+				if (this.$refs.songsheet.scrollTop < this.$refs.top.offsetHeight - this.$refs.songheader.offsetHeight) {
+					this.$refs.songheader.style.opacity = opacity
+					this.$refs.songheader.style.filter = `alpha(opacity:${opacity * 100})`
+				} else {
+					this.$refs.songheader.style.opacity = 1
+					this.$refs.songheader.style.filter = `alpha(opacity:${100})`
+				}
 			}
 		},
 		computed: {
 			showSongSheet () {
-				return this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
+				// let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+				// if (this.$store.getters.getIsShowSongSheet) {
+				// 	alert(this.$refs.top)
+				// 	this.$refs.top.style.backgroundImage = 'url(' + img.info[0].img_url + ')'
+				// 	this.$refs.top.style.backgroundSize = '1800%'
+				// 	this.$refs.top.style.backgroundPosition = 'center center'
+				// }
+				this.isShow = this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
+				return this.isShow
 			},
 			getSongSheet () {
 				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 			},
 			getImageColor () {
 				return this.$store.getters.getSongSheetImageColor ? this.$store.getters.getSongSheetImageColor : '#333'
+			}
+		},
+		watch: {
+			isShow: function (newisshwo, oldisshow) {
+				let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+				if (newisshwo) {
+					this.$refs.top.style.backgroundImage = `url(${img.info[0].img_url})`
+					this.$refs.top.style.backgroundSize = `5800%`
+					this.$refs.top.style.backgroundPosition = `center center`
+					this.$refs.songheader.style.backgroundImage = `url(${img.info[0].img_url})`
+					this.$refs.songheader.style.backgroundSize = `5800%`
+					this.$refs.songheader.style.backgroundPosition = `center center`
+				}
 			}
 		},
 		components: {
@@ -97,10 +135,17 @@
 			right:0
 			height:50px
 			z-index:10
-			background:rgba(0,0,0,0.4)
 			display:flex
 			align-items:center
 			padding:0 10px
+			.songheaderimg
+				position:absolute
+				top:0
+				left:0
+				right:0
+				bottom:0
+				z-index: -1;
+				opacity:0
 			i
 				flex:0 0 36px
 				width:36px

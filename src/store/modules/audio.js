@@ -16,7 +16,7 @@ const audioInfo = {
 		// 是否显示audio的列表
 		showMusicDetail: false,
 		// 是否显示歌单列表
-		showSongSheet: true,
+		showSongSheet: false,
 		// 当前音乐的index索引
 		currentIndex: 7,
 		// 全部音乐信息  包括歌单等等
