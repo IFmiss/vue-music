@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="bottom" style="height:16000px"></div>
+				<div class="bottom" style="height:1600px"></div>
 			</div>
 			<!-- 底部固定页 -->
     		<bottom-bar></bottom-bar>
