@@ -856,6 +856,7 @@
 							"avatar": "/static/images/userlogo.jpg"
 						},
 						"count":"30",
+						"type": "0",
 						"info":[
 							{
 						        "id": "88",
@@ -1132,6 +1133,7 @@
 					{
 						"name":"在欧洲田园般的乡村上骑单车",
 						"count":"15",
+						"type": "1",
 						"user":{
 							"name":"未曾遗忘的青春",
 							"avatar": "/static/images/userlogo.jpg"
@@ -1277,6 +1279,7 @@
 					{
 						"name":"大卫爱上泰勒斯威夫特",
 						"count":"15",
+						"type": "2",
 						"user":{
 							"name":"未曾遗忘的青春",
 							"avatar": "/static/images/userlogo.jpg"
@@ -1422,6 +1425,7 @@
 					{
 						"name":"【电音】抖腿必备",
 						"count":"19",
+						"type": "3",
 						"user":{
 							"name":"未曾遗忘的青春",
 							"avatar": "/static/images/userlogo.jpg"
@@ -1603,6 +1607,7 @@
 					{
 						"name":"华语经典,是青春,是回忆",
 						"count":"36",
+						"type": "4",
 						"user":{
 							"name":"未曾遗忘的青春",
 							"avatar": "/static/images/userlogo.jpg"
@@ -1942,53 +1947,8 @@
 				"detail": [
 					{
 						"name":"我喜欢的音乐",
-						"count":"30",
+						"count":"25",
 						"info":[
-							{
-						        "id": "88",
-						        "name": "Far Away",
-						        "singer": "Yinyues",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_far%20away.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Yinyues%20-%20Far%20Away.mp3",
-						        "type": "纯音乐",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "96",
-						        "name": "Fade（LaRry Rong Remix）",
-						        "singer": "LaRry Rong",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_faded-1.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/LaRry%C2%A0Rong%20-%20Fade%EF%BC%88LaRry%20Rong%20Remix%EF%BC%89.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "95",
-						        "name": "青年晚报",
-						        "singer": "许嵩",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_qingnianwanbao.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E6%9C%80%E4%BD%B3%E6%AD%8C%E6%89%8B.mp3",
-						        "type": "华语 许嵩",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "91",
-						        "name": "Falling",
-						        "singer": "AndyM",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Falling.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/AndyM%20-%20Falling.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "89",
-						        "name": "Memories",
-						        "singer": "Sappheiros",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_memories.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Sappheiros%20-%20Memories.mp3",
-						        "type": "纯音乐",
-						    	"lyric": ""
-						    },
 						    {
 						        "id": "87",
 						        "name": "China-O",
@@ -2217,27 +2177,9 @@
 				    	]
 					},
 					{
-						"name":"在欧洲田园般的乡村上骑单车",
-						"count":"15",
+						"name":"欧美风格的音乐，安静的听",
+						"count":"13",
 						"info":[
-							{
-						        "id": "61",
-						        "name": "The Technicolor Phase",
-						        "singer": "Owl City",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_owl_city.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Owl%20City%20-%20The%20Technicolor%20Phase.mp3",
-						        "type": "Owl City 欧美",
-						    	"lyric": ""
-						    },
-							{
-						        "id": "83",
-						        "name": "Sing Me to Sleep",
-						        "singer": "Alan Walker",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Sing%20Me%20to%20Sleep.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Alan%20Walker%20-%20Sing%20Me%20to%20Sleep.mp3",
-						        "type": "欧美",
-						    	"lyric": ""
-						    },
 						    {
 						        "id": "60",
 						        "name": "The Saltwater Room",
@@ -2358,15 +2300,15 @@
 						]
 					},
 					{
-						"name":"大卫爱上泰勒斯威夫特",
-						"count":"15",
+						"name":"我心爱的霉霉",
+						"count":"14",
 						"info": [
-						    {
-						        "id": "47",
-						        "name": "You Are In Love",
+							{
+						        "id": "8",
+						        "name": "Red",
 						        "singer": "Taylor Swift",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20You%20Are%20In%20Love.mp3",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Red.mp3",
 						        "type": "霉霉 欧美",
 						    	"lyric": ""
 						    },
@@ -2461,15 +2403,6 @@
 						    	"lyric": ""
 						    },
 						    {
-						        "id": "8",
-						        "name": "Red",
-						        "singer": "Taylor Swift",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Red.mp3",
-						        "type": "霉霉 欧美",
-						    	"lyric": ""
-						    },
-						    {
 						        "id": "7",
 						        "name": "Blank Space",
 						        "singer": "Taylor Swift",
@@ -2499,9 +2432,36 @@
 						]
 					},
 					{
-						"name":"【电音】抖腿必备",
+						"name":"颤抖吧，骚年！！！",
 						"count":"19",
 						"info": [
+							{
+						        "id": "51",
+						        "name": "Autumn (Original Mix)",
+						        "singer": "Kozoro",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_autumn.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro%20-%20Autumn%20%28Original%20Mix%29.mp3",
+						        "type": "纯音乐 电音",
+						    	"lyric": ""
+						    },
+							{
+						        "id": "52",
+						        "name": "Together",
+						        "singer": "Kozoro",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_together.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro,ZENI%20-%20Together.mp3",
+						        "type": "纯音乐 电音",
+						    	"lyric": ""
+						    },
+							{
+						        "id": "53",
+						        "name": "Thank You (Original Mix)",
+						        "singer": "Kozoro",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_thankyou.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro%20-%20Thank%20You%20%28Original%20Mix%29.mp3",
+						        "type": "纯音乐 电音",
+						    	"lyric": ""
+						    },
 						    {
 						        "id": "96",
 						        "name": "Fade（LaRry Rong Remix）",
@@ -2553,33 +2513,6 @@
 						        "singer": "Kozoro",
 						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_remenberme.jpg",
 						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro%20-%20Remember%20Me%20%28Original%20Mix%29.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "53",
-						        "name": "Thank You (Original Mix)",
-						        "singer": "Kozoro",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_thankyou.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro%20-%20Thank%20You%20%28Original%20Mix%29.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "52",
-						        "name": "Together",
-						        "singer": "Kozoro",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_together.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro,ZENI%20-%20Together.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "51",
-						        "name": "Autumn (Original Mix)",
-						        "singer": "Kozoro",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_autumn.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/Kozoro%20-%20Autumn%20%28Original%20Mix%29.mp3",
 						        "type": "纯音乐 电音",
 						    	"lyric": ""
 						    },
@@ -2676,117 +2609,9 @@
 						]
 					},
 					{
-						"name":"华语经典,是青春,是回忆",
-						"count":"36",
+						"name":"年轻时候追得歌.",
+						"count":"24",
 						"info": [
-				    		{
-						        "id": "110",
-						        "name": "小酒窝",
-						        "singer": "林俊杰,蔡卓妍",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E8%BF%98%E6%83%B3%E5%A5%B9.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0,%E8%94%A1%E5%8D%93%E5%A6%8D%20-%20%E5%B0%8F%E9%85%92%E7%AA%9D.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "109",
-						        "name": "一千年以后",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%A5%B9%E8%AF%B4.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%80%E5%8D%83%E5%B9%B4%E4%BB%A5%E5%90%8E.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "107",
-						        "name": "那些你很冒险的梦",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "106",
-						        "name": "可惜没如果",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%8F%AF%E6%83%9C%E6%B2%A1%E6%9C%89%E5%A6%82%E6%9E%9C.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%8F%AF%E6%83%9C%E6%B2%A1%E5%A6%82%E6%9E%9C.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "105",
-						        "name": "她说",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%A5%B9%E8%AF%B4.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%A5%B9%E8%AF%B4.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "104",
-						        "name": "修炼爱情",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E4%BF%AE%E7%82%BC%E7%88%B1%E6%83%85.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%BF%AE%E7%82%BC%E7%88%B1%E6%83%85.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "103",
-						        "name": "当你",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%A5%B9%E8%AF%B4.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%BD%93%E4%BD%A0.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "101",
-						        "name": "不为谁而作的歌",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%A5%B9%E8%AF%B4.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%8D%E4%B8%BA%E8%B0%81%E8%80%8C%E4%BD%9C%E7%9A%84%E6%AD%8C.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "100",
-						        "name": "爱笑的眼睛",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E8%BF%98%E6%83%B3%E5%A5%B9.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E7%88%B1%E7%AC%91%E7%9A%84%E7%9C%BC%E7%9D%9B.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "98",
-						        "name": "江南",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%B1%9F%E5%8D%97.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E6%B1%9F%E5%8D%97.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "97",
-						        "name": "我还想她",
-						        "singer": "林俊杰",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E8%BF%98%E6%83%B3%E5%A5%B9.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E6%88%91%E8%BF%98%E6%83%B3%E5%A5%B9.mp3",
-						        "type": "华语 林俊杰",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "96",
-						        "name": "Fade（LaRry Rong Remix）",
-						        "singer": "LaRry Rong",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_faded-1.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/LaRry%C2%A0Rong%20-%20Fade%EF%BC%88LaRry%20Rong%20Remix%EF%BC%89.mp3",
-						        "type": "纯音乐 电音",
-						    	"lyric": ""
-						    },
 						    {
 						        "id": "95",
 						        "name": "青年晚报",

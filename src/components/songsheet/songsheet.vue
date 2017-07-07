@@ -12,14 +12,14 @@
 				<div class="top" ref="top">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
-							<img :src="getSongSheet.info[0].img_url" alt="">
+							<img v-if="getSongSheet.info" :src="getSongSheet.info[0].img_url" alt="">
 							<span class="info">i</span>
 						</div>
 						<div class="disc">
-							<p class="songsheetname">{{getSongSheet.name}}</p>
+							<p v-if="getSongSheet" class="songsheetname">{{getSongSheet.name}}</p>
 							<div class="user">
-								<img class="avatar" :src="getSongSheet.user.avatar" alt="">
-								<p class="songsheetuser">{{getSongSheet.user.name}}</p>
+								<img  v-if="getSongSheet.user" class="avatar" :src="getSongSheet.user.avatar" alt="">
+								<p v-if="getSongSheet.user" class="songsheetuser">{{getSongSheet.user.name}}</p>
 								<i class="icon-right"></i>
 							</div>
 						</div>
@@ -43,7 +43,21 @@
 						</div>
 					</div>
 				</div>
-				<div class="bottom" style="height:1600px"></div>
+				<div class="bottom">
+					<div class="bottom-wrapper">
+						<div class="info" @click="playAll(0)">
+							<i class="icon-music"></i>
+							<span class="name">播放全部</span>
+							<span class="count">(共{{getSongSheet.count}}首)</span>
+						</div>
+						<div class="rightSetting">
+							<i class="icon-menu"></i>
+							<span>多选</span>
+						</div>
+					</div>
+					<div class="border-1px"></div>
+					<songlist v-if="getSongSheet.info" v-for="(item, index) in getSongSheet.info" :musicindex="index + 1" :key="item.id" :iscurrent="false" :musicname="item.name" :musicsinger="item.singer"></songlist>
+				</div>
 			</div>
 			<!-- 底部固定页 -->
     		<bottom-bar></bottom-bar>
@@ -53,6 +67,7 @@
 <script>
 	import store from './../../store'
 	import bottombar from './../bottombar/bottombar.vue'
+	import songlist from './../songlist/songlist.vue'
 	export default {
 		data () {
 			return {
@@ -76,6 +91,21 @@
 					this.$refs.songheader.style.opacity = 1
 					this.$refs.songheader.style.filter = `alpha(opacity:${100})`
 				}
+			},
+			playAll (index) {
+				// index 是从第几个开始播放
+				store.commit({
+					type: 'setMusiSheetType',
+					sheettype: this.$store.getters.getMusicSheetList.type
+				})
+				store.commit({
+					type: 'setMusicList',
+					list: this.$store.getters.getMusicSheetList.info
+				})
+				store.commit({
+					type: 'playIndex',
+					index: index
+				})
 			}
 		},
 		computed: {
@@ -99,6 +129,7 @@
 		},
 		watch: {
 			isShow: function (newisshwo, oldisshow) {
+				this.$refs.songsheet.scrollTop = 0
 				let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 				if (newisshwo) {
 					this.$refs.top.style.backgroundImage = `url(${img.info[0].img_url})`
@@ -111,13 +142,16 @@
 			}
 		},
 		components: {
-			'bottom-bar': bottombar
+			'bottom-bar': bottombar,
+			'songlist': songlist
 		},
 		mounted () {
 		}
 	}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+	@import "../../common/stylus/global.styl"
+	@import "../../common/stylus/border-1px"
 	.songsheet
 		position:fixed
 		left:0
@@ -267,7 +301,67 @@
 							line-height:28px
 						span
 							font-size:12px
-							
+			.bottom
+				position:relative
+				.border-1px
+					border-1px($border_1px)
+				.bottom-wrapper
+					height:42px
+					line-height:42px
+					.info
+						position:absolute
+						top:0
+						right:0
+						height:42px
+						width:100%
+						line-height:42px
+						font-size:0
+						&:active
+							background:$list_active
+						i
+							height:42px
+							width:42px
+							line-height:42px
+							text-align:center
+							font-size:16px
+							margin-right:5px
+							margin-left:10px
+							vertical-align:middle
+							color:#666
+						span
+							display:inline-block
+							vertical-align:middle
+							font-size:14px
+							color:#333
+							&.count
+								font-size:10px
+								margin-left:5px
+								font-weight:400
+								color:#aaa	
+					.rightSetting
+						position:absolute
+						top:0
+						right:0
+						height:42px
+						width:auto
+						font-size:0
+						padding:0 10px
+						&:active
+							background:$list_active
+						i
+							height:42px
+							width:42px
+							line-height:42px
+							text-align:center
+							font-size:16px
+							margin-right:2px
+							vertical-align:middle
+							color:#666
+						span
+							display:inline-block
+							vertical-align:middle
+							font-size:12px
+							color:#666
 							
 		&.sliderUpHideRight-enter-to,&.sliderUpHideRight-leave-to
 			transition: all 0.3s

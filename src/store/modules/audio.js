@@ -18,13 +18,15 @@ const audioInfo = {
 		// 是否显示歌单列表
 		showSongSheet: false,
 		// 当前音乐的index索引
-		currentIndex: 7,
+		currentIndex: 0,
 		// 全部音乐信息  包括歌单等等
 		musicAllList: [],
 		// 音乐播放信息
 		musicList: [],
 		// 音乐歌单信息
 		musicSheetList: [],
+		// 正在播放的音乐歌单类型，到时候区分正在播放的歌曲是存在于哪一个歌单的    默认为-1 表示所有
+		musicSheetType: '-1',
 		// 图片获取颜色
 		songSheetImageColor: '#333',
 		// 是否正在播放
@@ -72,7 +74,9 @@ const audioInfo = {
 		// 获取歌单信息
 		getMusicSheetList: state => state.musicSheetList,
 		// 获取歌单图片颜色
-		getSongSheetImageColor: state => state.songSheetImageColor
+		getSongSheetImageColor: state => state.songSheetImageColor,
+		// 获取音乐歌单类型
+		getMusiSheetType: state => state.musicSheetType
 	},
 	mutations: {
 		// play设置
@@ -108,7 +112,7 @@ const audioInfo = {
 		},
 		// 插入播放列表信息
 		setMusicList (state, obj) {
-			state.musicList = obj
+			state.musicList = obj.list
 		},
 		// 插入所有音乐信息
 		setMusicAllList (state, obj) {
@@ -157,8 +161,8 @@ const audioInfo = {
 		},
 
 		// 设置当前的播放索引
-		playIndex (state, index) {
-			state.currentIndex = index
+		playIndex (state, obj) {
+			state.currentIndex = obj.index
 			state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
 			state.playing = true
 			state.audioelement.load()
@@ -210,6 +214,9 @@ const audioInfo = {
 		},
 		setSongSheetImageColor (state, obj) {
 			state.songSheetImageColor = obj.color
+		},
+		setMusiSheetType (state, obj) {
+			state.musicSheetType = obj.sheettype
 		}
 	},
 	actions: {
@@ -247,7 +254,7 @@ const audioInfo = {
 			commit('playPrev')
 		},
 		play_Index ({commit}, obj) {
-			commit('playIndex', obj.index)
+			commit('playIndex', obj)
 		},
 		play_Ended ({commit}) {
 			commit('playEnded')

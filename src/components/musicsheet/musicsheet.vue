@@ -1,34 +1,29 @@
 <template>
-		<div>
-			<div class="musicsheet">
-				<div class="title" @click="toggleSheets($event)">
-					<i class="toggle icon-down" ref="toggleicon"></i>
-					<div class="detail">
-						<span class="name">{{data_item.name}}</span>
-						<span class="count">({{data_item.count}})</span>
-						<i class="setting icon-setting" @click.stop="showSheetMenu(data_item.name)"></i>
-					</div>
-				</div>
-				<div v-show="showSheets" v-for="(list, listindex) in data_item.detail" @click.stop="showSongSheet(list)">
-					<div class="content">
-						<img class="sheetimg" :src="list.info[0].img_url" alt="">
-						<div class="detail">
-							<p class="name">{{list.name}}</p>
-							<p class="count">{{list.count}}首歌曲</p>
-							<i class="setting icon-list-circle" @click.stop="showMenu(list.name)"></i>
-							<p v-show="data_item.detail.length != listindex + 1" class="border-1px"></p>
-						</div>
-					</div>
+	<div class="musicsheet">
+		<div class="title" @click="toggleSheets($event)">
+			<i class="toggle icon-down" ref="toggleicon"></i>
+			<div class="detail">
+				<span class="name">{{data_item.name}}</span>
+				<span class="count">({{data_item.count}})</span>
+				<i class="setting icon-setting" @click.stop="showSheetMenu(data_item.name)"></i>
+			</div>
+		</div>
+		<div v-show="showSheets" v-for="(list, listindex) in data_item.detail" @click.stop="showSongSheet(list)">
+			<div class="content">
+				<img class="sheetimg" :src="list.info[0].img_url" alt="">
+				<div class="detail">
+					<p class="name">{{list.name}}</p>
+					<p class="count">{{list.count}}首歌曲</p>
+					<i class="setting icon-list-circle" @click.stop="showMenu(list.name)"></i>
+					<p v-show="data_item.detail.length != listindex + 1" class="border-1px"></p>
 				</div>
 			</div>
 		</div>
-	</div >
+	</div>
 </template>
 
 <script>
 	import store from './../../store'
-	import {RGBaster} from './../../common/js/imagecolor'
-	import menuList from './../menulist/menulist.vue'
 	export default {
 		props: {
 			item: {
@@ -100,34 +95,19 @@
 				})
 			},
 			showSongSheet (data) {
-				store.commit({
-					type: 'setMusicSheetList',
+				store.dispatch({
+					type: 'set_MusicSheetList',
 					data: data
 				})
 				store.commit({
 					type: 'setIsShowSongSheet',
 					isShow: true
 				})
-				var _this = this
-				setTimeout(function () {
-					let img = _this.$store.getters.getMusicSheetList.info[0].img_url
-					RGBaster.colors(img, {
-						success: function (payload) {
-							store.dispatch({
-								type: 'set_SongSheetImageColor',
-								color: payload.dominant
-							})
-						}
-					})
-				}, 500)
 			}
 		},
 		mounted () {
 			this.data_item = this.item
 			this.data_index = this.index
-		},
-		components: {
-			'menu-list': menuList
 		}
 	}
 </script>
