@@ -21,8 +21,16 @@
 	export default {
 		methods: {
 			playIndex (index) {
-				store.dispatch({
-					type: 'play_Index',
+				store.commit({
+					type: 'setMusiSheetType',
+					sheettype: this.$store.getters.getMusicSheetList.type
+				})
+				store.commit({
+					type: 'setMusicList',
+					list: this.$store.getters.getMusicSheetList.info
+				})
+				store.commit({
+					type: 'playIndex',
 					index: index
 				})
 			},
