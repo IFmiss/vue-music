@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="search">
 		你好  search
 	</div>
 </template>
@@ -12,6 +12,6 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
 	@import "/static/font-icon/style.css"
-	div
-		font-size:12px 
+	.search
+		font-size:12px
 </style>

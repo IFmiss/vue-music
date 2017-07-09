@@ -13,9 +13,9 @@
 					<i class="community icon-community"></i>
 				</router-link>
 			</div>
-			<router-link tag="i" to="/search">
+			<!-- <router-link tag="i" to="/search"> -->
 				<i class="search icon-search"></i>
-			</router-link>
+			<!-- </router-link> -->
 			<router-view></router-view>
 			<!-- <Counter class="counter"></Counter> -->
 		</div>

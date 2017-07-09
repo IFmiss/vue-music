@@ -48,7 +48,7 @@
 		},
 		methods: {
 			alert1 () {
-				alert(1)
+				alert('敬请期待!')
 			}
 		},
 		computed: {

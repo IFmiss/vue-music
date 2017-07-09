@@ -180,6 +180,7 @@
 					line-height:14px
 					position:absolute
 					bottom:15px
+					font-size:12px
 					right:15px
 					padding:4px 8px
 					border:1px solid #e1e1e1

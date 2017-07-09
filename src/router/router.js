@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Search from './../components/search/search'
+// import Search from './../components/search/search'
 import MyMusic from './../components/mymusic/mymusic'
 import FindMusic from './../components/findmusic/findmusic'
 import Community from './../components/community/community'
@@ -28,12 +28,12 @@ export default new VueRouter({
       // 顶部三个的第三页
       path: '/community',
       component: Community
-    },
-    {
-      // 搜索页
-      path: '/search',
-      name: 'Search',
-      component: Search
     }
+    // {
+    //   // 搜索页
+    //   path: '/search',
+    //   name: 'Search',
+    //   component: Search
+    // }
   ]
 })
