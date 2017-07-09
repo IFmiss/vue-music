@@ -138,11 +138,11 @@
 							&.name
 								font-size:14px
 								color:#333
-								font-weight:500
+								font-weight:400
 							&.singer
 								font-size:10px
 								color:#aaa
-								font-weight:300
+								font-weight:400
 			.rightSetting
 				position:absolute
 				right:0
