@@ -5,6 +5,10 @@
 
 原本是学习vue创建的，之后想在学习过程中加以实践。由于之前有做过jquery的播放器效果，ui仿照网易云，地址 www.daiwei.org/music ,于是就想做vue 的网易云播放器，网上也有类似的项目。看了一下都挺不错的，于是就想自己做一个试试
 
+在线访问地址,访问速度可能会比较慢,望理解.
+
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/1499612377.png)
+
 #### 项目基于Vue,涉及axios vue-router vuex 
 
 ###### 本人也是一枚小白,自学Vue,这个播放器有什么不足之处,希望各位可以提出意见建议,我们共同学习进步.学的不错的话  可以Star一下哦!!!
