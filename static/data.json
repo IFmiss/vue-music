@@ -2197,6 +2197,10 @@
 						"count":"13",
 						"disc":"欧美风,时尚简约,歌曲都是那么清澈!",
 						"tips":["欧美","Taylor-Swift"],
+						"user":{
+							"name":"升柒君",
+							"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_You%E2%80%99re%20Not%20Alone.jpg"
+						},
 						"info":[
 							{
 						        "id": "55",
@@ -2322,6 +2326,10 @@
 						"count":"14",
 						"disc":"霉霉,大爱不解释",
 						"tips":["霉霉","Taylor-Swift"],
+						"user":{
+							"name":"ProdByRachel",
+							"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+						},
 						"info": [
 							{
 						        "id": "8",
@@ -2456,6 +2464,10 @@
 						"count":"19",
 						"disc":"听了这么多电音最喜欢的几首",
 						"tips":["电音","纯音乐"],
+						"user":{
+							"name":"云销雨霁why",
+							"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_thankyou.jpg"
+						},
 						"info": [
 							{
 						        "id": "51",
@@ -2635,6 +2647,10 @@
 						"count":"24",
 						"disc":"When I was a boy",
 						"tips":["青春","回忆","感动"],
+						"user":{
+							"name":"duududuu",
+							"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_disconnected.jpg"
+						},
 						"info": [
 						    {
 						        "id": "95",

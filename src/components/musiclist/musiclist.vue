@@ -188,6 +188,7 @@
 					line-height:42px
 					padding:0 15px
 					font-weight:400
+					font-size:14px
 					.playingicon
 						font-size: 14px
 						vertical-align: middle
