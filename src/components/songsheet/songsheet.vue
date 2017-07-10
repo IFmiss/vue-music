@@ -13,7 +13,7 @@
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
 							<img v-if="getSongSheet.info" :src="getSongSheet.info[0].img_url" alt="">
-							<span class="info">i</span>
+							<span class="info" @click.stop="showDownloadImg">i</span>
 						</div>
 						<div class="disc">
 							<p v-if="getSongSheet" class="songsheetname">{{getSongSheet.name}}</p>
@@ -59,6 +59,7 @@
 					<songlist></songlist>
 				</div>
 			</div>
+			<downloadimage @hidedownloadimage="hideDownloadImg" :show-image="showDownloadImage" :sheet-data="sheetData"></downloadimage>
 			<!-- 底部固定页 -->
     		<bottom-bar></bottom-bar>
 		</div>
@@ -68,10 +69,13 @@
 	import store from './../../store'
 	import bottombar from './../bottombar/bottombar.vue'
 	import songlist from './../songlist/songlist.vue'
+	import downloadimage from './../downloadimage/downloadimage.vue'
 	export default {
 		data () {
 			return {
-				isShow: false
+				isShow: false,
+				showDownloadImage: false,
+				sheetData: {}
 			}
 		},
 		methods: {
@@ -106,6 +110,14 @@
 					type: 'playIndex',
 					index: index
 				})
+			},
+			showDownloadImg () {
+				this.showDownloadImage = true
+				this.$refs.songsheet.style.overflow = 'hidden'
+			},
+			hideDownloadImg () {
+				this.showDownloadImage = false
+				this.$refs.songsheet.style.overflow = 'auto'
 			}
 		},
 		computed: {
@@ -121,6 +133,7 @@
 				return this.isShow
 			},
 			getSongSheet () {
+				this.sheetData = this.$store.getters.getMusicSheetList
 				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 			},
 			getImageColor () {
@@ -143,7 +156,8 @@
 		},
 		components: {
 			'bottom-bar': bottombar,
-			'songlist': songlist
+			'songlist': songlist,
+			'downloadimage': downloadimage
 		},
 		mounted () {
 		}
@@ -161,6 +175,7 @@
 		z-index: 14
 		background: #fff
 		overflow:auto
+		-webkit-overflow-scrolling:touch
 		.songheader
 			position:fixed
 			transform:translateZ(0)
@@ -268,11 +283,14 @@
 								white-space:nowrap
 								overflow:hidden
 								color:#f0f0f0
+								font-size:12px
+								color:#fff
 							i
 								width:20px
 								height:20px
 								text-align:center
 								line-height:20px
+								font-size:12px
 								color:#f0f0f0
 				.do
 					display:flex

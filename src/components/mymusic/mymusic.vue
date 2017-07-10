@@ -23,7 +23,6 @@
 	}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-	@import "/static/font-icon/style.css"
 	@import "./../../common/stylus/global.styl"
 	.mymusic
 		position:fixed

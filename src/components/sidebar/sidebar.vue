@@ -100,7 +100,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-	@import "/static/font-icon/style.css"
 	@import "../../common/stylus/border-1px/index.styl"
 	@import "../../common/stylus/global.styl"
 	.sidebar

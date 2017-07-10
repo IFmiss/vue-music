@@ -1,3 +1,6 @@
+<!-- 未曾遗忘的青春 -->
+<!-- 项目地址: https://github.com/IFmiss/vue-cloud-music -->
+
 <template>
   <div id="app">
     <audio id="myaudio" ref="audio" @timeupdate="musicTimeUpdate" @canplay="musicCanPlay" @playing="musicOnPlaying" @ended="musicEnded" @waiting="musicOnWaiting" @pause="musicOnPause" @loadstart="loadStart"></audio>
@@ -115,6 +118,9 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+@import "common/font-icon/style.css"
+@import "common/stylus/border-1px/index.styl"
+@import "common/stylus/global.styl"
 body,html
   margin:0
   padding:0

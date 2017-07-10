@@ -11,7 +11,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-	@import "/static/font-icon/style.css"
 	.search
 		font-size:12px
 </style>

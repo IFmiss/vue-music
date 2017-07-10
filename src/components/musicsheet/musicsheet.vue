@@ -113,7 +113,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-	@import "/static/font-icon/style.css"
 	@import "./../../common/stylus/border-1px/index.styl"
 	@import "./../../common/stylus/global.styl"
 	.musicsheet
@@ -145,7 +144,7 @@
 					display:inline-block
 					vertical-align:middle
 					font-weight:300
-					font-size:10px
+					font-size:12px
 				.setting
 					font-size:16px
 					position:absolute
@@ -190,6 +189,8 @@
 				.count
 					margin-bottom:5px
 					font-weight:400
+					font-size:12px
+					color:#666;
 				.border-1px
 					margin:0
 					border-1px($border_1px)
