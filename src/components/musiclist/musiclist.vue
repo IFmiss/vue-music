@@ -180,7 +180,7 @@
 				-webkit-overflow-scrolling:touch
 				box-sizing:border-box
 				padding: 6px 0
-				li
+				.list
 					margin:0
 					padding:0
 					list-style:none
@@ -189,6 +189,7 @@
 					padding:0 15px
 					font-weight:400
 					font-size:14px
+					color:#666
 					.playingicon
 						font-size: 14px
 						vertical-align: middle
