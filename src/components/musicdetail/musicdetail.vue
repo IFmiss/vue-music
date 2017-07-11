@@ -17,9 +17,11 @@
 						<div class="swith-line">
 							<div class="triger" :class="isPlaying ? '' : 'pause'"></div>
 						</div>
-						<div class="cd-content " ref="cd" :class="isPlaying ? 'play ' : ''">
-							<div class="cd-bg"></div>
-							<img class="img" :src="getCurrentMusic.img_url" alt="">
+						<div class="cd-content" ref="cdcontent">
+							<div class="wrapper" ref="cd" :class="isPlaying ? 'animate ' : ''">
+								<div class="cd-bg"></div>
+								<img class="img" :src="getCurrentMusic.img_url" alt="">
+							</div>
 						</div>
 					</div>
 				<!-- 	<div class="lrc">
@@ -46,6 +48,11 @@
 	import store from './../../store'
 	import range from './../range/range'
 	export default {
+		data () {
+			return {
+				isPlay: false
+			}
+		},
 		methods: {
 			hideMusicDetail () {
 				store.dispatch({
@@ -82,6 +89,7 @@
 				return this.$store.getters.getMusicDetail
 			},
 			isPlaying () {
+				this.isPlay = this.$store.getters.getIsPlaying
 				return this.$store.getters.getIsPlaying ? this.$store.getters.getIsPlaying : ''
 			},
 			getCurrentMusic () {
@@ -104,6 +112,15 @@
 						className = ''
 				}
 				return className
+			}
+		},
+		watch: {
+			isPlay: function (newisPlay, oldisPlay) {
+				if (newisPlay !== true) {
+					let imageTrans = getComputedStyle(this.$refs.cd).transform
+					let contentTrans = getComputedStyle(this.$refs.cdcontent).transform
+					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
+				}
 			}
 		},
 		components: {
@@ -229,30 +246,38 @@
 						position:relative
 						margin: 0 auto
 						margin-top:70px
-						animation: goRotate 16s linear infinite 0.1s;
-						animation-play-state:paused
-						&.play
-							animation-play-state:running
-						.cd-bg
+						.wrapper
 							width:44vh
 							height:44vh
-							position:absolute
-							top:0
-							left:50%
-							transform:translate3d(-50%,0,0)
-							background:url('/static/images/cd-mine.png')
-							background-size:100%
-							z-index:2
-						.img
-							position:absolute
-							display:block
-							width:28vh
-							height:28vh
-							top:8vh
-							transition:all 0.3s
-							left:50%
-							transform:translate3d(-50%,0,0)
-							z-index:1
+							position:relative
+							margin: 0 auto
+							margin-top:70px
+							&.animate
+								animation: goRotate 16s linear infinite 0.1s;
+							// animation: goRotate 16s linear infinite 0.1s;
+							// animation-play-state:paused
+							// &.play
+							// 	animation-play-state:running
+							.cd-bg
+								width:44vh
+								height:44vh
+								position:absolute
+								top:0
+								left:50%
+								transform:translate3d(-50%,0,0)
+								background:url('/static/images/cd-mine.png')
+								background-size:100%
+								z-index:2
+							.img
+								position:absolute
+								display:block
+								width:28vh
+								height:28vh
+								top:8vh
+								transition:all 0.3s
+								left:50%
+								transform:translate3d(-50%,0,0)
+								z-index:1
 			.content-footer
 				position:absolute
 				bottom:0
