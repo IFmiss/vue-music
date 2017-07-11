@@ -40,3 +40,7 @@ PC浏览地址 : http://www.daiwei.org/vue-music.html
 #### 歌单详情页（背景效果 滚动效果）
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part5.gif)
 
+
+#### 歌单专辑图片下载页
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part6.jpg)
+
