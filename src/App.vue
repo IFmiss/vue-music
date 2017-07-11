@@ -39,6 +39,7 @@ import store from './store'
 
 Vue.use(Vueaxios, axios)
 
+let musicLrcIndex = 0
 export default {
   data () {
     return {
@@ -49,6 +50,12 @@ export default {
     // 音频播放结束事件
     musicEnded () {
       store.dispatch('play_Ended')
+      // 歌词初始化
+      musicLrcIndex = 0
+      store.commit({
+        type: 'setLyricIndex',
+        index: 0
+      })
     },
     // 音乐播放时间更新事件
     musicTimeUpdate () {
@@ -56,6 +63,42 @@ export default {
         type: 'set_CurrentTime',
         time: Math.floor(this.$refs.audio.currentTime)
       })
+
+      // 设置歌词内容(以索引的形式显示,主要是)
+      let musicLrc = store.getters.getCurrentMusic.lyric
+      let currentTime = Math.floor(this.$refs.audio.currentTime)
+      // for(var i = musicLrcTime; i < musicLrc.length ; i++){
+      //   if(musicLrc[musicLrcTime].timeId == Math.floor(currnt)){
+      //     $('.music-lrc').text(musicLrc[musicLrcTime].text);
+      //     musicLrcTime ++;
+      //     return;
+      //   }
+      // }
+      // let _this = this
+      if (musicLrc[musicLrcIndex] === undefined) return
+      if (musicLrc.length === 0) {
+        store.commit({
+          type: 'setLyricIndex',
+          index: -1
+        })
+        return
+      }
+      if (musicLrc[musicLrcIndex].timeId > currentTime) {
+        return
+      }
+      for (let i = 0; i < musicLrc.length; i++) {
+          // console.log(Number(musicLrc[musicLrcIndex].timeId))
+          // console.log(Math.floor(this.$refs.audio.currentTime))
+          if (currentTime >= Number(musicLrc[musicLrcIndex].timeId)) {
+            // alert(1)
+            store.commit({
+              type: 'setLyricIndex',
+              index: musicLrcIndex
+            })
+            musicLrcIndex++
+            return
+          }
+      }
     },
     // 可以播放事件
     musicCanPlay () {

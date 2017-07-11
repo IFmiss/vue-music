@@ -175,6 +175,7 @@ export default {
 			font-size:14px
 			margin-right:10px
 		.span-left
+			font-size:12px
 			margin-right:10px
 		.duration
 			flex:1
@@ -200,5 +201,6 @@ export default {
 				float:left
 				cursor:pointer
 		.span-right
+			font-size:12px
 			margin-left:10px
 </style>

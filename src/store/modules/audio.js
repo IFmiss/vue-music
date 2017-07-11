@@ -19,6 +19,8 @@ const audioInfo = {
 		showSongSheet: false,
 		// 当前音乐的index索引
 		currentIndex: 0,
+		// 歌词信息 索引
+		lyricIndex: -1,
 		// 全部音乐信息  包括歌单等等
 		musicAllList: [],
 		// 音乐播放信息
@@ -76,7 +78,9 @@ const audioInfo = {
 		// 获取歌单图片颜色
 		getSongSheetImageColor: state => state.songSheetImageColor,
 		// 获取音乐歌单类型
-		getMusiSheetType: state => state.musicSheetType
+		getMusiSheetType: state => state.musicSheetType,
+		// 获取音乐歌词当前播放的索引
+		getLyricIndex: state => state.lyricIndex
 	},
 	mutations: {
 		// play设置
@@ -203,20 +207,28 @@ const audioInfo = {
 		setMusicDuration (state, obj) {
 			state.musicDuration = obj.duration
 		},
+		// 设置音乐是否正在加载
 		setMusicLoadStart (state, obj) {
 			state.musicLoadStart = obj.isloadstart
 		},
+		// 设置是否显示歌单信息
 		setIsShowSongSheet (state, obj) {
 			state.showSongSheet = obj.isShow
 		},
+		// 设置音乐播放器的歌单列表数据
 		setMusicSheetList (state, obj) {
 			state.musicSheetList = obj.data
 		},
 		setSongSheetImageColor (state, obj) {
 			state.songSheetImageColor = obj.color
 		},
+		// 设置音乐歌单类型
 		setMusiSheetType (state, obj) {
 			state.musicSheetType = obj.sheettype
+		},
+		// 设置音乐歌词当前播放的索引
+		setLyricIndex (state, obj) {
+			state.lyricIndex = obj.index
 		}
 	},
 	actions: {

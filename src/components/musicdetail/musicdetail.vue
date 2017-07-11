@@ -24,9 +24,9 @@
 							</div>
 						</div>
 					</div>
-				<!-- 	<div class="lrc">
-						
-					</div> -->
+					<div class="lrc" v-if="getCurrentMusic">
+						{{musicCurrentLrc}}
+					</div>
 				</div>
 				<div class="content-footer">
 					<div class="div-range">
@@ -112,6 +112,15 @@
 						className = ''
 				}
 				return className
+			},
+			musicCurrentLrc () {
+				let currentMusic = this.$store.getters.getCurrentMusic
+				let lrcIndex = this.$store.getters.getLyricIndex ? this.$store.getters.getLyricIndex : 0
+				if (currentMusic.lyric.length) {
+					return lrcIndex === -1 ? '加载中...' : currentMusic.lyric[lrcIndex].text
+				} else {
+					return '暂无歌词'
+				}
 			}
 		},
 		watch: {
@@ -278,6 +287,16 @@
 								left:50%
 								transform:translate3d(-50%,0,0)
 								z-index:1
+				.lrc
+					position:absolute
+					bottom:0
+					height:10vh
+					width:100%
+					font-size:12px
+					line-height:10vh
+					font-weight:400
+					text-align:center
+					color:rgba(255,255,255,0.6)
 			.content-footer
 				position:absolute
 				bottom:0
