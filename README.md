@@ -7,7 +7,7 @@
 
 PC浏览地址 : http://www.daiwei.org/vue-music.html
 
-扫描查看效果,访问速度可能会比较慢,望理解.
+手机扫描查看效果,云虚拟主机速度可能会比较慢,望理解.
 
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/1499612377.png)
 
