@@ -129,7 +129,7 @@
 				position:absolute
 				top:50%
 				left:10px
-				font-size:16px
+				font-size:14px
 				color:#666
 				transition:all 0.5s;
 				transform:translate3d(0,-50%,0)
@@ -140,6 +140,7 @@
 					display:inline-block
 					vertical-align:middle
 					font-weight:400
+					font-size:12px
 				.count
 					display:inline-block
 					vertical-align:middle
