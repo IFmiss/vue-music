@@ -42,7 +42,7 @@
 							<range range-type="volume" ball-width="10" current-color="rgba(255,255,255,0.8)"></range>
 						</div>
 						<div class="lrc">
-							<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}}</p>
+							<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :class="lrcIndex === index ? 'active' : ''" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}} </p>
 						</div>
 					</div>
 				</transition>
@@ -379,7 +379,7 @@
 						text-align:center
 						color:rgba(255,255,255,0.5)
 						&.active
-							color:rgba(255,255,255,0.8)
+							color:rgba(255,255,255,1)
 			.content-footer
 				position:absolute
 				bottom:0
