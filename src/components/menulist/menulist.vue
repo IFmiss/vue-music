@@ -1,7 +1,7 @@
 <template>
 	<div class="menulist">
 		<transition name="sideUp">
-			<div class="content" v-show="showMenu">
+			<div class="content" ref="content" v-show="showMenu">
 				<p class="title">
 					{{menuList.title}}
 				</p>
@@ -19,6 +19,11 @@
 	import store from './../../store'
 	import typelist from '../typelist/typelist.vue'
 	export default {
+		data () {
+			return {
+				isShow: false
+			}
+		},
 		methods: {
 			stopTouch (event) {
 				return
@@ -31,10 +36,18 @@
 		},
 		computed: {
 			showMenu () {
-				return this.$store.getters.getIsShow ? this.$store.getters.getIsShow : ''
+				this.isShow = this.$store.getters.getIsShow ? this.$store.getters.getIsShow : false
+				return this.$store.getters.getIsShow ? this.$store.getters.getIsShow : false
 			},
 			menuList () {
 				return this.$store.getters.getShowMenuInfo ? this.$store.getters.getShowMenuInfo : ''
+			}
+		},
+		watch: {
+			isShow: function (newisShow) {
+				if (newisShow) {
+					this.$refs.content.style.height = `${this.$store.getters.getShowMenuInfo.content.length * 50 + 20}px`
+				}
 			}
 		},
 		components: {
@@ -57,15 +70,16 @@
 			bottom:0
 			left:0
 			right:0
-			transform:translate3d(0,0,0)
 			padding:25px 0 10px 0
 			&.sideUp-enter-to,&.sideUp-leave-to
-				transition: all 0.3s
+				transition: transform 0.3s
 			&.sideUp-enter,&.sideUp-leave-to
 				transform:translate3d(0,100%,0)
 			.title
 				margin:0
-				padding:2px 15px
+				height:20px
+				line-height:20px
+				padding:0 15px
 		.mask
 			position:fixed
 			top:0

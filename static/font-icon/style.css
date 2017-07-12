@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?mstbet');
-  src:  url('fonts/icomoon.eot?mstbet#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?mstbet') format('truetype'),
-    url('fonts/icomoon.woff?mstbet') format('woff'),
-    url('fonts/icomoon.svg?mstbet#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?aznwae');
+  src:  url('fonts/icomoon.eot?aznwae#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?aznwae') format('truetype'),
+    url('fonts/icomoon.woff?aznwae') format('woff'),
+    url('fonts/icomoon.svg?aznwae#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-list-circle-small:before {
+  content: "\e92a";
+}
+.icon-download:before {
+  content: "\e92b";
+}
+.icon-like:before {
+  content: "\e92c";
+}
+.icon-msg:before {
+  content: "\e92d";
+}
 .icon-playdetail:before {
   content: "\e925";
 }

@@ -12,22 +12,37 @@
 					</div>
 					<i class="share icon-share"></i>
 				</div>
-				<div class="content-wrapper">
-					<div class="cd">
-						<div class="swith-line">
-							<div class="triger" :class="isPlaying ? '' : 'pause'"></div>
-						</div>
-						<div class="cd-content" ref="cdcontent">
-							<div class="wrapper" ref="cd" :class="isPlaying ? 'animate ' : ''">
-								<div class="cd-bg"></div>
-								<img class="img" :src="getCurrentMusic.img_url" alt="">
+				<transition name="fade">
+					<div class="content-wrapper" v-show="showCD" @click.stop="isShowCD(false)">
+						<div class="cd">
+							<div class="swith-line">
+								<div class="triger" :class="isPlaying ? '' : 'pause'"></div>
+							</div>
+							<div class="cd-content" ref="cdcontent">
+								<div class="wrapper" ref="cd" :class="isPlaying ? 'animate ' : ''">
+									<div class="cd-bg"></div>
+									<img class="img" :src="getCurrentMusic.img_url" alt="">
+								</div>
 							</div>
 						</div>
+						<!-- <div class="lrc" v-if="getCurrentMusic">
+							{{musicCurrentLrc}}
+						</div> -->
+						<div class="musicDo">
+							<i class="icon icon-like"></i>
+							<i class="icon icon-download"></i>
+							<i class="icon icon-msg"></i>
+							<i class="icon icon-list-circle-small"></i>
+						</div>
 					</div>
-					<div class="lrc" v-if="getCurrentMusic">
-						{{musicCurrentLrc}}
+				</transition>
+				<transition name="fade">
+					<div class="lrc-wrapper" v-show="!showCD" @click.stop="isShowCD(true)">
+						<div class="volume-range">
+							<range range-type="volume" ball-width="10" current-color="rgba(255,255,255,0.8)"></range>
+						</div>
 					</div>
-				</div>
+				</transition>
 				<div class="content-footer">
 					<div class="div-range">
 						<range></range>
@@ -50,7 +65,8 @@
 	export default {
 		data () {
 			return {
-				isPlay: false
+				isPlay: false,
+				showCD: false
 			}
 		},
 		methods: {
@@ -82,6 +98,9 @@
 			// 设置播放类型
 			setPlayType () {
 				store.dispatch('set_PlayType')
+			},
+			isShowCD (bool) {
+				this.showCD = bool
 			}
 		},
 		computed: {
@@ -228,6 +247,10 @@
 				bottom:20vh
 				right:0
 				overflow:hidden
+				&.fade-enter-to, &.fade-leave-to
+					transition: opacity 0.3s
+				&.fade-enter, &.fade-leave-to
+					opacity: 0
 				.cd
 					.swith-line
 						width:80%
@@ -297,6 +320,37 @@
 					font-weight:400
 					text-align:center
 					color:rgba(255,255,255,0.6)
+				.musicDo
+					width:200px
+					position:absolute
+					height:40px
+					left:50%
+					bottom:0
+					transform:translate3d(-50%,0,0)
+					display:flex
+					align-items:center
+					justify-content:space-around
+					i
+						display:inline-block
+						width:40px
+						width:40px
+						line-height:40px
+						text-align:center
+						color:rgba(255,255,255,0.8)
+						font-size:20px
+						&:active
+							color:rgba(255,255,255,0.4)
+			.lrc-wrapper
+				position:absolute
+				top:10vh
+				left:0
+				bottom:20vh
+				right:0
+				overflow:visible
+				&.fade-enter-to, &.fade-leave-to
+					transition: opacity 0.3s
+				&.fade-enter, &.fade-leave-to
+					opacity: 0
 			.content-footer
 				position:absolute
 				bottom:0

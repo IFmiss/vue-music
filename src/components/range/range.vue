@@ -3,8 +3,8 @@
 		<span class="span-left" v-show="type === 'progress'">{{timerFomart(musicCurrentTime)}}</span>
 		<i class="rangeicon icon-volume-medium" v-show="type === 'volume'"></i>
 		<div class="duration" ref="duration" @click="setCurrentProgress($event)">
-			<span class="currentProgress" :style="progressWidth" ref="currentProgress"></span>
-			<span class="ball" @mousedown="mouseDown" @touchstart="mouseDown" @touchmove="touchMove($event)" @touchend="touchEnd($event)"></span>
+			<span class="currentProgress" :style="progressWidth" ref="currentProgress" ></span>
+			<span class="ball" ref="ball" @mousedown="mouseDown" @touchstart="mouseDown" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ></span>
 		</div>
 		<span class="span-right" v-show="type === 'progress'">{{timerFomart(musicDuration)}}</span>
 	</div>
@@ -19,7 +19,8 @@ export default {
 			type: '',
 			currentcolor: '',
 			ballwidth: '',
-			currenttime: 0
+			currenttime: 0,
+			volume: 0.9
 		}
 	},
 	props: {
@@ -39,27 +40,37 @@ export default {
 	},
 	computed: {
 		musicCurrentTime () {
-			if (this.$store.getters.getIsLoadStart) {
-				return '00:00'
-			} else {
+			if (this.type === 'progress') {
 				return this.$store.getters.getCurrentTime ? this.$store.getters.getCurrentTime : '00:00'
+			}
+			if (this.type === 'volume') {
+				return false
 			}
 		},
 		musicDuration () {
-			if (this.$store.getters.getIsLoadStart) {
-				return '00:00'
-			} else {
-				return this.$store.getters.getMusicDuration ? this.$store.getters.getMusicDuration : '**:**'
+			if (this.type === 'progress') {
+				return this.$store.getters.getMusicDuration ? this.$store.getters.getMusicDuration : '00:00'
+			}
+			if (this.type === 'volume') {
+				return false
 			}
 		},
 		progressWidth () {
-			if (this.$store.getters.getIsLoadStart) {
-				return {
-					'width': '0'
+			if (this.type === 'progress') {
+				if (this.$store.getters.getIsLoadStart) {
+					return {
+						'width': '0'
+					}
+				} else {
+					return {
+						'width': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}% - ${this.ballwidth}px)`
+					}
 				}
-			} else {
+			}
+			if (this.type === 'volume' && this.$store.getters.getAudioElement) {
+				this.$store.getters.getAudioElement.volume = this.volume
 				return {
-					'width': 'calc(' + (this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2) + '% - 14px)'
+					'width': `${this.volume * 100}%`
 				}
 			}
 		}
@@ -70,18 +81,19 @@ export default {
 		},
 		mouseMove (event) {
 			if (canDrag) {
+				let e = event || window.event
+				let mouseX = e.pageX
+				let offsetLeft = this.$refs.duration.offsetLeft
+				persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
+				persentWidth = persentWidth > 100 ? 100 : persentWidth
+				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				if (this.type === 'progress') {
-					let e = event || window.event
-					let mouseX = e.pageX
-					let offsetLeft = this.$refs.duration.offsetLeft
-					persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
-					persentWidth = persentWidth > 100 ? 100 : persentWidth
-					persentWidth = persentWidth < 0 ? 0 : persentWidth
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
+					this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 				}
 				if (this.type === 'volume') {
-					return
+					this.$store.getters.getAudioElement.volume = persentWidth / 100
+					this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 				}
 			} else {
 				return
@@ -95,7 +107,7 @@ export default {
 					this.$store.getters.getAudioElement.currentTime = this.$store.getters.getAudioElement.duration * persentWidth / 100
 				}
 				if (this.type === 'volume') {
-					return
+					this.$store.getters.getAudioElement.volume = persentWidth / 100
 				}
 			}
 		},
@@ -108,10 +120,15 @@ export default {
 					persentWidth = persentWidth > 100 ? 100 : persentWidth
 					persentWidth = persentWidth < 0 ? 0 : persentWidth
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
+					this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 				}
 				if (this.type === 'volume') {
-					return
+					let mouseX = event.touches[0].pageX
+					let offsetLeft = this.$refs.duration.offsetLeft
+					persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
+					// alert(Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100))
+					this.$store.getters.getAudioElement.volume = persentWidth / 100
+					this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 				}
 			} else {
 				return
@@ -125,7 +142,7 @@ export default {
 					this.$store.getters.getAudioElement.currentTime = this.$store.getters.getAudioElement.duration * persentWidth / 100
 				}
 				if (this.type === 'volume') {
-					return
+					this.$store.getters.getAudioElement.volume = persentWidth / 100
 				}
 			}
 		},
@@ -139,10 +156,15 @@ export default {
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				if (isNaN(this.$store.getters.getAudioElement.duration)) return
 				this.$store.getters.getAudioElement.currentTime = Math.floor(this.$store.getters.getAudioElement.duration * persentWidth) / 100
-				this.$refs.currentProgress.style.width = 'calc(' + persentWidth + '% - 14px)'
+				this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 			}
 			if (this.type === 'volume') {
-				return
+				let e = event || window.event
+				let mouseX = e.pageX
+				let offsetLeft = this.$refs.duration.offsetLeft
+				persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
+				this.$store.getters.getAudioElement.volume = persentWidth / 100
+				this.$refs.currentProgress.style.width = `calc(${persentWidth}% - ${this.ballwidth}px)`
 			}
 		},
 		timerFomart (time) {
@@ -156,12 +178,17 @@ export default {
 		this.type = this.rangeType
 		this.currentcolor = this.currentColor
 		this.ballwidth = this.ballWidth
+		this.$refs.ball.style.width = `${this.ballwidth}px`
+		this.$refs.ball.style.height = `${this.ballwidth}px`
+		this.$refs.ball.style.marginTop = `-${this.ballwidth / 2 - 1}px`
+		this.$refs.currentProgress.style.background = this.currentcolor
 	}
 }
 
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+	@import "../../common/stylus/global.styl"
 	.range
 		width:90%
 		height:100%
@@ -173,9 +200,11 @@ export default {
 		padding:0 10px
 		.rangeicon
 			font-size:14px
+			color:rgba(255,255,255,0.7)
 			margin-right:10px
 		.span-left
 			font-size:12px
+			color:rgba(255,255,255,0.8)
 			margin-right:10px
 		.duration
 			flex:1
@@ -202,5 +231,6 @@ export default {
 				cursor:pointer
 		.span-right
 			font-size:12px
+			color:rgba(255,255,255,0.8)
 			margin-left:10px
 </style>
