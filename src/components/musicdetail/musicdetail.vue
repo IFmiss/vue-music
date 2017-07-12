@@ -37,12 +37,14 @@
 					</div>
 				</transition>
 				<transition name="fade">
-					<div class="lrc-wrapper" v-show="!showCD" @click.stop="isShowCD(true)">
+					<div class="lrc-wrapper" ref="lrcwrapper" v-show="!showCD" @click.stop="isShowCD(true)">
 						<div class="volume-range">
 							<range range-type="volume" ball-width="10" current-color="rgba(255,255,255,0.8)"></range>
 						</div>
-						<div class="lrc">
-							<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :class="lrcIndex === index ? 'active' : ''" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}} </p>
+						<div class="lrc" ref="lrc" :scroll-top.prop="scrollTop">
+							<div class="div-lrc" ref="divlrc">
+								<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :class="lrcIndex === index ? 'active activeCurrentMusic' : ''" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}} </p>
+							</div>
 						</div>
 					</div>
 				</transition>
@@ -70,6 +72,7 @@
 			return {
 				isPlay: false,
 				showCD: false,
+				scrollTop: 0,
 				currentLrcIndex: this.$store.getters.getLyricIndex
 			}
 		},
@@ -157,13 +160,14 @@
 					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
 				}
 			},
-			currentLrcIndex: function (newisPlay, oldisPlay) {
-				console.log(newisPlay)
+			lrcIndex: function (newisPlay, oldisPlay) {
+				if (document.getElementsByClassName('activeCurrentMusic')[0]) {
+					let height = this.$refs.lrc.offsetHeight
+					let top = document.getElementsByClassName('activeCurrentMusic')[0].offsetTop
+					this.scrollTop = top - height / 2
+				}
 			}
 		},
-		// mounted () {
-		// 	this.currentLrcIndex = this.$store.getters.getLyricIndex
-		// },
 		components: {
 			'range': range
 		}
@@ -323,16 +327,6 @@
 								left:50%
 								transform:translate3d(-50%,0,0)
 								z-index:1
-				.lrc
-					position:absolute
-					bottom:0
-					height:10vh
-					width:100%
-					font-size:12px
-					line-height:10vh
-					font-weight:400
-					text-align:center
-					color:rgba(255,255,255,0.6)
 				.musicDo
 					width:200px
 					position:absolute
@@ -369,17 +363,20 @@
 					line-height:30px
 				.lrc
 					position:relative
-					padding:50% 0
 					height:calc(100% - 30px)
 					overflow-y:scroll
 					box-sizing:border-box
-					p
-						font-size:14px
-						font-weight:400
-						text-align:center
-						color:rgba(255,255,255,0.5)
-						&.active
-							color:rgba(255,255,255,1)
+					transition:all 0.3s
+					.div-lrc
+						padding:50% 0
+						position:relative
+						p
+							font-size:14px
+							font-weight:400
+							text-align:center
+							color:rgba(255,255,255,0.5)
+							&.active
+								color:rgba(255,255,255,1)
 			.content-footer
 				position:absolute
 				bottom:0
