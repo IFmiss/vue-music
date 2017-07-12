@@ -41,6 +41,9 @@
 						<div class="volume-range">
 							<range range-type="volume" ball-width="10" current-color="rgba(255,255,255,0.8)"></range>
 						</div>
+						<div class="lrc">
+							<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}}</p>
+						</div>
 					</div>
 				</transition>
 				<div class="content-footer">
@@ -66,7 +69,8 @@
 		data () {
 			return {
 				isPlay: false,
-				showCD: false
+				showCD: false,
+				currentLrcIndex: this.$store.getters.getLyricIndex
 			}
 		},
 		methods: {
@@ -140,6 +144,9 @@
 				} else {
 					return '暂无歌词'
 				}
+			},
+			lrcIndex () {
+				return this.$store.getters.getLyricIndex ? this.$store.getters.getLyricIndex : 0
 			}
 		},
 		watch: {
@@ -149,8 +156,14 @@
 					let contentTrans = getComputedStyle(this.$refs.cdcontent).transform
 					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
 				}
+			},
+			currentLrcIndex: function (newisPlay, oldisPlay) {
+				console.log(newisPlay)
 			}
 		},
+		// mounted () {
+		// 	this.currentLrcIndex = this.$store.getters.getLyricIndex
+		// },
 		components: {
 			'range': range
 		}
@@ -351,6 +364,22 @@
 					transition: opacity 0.3s
 				&.fade-enter, &.fade-leave-to
 					opacity: 0
+				.volume-range
+					height:30px
+					line-height:30px
+				.lrc
+					position:relative
+					padding:50% 0
+					height:calc(100% - 30px)
+					overflow-y:scroll
+					box-sizing:border-box
+					p
+						font-size:14px
+						font-weight:400
+						text-align:center
+						color:rgba(255,255,255,0.5)
+						&.active
+							color:rgba(255,255,255,0.8)
 			.content-footer
 				position:absolute
 				bottom:0
