@@ -36,7 +36,7 @@ const audioInfo = {
 		// 是否正在加载
 		waiting: false,
 		// 播放类型   1是自动播放  2是循环播放  3是随机播放
-		playType: 3,
+		playType: 1,
 		// 当前播放的时间
 		currentTime: 0,
 		// 音乐的播放时长

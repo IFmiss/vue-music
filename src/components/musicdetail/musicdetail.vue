@@ -43,7 +43,7 @@
 						</div>
 						<div class="lrc" ref="lrc" :scroll-top.prop="scrollTop">
 							<div class="div-lrc" ref="divlrc">
-								<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :class="lrcIndex === index ? 'active activeCurrentMusic' : ''" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}} </p>
+								<p v-if="getCurrentMusic" v-for="(lrc, index) in getCurrentMusic.lyric" :data-index="index" :class="lrcIndex === index ? 'active musiclrc' : 'musiclrc'" :data-timeid="lrc.timeId">{{lrc === '' ? '暂无歌词' : lrc.text}} </p>
 							</div>
 						</div>
 					</div>
@@ -71,9 +71,9 @@
 		data () {
 			return {
 				isPlay: false,
-				showCD: false,
+				showCD: true,
 				scrollTop: 0,
-				currentLrcIndex: this.$store.getters.getLyricIndex
+				currentLrcIndex: 0
 			}
 		},
 		methods: {
@@ -82,6 +82,7 @@
 					type: 'set_MusicDetail',
 					isShow: false
 				})
+				this.showCD = true
 			},
 			playPause () {
 				// 控制音乐播放暂停
@@ -160,16 +161,37 @@
 					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
 				}
 			},
+			showCD: function (newisPlay, oldisPlay) {
+				if (newisPlay !== true) {
+					if (this.currentLrcIndex >= 0 && document.getElementsByClassName('musiclrc')[this.currentLrcIndex]) {
+						let height = this.$refs.lrc.offsetHeight
+						let top = document.getElementsByClassName('musiclrc')[this.currentLrcIndex].offsetTop
+						this.scrollTop = top - height / 2
+					}
+				}
+			},
 			lrcIndex: function (newisPlay, oldisPlay) {
-				if (document.getElementsByClassName('activeCurrentMusic')[0]) {
+				this.currentLrcIndex = newisPlay
+				if (document.getElementsByClassName('musiclrc')[newisPlay]) {
 					let height = this.$refs.lrc.offsetHeight
-					let top = document.getElementsByClassName('activeCurrentMusic')[0].offsetTop
+					let top = document.getElementsByClassName('musiclrc')[newisPlay].offsetTop
 					this.scrollTop = top - height / 2
 				}
 			}
 		},
 		components: {
 			'range': range
+		},
+		mounted () {
+			let _this = this
+			setInterval(function () {
+				if (_this.currentLrcIndex >= 0 && document.getElementsByClassName('musiclrc')[_this.currentLrcIndex]) {
+					let height = _this.$refs.lrc.offsetHeight
+					let top = document.getElementsByClassName('musiclrc')[_this.currentLrcIndex].offsetTop
+					_this.scrollTop = top - height / 2
+				}
+				console.log(_this.$refs.lrc)
+			}, 2000)
 		}
 	}
 </script>
@@ -328,7 +350,7 @@
 								transform:translate3d(-50%,0,0)
 								z-index:1
 				.musicDo
-					width:200px
+					width:70vw
 					position:absolute
 					height:40px
 					left:50%

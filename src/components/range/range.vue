@@ -1,10 +1,10 @@
 <template>
-	<div class="range" @mousemove="mouseMove($event)"  @mouseup="mouseUp" @mouseleave="mouseUp">
+	<div class="range" @mousemove.stop()="mouseMove($event)"  @mouseup.stop()="mouseUp" @mouseleave.stop()="mouseUp">
 		<span class="span-left" v-show="type === 'progress'">{{timerFomart(musicCurrentTime)}}</span>
 		<i class="rangeicon icon-volume-medium" v-show="type === 'volume'"></i>
-		<div class="duration" ref="duration" @click="setCurrentProgress($event)">
+		<div class="duration" ref="duration" @click.stop="setCurrentProgress($event)">
 			<span class="currentProgress" :style="progressWidth" ref="currentProgress" ></span>
-			<span class="ball" ref="ball" @mousedown="mouseDown" @touchstart="mouseDown" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ></span>
+			<span class="ball" ref="ball" @mousedown.stop()="mouseDown" @touchstart.stop()="mouseDown" @touchmove.stop()="touchMove($event)" @touchend.stop()="touchEnd($event)" ></span>
 		</div>
 		<span class="span-right" v-show="type === 'progress'">{{timerFomart(musicDuration)}}</span>
 	</div>

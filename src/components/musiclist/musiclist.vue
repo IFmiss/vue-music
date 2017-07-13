@@ -190,6 +190,7 @@
 					font-weight:400
 					font-size:14px
 					color:#666
+					overflow:hidden
 					.playingicon
 						font-size: 14px
 						vertical-align: middle
