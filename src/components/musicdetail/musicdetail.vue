@@ -190,7 +190,6 @@
 					let top = document.getElementsByClassName('musiclrc')[_this.currentLrcIndex].offsetTop
 					_this.scrollTop = top - height / 2
 				}
-				console.log(_this.$refs.lrc)
 			}, 2000)
 		}
 	}

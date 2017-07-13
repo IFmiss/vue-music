@@ -135,6 +135,10 @@
 						justify-content: space-around
 						p
 							margin: 0
+							width: 100%;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
 							&.name
 								font-size:14px
 								color:#333
