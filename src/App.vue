@@ -78,7 +78,8 @@ export default {
       for (let i = 0; i < musicLrc.length; i++) {
           if (currentTime >= Number(musicLrc[musicLrcIndex].timeId)) {
             musicLrcIndex += 1
-            return
+            // return
+            break
           } else {
             if (musicLrcIndex <= 0) {
               musicLrcIndex = 0
@@ -86,12 +87,11 @@ export default {
               musicLrcIndex--
             }
           }
-
+      }
         store.commit({
           type: 'setLyricIndex',
           index: musicLrcIndex
         })
-      }
     },
     // 可以播放事件
     musicCanPlay () {

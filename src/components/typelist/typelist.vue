@@ -48,7 +48,7 @@
 		},
 		methods: {
 			alert1 () {
-				alert('敬请期待!')
+				window.open('https://github.com/IFmiss/vue-cloud-music')
 			}
 		},
 		computed: {
