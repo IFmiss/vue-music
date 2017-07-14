@@ -4,49 +4,34 @@ import Sidebar from './modules/sidebar.js'
 import AudioInfo from './modules/audio.js'
 import MenuList from './modules/menulist.js'
 import MusicList from './modules/musiclist.js'
+import Reconmmed from './modules/reconmmend.js'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
-    todos: [
-      { id: 1, text: '...', done: true },
-      { id: 2, text: '...', done: false },
-      { id: 3, text: '...', done: true }
-    ]
+    allInfo: []
   },
   getters: {
-	doneTodos: state => {
-		return state.todos.filter(todo => todo.done)
-	}
+    getAllInfo: state => state.allInfo
   },
   mutations: {
-    increment (state, payload) {
-      state.count += payload.count
-    },
-
-    myaction (state, payload) {
-		// alert(payload)
-		state.count += payload.count
+    setAllInfo (state, obj) {
+      state.allInfo = obj
     }
   },
   actions: {
-	myactionAsync ({ commit }, value) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				commit('myaction', value)
-				resolve()
-			}, 1000)
-		})
+    set_AllInfo ({ commit }, obj) {
+      commit('setAllInfo', obj)
     }
   },
 
   modules: {
-	sideBar: Sidebar,
-  audioInfo: AudioInfo,
-  menuList: MenuList,
-  musiclist: MusicList
+    sideBar: Sidebar,
+    audioInfo: AudioInfo,
+    menuList: MenuList,
+    musiclist: MusicList,
+    reconmmed: Reconmmed
   }
 })
 

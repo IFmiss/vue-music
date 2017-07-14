@@ -141,6 +141,8 @@ export default {
       this.info = res.data.user
       // 把所有的音乐数据给vuex的musicAllList
       store.dispatch('set_MusicAllList', res.data.music)
+      // 所有的数据存起来  包括音乐个人信息 等等
+      store.dispatch('set_AllInfo', res.data)
       // 设置音乐的地址  初始化 根据vuex的currentIndex来决定
       this.$refs.audio.setAttribute('src', store.getters.getCurrentMusic.url)
       // 给audio元素存在vuex 的state里面  方便日后调用

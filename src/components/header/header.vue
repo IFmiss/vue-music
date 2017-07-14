@@ -140,7 +140,7 @@
 					color:#eee
 					&.router-link-active
 						i
-							color:#CCAFAF
+							color:$link_active
 					&.active
 						color:#4AE0A8
 

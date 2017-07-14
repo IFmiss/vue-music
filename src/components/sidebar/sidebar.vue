@@ -7,7 +7,7 @@
 		<transition name="side">
 			<div class="menu-content" v-show="isReallShow">
 				<div class="menu-detail">
-					<div class="menu-userInfo">
+					<div class="menu-userInfo" :style="{ backgroundImage: 'url(' + info.bg + ')',backgroundSize: 'cover' }">
 						<img class="avatar" :src="info.avatar" width="56" height="56">
 						<div class="user-detail">
 							<span class="name">{{info.name}}</span>
@@ -136,7 +136,7 @@
 				box-sizing:border-box
 				width:100%
 				height:168px
-				background:#FC5151	
+				// background:#FC5151	
 				position:relative
 				padding:50px 15px 15px 15px
 				.avatar

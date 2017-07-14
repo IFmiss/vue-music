@@ -118,7 +118,7 @@
 	.musicsheet
 		height:auto
 		width:100%
-		background:#f7f7f7
+		background:#f3f3f3
 		.title
 			display:block
 			height:28px

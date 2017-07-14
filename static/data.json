@@ -2,7 +2,8 @@
     "user": {
         "name": "未曾遗忘的青春",
         "avatar": "/static/images/userlogo.jpg",
-        "grade": "9"
+        "grade": "9",
+        "bg": "http://www.daiwei.org/index/images/img/indeximg.jpg"
     },
     "music": {
     	"all":[
@@ -2992,5 +2993,34 @@
 				]
 			}
 		]
+    },
+    "findmusic": {
+    	"reconmmend":{
+    		"recommendImageList": [{
+						    		"src": "/static/images/swiper/taylor swift.jpg",
+						    		"type": "首发",
+						    		"color": "#E93D3D"
+						    	},
+						    	{
+						    		"src": "/static/images/swiper/linjunjie.jpg",
+						    		"type": "华语",
+						    		"color": "#48A787"
+						    	},
+						    	{
+						    		"src": "/static/images/swiper/owl city.jpg",
+						    		"type": "欧美",
+						    		"color": "#5994C5"
+						    	},
+						    	{
+						    		"src": "/static/images/swiper/xusong.jpg",
+						    		"type": "首发",
+						    		"color": "#E93D3D"
+						    	},
+						    	{
+						    		"src": "/static/images/swiper/alan walker.jpg",
+						    		"type": "电音",
+						    		"color": "#DDA15F"
+						    	}]
+    	}
     }
 }

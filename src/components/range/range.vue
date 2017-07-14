@@ -181,6 +181,7 @@ export default {
 		this.$refs.ball.style.width = `${this.ballwidth}px`
 		this.$refs.ball.style.height = `${this.ballwidth}px`
 		this.$refs.ball.style.marginTop = `-${this.ballwidth / 2 - 1}px`
+		if (!this.currentcolor.length > 0 || this.type === 'progress') return
 		this.$refs.currentProgress.style.background = this.currentcolor
 	}
 }
@@ -220,6 +221,7 @@ export default {
 				height:2px
 				background:red
 				float:left
+				background:$primarycolor
 			.ball
 				display:inline-block
 				width:14px
