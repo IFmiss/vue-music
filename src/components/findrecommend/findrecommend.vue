@@ -23,10 +23,18 @@
         		<p class="title">云音乐热歌榜</p>
         	</div>
         </div>
+        <findsheettitle></findsheettitle>
+        <div class="recommend-list">
+        	<findsheetlist></findsheetlist>
+        	<findsheetlist></findsheetlist>
+        	<findsheetlist></findsheetlist>
+        </div>
 	</div>
 </template>
 <script>
 	import store from '../../store'
+	import findsheetlist from '../findsheetlist/findsheetlist'
+	import findsheettitle from '../findsheettitle/findsheettitle'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	// import { mapState } from 'vuex'
 	import { mapGetters } from 'vuex'
@@ -91,7 +99,9 @@
 		},
 	    components: {
             swiper,
-            swiperSlide
+            swiperSlide,
+            findsheetlist,
+            findsheettitle
         }
 	}
 </script>
@@ -167,5 +177,7 @@
 					white-space:nowrap
 					width:100%
 					text-align:center
-				
+		.recommend-list
+			font-size:0
+			display:flex
 </style>
