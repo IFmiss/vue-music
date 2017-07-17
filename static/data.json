@@ -2999,27 +2999,72 @@
     		"recommendImageList": [{
 						    		"src": "/static/images/swiper/taylor swift.jpg",
 						    		"type": "首发",
-						    		"color": "#E93D3D"
+						    		"color": "#E93D3D",
+						    		"songList":[{
+													"id": "45",
+													"name": "Wildest Dreams",
+													"singer": "Taylor Swift",
+													"img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+													"url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Wildest%20Dreams.mp3",
+													"type": "霉霉 欧美",
+													"lyric": ""
+												}]
 						    	},
 						    	{
 						    		"src": "/static/images/swiper/linjunjie.jpg",
 						    		"type": "华语",
-						    		"color": "#48A787"
+						    		"color": "#48A787",
+						    		"songList": [{
+					    							"id": "109",
+											        "name": "一千年以后",
+											        "singer": "林俊杰",
+											        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%A5%B9%E8%AF%B4.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E4%B8%80%E5%8D%83%E5%B9%B4%E4%BB%A5%E5%90%8E.mp3",
+											        "type": "华语 林俊杰",
+											    	"lyric": ""
+						    					}]
 						    	},
 						    	{
 						    		"src": "/static/images/swiper/owl city.jpg",
 						    		"type": "欧美",
-						    		"color": "#5994C5"
+						    		"color": "#5994C5",
+						    		"songList": [{
+													"id": "61",
+													"name": "The Technicolor Phase",
+													"singer": "Owl City",
+													"img_url": "http://oiq8j9er1.bkt.clouddn.com/music_owl_city.jpg",
+													"url": "http://oiq8j9er1.bkt.clouddn.com/Owl%20City%20-%20The%20Technicolor%20Phase.mp3",
+													"type": "Owl City 欧美",
+													"lyric": ""
+												}]
 						    	},
 						    	{
 						    		"src": "/static/images/swiper/xusong.jpg",
-						    		"type": "首发",
-						    		"color": "#E93D3D"
+						    		"type": "热门",
+						    		"color": "#E93D3D",
+						    		"songList": [{
+													"id": "68",
+													"name": "千百度",
+													"singer": "许嵩",
+													"img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E8%8B%8F%E6%A0%BC%E6%8B%89%E6%B2%A1%E6%9C%89%E5%BA%95.jpg",
+													"url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E5%8D%83%E7%99%BE%E5%BA%A6.mp3",
+													"type": "华语 许嵩",
+													"lyric": ""
+												}]
 						    	},
 						    	{
 						    		"src": "/static/images/swiper/alan walker.jpg",
 						    		"type": "电音",
-						    		"color": "#DDA15F"
+						    		"color": "#DDA15F",
+		    						"songList": [{
+													"id": "3",
+													"name": "Faded",
+													"singer": "Alan Walker",
+													"img_url": "http://www.daiwei.org/index/music/musicImg/Faded.jpg",
+													"url": "http://oiq8j9er1.bkt.clouddn.com/Alan Walker - Faded.mp3",
+													"type": "纯音乐 电音",
+													"lyric": ""
+												}]
 						    	}]
     	}
     }
