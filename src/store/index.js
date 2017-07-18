@@ -13,7 +13,9 @@ const store = new Vuex.Store({
     allInfo: []
   },
   getters: {
-    getAllInfo: state => state.allInfo
+    getAllInfo: state => state.allInfo,
+    // 获取推荐歌单信息
+    getFindMusic: state => state.musicAllList.findmusic
   },
   mutations: {
     setAllInfo (state, obj) {

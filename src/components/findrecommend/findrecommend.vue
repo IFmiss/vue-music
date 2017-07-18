@@ -25,9 +25,9 @@
         </div>
         <findsheettitle></findsheettitle>
         <div class="recommend-list">
-        	<findsheetlist></findsheetlist>
-        	<findsheetlist></findsheetlist>
-        	<findsheetlist></findsheetlist>
+        	<findsheetlist v-if="reconmmend.findmusic" v-for="(sheet, sheetindex) in reconmmend.findmusic.reconmmend.recommendMinSheets" :key="sheet.id" :imagesrc="sheet.sheets[0].img_url" :showtoprighttips="sheet.showtoptips" :listpadding="sheet.padding" :toprighticonclass="sheet.toptipsclass" :toprighttitle="sheet.listencount" :showbottomtips="sheet.showbottomtips" :bottomtips="sheet.bottomtips" :showbottomtitle="sheet.showbottomtitle" :bottomtitle="sheet.bottomtitle" :listwidth="sheet.listwidth"></findsheetlist @click.stop="showSongSheet(list)">
+        <!-- 	<findsheetlist imagesrc="http://oiq8j9er1.bkt.clouddn.com/music_%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.jpg" showtoprighttips="true" listpadding="0 1px 1px 1px" toprighticonclass="icon-music" toprighttitle="1200" showbottomtips="true" bottomtips="这是测试的bottom" showbottomtitle="true" bottomtitle="这是底部的内容" listwidth="33.33333333%"></findsheetlist>
+        	<findsheetlist imagesrc="http://oiq8j9er1.bkt.clouddn.com/music_%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.jpg" showtoprighttips="true" listpadding="0 0 1px 1px" toprighticonclass="icon-music" toprighttitle="1200" showbottomtips="true" bottomtips="这是测试的bottom" showbottomtitle="true" bottomtitle="这是底部的内容" listwidth="33.33333333%"></findsheetlist> -->
         </div>
 	</div>
 </template>
@@ -91,6 +91,16 @@
 			}
 	    },
 	    methods: {
+			showSongSheet (data) {
+				store.dispatch({
+					type: 'set_MusicSheetList',
+					data: data
+				})
+				store.commit({
+					type: 'setIsShowSongSheet',
+					isShow: true
+				})
+			}
 	    },
 		mounted () {
 			// you can use current swiper instance object to do something(swiper methods)
@@ -179,5 +189,5 @@
 					text-align:center
 		.recommend-list
 			font-size:0
-			display:flex
+			// display:flex
 </style>

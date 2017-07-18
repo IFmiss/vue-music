@@ -3065,7 +3065,340 @@
 													"type": "纯音乐 电音",
 													"lyric": ""
 												}]
-						    	}]
+						    	}],
+    		"recommendMinSheets": [{
+    			"name":"「华语情歌」想得却不可得,你奈人生何",
+    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+				"count":"5",
+				"listencount":"1134",
+				"showtoptips":true,
+				"toptipsclass":"icon-music",
+				"showbottomtips":false,
+				"bottomtips":"",
+				"showbottomtitle":true,
+				"bottomtitle":"「华语情歌」想得却不可得,你奈人生何",
+				"padding":"0 2px 2px 0",
+				"listwidth":"33.33333333%",
+				"tips":["华语","爱情"],
+				"user":{
+					"name":"ProdByRachel",
+					"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+				},
+				"sheets":[	
+							{
+						        "id": "31",
+						        "name": "我以为我可以",
+						        "singer": "郑国锋",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E9%83%91%E5%9B%BD%E9%94%8B%20-%20%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.mp3",
+						        "type": "华语",
+						    	"lyric": ""
+							},
+							{
+						        "id": "1",
+						        "name": "告白气球",
+						        "singer": "周杰伦",
+						        "img_url": "http://www.daiwei.org/index/music/musicImg/周杰伦-告白气球.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/周杰伦 - 告白气球.mp3",
+						        "type": "华语",
+						        "lyric": ""
+						    },
+							{
+						        "id": "19",
+						        "name": "爱与诚",
+						        "singer": "古巨基",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%88%B1%E4%B8%8E%E8%AF%9A.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA%20-%20%E7%88%B1%E4%B8%8E%E8%AF%9A.mp3",
+						        "type": "华语",
+						    	"lyric": ""
+						    },
+						    {
+						        "id": "2",
+						        "name": "你的爱",
+						        "singer": "王力宏",
+						        "img_url": "http://www.daiwei.org/index/music/musicImg/王力宏-你的爱.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/王力宏 - 你的爱.mp3",
+						        "type": "华语",
+						    	"lyric": ""
+						    },
+						    {
+						        "id": "67",
+						        "name": "玫瑰花的葬礼",
+						        "singer": "许嵩",
+						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.jpg",
+						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.mp3",
+						        "type": "华语 许嵩",
+						    	"lyric": ""
+						    }
+						 ]
+						    		},
+						    		{
+						    			"name":"电音电音电音HAHAHA",
+						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+										"count":"3",
+										"listencount":"1134",
+										"showtoptips":true,
+										"toptipsclass":"icon-music",
+										"showbottomtips":false,
+										"bottomtips":"",
+										"showbottomtitle":true,
+										"bottomtitle":"电音电音电音HAHAHA",
+										"padding":"0 2px 2px 0",
+										"listwidth":"33.33333333%",
+										"tips":["电音","纯音乐"],
+										"user":{
+											"name":"我是张三你信吗",
+											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_Atmosphere.jpg"
+										},
+										"sheets":[	 
+													{
+												        "id": "85",
+												        "name": "Disconnected (Original Mix)",
+												        "singer": "Pegboard Nerds",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_disconnected.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Pegboard%20Nerds%20-%20Disconnected%20%28Original%20Mix%29.mp3",
+												        "type": "纯音乐 电音",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "84",
+												        "name": "Atmosphere",
+												        "singer": "CelDro",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Atmosphere.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/CelDro%20-%20Atmosphere.mp3",
+												        "type": "纯音乐",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "83",
+												        "name": "Sing Me to Sleep",
+												        "singer": "Alan Walker",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Sing%20Me%20to%20Sleep.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Alan%20Walker%20-%20Sing%20Me%20to%20Sleep.mp3",
+												        "type": "欧美",
+												    	"lyric": ""
+												    }
+												 ]
+						    		},
+						    		{
+						    			"name":"VAE",
+						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+										"count":"6",
+										"listencount":"1134",
+										"showtoptips":true,
+										"toptipsclass":"icon-music",
+										"showbottomtips":false,
+										"bottomtips":"",
+										"showbottomtitle":true,
+										"bottomtitle":"VAE",
+										"padding":"0 0px 2px 0",
+										"listwidth":"33.33333333%",
+										"tips":["华语","许嵩"],
+										"user":{
+											"name":"ProdByRachel",
+											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+										},
+										"sheets":[	
+													{
+												        "id": "82",
+												        "name": "灰色头像",
+												        "singer": "许嵩",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%AF%BB%E9%9B%BE%E5%90%AF%E4%BA%8B.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E7%81%B0%E8%89%B2%E5%A4%B4%E5%83%8F.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    },
+													{
+												        "id": "95",
+												        "name": "青年晚报",
+												        "singer": "许嵩",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_qingnianwanbao.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E6%9C%80%E4%BD%B3%E6%AD%8C%E6%89%8B.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "81",
+												        "name": "半城烟沙",
+												        "singer": "许嵩",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E5%8D%8A%E5%9F%8E%E7%83%9F%E6%B2%99.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E5%8D%8A%E5%9F%8E%E7%83%9F%E6%B2%99.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "80",
+												        "name": "多余的解释",
+												        "singer": "许嵩",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E8%87%AA%E5%AE%9A%E4%B9%89.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E5%A4%9A%E4%BD%99%E7%9A%84%E8%A7%A3%E9%87%8A.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "79",
+												        "name": "惊鸿一面",
+												        "singer": "许嵩,黄龄",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E4%B8%8D%E5%A6%82%E5%90%83%E8%8C%B6%E5%8E%BB.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9,%E9%BB%84%E9%BE%84%20-%20%E6%83%8A%E9%B8%BF%E4%B8%80%E9%9D%A2.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "78",
+												        "name": "河山大好",
+												        "singer": "许嵩",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E8%8B%8F%E6%A0%BC%E6%8B%89%E6%B2%A1%E6%9C%89%E5%BA%95.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E6%B2%B3%E5%B1%B1%E5%A4%A7%E5%A5%BD.mp3",
+												        "type": "华语 许嵩",
+												    	"lyric": ""
+												    }
+												 ]
+						    		},
+						    		{
+						    			"name":"我亲爱的霉霉",
+						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+										"count":"5",
+										"listencount":"1134",
+										"showtoptips":true,
+										"toptipsclass":"icon-music",
+										"showbottomtips":false,
+										"bottomtips":"",
+										"showbottomtitle":true,
+										"bottomtitle":"我亲爱的霉霉",
+										"padding":"0 2px 2px 0",
+										"listwidth":"33.33333333%",
+										"tips":["霉霉"],
+										"user":{
+											"name":"ProdByRachel",
+											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+										},
+										"sheets":[	
+													{
+												        "id": "45",
+												        "name": "Wildest Dreams",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Wildest%20Dreams.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "44",
+												        "name": "Style",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Style.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "43",
+												        "name": "Out Of The Woods",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Out%20Of%20The%20Woods.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "42",
+												        "name": "New Romantics",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20New%20Romantics.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    }
+												 ]
+						    		},
+						    		{
+						    			"name":"欧美风的歌曲XIIXXIXI",
+						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+										"count":"5",
+										"listencount":"1134",
+										"showtoptips":true,
+										"toptipsclass":"icon-music",
+										"showbottomtips":false,
+										"bottomtips":"",
+										"showbottomtitle":true,
+										"bottomtitle":"欧美风的歌曲XIIXXIXI",
+										"padding":"0 2px 2px 0",
+										"listwidth":"33.33333333%",
+										"tips":["欧美"],
+										"user":{
+											"name":"ProdByRachel",
+											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+										},
+										"sheets":[	
+													{
+												        "id": "32",
+												        "name": "Leave Out All The Rest",
+												        "singer": "Linkin Park",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Leave%20Out%20All%20The%20Rest.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Linkin%20Park%20-%20Leave%20Out%20All%20The%20Rest%20%28Single%20Version%29.mp3",
+												        "type": "欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "29",
+												        "name": "Think Again",
+												        "singer": "Kate Havnevik",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_Think%20Again.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Kate%20Havnevik%20-%20Think%20Again.mp3",
+												        "type": "欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "8",
+												        "name": "Red",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Red.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    },
+												    {
+												        "id": "7",
+												        "name": "Blank Space",
+												        "singer": "Taylor Swift",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_1989.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/Taylor%20Swift%20-%20Blank%20Space.mp3",
+												        "type": "霉霉 欧美",
+												    	"lyric": ""
+												    }
+												 ]
+						    		},
+						    		{
+						    			"name":"动漫-犬夜叉",
+						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+										"count":"5",
+										"listencount":"1134",
+										"showtoptips":true,
+										"toptipsclass":"icon-music",
+										"showbottomtips":false,
+										"bottomtips":"",
+										"showbottomtitle":true,
+										"bottomtitle":"动漫-犬夜叉",
+										"padding":"0 0 2px 2px",
+										"listwidth":"33.33333333%",
+										"tips":["动漫","纯音乐"],
+										"user":{
+											"name":"ProdByRachel",
+											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+										},
+										"sheets":[	
+													{
+												        "id": "66",
+												        "name": "ふたりの気持ち",
+												        "singer": "和田薫",
+												        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%8A%AC%E5%A4%9C%E5%8F%89.jpg",
+												        "url": "http://oiq8j9er1.bkt.clouddn.com/%E5%92%8C%E7%94%B0%E8%96%AB%20-%20%E3%81%B5%E3%81%9F%E3%82%8A%E3%81%AE%E6%B0%97%E6%8C%81%E3%81%A1.mp3",
+												        "type": "纯音乐",
+												    	"lyric": ""
+												    }
+												 ]
+						    		}]
     	}
     }
 }
