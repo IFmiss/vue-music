@@ -33,7 +33,7 @@
 			</div>
 		</transition>
 		<transition name="fade">
-			<div class="mask" v-show="isShowMusicList" @click.stop="hideMusicList" @touchmove.stop.prevent="stopTouch($event)">
+			<div class="mask" v-show="isShowMusicList" @click.stop="hideMusicList" @touchmove.prevent>
 			</div>
 		</transition>
 	</div>
@@ -48,9 +48,6 @@
 			}
 		},
 		methods: {
-			stopTouch (event) {
-				return
-			},
 			hideMusicList () {
 				store.dispatch({
 					type: 'hideMusicList'
@@ -118,7 +115,7 @@
 	@import "../../common/stylus/global.styl"
 	.musiclist
 		.content
-			position:absolute
+			position:fixed
 			height:314px
 			background:#fff
 			bottom:0

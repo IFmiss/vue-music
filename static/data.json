@@ -3084,7 +3084,7 @@
 					"name":"ProdByRachel",
 					"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
 				},
-				"sheets":[	
+				"info":[	
 							{
 						        "id": "31",
 						        "name": "我以为我可以",
@@ -3131,7 +3131,7 @@
 						    	"lyric": ""
 						    }
 						 ]
-						    		},
+									},
 						    		{
 						    			"name":"电音电音电音HAHAHA",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
@@ -3150,7 +3150,7 @@
 											"name":"我是张三你信吗",
 											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_Atmosphere.jpg"
 										},
-										"sheets":[	 
+										"info":[	 
 													{
 												        "id": "85",
 												        "name": "Disconnected (Original Mix)",
@@ -3198,7 +3198,7 @@
 											"name":"ProdByRachel",
 											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
 										},
-										"sheets":[	
+										"info":[	
 													{
 												        "id": "82",
 												        "name": "灰色头像",
@@ -3273,7 +3273,7 @@
 											"name":"ProdByRachel",
 											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
 										},
-										"sheets":[	
+										"info":[	
 													{
 												        "id": "45",
 												        "name": "Wildest Dreams",
@@ -3330,7 +3330,7 @@
 											"name":"ProdByRachel",
 											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
 										},
-										"sheets":[	
+										"info":[	
 													{
 												        "id": "32",
 												        "name": "Leave Out All The Rest",
@@ -3387,7 +3387,7 @@
 											"name":"ProdByRachel",
 											"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
 										},
-										"sheets":[	
+										"info":[	
 													{
 												        "id": "66",
 												        "name": "ふたりの気持ち",

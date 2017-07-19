@@ -1,6 +1,6 @@
 <template>
 	<div class="sidebar">
-		<transition name="fade" @touchmove.stop.prevent="stopTouch($event)">
+		<transition name="fade" @touchmove.stop.prevent>
 			<div class="menu-mask" v-show="isReallShow" @click="hideMenu"></div>
 		</transition>	
 
@@ -71,9 +71,6 @@
 			}
 		},
 		methods: {
-			stopTouch (event) {
-				return
-			},
 			// 显示菜单
 			hideMenu () {
 				store.dispatch({

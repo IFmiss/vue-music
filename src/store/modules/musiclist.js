@@ -18,6 +18,7 @@ const musiclist = {
 		},
 		setScrollTop (state, scrollTop) {
 			setTimeout(function () {
+				// alert(scrollTop)
 				state.refs.scrollTop = scrollTop
 			}, 100)
 		},

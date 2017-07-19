@@ -9,7 +9,7 @@
     <!-- 侧边栏列表 -->
     <side-bar :info="info"></side-bar>
     <!-- 底部显示的菜单列表 -->
-    <menu-list></menu-list>
+    <!-- <menu-list></menu-list> -->
     <!-- 底部显示的浮层页  音乐列表 -->
     <music-list></music-list>
     <!-- 底部固定页 -->
@@ -28,7 +28,7 @@ import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
 import bottombar from './components/bottombar/bottombar.vue'
 import mymusic from './components/mymusic/mymusic.vue'
-import menulist from './components/menulist/menulist.vue'
+// import menulist from './components/menulist/menulist.vue'
 import musiclist from './components/musiclist/musiclist.vue'
 import musicdetail from './components/musicdetail/musicdetail.vue'
 import songsheet from './components/songsheet/songsheet.vue'
@@ -129,7 +129,7 @@ export default {
     'side-bar': sidebar,
     'bottom-bar': bottombar,
     'my-music': mymusic,
-    'menu-list': menulist,
+    // 'menu-list': menulist,
     'music-list': musiclist,
     'music-detail': musicdetail,
     'song-sheet': songsheet

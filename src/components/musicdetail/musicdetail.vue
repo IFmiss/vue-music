@@ -3,7 +3,7 @@
 		<div class="musicdetail" v-show="isShowMusicDetail">
 			<div class="filterbg" :style="{background : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : 'cover' , backgroundPosition : 'center center'}">
 			</div>
-			<div class="content">
+			<div class="detailcontent">
 				<div class="content-header">
 					<i class="back icon-back" @click="hideMusicDetail"></i>
 					<div class="musicTopDetail">
@@ -229,7 +229,7 @@
 			z-index:16
 			filter: url(../../common/blur.svg#blur); 
 			filter:blur(30px)
-		.content
+		.detailcontent
 			position:fixed
 			height:100%
 			width:100%
