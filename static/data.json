@@ -3067,82 +3067,82 @@
 												}]
 						    	}],
     		"recommendMinSheets": [{
-    			"name":"「华语情歌」想得却不可得,你奈人生何",
-    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
-				"count":"5",
-				"listencount":"1134",
-				"showtoptips":true,
-				"toptipsclass":"icon-music",
-				"showbottomtips":false,
-				"bottomtips":"",
-				"showbottomtitle":true,
-				"bottomtitle":"「华语情歌」想得却不可得,你奈人生何",
-				"padding":"0 2px 2px 0",
-				"listwidth":"33.33333333%",
-				"tips":["华语","爱情"],
-				"user":{
-					"name":"ProdByRachel",
-					"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
-				},
-				"info":[	
-							{
-						        "id": "31",
-						        "name": "我以为我可以",
-						        "singer": "郑国锋",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E9%83%91%E5%9B%BD%E9%94%8B%20-%20%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.mp3",
-						        "type": "华语",
-						    	"lyric": ""
-							},
-							{
-						        "id": "1",
-						        "name": "告白气球",
-						        "singer": "周杰伦",
-						        "img_url": "http://www.daiwei.org/index/music/musicImg/周杰伦-告白气球.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/周杰伦 - 告白气球.mp3",
-						        "type": "华语",
-						        "lyric": ""
-						    },
-							{
-						        "id": "19",
-						        "name": "爱与诚",
-						        "singer": "古巨基",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%88%B1%E4%B8%8E%E8%AF%9A.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA%20-%20%E7%88%B1%E4%B8%8E%E8%AF%9A.mp3",
-						        "type": "华语",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "2",
-						        "name": "你的爱",
-						        "singer": "王力宏",
-						        "img_url": "http://www.daiwei.org/index/music/musicImg/王力宏-你的爱.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/王力宏 - 你的爱.mp3",
-						        "type": "华语",
-						    	"lyric": ""
-						    },
-						    {
-						        "id": "67",
-						        "name": "玫瑰花的葬礼",
-						        "singer": "许嵩",
-						        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.jpg",
-						        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.mp3",
-						        "type": "华语 许嵩",
-						    	"lyric": ""
-						    }
-						 ]
+					    			"name":"「华语情歌」想得却不可得,你奈人生何",
+					    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
+									"count":"5",
+									"listencount":"560978",
+									"showtoptips":true,
+									"toptipsclass":"icon-erji",
+									"showbottomtips":false,
+									"bottomtips":"",
+									"showbottomtitle":true,
+									"bottomtitle":"「华语情歌」想得却不可得,你奈人生何",
+									"padding":"0 2px 2px 0",
+									"listwidth":"33.33333333%",
+									"tips":["华语","爱情"],
+									"user":{
+										"name":"ProdByRachel",
+										"avatar": "http://oiq8j9er1.bkt.clouddn.com/music_red.jpg"
+									},
+									"info":[	
+												{
+											        "id": "31",
+											        "name": "我以为我可以",
+											        "singer": "郑国锋",
+											        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/%E9%83%91%E5%9B%BD%E9%94%8B%20-%20%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E5%8F%AF%E4%BB%A5.mp3",
+											        "type": "华语",
+											    	"lyric": ""
+												},
+												{
+											        "id": "1",
+											        "name": "告白气球",
+											        "singer": "周杰伦",
+											        "img_url": "http://www.daiwei.org/index/music/musicImg/周杰伦-告白气球.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/周杰伦 - 告白气球.mp3",
+											        "type": "华语",
+											        "lyric": ""
+											    },
+												{
+											        "id": "19",
+											        "name": "爱与诚",
+											        "singer": "古巨基",
+											        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%88%B1%E4%B8%8E%E8%AF%9A.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA%20-%20%E7%88%B1%E4%B8%8E%E8%AF%9A.mp3",
+											        "type": "华语",
+											    	"lyric": ""
+											    },
+											    {
+											        "id": "2",
+											        "name": "你的爱",
+											        "singer": "王力宏",
+											        "img_url": "http://www.daiwei.org/index/music/musicImg/王力宏-你的爱.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/王力宏 - 你的爱.mp3",
+											        "type": "华语",
+											    	"lyric": ""
+											    },
+											    {
+											        "id": "67",
+											        "name": "玫瑰花的葬礼",
+											        "singer": "许嵩",
+											        "img_url": "http://oiq8j9er1.bkt.clouddn.com/music_%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.jpg",
+											        "url": "http://oiq8j9er1.bkt.clouddn.com/%E8%AE%B8%E5%B5%A9%20-%20%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%9A%84%E8%91%AC%E7%A4%BC.mp3",
+											        "type": "华语 许嵩",
+											    	"lyric": ""
+											    }
+											 ]
 									},
 						    		{
-						    			"name":"电音电音电音HAHAHA",
+						    			"name":"自从听了这些音乐，敲代码越开越顺了，腰不酸腿不痛了",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
 										"count":"3",
-										"listencount":"1134",
+										"listencount":"219899",
 										"showtoptips":true,
-										"toptipsclass":"icon-music",
+										"toptipsclass":"icon-erji",
 										"showbottomtips":false,
 										"bottomtips":"",
 										"showbottomtitle":true,
-										"bottomtitle":"电音电音电音HAHAHA",
+										"bottomtitle":"自从听了这些音乐，敲代码越开越顺了，腰不酸腿不痛了",
 										"padding":"0 2px 2px 0",
 										"listwidth":"33.33333333%",
 										"tips":["电音","纯音乐"],
@@ -3181,16 +3181,16 @@
 												 ]
 						    		},
 						    		{
-						    			"name":"VAE",
+						    			"name":"我寻你千百度，日出到迟暮; 一瓢江湖我沉浮",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
 										"count":"6",
 										"listencount":"1134",
 										"showtoptips":true,
-										"toptipsclass":"icon-music",
+										"toptipsclass":"icon-erji",
 										"showbottomtips":false,
 										"bottomtips":"",
 										"showbottomtitle":true,
-										"bottomtitle":"VAE",
+										"bottomtitle":"我寻你千百度，日出到迟暮; 一瓢江湖我沉浮",
 										"padding":"0 0px 2px 0",
 										"listwidth":"33.33333333%",
 										"tips":["华语","许嵩"],
@@ -3256,16 +3256,16 @@
 												 ]
 						    		},
 						    		{
-						    			"name":"我亲爱的霉霉",
+						    			"name":"Say you'll remember me Standing in a nice dress, staring at the sun set, babe",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
 										"count":"5",
-										"listencount":"1134",
+										"listencount":"20000",
 										"showtoptips":true,
-										"toptipsclass":"icon-music",
+										"toptipsclass":"icon-erji",
 										"showbottomtips":false,
 										"bottomtips":"",
 										"showbottomtitle":true,
-										"bottomtitle":"我亲爱的霉霉",
+										"bottomtitle":"Say you'll remember me Standing in a nice dress, staring at the sun set, babe",
 										"padding":"0 2px 2px 0",
 										"listwidth":"33.33333333%",
 										"tips":["霉霉"],
@@ -3313,16 +3313,16 @@
 												 ]
 						    		},
 						    		{
-						    			"name":"欧美风的歌曲XIIXXIXI",
+						    			"name":"躺在绿茵茵的草地上看着天空",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
 										"count":"5",
-										"listencount":"1134",
+										"listencount":"33209",
 										"showtoptips":true,
-										"toptipsclass":"icon-music",
+										"toptipsclass":"icon-erji",
 										"showbottomtips":false,
 										"bottomtips":"",
 										"showbottomtitle":true,
-										"bottomtitle":"欧美风的歌曲XIIXXIXI",
+										"bottomtitle":"躺在绿茵茵的草地上看着天空",
 										"padding":"0 2px 2px 0",
 										"listwidth":"33.33333333%",
 										"tips":["欧美"],
@@ -3370,16 +3370,16 @@
 												 ]
 						    		},
 						    		{
-						    			"name":"动漫-犬夜叉",
+						    			"name":"时代を越えた少女と 封印された少年",
 						    			"disc":"歌单推荐:我认识的只有合久分了,没见过分久还能合的...",
 										"count":"5",
-										"listencount":"1134",
+										"listencount":"555",
 										"showtoptips":true,
-										"toptipsclass":"icon-music",
+										"toptipsclass":"icon-erji",
 										"showbottomtips":false,
 										"bottomtips":"",
 										"showbottomtitle":true,
-										"bottomtitle":"动漫-犬夜叉",
+										"bottomtitle":"时代を越えた少女と 封印された少年",
 										"padding":"0 0 2px 2px",
 										"listwidth":"33.33333333%",
 										"tips":["动漫","纯音乐"],

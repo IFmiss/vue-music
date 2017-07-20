@@ -1,6 +1,6 @@
 <template>
 	<div class="findrecommend">
-		<swiper :options="swiperOption"  ref="mySwiper" v-if="reconmmend.findmusic">  
+		<swiper :options="swiperOption"  ref="mySwiper" v-if="reconmmend">  
             <!-- 这部分放你要渲染的那些内容 -->  
             <swiper-slide v-for="item in reconmmend.findmusic.reconmmend.recommendImageList" :key="item.id" :songlist="JSON.stringify(item.songList)">
             	<img class="image" :src="item.src" alt="">
@@ -25,7 +25,7 @@
         </div>
         <findsheettitle></findsheettitle>
         <div class="recommend-list">
-        	<findsheetlist v-if="reconmmend.findmusic" v-for="(sheet, sheetindex) in reconmmend.findmusic.reconmmend.recommendMinSheets" :key="sheet.id" :imagesrc="sheet.sheets[0].img_url" :showtoprighttips="sheet.showtoptips" :listpadding="sheet.padding" :toprighticonclass="sheet.toptipsclass" :toprighttitle="sheet.listencount" :showbottomtips="sheet.showbottomtips" :bottomtips="sheet.bottomtips" :showbottomtitle="sheet.showbottomtitle" :bottomtitle="sheet.bottomtitle" :listwidth="sheet.listwidth"></findsheetlist @click.stop="showSongSheet(list)">
+        	<findsheetlist v-if="reconmmend" v-for="(sheet, sheetindex) in reconmmend.findmusic.reconmmend.recommendMinSheets" :key="sheet.id" :imagesrc="sheet.info[0].img_url" :showtoprighttips="sheet.showtoptips" :listpadding="sheet.padding" :toprighticonclass="sheet.toptipsclass" :toprighttitle="sheet.listencount" :showbottomtips="sheet.showbottomtips" :bottomtips="sheet.bottomtips" :showbottomtitle="sheet.showbottomtitle" :bottomtitle="sheet.bottomtitle" :listwidth="sheet.listwidth"></findsheetlist @click.stop="showSongSheet(list)">
         <!-- 	<findsheetlist imagesrc="http://oiq8j9er1.bkt.clouddn.com/music_%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.jpg" showtoprighttips="true" listpadding="0 1px 1px 1px" toprighticonclass="icon-music" toprighttitle="1200" showbottomtips="true" bottomtips="这是测试的bottom" showbottomtitle="true" bottomtitle="这是底部的内容" listwidth="33.33333333%"></findsheetlist>
         	<findsheetlist imagesrc="http://oiq8j9er1.bkt.clouddn.com/music_%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BE%88%E5%86%92%E9%99%A9%E7%9A%84%E6%A2%A6.jpg" showtoprighttips="true" listpadding="0 0 1px 1px" toprighticonclass="icon-music" toprighttitle="1200" showbottomtips="true" bottomtips="这是测试的bottom" showbottomtitle="true" bottomtitle="这是底部的内容" listwidth="33.33333333%"></findsheetlist> -->
         </div>
@@ -37,7 +37,7 @@
 	import findsheettitle from '../findsheettitle/findsheettitle'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	// import { mapState } from 'vuex'
-	import { mapGetters } from 'vuex'
+	// import { mapGetters } from 'vuex'
 	export default {
 		data () {
 	      return {
@@ -80,12 +80,12 @@
 	      }
 	    },
 	    computed: {
-			// reconmmend () {
-			// 	return store.getters.getAllInfo.findmusic
-			// },
-			...mapGetters({
-				reconmmend: 'getAllInfo'
-			}),
+			reconmmend () {
+				return store.getters.getAllInfo
+			},
+			// ...mapGetters({
+			// 	reconmmend: 'getAllInfo'
+			// }),
 			swiper () {
 				return this.$refs.mySwiper.swiper
 			}

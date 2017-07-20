@@ -2,7 +2,7 @@
 	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}" >
 		<div class="content">
 			<img class="image" :src="imagesrc" alt="">
-			<span class="toprighttips" v-if="showtoprighttips"><i class="icon" :class="toprighticonclass"></i>{{toprighttitle}}</span>
+			<span class="toprighttips" v-if="showtoprighttips"><i class="icon" :class="toprighticonclass"></i>{{formartTopRight}}</span>
 			<span class="bottomtips" v-if="showbottomtips">{{bottomtips}}</span>
 		</div>
 		<div class="title" v-if="showbottomtitle">{{bottomtitle}}</div>
@@ -44,6 +44,12 @@
 			},
 			listwidth: {
 				type: String
+			}
+		},
+		computed: {
+			formartTopRight () {
+				const numberInfo = Number(this.toprighttitle)
+				return numberInfo > 10000 ? `${Math.floor(numberInfo / 10000)}万` : numberInfo
 			}
 		}
 	}

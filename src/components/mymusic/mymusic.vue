@@ -5,8 +5,6 @@
 		<type-list name="我的电台" iconinfo="icon-diantai" count="1"></type-list>
 		<type-list name="我的收藏" iconinfo="icon-collect" count="3" :has-border="false"></type-list>
 		<musicsheet v-for="(item, index) in items" :item="item" :index="index" :key="item.id"></musicsheet>
-		<!-- 底部显示的浮层页  音乐列表 -->
-    	<music-list></music-list>
     	<!-- 底部显示的菜单列表 -->
    		<menu-list></menu-list>
 	</div>
@@ -14,7 +12,6 @@
 <script>
 	import musicsheet from '../musicsheet/musicsheet.vue'
 	import typelist from '../typelist/typelist.vue'
-	// import musiclist from '../musiclist/musiclist.vue'
 	import menulist from '../menulist/menulist.vue'
 	export default {
 		computed: {
@@ -25,7 +22,6 @@
 		components: {
 			'type-list': typelist,
 			musicsheet,
-			// 'music-list': musiclist,
 			'menu-list': menulist
 		}
 	}
