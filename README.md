@@ -1,5 +1,8 @@
 ![](https://img.shields.io/badge/vue-2.2.6-4EDD96.svg) ![](https://img.shields.io/badge/stylus-0.54.5-F6B386.svg) 
 
+
+##### 由于本地数据的音乐地址有变化，在播放音乐的时候地址会无效，这个问题这周会解决   望见谅
+ 
 # studyVue
 学习vue ，从0开始！
 
