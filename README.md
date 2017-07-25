@@ -49,3 +49,6 @@ PC浏览地址 : http://www.daiwei.org/vue-music.html
 #### 音乐详情歌词切换
 ![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part7.gif)
 
+#### 发现音乐swiper效果
+![](https://github.com/IFmiss/vue-WangYiCloudMusic/blob/master/static/images/showdemo/part8.gif)
+
