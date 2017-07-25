@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/vue-2.2.6-4EDD96.svg) ![](https://img.shields.io/badge/stylus-0.54.5-F6B386.svg) 
+![](https://img.shields.io/badge/vue-2.2.6-4EDD96.svg) ![](https://img.shields.io/badge/stylus-0.54.5-F6B386.svg)  ![](https://img.shields.io/badge/vue_awesome_swiper-2.5.4-FD9494.svg) ![](https://img.shields.io/badge/vuex-2.3.1-69D3E3.svg)  ![](https://img.shields.io/badge/axios-0.16.2-56DD7F.svg) 
 
 
 ##### 由于本地数据的音乐地址有变化，在播放音乐的时候地址会无效，这个问题这周会解决   望见谅
