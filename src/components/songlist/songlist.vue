@@ -142,10 +142,12 @@
 							&.name
 								font-size:14px
 								color:#333
+								padding: 2px 0;
 								font-weight:400
 							&.singer
 								font-size:10px
 								color:#aaa
+								padding: 2px 0;
 								font-weight:400
 			.rightSetting
 				position:absolute
