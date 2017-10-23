@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?vuta3p');
-  src:  url('fonts/icomoon.eot?vuta3p#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?vuta3p') format('truetype'),
-    url('fonts/icomoon.woff?vuta3p') format('woff'),
-    url('fonts/icomoon.svg?vuta3p#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?g6to1x');
+  src:  url('fonts/icomoon.eot?g6to1x#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?g6to1x') format('truetype'),
+    url('fonts/icomoon.woff?g6to1x') format('woff'),
+    url('fonts/icomoon.svg?g6to1x#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-imgsetting:before {
+  content: "\e939";
+}
+.icon-canclefullscreen:before {
+  content: "\e932";
+}
+.icon-fullscreen:before {
+  content: "\e933";
+}
+.icon-github:before {
+  content: "\e936";
+}
+.icon-clown:before {
+  content: "\e934";
+}
+.icon-smile:before {
+  content: "\e935";
+}
+.icon-works:before {
+  content: "\e937";
+}
+.icon-about:before {
+  content: "\e938";
+}
 .icon-erji:before {
   content: "\e931";
 }
