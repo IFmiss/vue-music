@@ -121,7 +121,7 @@
 			bottom:0
 			left:0
 			right:0
-			z-index:22
+			z-index:23
 			&.sideUp-enter-to,&.sideUp-leave-to
 				transition: transform 0.3s
 			&.sideUp-enter,&.sideUp-leave-to

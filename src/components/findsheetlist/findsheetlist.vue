@@ -1,7 +1,8 @@
 <template>
 	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}" >
 		<div class="content">
-			<img class="image" :src="imagesrc" alt="">
+			<!-- <img class="image" :src="imagesrc" alt=""> -->
+			<div class="image" :style="{ backgroundImage : 'url('+imagesrc+')',backgroundSize:'cover', backgroundPosition:'center'}"></div>
 			<span class="toprighttips" v-if="showtoprighttips"><i class="icon" :class="toprighticonclass"></i>{{formartTopRight}}</span>
 			<span class="bottomtips" v-if="showbottomtips">{{bottomtips}}</span>
 		</div>
@@ -62,12 +63,15 @@
 		box-sizing:border-box
 		height:auto
 		position:relative
+		vertical-align:top
 		.content
 			width:100%
 			height:auto
 			position:relative
 			.image
 				width:100%
+				height:0;
+				padding-top:100%
 			.toprighttips
 				height:18px
 				line-height:18px
@@ -102,7 +106,7 @@
 		.title
 				width: 100%
 				height:34px
-				line-height:16px
+				line-height:17px
 				margin:4px 0
 				padding:0 3px
 				box-sizing:border-box

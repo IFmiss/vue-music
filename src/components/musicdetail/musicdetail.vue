@@ -1,7 +1,7 @@
 <template>
 	<transition name="sliderUpHideRight">
 		<div class="musicdetail" v-show="isShowMusicDetail">
-			<div class="filterbg" :style="{background : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : 'cover' , backgroundPosition : 'center center'}">
+			<div class="filterbg" :style="{backgroundImage : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : 'cover', backgroundPosition : 'center center'}">
 			</div>
 			<div class="detailcontent">
 				<div class="content-header">
@@ -214,8 +214,6 @@
 		right:0
 		z-index:20
 		transform:translate3d(0,0,0)
-		background:cover
-		background-size:cover
 		background:#aaa
 		.filterbg
 			position:fixed
@@ -227,7 +225,7 @@
 			transition:all 0.5s
 			right:0
 			z-index:16
-			filter: url(../../common/blur.svg#blur); 
+			filter: url(../../common/blur.svg#blur)
 			filter:blur(30px)
 		.detailcontent
 			position:fixed

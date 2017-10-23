@@ -1,6 +1,6 @@
 <template>
-	<div class="findrecommend">
-		<swiper :options="swiperOption"  ref="mySwiper" v-if="reconmmend">  
+	<div class="findrecommend" v-if="reconmmend && reconmmend.findmusic">
+		<swiper :options="swiperOption"  ref="mySwiper">  
             <!-- 这部分放你要渲染的那些内容 -->  
             <swiper-slide v-for="item in reconmmend.findmusic.reconmmend.recommendImageList" :key="item.id" :songlist="JSON.stringify(item.songList)">
             	<img class="image" :src="item.src" alt="">

@@ -4,7 +4,7 @@
 		<i class="rangeicon icon-volume-medium" v-show="type === 'volume'"></i>
 		<div class="duration" ref="duration" @click.stop="setCurrentProgress($event)">
 			<span class="currentProgress" :style="progressWidth" ref="currentProgress" ></span>
-			<span class="ball" ref="ball" @mousedown.stop()="mouseDown" @touchstart.stop()="mouseDown" @touchmove.stop()="touchMove($event)" @touchend.stop()="touchEnd($event)" ></span>
+			<span class="ball" ref="ball" :style="progressBall" @mousedown.stop()="mouseDown" @touchstart.stop()="mouseDown" @touchmove.stop()="touchMove($event)" @touchend.stop()="touchEnd($event)" ></span>
 		</div>
 		<span class="span-right" v-show="type === 'progress'">{{timerFomart(musicDuration)}}</span>
 	</div>
@@ -73,6 +73,26 @@ export default {
 					'width': `${this.volume * 100}%`
 				}
 			}
+		},
+
+		progressBall () {
+			if (this.type === 'progress') {
+				if (this.$store.getters.getIsLoadStart) {
+					return {
+						'left': 'calc(0% - 7px)'
+					}
+				} else {
+					return {
+						'left': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}%)`
+					}
+				}
+			}
+			if (this.type === 'volume' && this.$store.getters.getAudioElement) {
+				this.$store.getters.getAudioElement.volume = this.volume
+				return {
+					'left': `calc(${this.volume * 100}% - 7px)`
+				}
+			}
 		}
 	},
 	methods: {
@@ -89,11 +109,13 @@ export default {
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				if (this.type === 'progress') {
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+					this.$refs.currentProgress.style.width = `${persentWidth}%`
+					this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 				}
 				if (this.type === 'volume') {
 					this.$store.getters.getAudioElement.volume = persentWidth / 100
 					this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+					this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 				}
 			} else {
 				return
@@ -120,7 +142,8 @@ export default {
 					persentWidth = persentWidth > 100 ? 100 : persentWidth
 					persentWidth = persentWidth < 0 ? 0 : persentWidth
 					// this.$store.getters.getAudioElement.currentTime = this.duration * persentWidth / 100
-					this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+					this.$refs.currentProgress.style.width = `${persentWidth}%`
+					this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 				}
 				if (this.type === 'volume') {
 					let mouseX = event.touches[0].pageX
@@ -128,7 +151,8 @@ export default {
 					persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
 					// alert(Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100))
 					this.$store.getters.getAudioElement.volume = persentWidth / 100
-					this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+					this.$refs.currentProgress.style.width = `${persentWidth}%`
+					this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 				}
 			} else {
 				return
@@ -156,7 +180,8 @@ export default {
 				persentWidth = persentWidth < 0 ? 0 : persentWidth
 				if (isNaN(this.$store.getters.getAudioElement.duration)) return
 				this.$store.getters.getAudioElement.currentTime = Math.floor(this.$store.getters.getAudioElement.duration * persentWidth) / 100
-				this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+				this.$refs.currentProgress.style.width = `${persentWidth}%`
+				this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 			}
 			if (this.type === 'volume') {
 				let e = event || window.event
@@ -164,7 +189,8 @@ export default {
 				let offsetLeft = this.$refs.duration.offsetLeft
 				persentWidth = Math.floor((mouseX - offsetLeft) / this.$refs.duration.offsetWidth * 100)
 				this.$store.getters.getAudioElement.volume = persentWidth / 100
-				this.$refs.currentProgress.style.width = `calc(${persentWidth}%`
+				this.$refs.currentProgress.style.width = `${persentWidth}%`
+				this.$refs.ball.style.left = `calc(${persentWidth}% - 7px)`
 			}
 		},
 		timerFomart (time) {
@@ -228,11 +254,11 @@ export default {
 				position:absolute
 				width:14px
 				height:14px
+				left:-7px
 				// margin-top:-6px
 				background:#fff
 				// transform:translate(-50%,0)
 				border-radius:50%
-				float:left
 				cursor:pointer
 		.span-right
 			font-size:12px

@@ -70,7 +70,7 @@
 			bottom:0
 			left:0
 			right:0
-			padding:25px 0 10px 0
+			padding:25px 0 46px 0
 			&.sideUp-enter-to,&.sideUp-leave-to
 				transition: transform 0.3s
 			&.sideUp-enter,&.sideUp-leave-to
