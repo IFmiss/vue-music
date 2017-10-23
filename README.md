@@ -3,8 +3,11 @@
 
 ### 10 月 23 日更新
 ### 发现在ios 移动端体验有问题 修改了部分效果，至于音乐播放详情页（CD转动 播放页）的体验问题 （拖动卡顿，歌词效果不好等等） 我在我vue-website  有解决方法 附上对应的代码地址 和 体验效果
-拖动的体验效果： http://www.daiwei.org/components/wx-audio/html/audio.html
-歌词滚动的体验效果： http://www.daiwei.org/#/music/sheet/124995419   对于的歌词解析以及滚动效果代码 见 ：https://github.com/IFmiss/vue-website/blob/master/src/components/music/music.js#L157  如有问题  尽管联系我！
+拖动的体验效果： http://www.daiwei.org/components/wx-audio/html/audio.html<br>
+歌词滚动的体验效果： http://www.daiwei.org/#/music/sheet/124995419   <br>
+对于的歌词解析以及滚动效果代码 见 ：<br>
+https://github.com/IFmiss/vue-website/blob/master/src/components/music/music.js#L157  <br>
+如有问题  尽管联系我！<br>
 
 ##### 由于本地数据的音乐地址有变化，现在已经可以正常使用了   更新一下就行了   改了data.json的音乐url！
  
