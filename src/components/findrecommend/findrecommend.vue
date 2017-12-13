@@ -2,7 +2,7 @@
 	<div class="findrecommend" v-if="reconmmend && reconmmend.findmusic">
 		<swiper :options="swiperOption"  ref="mySwiper">  
             <!-- 这部分放你要渲染的那些内容 -->  
-            <swiper-slide v-for="item in reconmmend.findmusic.reconmmend.recommendImageList" :key="item.id" :songlist="JSON.stringify(item.songList)">
+            <swiper-slide v-for="item in reconmmend.findmusic.reconmmend.recommendImageList" :key="item.id" :songlist="JSON.stringify(item.songList)" style="float:left;position:relative">
             	<img class="image" :src="item.src" alt="">
             	<span class="type" :style="{backgroundColor:item.color}">{{item.type}}</span>
             </swiper-slide>  
@@ -132,6 +132,7 @@
 			color:#666
 			text-decoration:none
 		.swiper-container
+			position:relative
 			.swiper-wrapper
 				.swiper-slide
 					.image
@@ -148,9 +149,20 @@
 						font-weight:400
 						border-radius:12px 0 0 12px
 			.swiper-pagination
+				position:absolute
+				bottom:10px
+				left:50%
+				transform:translate(-50%, 0)
+				
 				.swiper-pagination-bullet
 					margin:0 4px
+					width:8px
+					height:8px
+					display:inline-block
+					background:#aaa
+					border-radius: 4px
 					&.swiper-pagination-bullet-active
+						width:14px
 						background:$primarycolor!important
 		.recommend-type
 			width:100%
