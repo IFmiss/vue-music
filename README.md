@@ -1,5 +1,6 @@
 ![](https://img.shields.io/badge/vue-2.2.6-4EDD96.svg) ![](https://img.shields.io/badge/stylus-0.54.5-F6B386.svg)  ![](https://img.shields.io/badge/vue_awesome_swiper-2.5.4-FD9494.svg) ![](https://img.shields.io/badge/vuex-2.3.1-69D3E3.svg)  ![](https://img.shields.io/badge/axios-0.16.2-56DD7F.svg) 
 
+### 年后准备重写这个Vue-music的内容，暂定是网易云音乐的API，不再使用本地的数据，希望能一起互相学习
 
 ### 10 月 23 日更新
 ### 发现在ios 移动端体验有问题 修改了部分效果，至于音乐播放详情页（CD转动 播放页）的体验问题 （拖动卡顿，歌词效果不好等等） 我在我vue-website  有解决方法 附上对应的代码地址 和 体验效果
