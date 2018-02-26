@@ -26,7 +26,7 @@ PC浏览地址 : http://www.daiwei.org/vue-music.html
 
 ###### 本人也是一枚小白,自学Vue,这个播放器有什么不足之处,希望各位可以提出意见建议,我们共同学习进步.学的不错的话  可以Star一下哦!!!
 
-#### 最近在更新个人网站,vue重新打造的个人网站2.0  搭配主页，状态，音乐，关于，每日笑话，天气，设置等，注重数据交互以及用户体验  地址： https://github.com/IFmiss/vue-website    在线预览地址： http://www.daiwei.org/new.html
+#### 最近在更新个人网站,vue重新打造的个人网站2.0  搭配主页，状态，音乐，关于，每日笑话，天气，设置等，注重数据交互以及用户体验  地址： https://github.com/IFmiss/vue-website    在线预览地址： http://www.daiwei.org
 
 项目下载到本地之后
 <pre>
