@@ -70,6 +70,18 @@
 	display:none;
 }
 
+.clickfull{
+	position: relative;
+	&:after{
+		content: '';
+		position: absolute;
+		top: -5px;
+		left: -5px;
+		bottom: -5px;
+		right: -5px;
+	}
+}
+
 
 @for $i from 0 through 30 {
 	.padding-top-#{$i}{

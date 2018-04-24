@@ -16,26 +16,26 @@ export default new Router({
       redirect: '/find',
       component: musicIndex,
       children: [
-      	{
-      		path: '/find',
-      		name: 'find',
-      		component: Find,
-      	},
-      	{
-      		path: '/singer',
-      		name: 'singer',
-      		component: Singer,
-      	},
-      	{
-      		path: '/rank',
-      		name: 'rank',
-      		component: Rank,
-      	},
-      	{
-      		path: '/mine',
-      		name: 'mine',
-      		component: Mine,
-      	}
+        {
+          path: '/find',
+          name: 'find',
+          component: Find
+        },
+        {
+          path: '/singer',
+          name: 'singer',
+          component: Singer
+        },
+        {
+          path: '/rank',
+          name: 'rank',
+          component: Rank
+        },
+        {
+          path: '/mine',
+          name: 'mine',
+          component: Mine
+        }
       ]
     }
   ]

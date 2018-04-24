@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import searchhead from 'components/common/searchhead/searchhead'
 export default {
-  name: 'find'
+  name: 'find',
+  components: {
+  	searchhead
+  }
 }
 </script>
 
