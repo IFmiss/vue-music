@@ -23,9 +23,14 @@ export default {
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+  .musicIndex{
+    @include fixedfull();
+  }
   .mainContent{
     @include fixedfull();
-    bottom: $bottom_nav_h;
-    background:red;
+    z-index: 10;
+    padding-bottom: $bottom_nav_h;
+    @include box-sizing(border-box);
+    background:$m_color_primary;
   }
 </style>

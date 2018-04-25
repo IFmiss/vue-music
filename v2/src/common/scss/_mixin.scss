@@ -1,4 +1,4 @@
-//移动端通用样式  1rem 相当于100px算的  也就是  宽度 / 7.5的比例
+//移动端通用样式  1rem 相当于100px算的  也就是  宽度 / 100的比例
 @function px75rem($px){
 	$rem : 100px;
 	@return ($px * 1px / $rem) + rem;
@@ -102,6 +102,28 @@
 		/* 和 header 一样，footer 也采用固定高度*/
 		/* 0 flex-grow, 0 flex-shrink, auto flex-basis */
 		flex: 0 0 auto;
+	}
+}
+
+@mixin blur ($px) {
+	/* 若浏览器支持 backdrop-filter，则透明度为 50%，并启用毛玻璃 */
+	@supports (-webkit-backdrop-filter: blur($px)) or (backdrop-filter: blur($px)) {
+	    -webkit-backdrop-filter: blur($px);
+	    backdrop-filter: blur($px);
+	}
+
+	/* 若浏览器器不支持，则使用 MaterialDesign 的风格 */
+	@supports not ((-webkit-backdrop-filter: blur($px)) or (backdrop-filter: blur($px))) {
+	    &:before{
+	    	content: '';
+	    	position: absolute;
+	    	top:0;
+	    	left:0;
+	    	right:0;
+	    	bottom:0;
+	    	z-index: -1;
+			background: rgba(255,255,255,0.6);
+	    }
 	}
 }
 
