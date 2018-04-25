@@ -1,7 +1,7 @@
 <template>
   <div class="find">
     <searchhead></searchhead>
-    <scroll :data="musicInfo" class="find_content">
+    <scroll :data="musicInfo" class="find_content" :pullUpLoad="true" :pullingUp="pullingUp">
         <div class="content">
           <div class="scroll_info">
             <img src="" alt="">
@@ -33,6 +33,34 @@
             </li>
           </div>
         </div>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p><p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p><p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+
+        <p>11111</p>
+        <p>11111</p><p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
     </scroll>
   </div>
 </template>
@@ -46,6 +74,11 @@ export default {
     return {
       musicInfo: []
     }
+  },
+  methods: {
+	pullingUp () {
+		alert(1)
+	}
   },
   components: {
     searchhead,

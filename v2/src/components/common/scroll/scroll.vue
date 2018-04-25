@@ -16,7 +16,7 @@
 				default: true
 			},
 			data: null,
-			needPullUp: false,
+			pullUpLoad: false,
 			mouseWheel: {
 				type: Object,
 				default: function () {
@@ -37,7 +37,7 @@
 					probeType: this.probeType,
 					click: this.click,
 					pullUpLoad: this.needPullUp,
-					mouseWheel: this.needMouseWheel
+					mouseWheel: this.mouseWheel
 				})
 				this._initPullUpLoad()
 				this.finishPullUp()
