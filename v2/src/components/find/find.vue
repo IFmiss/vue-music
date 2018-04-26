@@ -33,6 +33,7 @@
                 <span class="nav_name">排行榜</span>
               </li>
             </div>
+            <div class="hr-gray"></div>
             <div class="sheet_content">
               <sheetlist :data="musicInfo"></sheetlist>
             </div>
@@ -145,6 +146,8 @@ export default {
         }
       }
       .sheet_content{
+      	padding: px75rem(15);
+      	@include box-sizing(border-box);
       }
     }
   }

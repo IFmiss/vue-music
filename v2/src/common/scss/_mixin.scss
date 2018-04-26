@@ -168,10 +168,10 @@
 		margin: 0 auto;
 	}
 	@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
-		@include translate(0, 1 / 2 * 100'px');
+		@include scaleY(1 / 2);
 	}
 	@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
-		@include translate(0, 1 / 2 * 100'px');
+		@include scaleY(1 / 3);
 	}
 }
 

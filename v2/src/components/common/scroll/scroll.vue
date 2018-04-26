@@ -16,7 +16,7 @@
 				default: true
 			},
 			data: null,
-			pullUpLoad: false,
+			needPullUp: false,
 			mouseWheel: {
 				type: Object,
 				default: function () {
@@ -33,11 +33,20 @@
 				if (!this.$refs.wrapper) {
 					return
 				}
+				console.log(this.mouseWheel)
 				this.scroll = new BScroll(this.$refs.wrapper, {
 					probeType: this.probeType,
 					click: this.click,
+					scrollbar: {
+						fade: true,
+						interactive: false // 1.8.0 新增
+					},
 					pullUpLoad: this.needPullUp,
-					mouseWheel: this.mouseWheel
+					mouseWheel: {
+						speed: 20,
+						invert: false,
+						easeTime: 300
+					}
 				})
 				this._initPullUpLoad()
 				this.finishPullUp()

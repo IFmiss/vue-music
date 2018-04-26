@@ -10,7 +10,7 @@
           <div class="img-top" :data-name="item.name" :data-index="index" :data-id="item.id" :style="{backgroundImage : 'url(' + item.coverImgUrl + ')', backgroundSize:'cover', backgroundPosition:'center'}">
             <div class="img-detail">
               <i class="icon-erji"></i>
-              <span class="count">{{item.playCount}}</span>
+              <span class="count">{{item.playCount > 10000 ? Math.floor(item.playCount / 10000) + '万' : item.playCount}}</span>
             </div>
           </div>
         </div>
@@ -38,10 +38,11 @@
       i{
         vertical-align:center;
       }
-      h3{
+      .name{
         margin: px75rem(20) 0;
         @include box-sizing(border-box);
-        padding: 0 px75rem(5)
+        padding: 0 px75rem(5);
+        font-size: 18px;
       }
     }
     .content{
@@ -59,6 +60,7 @@
           .img-top{
             width: 100%;
             height:0;
+            background-color: #333;
             padding-top: 100%;
             @include border-radius(4px);
             .img-detail{

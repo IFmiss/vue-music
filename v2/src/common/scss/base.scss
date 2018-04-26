@@ -18,3 +18,8 @@ $m_text_gray_s: #a1a1a1;
 
 // 各部分重要css变量
 $searchhead_h: px75rem(80);
+
+
+
+// hr
+@include hr ($m_text_gray_s, 'gray');

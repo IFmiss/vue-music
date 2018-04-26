@@ -1,7 +1,9 @@
 <template>
   <div class="musicIndex">
     <div class="mainContent">
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </div>
     <bottomnav></bottomnav>
   </div>
