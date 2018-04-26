@@ -21,6 +21,13 @@
 	word-wrap: break-word;
 }
 
+@mixin ellipsis () {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	word-wrap: break-word;
+	white-space: nowrap;
+}
+
 @mixin textoneline ($height: auto) {
 	height: $height;
 	@if($height == auto) {
