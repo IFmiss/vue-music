@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "lodash": "^4.17.10",
     "vue": "^2.2.6",
     "vue-awesome-swiper": "^v2.6.7",
     "vue-axios": "^2.0.2",
