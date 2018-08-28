@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
