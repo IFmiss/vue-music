@@ -1,8 +1,8 @@
 // 主页 只是个包含底部菜单以及模块内容
 <template lang="pug">
   .vm-main
-    router-view(class="model-view")
     Nav
+    router-view(class="model-view")
 </template>
 <script>
 import Nav from '@/components/nav'
@@ -18,7 +18,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$NAV_H: p2r(0.8rem);
+$NAV_H: p2r(0.9rem);
 .vm-main{
   position: relative;
   width: 100%;

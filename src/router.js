@@ -4,7 +4,7 @@ import Router from 'vue-router'
 // this generates a separate chunk (login.[hash].js) for this route
 // which is lazy-loaded when the route is visited.
 const Main = () => import(/* webpackChunkName: "login" */ './views/Main.vue')
-const Find = () => import(/* webpackChunkName: "login" */ './views/Main.vue')
+const Find = () => import(/* webpackChunkName: "login" */ './views/find/')
 const Login = () => import(/* webpackChunkName: "login" */ './views/login/')
 
 Vue.use(Router)
@@ -15,11 +15,16 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/main'
+    },
+    {
+      path: '/main',
       name: 'home',
+      redirect: '/main/find',
       component: Main,
       children: [
         {
-          path: '/find',
+          path: '/main/find',
           name: 'find',
           component: Find
         }
