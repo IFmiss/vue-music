@@ -5,6 +5,10 @@ import store from './store'
 import './registerServiceWorker'
 import 'amfe-flexible'
 
+import Dutils from 'd-js-utils'
+
+Vue.prototype.$dutils = Dutils
+
 Vue.config.productionTip = false
 
 new Vue({

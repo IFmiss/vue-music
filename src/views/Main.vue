@@ -6,6 +6,8 @@
 </template>
 <script>
 import Nav from '@/components/nav'
+import http from '@/utils/http.js'
+import API from '@/api'
 export default {
   name: 'home',
   data () {
@@ -14,6 +16,15 @@ export default {
   },
   components: {
     Nav
+  },
+  created () {
+    this.$dutils.utils.console(' this is vue-music 2.0 ', {
+      isMax: false,
+      colors: ['#d299c2', '#fef9d7']
+    })
+    http.get(`${API.MUSIC_SEARCH}?keywords=海阔天空`).then(res => {
+      console.log(res)
+    })
   }
 }
 </script>
