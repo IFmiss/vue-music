@@ -4,8 +4,13 @@ import Router from 'vue-router'
 // this generates a separate chunk (login.[hash].js) for this route
 // which is lazy-loaded when the route is visited.
 const Main = () => import('./views/Main.vue')
-const Find = () => import('./views/find/')
+
+// 登陆模块
 const Login = () => import('./views/login/')
+const LoginSub = () => import('./views/login/sublogin/')
+
+// 首页五大类
+const Find = () => import('./views/find/')
 const Account = () => import('./views/account/')
 const Video = () => import('./views/video/')
 const Mine = () => import('./views/mine/')
@@ -57,7 +62,14 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      children: [
+        {
+          path: '/login/:type',
+          name: 'loginsub',
+          component: LoginSub
+        }
+      ]
     }
   ]
 })

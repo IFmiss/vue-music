@@ -1,11 +1,22 @@
 $text_color: #2c3e50;
 
+// $primary_color: rgb(203, 39, 40);
+
+$primary_color: rgb(203, 40, 41);
+
 // 字体大小设置
 // 发现，4个按钮，歌单推荐，底部的文字大小
-$f_auto: p2r(0.36rem);
+$f_auto_s: p2r(0.36rem);
+
+// 登陆按钮文字
+$f_auto_l: p2r(0.34rem);
 
 // 底部菜单按钮下的小文字，最小的类型
 $f_samll_s: p2r(0.2rem);
 
 // 歌单列表名字下方的描述信息
 $f_samll_m: p2r(0.34rem);
+
+
+// ======================= 高度宽度
+$auto_h: p2r(1rem);
