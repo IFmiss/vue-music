@@ -8,7 +8,7 @@ $primary_color: rgb(203, 40, 41);
 // 发现，4个按钮，歌单推荐，底部的文字大小
 $f_auto_s: p2r(0.36rem);
 
-// 登陆按钮文字
+// 登陆按钮文字 / 头部title文字大小
 $f_auto_l: p2r(0.34rem);
 
 // 底部菜单按钮下的小文字，最小的类型
@@ -20,3 +20,6 @@ $f_samll_m: p2r(0.34rem);
 
 // ======================= 高度宽度
 $auto_h: p2r(1rem);
+
+$auto_padding_l_r: p2r(0.15rem);
+$auto_padding_t_b: p2r(0.15rem);

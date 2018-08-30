@@ -22,7 +22,8 @@
 @mixin els {
   overflow:hidden;
   text-overflow:ellipsis;
-  word-wrap: break-word;
+	word-wrap: break-word;
+	white-space: nowrap;
 }
 
 // amfe-flexible 定义宽度10rem是整个屏幕的宽度，是按照750 / 7.5算的，p2r是一种以宽度为7.5rem计算的方式
