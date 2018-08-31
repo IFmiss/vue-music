@@ -11,7 +11,7 @@ import Msg from 'vue-message'
 import Dutils from 'd-js-utils'
 
 Vue.use(Msg, {
-  text: 'Hello world', duration: 3000, background: 'rgba(7,17,27,0.6)'
+  text: 'Hello world', duration: 3000, background: 'rgba(7,8,9,0.8)'
 })
 Vue.prototype.$dutils = Dutils
 
@@ -22,4 +22,4 @@ let vueProject = new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
-console.log(vueProject)
+export {vueProject}

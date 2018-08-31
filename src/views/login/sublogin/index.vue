@@ -31,17 +31,19 @@ export default {
     Commonpage
   },
   methods: {
-    // 点击 校验
+    /**
+     * 点击 校验
+     */
     subLoginIn () {
       if ((this.phone || this.email) && this.password) {
         // 手机登录
         if (this.type === 'phone' && this.phone) {
-          if (this.$dutils.exp.isPhoneNum(this.phone)) this.loginPhone()
+          if (this.$dutils.exp.isPhoneNum(this.phone)) this.login(this.type)
           else this.$msg('手机格式不正确')
         }
         // 邮箱登录
         if (this.type === 'email' && this.email) {
-          if (this.$dutils.exp.isEmail(this.email)) this.loginEmail()
+          if (this.$dutils.exp.isEmail(this.email)) this.login(this.type)
           else this.$msg('邮箱格式不正确')
         }
         return
@@ -49,26 +51,23 @@ export default {
       this.$msg('请输入完成的内容')
     },
 
-    // 请求接口  手机登录
-    async loginPhone () {
+    /**
+     *  请求接口  手机邮箱登录
+     */
+    async login (type) {
       let data = {
-        type: 'phone',
-        phone: this.phone,
+        type: type,
         password: this.password
       }
+      if (type === 'phone') data.phone = this.phone
+      if (type === 'email') data.email = this.email
       let res = await this.$store.dispatch('USER_INFO_SETTER', data)
-      console.log(res)
-    },
-
-    // 请求接口  邮箱登录
-    async loginEmail () {
-      let data = {
-        type: 'email',
-        email: this.email,
-        password: this.password
+      if (res) {
+        this.$msg('登录成功')
+        setTimeout(() => {
+          this.$router.push('/main')
+        }, 1500)
       }
-      let res = await this.$store.dispatch('USER_INFO_SETTER', data)
-      console.log(res)
     }
   },
   created () {
