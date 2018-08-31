@@ -1,3 +1,7 @@
+const path = require('path')
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 // vue 的配置
 module.exports = {
   // 部署应用时的基本 URL。用法和 webpack 本身的 output.publicPath 一致，但是 Vue CLI 在一些其他地方也需要用到这个值，所以请始终使用 baseUrl 而不要直接修改 webpack 的 output.publicPath
@@ -16,7 +20,20 @@ module.exports = {
       }
     }
   },
-  // devServer: {
-  //   proxy: '',
-  // }
+  devServer: {
+    proxy: '',
+    port: '1111'
+  },
+  chainWebpack: (config) => {
+    // 配置alias
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('assets', resolve('src/assets'))
+      .set('components', resolve('src/components'))
+      .set('config', resolve('src/layout'))
+      .set('style', resolve('src/style'))
+      .set('utils', resolve('src/utils'))
+      .set('views', resolve('src/views'))
+      .set('store', resolve('src/store'))
+  }
 }

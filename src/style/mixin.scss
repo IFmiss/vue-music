@@ -10,7 +10,7 @@
 }
 
 // fixed布局铺面全屏
-@mixin fixedfull() {
+@mixin fixedfull {
 	position: fixed;
 	right: 0;
 	top: 0;
@@ -26,8 +26,44 @@
 	white-space: nowrap;
 }
 
+// 1像素的问题
+@mixin border-1px ($color: #eee) {
+	&:after {
+		height: 1px;
+		content: '';
+		width: 100%;
+		border-top: 1px solid $color;
+		position: absolute;
+		bottom: -1px;
+		right: 0;
+	}
+	@media (-webkit-min-device-pixel-ratio: 3) {
+		.border:after {
+			transform: scaleY(0.3333);
+			-webkit-transform: scaleY(0.3333);
+		}
+	}
+	@media (-webkit-min-device-pixel-ratio: 2) {
+		.border:after {
+			transform: scaleY(0.5);
+			-webkit-transform: scaleY(0.5);
+		}
+	}
+	@media (-webkit-min-device-pixel-ratio: 1) {
+		.border:after {
+			transform: scaleY(1);
+			-webkit-transform: scaleY(1);
+		}
+	}
+}
+
 // amfe-flexible 定义宽度10rem是整个屏幕的宽度，是按照750 / 7.5算的，p2r是一种以宽度为7.5rem计算的方式
 // 虽然实际上会被转换，但是在编写和计算宽度的时候很方便
 @function p2r($rem) {
   @return $rem / 7.5 * 10
+};
+
+// 渐变的效果
+@function lg($direction: 90deg, $colors...) {
+	@return linear-gradient($direction, $colors);
 }

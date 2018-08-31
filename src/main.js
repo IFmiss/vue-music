@@ -4,9 +4,15 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import 'amfe-flexible'
+// 图标字体
+import '@/assets/font-icon/style.css'
 
+import Msg from 'vue-message'
 import Dutils from 'd-js-utils'
 
+Vue.use(Msg, {
+  text: 'Hello world', duration: 3000, background: 'rgba(7,17,27,0.6)'
+})
 Vue.prototype.$dutils = Dutils
 
 Vue.config.productionTip = false

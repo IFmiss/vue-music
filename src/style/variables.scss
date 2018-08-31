@@ -4,9 +4,24 @@ $text_color: #2c3e50;
 
 $primary_color: rgb(203, 40, 41);
 
+// 浅色主色
+$primary_color_s: #e75e4e;
+
+// 深色主色
+$primary_color_d: #C2473B;
+
+// 按钮通用色
+$icon_color: #aaa;
+
+// 边框通用色
+$border_color: #eee;
+
+// 输入框提示颜色
+$placeholder_color: #ccc;
+
 // 字体大小设置
-// 发现，4个按钮，歌单推荐，底部的文字大小
-$f_auto_s: p2r(0.36rem);
+// 登录input输入框文字大小
+$f_auto_s: p2r(0.32rem);
 
 // 登陆按钮文字 / 头部title文字大小
 $f_auto_l: p2r(0.34rem);

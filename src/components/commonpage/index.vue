@@ -2,7 +2,7 @@
   .common-page
     .auto-header
       .left
-        i.icon-back
+        i.icon-arrow-left(@click="back")
       .title 你好
       .right
         slot(name="header")
@@ -11,6 +11,11 @@
 </template>
 <script>
 export default {
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -31,7 +36,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 $auto_padding_l_r;
+    // padding: 0 $auto_padding_l_r;
     box-sizing: border-box;
     .left,.right{
       flex: p2r(1.8rem);
