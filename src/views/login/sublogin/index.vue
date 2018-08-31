@@ -5,11 +5,11 @@
       .content-slot(slot="content")
         .text-input
           i.icon-mobile
-          input(v-if="type==='phone'" type="number" placeholder="手机号" v-modle="phone")
-          input(v-if="type==='email'" type="text" placeholder="邮箱" v-modle="email")
+          input(v-if="type==='phone'" type="number" placeholder="手机号" v-model="phone")
+          input(v-if="type==='email'" type="text" placeholder="邮箱" v-model="email")
         .text-input
           i.icon-mobile
-          input(type="password" placeholder="密码" v-modle="password")
+          input(type="password" placeholder="密码" v-model="password")
         input.login-in(type="button" @click="subLoginIn" value="登录")
 </template>
 <script>
@@ -22,9 +22,9 @@ export default {
       // 手机号
       phone: '',
       // 邮箱
-      email: '',
+      email: '13651971940@163.com',
       // 密码
-      password: ''
+      password: 'daiwei19940320'
     }
   },
   components: {
@@ -50,13 +50,25 @@ export default {
     },
 
     // 请求接口  手机登录
-    loginPhone () {
-
+    async loginPhone () {
+      let data = {
+        type: 'phone',
+        phone: this.phone,
+        password: this.password
+      }
+      let res = await this.$store.dispatch('USER_INFO_SETTER', data)
+      console.log(res)
     },
 
     // 请求接口  邮箱登录
-    loginEmail () {
-
+    async loginEmail () {
+      let data = {
+        type: 'email',
+        email: this.email,
+        password: this.password
+      }
+      let res = await this.$store.dispatch('USER_INFO_SETTER', data)
+      console.log(res)
     }
   },
   created () {

@@ -1,0 +1,4 @@
+// 登录
+export const USER_INFO_RES = 'USER_INFO_RES'
+export const USER_INFO_GETTER = 'USER_INFO_GETTER'
+export const USER_INFO_SETTER = 'USER_INFO_SETTER'
