@@ -27,30 +27,40 @@
 }
 
 // 1像素的问题
-@mixin border-1px ($color: #eee) {
+@mixin border-1px ($color: #eee, $type: bottom) {
 	&:after {
 		height: 1px;
 		content: '';
 		width: 100%;
 		border-top: 1px solid $color;
 		position: absolute;
-		bottom: -1px;
+		left: 0;
 		right: 0;
 	}
+	@if ($type == top) {
+		&:after {
+			top: -1px;
+		}
+	} @else {
+		&::after{
+			bottom: -1px;
+		}
+	}
+
 	@media (-webkit-min-device-pixel-ratio: 3) {
-		.border:after {
+		&:after {
 			transform: scaleY(0.3333);
 			-webkit-transform: scaleY(0.3333);
 		}
 	}
 	@media (-webkit-min-device-pixel-ratio: 2) {
-		.border:after {
+		&:after {
 			transform: scaleY(0.5);
 			-webkit-transform: scaleY(0.5);
 		}
 	}
 	@media (-webkit-min-device-pixel-ratio: 1) {
-		.border:after {
+		&:after {
 			transform: scaleY(1);
 			-webkit-transform: scaleY(1);
 		}

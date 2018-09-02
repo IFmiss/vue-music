@@ -2,19 +2,19 @@
 <template lang="pug">
   .cp-nav
     router-link(to="/main/find" class="model-router")
-      i
+      i.icon-menu
       span 发现
     router-link(to="/main/video" class="model-router")
-      i
+      i.icon-office
       span 视频
     router-link(to="/main/mine" class="model-router")
-      i
+      i.icon-pencil
       span 我的
     router-link(to="/main/firends" class="model-router")
-      i
+      i.icon-quill
       span 朋友
     router-link(to="/main/account" class="model-router")
-      i
+      i.icon-droplet
       span 账号
 </template>
 <script>
@@ -26,6 +26,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  @include border-1px(#eee, top);
   .model-router{
     flex: 0 0 20%;
     height: 100%;
@@ -34,13 +35,19 @@ export default {
     align-items: center;
     justify-content: center;
     i{
-      width: p2r(0.5rem);
-      height: p2r(0.5rem);
+      font-size: p2r(0.4rem);
+      color: $icon_color_nav;
     }
     span{
       font-size: $f_samll_s;
       line-height: 1;
-      margin-top: p2r(0.05rem);
+      margin-top: p2r(0.1rem);
+      color: $icon_color_nav;
+    }
+    &.router-link-active{
+      i,span{
+        color: $primary_color;
+      }
     }
   }
 }
