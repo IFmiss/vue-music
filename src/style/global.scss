@@ -6,6 +6,19 @@ a{
   }
 }
 
+// 让按钮更舒服的点击
+.easy-click{
+  position: relative;
+  &::after{
+    position: absolute;
+    content: '';
+    top: - p2r(0.2rem);
+    left: - p2r(0.2rem);
+    right: - p2r(0.2rem);
+    bottom: - p2r(0.2rem);
+  }
+}
+
 body {
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }

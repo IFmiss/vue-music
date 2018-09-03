@@ -26,7 +26,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  @include border-1px(#eee, top);
+  @include border-1px(#aaa, top);
   .model-router{
     flex: 0 0 20%;
     height: 100%;

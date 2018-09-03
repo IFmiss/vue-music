@@ -32,18 +32,18 @@
 		height: 1px;
 		content: '';
 		width: 100%;
-		border-top: 1px solid $color;
+		background: $color;
 		position: absolute;
 		left: 0;
 		right: 0;
 	}
 	@if ($type == top) {
 		&:after {
-			top: -1px;
+			top: 0;
 		}
 	} @else {
 		&::after{
-			bottom: -1px;
+			bottom: 0;
 		}
 	}
 
@@ -51,12 +51,14 @@
 		&:after {
 			transform: scaleY(0.3333);
 			-webkit-transform: scaleY(0.3333);
+			background: red;
 		}
 	}
 	@media (-webkit-min-device-pixel-ratio: 2) {
 		&:after {
 			transform: scaleY(0.5);
 			-webkit-transform: scaleY(0.5);
+			background: blue;
 		}
 	}
 	@media (-webkit-min-device-pixel-ratio: 1) {

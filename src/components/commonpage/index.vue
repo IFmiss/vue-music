@@ -2,7 +2,7 @@
   .common-page
     .auto-header
       .left
-        i.icon-arrow-left(@click="back")
+        i.icon-menu(@click="back")
       .title 你好
       .right
         slot(name="header")
@@ -39,7 +39,7 @@ export default {
     // padding: 0 $auto_padding_l_r;
     box-sizing: border-box;
     .left,.right{
-      flex: p2r(1.8rem);
+      flex: 0 0 p2r(1.8rem);
       display: flex;
       align-items: center;
       i, span{
