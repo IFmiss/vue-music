@@ -13,6 +13,14 @@
         .fill-content
           .user-tip
             .tip-content
+              .blur
+              .content
+                .detail
+                  img(src="http://www.daiwei.org/vue/bg/657952152722629515.jpg")
+                  span.name 未曾遗忘的青春
+                  .tip
+                .vip
+                  span.btn 会员中心
 </template>
 <script>
 import Scroll from 'components/scroll/'
@@ -86,7 +94,7 @@ export default {
           bottom: 0;
         }
         .tip-content{
-          width: p2r(7.1rem);
+          width: p2r(7.3rem);
           height: p2r(1.3rem);
           background: rgba(243,243,243,0.8);
           position: absolute;
@@ -97,6 +105,65 @@ export default {
           z-index: 1;
           border-radius: p2r(0.12rem);
           -webkit-backdrop-filter: blur(15px);
+          overflow: hidden;
+          .blur{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            filter: blur(15px);
+            background: #fff;
+          }
+          .content{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding: p2r(0.2rem);
+            box-sizing: border-box;
+            .detail{
+              flex: 1 1 auto;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              img{
+                width: p2r(1rem);
+                flex:0 0 p2r(1rem);
+                height: p2r(1rem);
+                border-radius: 50%;
+              }
+              .name{
+                flex:1 1 auto;
+                @include els();
+                font-size: $f_auto_l;
+                text-align: left;
+                margin:0 p2r(0.15rem);
+              }
+              .tip{
+                width: p2r(0.4rem);
+                flex: 0 0 p2r(0.4rem);
+                height: auto;
+                background: red;
+              }
+            }
+            .vip{
+              flex: 0 0 p2r(1.2rem);
+              overflow: hidden;
+              font-size: $f_samll_m;
+              padding: p2r(0.05rem) p2r(0.1rem);
+              color: $primary_color;
+              border: 1px solid $primary_color;
+              border-radius: p2r($f_samll_m);
+            }
+          }
         }
       }
     }

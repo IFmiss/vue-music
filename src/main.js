@@ -14,6 +14,8 @@ Vue.use(Msg, {
   text: 'Hello world', duration: 3000, background: 'rgba(7,8,9,0.8)'
 })
 Vue.prototype.$dutils = Dutils
+// 手机横屏提示
+Vue.prototype.$dutils.device.checkLayoutOrientation()
 
 Vue.config.productionTip = false
 
