@@ -26,7 +26,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  @include border-1px(#aaa, top);
+  @include border-1px(#a1a1a1, top);
   .model-router{
     flex: 0 0 20%;
     height: 100%;
@@ -39,7 +39,7 @@ export default {
       color: $icon_color_nav;
     }
     span{
-      font-size: $f_samll_s;
+      font-size: $f_small_s;
       line-height: 1;
       margin-top: p2r(0.1rem);
       color: $icon_color_nav;

@@ -46,25 +46,22 @@
 			bottom: 0;
 		}
 	}
-
-	@media (-webkit-min-device-pixel-ratio: 3) {
+	@media (-webkit-min-device-pixel-ratio: 1) {
 		&:after {
-			transform: scaleY(0.3333);
-			-webkit-transform: scaleY(0.3333);
-			background: red;
+			transform: scaleY(1);
+			-webkit-transform: scaleY(1);
 		}
 	}
 	@media (-webkit-min-device-pixel-ratio: 2) {
 		&:after {
 			transform: scaleY(0.5);
 			-webkit-transform: scaleY(0.5);
-			background: blue;
 		}
 	}
-	@media (-webkit-min-device-pixel-ratio: 1) {
+	@media (-webkit-min-device-pixel-ratio: 3) {
 		&:after {
-			transform: scaleY(1);
-			-webkit-transform: scaleY(1);
+			transform: scaleY(0.3333);
+			-webkit-transform: scaleY(0.3333);
 		}
 	}
 }
