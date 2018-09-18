@@ -46,15 +46,18 @@
                 .list-name 我的收藏
                 .list-count 333
                 i.icon-menu
+          MineSheet()
 </template>
 <script>
+import MineSheet from 'components/minesheet/'
 import Scroll from 'components/scroll/'
 export default {
   created () {
     // alert(1)
   },
   components: {
-    Scroll
+    Scroll,
+    MineSheet
   },
   computed: {
     isIos () {
