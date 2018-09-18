@@ -17,11 +17,17 @@ export default {
     background: {
       type: String,
       default: '#fff'
+    },
+    click: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
     initScroll () {
-      this.scroll = new BScroll(this.$refs.wrapper)
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        click: this.click
+      })
     }
   },
   mounted () {

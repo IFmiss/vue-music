@@ -61,7 +61,7 @@ export default {
       }
       if (type === 'phone') data.phone = this.phone
       if (type === 'email') data.email = this.email
-      let res = await this.$store.dispatch('USER_INFO_SETTER', data)
+      let res = await this.$store.dispatch('USER_LOGIN', data)
       if (res) {
         this.$msg('登录成功')
         setTimeout(() => {

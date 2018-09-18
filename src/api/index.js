@@ -12,6 +12,9 @@ const API = {
   // 调用此接口,可获取登录状态
   USER_LOGIN_STATUS: `${MUSIC_API}/login/status`,
   // 音乐搜索
-  MUSIC_SEARCH: `${MUSIC_API}/search`
+  MUSIC_SEARCH: `${MUSIC_API}/search`,
+
+  // 获取用户信息，歌单，收藏，mv，dj数量
+  MINE_AUTO_INFO: `${MUSIC_API}/user/subcount`
 }
 export default API

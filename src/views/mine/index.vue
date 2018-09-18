@@ -51,10 +51,8 @@
 <script>
 import MineSheet from 'components/minesheet/'
 import Scroll from 'components/scroll/'
+import { mapState } from 'vuex'
 export default {
-  created () {
-    // alert(1)
-  },
   components: {
     Scroll,
     MineSheet
@@ -62,7 +60,20 @@ export default {
   computed: {
     isIos () {
       return this.$dutils.device.isIOS()
+    },
+    ...mapState([
+      'USER_PROFILE_RES'
+    ])
+  },
+  methods: {
+    async initUserInfo () {
+      alert(this.USER_PROFILE_RES)
+      let res = await this.$store.dispatch('MINE_AUTO_INFO', this.USER_PROFILE_RES)
+      console.log(res)
     }
+  },
+  created () {
+    this.initUserInfo()
   }
 }
 </script>

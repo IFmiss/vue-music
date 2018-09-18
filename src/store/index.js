@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import User from './modules/user/index.js'
+import Login from './modules/login'
+import Mine from './modules/mine'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
   plugins: [createLogger()],
   modules: {
-    user: User
+    Login,
+    Mine
   }
 })
 export default store

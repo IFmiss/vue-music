@@ -21,7 +21,8 @@ axios.interceptors.response.use(res => {
   if (res.data.code === 200) {
     return res
   }
-  vueProject.$msg({text: res.data.msg, background: '#FF3366'})
+  let msg = res.data.msg ? res.data.msg : '数据请求报错'
+  vueProject.$msg({text: msg, background: '#FF3366'})
   return Promise.reject(res)
 }, error => {
   return Promise.reject(error)
