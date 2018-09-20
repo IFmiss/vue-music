@@ -57,18 +57,15 @@ export default {
     Scroll,
     MineSheet
   },
-  computed: {
+  computed: mapState({
     isIos () {
       return this.$dutils.device.isIOS()
-    },
-    ...mapState([
-      'USER_PROFILE_RES'
-    ])
-  },
+    }
+  }),
   methods: {
     async initUserInfo () {
-      alert(this.USER_PROFILE_RES)
-      let res = await this.$store.dispatch('MINE_AUTO_INFO', this.USER_PROFILE_RES)
+      console.log(this.$store.getters.USER_PROFILE_GETTER)
+      let res = await this.$store.dispatch('MINE_AUTO_INFO', this.$store.getters.USER_PROFILE_GETTER.userId)
       console.log(res)
     }
   },
