@@ -15,6 +15,6 @@ const API = {
   MUSIC_SEARCH: `${MUSIC_API}/search`,
 
   // 获取用户信息，歌单，收藏，mv，dj数量
-  MINE_AUTO_INFO: `${MUSIC_API}/user/detail`
+  MINE_AUTO_INFO: `${MUSIC_API}/user/subcount`
 }
 export default API

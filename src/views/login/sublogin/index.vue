@@ -64,6 +64,7 @@ export default {
       let res = await this.$store.dispatch('USER_LOGIN', data)
       if (res) {
         this.$msg('登录成功')
+        console.log(res)
         setTimeout(() => {
           this.$router.push('/main')
         }, 1500)

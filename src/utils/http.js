@@ -1,14 +1,14 @@
 import {vueProject} from '@/main.js'
 import axios from 'axios'
-axios.defaults = {
-  ...axios.defaults,
-  timeout: 15000
-}
+let http = axios.create({
+  timeout: 15000,
+  withCredentials: true
+})
 
 /**
  * 请求拦截
  */
-axios.interceptors.request.use(function (config) {
+http.interceptors.request.use(function (config) {
   return config
 }, function (error) {
   return Promise.reject(error)
@@ -17,7 +17,7 @@ axios.interceptors.request.use(function (config) {
 /**
  * 相应拦截
  */
-axios.interceptors.response.use(res => {
+http.interceptors.response.use(res => {
   if (res.data.code === 200) {
     return res
   }
@@ -27,4 +27,4 @@ axios.interceptors.response.use(res => {
 }, error => {
   return Promise.reject(error)
 })
-export default axios
+export default http

@@ -63,6 +63,7 @@ export default {
     }
   }),
   methods: {
+    // 初始化用户数据
     async initUserInfo () {
       console.log(this.$store.getters.USER_PROFILE_GETTER)
       let res = await this.$store.dispatch('MINE_AUTO_INFO', this.$store.getters.USER_PROFILE_GETTER.userId)
