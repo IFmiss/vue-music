@@ -26,7 +26,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$NAV_H: p2r(0.9rem);
 .vm-main{
   position: relative;
   width: 100%;

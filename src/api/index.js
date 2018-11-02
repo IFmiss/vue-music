@@ -11,6 +11,7 @@ const API = {
   USER_LOGIN_REFRESH: `${MUSIC_API}/login/refresh`,
   // 调用此接口,可获取登录状态
   USER_LOGIN_STATUS: `${MUSIC_API}/login/status`,
+
   // 音乐搜索
   MUSIC_SEARCH: `${MUSIC_API}/search`,
 

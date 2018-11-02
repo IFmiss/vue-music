@@ -1,5 +1,9 @@
 $text_color: #2c3e50;
 
+$text_active: #fff;
+
+$text_noactive: #e1e1e1;
+
 // $primary_color: rgb(203, 39, 40);
 
 $primary_color: rgb(203, 40, 41);
@@ -17,6 +21,9 @@ $icon_color_nav: #c1c1c1;
 
 // 边框通用色
 $border_color: #eee;
+
+// 白色图标
+$icon-f: #fff;
 
 // 输入框提示颜色
 $placeholder_color: #ccc;
@@ -41,6 +48,17 @@ $f_small_l: p2r(0.28rem);
 
 
 // ======================= 高度宽度
+
+// 底部菜单高度
+$NAV_H: p2r(0.9rem);
+
+// 头部内容高度
+$HEADER_H: p2r(1.45rem);
+
+// 仅仅搜索头部的高度
+$HEADER_H_S: p2r(0.86rem);
+
+
 $auto_h: p2r(1rem);
 
 $auto_padding_l_r: p2r(0.15rem);

@@ -24,7 +24,7 @@ export default {
       // 邮箱
       email: '13651971940@163.com',
       // 密码
-      password: 'daiwei19940320'
+      password: ''
     }
   },
   components: {
