@@ -12,6 +12,9 @@ const API = {
   // 调用此接口,可获取登录状态
   USER_LOGIN_STATUS: `${MUSIC_API}/login/status`,
 
+  // banner 幻灯片列表
+  BANNER_LISTS: `${MUSIC_API}/banner`,
+
   // 音乐搜索
   MUSIC_SEARCH: `${MUSIC_API}/search`,
 

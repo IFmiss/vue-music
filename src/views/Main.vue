@@ -2,7 +2,9 @@
 <template lang="pug">
   .vm-main
     Nav
-    router-view(class="model-view")
+    router-view(v-if="!$route.meta.keepAlive" class="model-view")
+    keep-alive(v-else)
+      router-view(class="model-view")
 </template>
 <script>
 import Nav from '@/components/nav'

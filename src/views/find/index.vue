@@ -12,7 +12,7 @@
         router-link(to="/main/find/station" class="nav-bar-router") 主播电台
     // 内容中心区域
     .find-content
-      p 内容中心区域
+      router-view
 </template>
 <script>
 export default {
@@ -79,7 +79,7 @@ export default {
           background: $icon-f;
           width: p2r(0.4rem);
           height: p2r(0.04rem);
-          // display: none;
+          display: none;
         }
         &.router-link-active{
           color: $text_active;

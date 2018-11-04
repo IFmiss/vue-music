@@ -1,0 +1,8 @@
+// 这是覆盖样式的布局
+// 覆盖swiper
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
+  margin: 0 3px;
+}
+.swiper-pagination-bullet-active {
+  background: $primary_color !important;
+}

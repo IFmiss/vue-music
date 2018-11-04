@@ -19,6 +19,12 @@ import Dutils from 'd-js-utils'
 // 项目内的通用组件挂在  来自 utils/index.js
 import Mutils from 'utils'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+import 'style/view.scss'
+
+Vue.use(VueAwesomeSwiper)
+
 Vue.use(Msg, {
   text: 'Hello world', duration: 3000, background: 'rgba(7,8,9,0.8)'
 })

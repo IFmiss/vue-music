@@ -9,7 +9,7 @@
           input(v-if="type==='email'" type="text" placeholder="邮箱" v-model="email")
         .text-input
           i.icon-mobile
-          input(type="password" placeholder="密码" v-model="password")
+          input(type="password" placeholder="密码" @keyup.enter="subLoginIn" v-model="password")
         input.login-in(type="button" @click="subLoginIn" value="登录")
 </template>
 <script>

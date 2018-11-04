@@ -28,6 +28,9 @@ export default {
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click
       })
+    },
+    refresh () {
+      this.scroll && this.scroll.refresh()
     }
   },
   mounted () {

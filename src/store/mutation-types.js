@@ -24,3 +24,6 @@ export const USER_LOGIN_TYPE_SETTER = 'USER_LOGIN_TYPE_SETTER'
 
 // Mine 个人中心  获取用户信息，歌单，收藏，mv，dj数量
 export const MINE_AUTO_INFO = 'MINE_AUTO_INFO'
+
+// 获取banner轮播图信息
+export const BANNER_LISTS = 'BANNER_LISTS'

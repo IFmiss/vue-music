@@ -6,15 +6,17 @@ import Router from 'vue-router'
 const Main = () => import('./views/Main.vue')
 
 // 登陆模块
-const Login = () => import('./views/login/')
-const LoginSub = () => import('./views/login/sublogin/')
+const Login = () => import('./views/login')
+const LoginSub = () => import('./views/login/sublogin')
 
 // 首页五大类
-const Find = () => import('./views/find/')
-const Account = () => import('./views/account/')
-const Video = () => import('./views/video/')
-const Mine = () => import('./views/mine/')
-const Firends = () => import('./views/firends/')
+const Find = () => import('./views/find')
+const Account = () => import('./views/account')
+const Video = () => import('./views/video')
+const Mine = () => import('./views/mine')
+const Firends = () => import('./views/firends')
+const Recommed = () => import('./views/find/recommed')
+const Station = () => import('./views/find/station')
 
 Vue.use(Router)
 
@@ -35,7 +37,23 @@ export default new Router({
         {
           path: '/main/find',
           name: 'find',
-          component: Find
+          redirect: '/main/find/recommend',
+          component: Find,
+          meta: {
+            keepAlive: true
+          },
+          children: [
+            {
+              path: '/main/find/recommend',
+              name: 'findrecommend',
+              component: Recommed
+            },
+            {
+              path: '/main/find/station',
+              name: 'findstaion',
+              component: Station
+            }
+          ]
         },
         {
           path: '/main/account',

@@ -17,6 +17,7 @@
     "pug-plain-loader": "^1.0.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
+    "vue-awesome-swiper": "^2.6.7",
     "vue-message": "^1.4.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

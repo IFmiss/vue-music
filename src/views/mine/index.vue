@@ -154,7 +154,7 @@ export default {
             right: 0;
             bottom: 0;
             z-index: 1;
-            filter: blur(15px);
+            filter: blur(23px);
             background: #fff;
           }
           .detail-content{
@@ -169,7 +169,7 @@ export default {
             justify-content: flex-start;
             overflow: hidden;
             padding: p2r(0.2rem);
-            -webkit-backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(23px);
             box-sizing: border-box;
             .detail{
               flex: 1 1 auto;
