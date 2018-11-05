@@ -10,16 +10,16 @@
             .swiper-pagination(slot="pagination")
         // 四个大的按钮
         .vm-lists
-          li.list-entry
+          router-link(class="list-entry" to="/")
             .icon-menu
             span.entry-name 私人FM
-          li.list-entry
+          router-link(class="list-entry" to="/main/daily")
             .icon-menu
             span.entry-name 每日推荐
-          li.list-entry
+          router-link(class="list-entry" to="/")
             .icon-menu
             span.entry-name 歌单
-          li.list-entry
+          router-link(class="list-entry" to="/")
             .icon-menu
             span.entry-name 排行榜
         GroupSheet(api="RECOMMED_SHEET_LISTS")

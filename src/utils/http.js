@@ -1,8 +1,11 @@
 import {vueProject} from '@/main.js'
 import axios from 'axios'
+// 全局的音乐播放api地址
+const MUSIC_API = process.env.VUE_APP_MUSIC_URL
 let http = axios.create({
   timeout: 15000,
-  withCredentials: true
+  withCredentials: true,
+  baseURL: MUSIC_API
 })
 
 /**

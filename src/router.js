@@ -17,6 +17,7 @@ const Mine = () => import('./views/mine')
 const Firends = () => import('./views/firends')
 const Recommed = () => import('./views/find/recommed')
 const Station = () => import('./views/find/station')
+const Daily = () => import('./views/find/daily')
 
 Vue.use(Router)
 
@@ -88,6 +89,12 @@ export default new Router({
           component: LoginSub
         }
       ]
+    },
+    // 每日推荐
+    {
+      path: '/main/daily',
+      name: 'daily',
+      component: Daily
     }
   ]
 })

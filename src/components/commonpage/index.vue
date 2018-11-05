@@ -3,7 +3,7 @@
     .auto-header
       .left
         i.icon-menu(@click="back")
-      .title 你好
+      .title
       .right
         slot(name="header")
     .auto-body
@@ -11,6 +11,12 @@
 </template>
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   methods: {
     back () {
       this.$router.go(-1)
@@ -61,7 +67,6 @@ export default {
   // 内容
   .auto-body{
     flex: 1 1 auto;
-    padding: $auto_padding_t_b $auto_padding_l_r;
     background: #fff;
   }
 }
