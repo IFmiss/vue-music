@@ -5,7 +5,10 @@ const MUSIC_API = process.env.VUE_APP_MUSIC_URL
 let http = axios.create({
   timeout: 15000,
   withCredentials: true,
-  baseURL: MUSIC_API
+  baseURL: MUSIC_API,
+  params: {
+    ts: new Date().getTime()
+  }
 })
 
 /**

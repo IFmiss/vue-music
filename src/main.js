@@ -51,7 +51,7 @@ Vue.prototype.$mutils.fetchData(API.USER_LOGIN_STATUS).then(res => {
     router.push('/login')
   }
 }, err => {
-  Vue.prototype.$msg(err)
+  console.log(err)
   router.push('/login')
 })
 export {vueProject}

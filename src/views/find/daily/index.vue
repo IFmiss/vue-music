@@ -9,7 +9,7 @@
           .date 12
           img(src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg")
         .lists
-          MusicList(name="啊啊啊啊啊", singer="singer", avatar="", :id="123", list="111")
+          MusicList(name="啊啊啊啊啊", singer="singer", avatar="", :id="123", :list="{}")
 </template>
 <script>
 import API from 'api'
