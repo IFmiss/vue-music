@@ -37,5 +37,6 @@ module.exports = {
       .set('views', resolve('src/views'))
       .set('store', resolve('src/store'))
       .set('api', resolve('src/api'))
+      .set('filter', resolve('src/filter'))
   }
 }

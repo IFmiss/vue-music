@@ -6,7 +6,7 @@
         .sider
           swiper(v-if="banners.length" class="main-sider" :options="swiperOption")
             swiper-slide(v-for="item in banners")
-              img(:src="item.picUrl")
+              img(:src="item.imageUrl")
             .swiper-pagination(slot="pagination")
         // 四个大的按钮
         .vm-lists
@@ -22,9 +22,11 @@
           li.list-entry
             .icon-menu
             span.entry-name 排行榜
+        GroupSheet(api="RECOMMED_SHEET_LISTS")
 </template>
 <script>
 import Scroll from 'components/scroll'
+import GroupSheet from 'components/groupsheet'
 export default {
   data () {
     return {
@@ -38,7 +40,8 @@ export default {
     }
   },
   components: {
-    Scroll
+    Scroll,
+    GroupSheet
   },
   methods: {
     async getBanner () {

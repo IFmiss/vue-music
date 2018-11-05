@@ -15,6 +15,9 @@ const API = {
   // banner 幻灯片列表
   BANNER_LISTS: `${MUSIC_API}/banner`,
 
+  // 获取推荐歌单
+  RECOMMED_SHEET_LISTS: `${MUSIC_API}/personalized`,
+
   // 音乐搜索
   MUSIC_SEARCH: `${MUSIC_API}/search`,
 

@@ -3,7 +3,9 @@
 @mixin lineclamp($height, $count) {
 	height: $height;
 	line-height: $height / $count;
-	@include els();
+	overflow:hidden;
+  text-overflow:ellipsis;
+	word-wrap: break-word;
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-line-clamp: $count;
