@@ -46,7 +46,7 @@ export default {
       }
       .serach-input{
         flex:1 1 auto;
-        margin-right: p2r($HEADER_H_S);
+        margin-right: p2r(0.9rem);
         height: p2r(0.52rem);
         border-radius: p2r(0.26rem);
         border: none;

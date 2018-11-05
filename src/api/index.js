@@ -18,6 +18,9 @@ const API = {
   // 获取推荐歌单
   RECOMMED_SHEET_LISTS: `${MUSIC_API}/personalized`,
 
+  // 最新音乐
+  NEW_SHEET_LISTS: `${MUSIC_API}/personalized/newsong`,
+
   // 音乐搜索
   MUSIC_SEARCH: `${MUSIC_API}/search`,
 
