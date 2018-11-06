@@ -22,6 +22,12 @@ const Sheet = () => import('./views/find/sheet')
 
 Vue.use(Router)
 
+/**
+ * 路由配置
+ * meta对象下的属性意思
+ * @param { String }   transition         过渡的动画  fade-left
+ * @param { Array }    activeRouter       当前页面是属于四个菜单或者某个路由的关联操作，如果设置了/main/find 则打开该路由的话，底部菜单第一个按钮显示active状态
+ */
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -84,7 +90,8 @@ export default new Router({
           name: 'daily',
           component: Daily,
           meta: {
-            transition: 'fade-left'
+            transition: 'fade-left',
+            activeRouter: ['/main/find']
           }
         },
 
@@ -94,7 +101,8 @@ export default new Router({
           name: 'sheet',
           component: Sheet,
           meta: {
-            transition: 'fade-left'
+            transition: 'fade-left',
+            activeRouter: ['/main/mine']
           }
         }
       ]
