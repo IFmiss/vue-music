@@ -16,7 +16,7 @@
           router-link(class="list-entry" to="/main/daily")
             .icon-menu
             span.entry-name 每日推荐
-          router-link(class="list-entry" to="/")
+          router-link(class="list-entry" to="/main/sheet")
             .icon-menu
             span.entry-name 歌单
           router-link(class="list-entry" to="/")

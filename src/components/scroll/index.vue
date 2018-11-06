@@ -26,7 +26,16 @@ export default {
   methods: {
     initScroll () {
       this.scroll = new BScroll(this.$refs.wrapper, {
-        click: this.click
+        click: this.click,
+        mouseWheel: {
+          speed: 20,
+          invert: false,
+          easeTime: 300
+        }
+        // pullDownRefresh: {
+        //   threshold: 50,
+        //   stop: 20
+        // }
       })
     },
     refresh () {

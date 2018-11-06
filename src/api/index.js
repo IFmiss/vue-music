@@ -18,6 +18,13 @@ const API = {
   // 每日推荐歌曲
   RECOMMEND_SONGS_LISTS: `/recommend/songs`,
 
+  // 获取精品歌单
+  HIGHT_QUALITY_SHEET_LISTS: `/top/playlist/highquality`,
+
+  // 调用此接口 , 可获取网友精选碟歌单
+  // parmas: cat=华语 分类
+  SHEET_LISTS: `/top/playlist`,
+
   // 最新音乐
   NEW_SHEET_LISTS: `/personalized/newsong`,
 

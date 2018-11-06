@@ -3,7 +3,7 @@
     .auto-header
       .left
         i.icon-menu(@click="back")
-      .title
+      .title {{title}}
       .right
         slot(name="header")
     .auto-body

@@ -18,6 +18,7 @@ const Firends = () => import('./views/firends')
 const Recommend = () => import('./views/find/recommend')
 const Station = () => import('./views/find/station')
 const Daily = () => import('./views/find/daily')
+const Sheet = () => import('./views/find/sheet')
 
 Vue.use(Router)
 
@@ -95,6 +96,13 @@ export default new Router({
       path: '/main/daily',
       name: 'daily',
       component: Daily
+    },
+
+    // 歌单集合
+    {
+      path: '/main/sheet',
+      name: 'sheet',
+      component: Sheet
     }
   ]
 })
