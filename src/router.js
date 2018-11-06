@@ -102,7 +102,7 @@ export default new Router({
           component: Sheet,
           meta: {
             transition: 'fade-left',
-            activeRouter: ['/main/mine']
+            activeRouter: ['/main/find']
           }
         }
       ]
