@@ -13,10 +13,10 @@ const API = {
   BANNER_LISTS: `/banner`,
 
   // 获取推荐歌单
-  RECOMMED_SHEET_LISTS: `/personalized`,
+  RECOMMEND_SHEET_LISTS: `/personalized`,
 
   // 每日推荐歌曲
-  RECOMMED_SONGS_LISTS: `/recommend/songs`,
+  RECOMMEND_SONGS_LISTS: `/recommend/songs`,
 
   // 最新音乐
   NEW_SHEET_LISTS: `/personalized/newsong`,

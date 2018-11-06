@@ -1,5 +1,5 @@
 <template lang="pug">
-  .recommed
+  .recommend
     Scroll(ref="scroll", background="rgb(203, 40, 41)")
       .scroll-content(slot="scroll-content")
         // SWIPER
@@ -22,7 +22,7 @@
           router-link(class="list-entry" to="/")
             .icon-menu
             span.entry-name 排行榜
-        GroupSheet(api="RECOMMED_SHEET_LISTS")
+        GroupSheet(api="RECOMMEND_SHEET_LISTS")
 </template>
 <script>
 import Scroll from 'components/scroll'
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.recommed{
+.recommend{
   position: absolute;
   background: $primary-color;
   top: 0;

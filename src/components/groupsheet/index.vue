@@ -26,7 +26,7 @@ export default {
     // 请求的地址
     api: {
       type: String,
-      default: 'RECOMMED_SHEET_LISTS'
+      default: 'RECOMMEND_SHEET_LISTS'
     },
 
     // 左上角歌单的名称

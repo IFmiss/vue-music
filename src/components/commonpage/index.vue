@@ -27,13 +27,20 @@ export default {
 <style lang="scss" scoped>
 // 通用页面内容
 .common-page{
-  width: 100%;
-  height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   // 头部
   .auto-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $auto_h;
     flex: 0 0 $auto_h;
     width: 100%;
     color: #fff;
@@ -66,8 +73,13 @@ export default {
   }
   // 内容
   .auto-body{
-    flex: 1 1 auto;
     background: #fff;
+    position: absolute;
+    top: $auto_h;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto
   }
 }
 </style>

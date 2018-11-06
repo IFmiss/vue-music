@@ -15,7 +15,7 @@ const Account = () => import('./views/account')
 const Video = () => import('./views/video')
 const Mine = () => import('./views/mine')
 const Firends = () => import('./views/firends')
-const Recommed = () => import('./views/find/recommed')
+const Recommend = () => import('./views/find/recommend')
 const Station = () => import('./views/find/station')
 const Daily = () => import('./views/find/daily')
 
@@ -47,7 +47,7 @@ export default new Router({
             {
               path: '/main/find/recommend',
               name: 'findrecommend',
-              component: Recommed
+              component: Recommend
             },
             {
               path: '/main/find/station',
