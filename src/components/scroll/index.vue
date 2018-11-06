@@ -21,17 +21,30 @@ export default {
     click: {
       type: Boolean,
       default: true
+    },
+    pullDownRefresh: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
     initScroll () {
+      let data = {}
+      let mouseWheel = {
+        speed: 20,
+        invert: false,
+        easeTime: 300
+      }
+      if (this.pullDownRefresh) Object.assign(data, {mouseWheel})
+      console.log(data)
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
         mouseWheel: {
           speed: 20,
           invert: false,
           easeTime: 300
-        }
+        },
+        ...data
         // pullDownRefresh: {
         //   threshold: 50,
         //   stop: 20
