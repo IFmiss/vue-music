@@ -4,7 +4,6 @@
     .login-content
       router-link.btn-login(to="/login/phone") 手机号登陆
       router-link.btn-login(to="/login/email") 邮箱登陆
-    router-view.login-ruoter
 </template>
 <script>
 export default {

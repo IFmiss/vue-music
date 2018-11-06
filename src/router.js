@@ -76,6 +76,20 @@ export default new Router({
           path: '/main/firends',
           name: 'firends',
           component: Firends
+        },
+
+        // 每日推荐
+        {
+          path: '/main/daily',
+          name: 'daily',
+          component: Daily
+        },
+
+        // 歌单集合
+        {
+          path: '/main/sheet',
+          name: 'sheet',
+          component: Sheet
         }
       ]
     },
@@ -90,19 +104,6 @@ export default new Router({
           component: LoginSub
         }
       ]
-    },
-    // 每日推荐
-    {
-      path: '/main/daily',
-      name: 'daily',
-      component: Daily
-    },
-
-    // 歌单集合
-    {
-      path: '/main/sheet',
-      name: 'sheet',
-      component: Sheet
     }
   ]
 })

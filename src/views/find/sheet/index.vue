@@ -15,6 +15,8 @@
                   i.icon-menu
                 .name {{hightSheet.name}}
                 .disc {{hightSheet.copywriter}}
+          .sheet-lists
+
 </template>
 <script>
 import Scroll from 'components/scroll'
@@ -23,7 +25,8 @@ import CommonPage from 'components/commonpage'
 export default {
   data () {
     return {
-      hightSheet: {}
+      hightSheet: {},
+      cat: '全部歌单'
     }
   },
   components: {
