@@ -82,14 +82,20 @@ export default new Router({
         {
           path: '/main/daily',
           name: 'daily',
-          component: Daily
+          component: Daily,
+          meta: {
+            transition: 'fade-left'
+          }
         },
 
         // 歌单集合
         {
           path: '/main/sheet',
           name: 'sheet',
-          component: Sheet
+          component: Sheet,
+          meta: {
+            transition: 'fade-left'
+          }
         }
       ]
     },

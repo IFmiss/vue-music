@@ -3,9 +3,10 @@
   .vm-main
     .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
     Nav
-    router-view(v-if="!$route.meta.keepAlive" class="model-view")
-    keep-alive(v-else)
-      router-view(class="model-view")
+    transition(:name="$route.meta.transition" mode="in-out")
+      router-view(v-if="!$route.meta.keepAlive" class="model-view")
+      keep-alive(v-else)
+        router-view(class="model-view")
 </template>
 <script>
 import Nav from '@/components/nav'
@@ -67,5 +68,18 @@ export default {
     right: 0;
     height: $NAV_H;
   }
+}
+
+.fade-left-enter-to,
+.fade-left-leave-to{
+  transition: all .3s;
+}
+.fade-left-leave-to{
+  transform: translateX(-15px);
+  opacity: 0;
+}
+.fade-left-enter{
+  transform: translateX(15px);
+  opacity: 0;
 }
 </style>
