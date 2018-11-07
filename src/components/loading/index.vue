@@ -1,8 +1,8 @@
 <template lang="pug">
   .loading(:class="{'absolute' : absolute}")
-    .c(:class="{size, 'vertical' : vertical}")
+    .c(:class="{size, 'vertical' : vertical}", :style="{height: height}")
       img(src="./../../assets/images/loading.gif")
-      p 数据加载中
+      p {{name}}
 </template>
 <script>
 export default {
@@ -28,6 +28,11 @@ export default {
     absolute: {
       type: Boolean,
       default: false
+    },
+
+    height: {
+      type: String,
+      default: '140px'
     }
   }
 }

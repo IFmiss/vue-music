@@ -31,7 +31,6 @@
                     .user {{item.creator.nickname}}
                     img(:src="item.coverImgUrl + '?param=400y400'")
                   .disc {{item.name}}
-              Loading(v-else :absolute="true")
     transition(name="sider-top")
       SheetType(class="sheet-t" v-if="showSelect" :cat="cat", @selectCat="getSheetType")
 </template>

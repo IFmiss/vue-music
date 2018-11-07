@@ -54,7 +54,10 @@ export default new Router({
             {
               path: '/main/find/recommend',
               name: 'findrecommend',
-              component: Recommend
+              component: Recommend,
+              meta: {
+                keepAlive: true
+              }
             },
             {
               path: '/main/find/station',

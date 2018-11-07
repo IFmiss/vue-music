@@ -52,6 +52,7 @@ export default {
   },
   mounted () {
     this.getBanner()
+    console.log(this.$route)
   }
 }
 </script>

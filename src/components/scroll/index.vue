@@ -6,7 +6,7 @@
         slot(name="scroll-content")
         .pullup-wrapper(v-if="needPullUp")
           .before-trigger(v-if="!isPullUpLoad")
-            Loading(:vertical="false")
+            Loading(:vertical="false", height="60px")
 </template>
 <script>
 import BScroll from 'better-scroll'
@@ -53,8 +53,8 @@ export default {
       let pullUpLoad = {
         threshold: 50
       }
-      if (this.needPullUp) data.pullDownRefresh = pullDownRefresh
-      if (this.needPullDown) data.pullUpLoad = pullUpLoad
+      if (this.needPullDown) data.pullDownRefresh = pullDownRefresh
+      if (this.needPullUp) data.pullUpLoad = pullUpLoad
       console.log(data)
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
@@ -128,7 +128,7 @@ export default {
       position: absolute;
       width: 100%;
       z-index: 1;
-      min-height: 100%;
+      // min-height: 100%;
       .pullup-wrapper{
         width: 100%;
         display: flex;
