@@ -1,6 +1,6 @@
 <template lang="pug">
   .loading(:class="{'absolute' : absolute}")
-    .c(:class="{size, 'vertival' : vertival}")
+    .c(:class="{size, 'vertical' : vertical}")
       img(src="./../../assets/images/loading.gif")
       p 数据加载中
 </template>
@@ -58,7 +58,7 @@ export default {
       margin-left: p2r(0.1rem);
       color: $icon_color_nav;
     }
-    &.vertival{
+    &.vertical{
       flex-direction: column;
       p{
         margin-left: 0;
