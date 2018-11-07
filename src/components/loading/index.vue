@@ -10,7 +10,7 @@ export default {
     // 图片和文字是否是垂直显示 默认水平显示
     vertical: {
       type: Boolean,
-      default: false
+      default: true
     },
 
     // 提示的名称
@@ -49,6 +49,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction:row;
     img{
       width: p2r(0.4rem);
       height: p2r(0.4rem);

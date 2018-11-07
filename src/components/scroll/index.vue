@@ -6,7 +6,7 @@
         slot(name="scroll-content")
         .pullup-wrapper(v-if="needPullUp")
           .before-trigger(v-if="!isPullUpLoad")
-            Loading(:vertical="true")
+            Loading(:vertical="false")
 </template>
 <script>
 import BScroll from 'better-scroll'
