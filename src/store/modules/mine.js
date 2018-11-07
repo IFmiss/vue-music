@@ -13,7 +13,7 @@ let mutations = {}
  */
 actions[types.MINE_AUTO_INFO] = ({commit}, uid) => {
   return new Promise((resolve, reject) => {
-    axios.get(API.MINE_AUTO_INFO, {
+    axios.get(API.user.MINE_AUTO_INFO, {
       params: {
         uid
       }

@@ -2,7 +2,7 @@
 <template lang="pug">
   .music-daily
     CommonPage(title="每日推荐")
-      .header(slot="header")
+      .header(slot="header-r")
         i.icon-menu
       .content(slot="content")
         .banner
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     async initData () {
-      let res = await this.$mutils.fetchData(API.RECOMMEND_SONGS_LISTS)
+      let res = await this.$mutils.fetchData(API.sheet.RECOMMEND_SONGS_LISTS)
       this.recommend = res.data.recommend
       console.log(this.recommend)
     }

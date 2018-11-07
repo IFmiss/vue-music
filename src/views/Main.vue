@@ -69,17 +69,4 @@ export default {
     height: $NAV_H;
   }
 }
-
-.fade-left-enter-to,
-.fade-left-leave-to{
-  transition: all .3s;
-}
-.fade-left-leave-to{
-  transform: translateX(-15px);
-  opacity: 0;
-}
-.fade-left-enter{
-  transform: translateX(15px);
-  opacity: 0;
-}
 </style>

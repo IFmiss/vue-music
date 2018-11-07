@@ -51,7 +51,7 @@ export default {
   methods: {
     // 通过传递不同的请求参数，获取不同的数据
     initData () {
-      this.$mutils.fetchData(API[this.api], this.parmas).then(res => {
+      this.$mutils.fetchData(API.sheet[this.api], this.parmas).then(res => {
         this.sheetList = res.data.result
       })
     }

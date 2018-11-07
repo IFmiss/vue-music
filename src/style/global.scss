@@ -35,3 +35,30 @@ body {
 :-ms-input-placeholder {
   color: $placeholder_color;
 }
+
+// 动画效果
+// sider-fade-left
+.fade-left-enter-to,
+.fade-left-leave-to{
+  transition: all .3s;
+}
+.fade-left-leave-to{
+  transform: translateX(-15px);
+  opacity: 0;
+}
+.fade-left-enter{
+  transform: translateX(15px);
+  opacity: 0;
+}
+
+// sider-top
+.sider-top-enter-to,
+.sider-top-leave-to{
+  transition: all .3s;
+}
+.sider-top-leave-to{
+  transform: translateY(120%);
+}
+.sider-top-enter{
+  transform: translateY(120%);
+}

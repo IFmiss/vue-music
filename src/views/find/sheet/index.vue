@@ -1,41 +1,44 @@
 // 歌单内容，显示歌单的页面
 <template lang="pug">
-  CommonPage(title="歌单")
-    .header(slot="header")
-    .content(slot="content")
-      Scroll()
-        .scroll-content(slot="scroll-content")
-          router-link.hight-sheet(to="/main/hightsheet", :style="{background: 'url(' + hightSheet.coverImgUrl + '?param=200y200)'}")
-            .content
-              img(:src="hightSheet.coverImgUrl + '?param=200y200'")
-              .detail
-                .title
-                  i.icon-menu.rank
-                  span 精品歌单
+  .sheet
+    CommonPage(title="歌单")
+      .content(slot="content")
+        Scroll(@pullingUp="getSheetListMore", :needPullUp="true")
+          .scroll-content(slot="scroll-content")
+            router-link.hight-sheet(to="/main/hightsheet", :style="{background: 'url(' + hightSheet.coverImgUrl + '?param=200y200)'}")
+              .content
+                img(:src="hightSheet.coverImgUrl + '?param=200y200'")
+                .detail
+                  .title
+                    i.icon-menu.rank
+                    span 精品歌单
+                    i.icon-menu
+                  .name {{hightSheet.name}}
+                  .disc {{hightSheet.copywriter}}
+            .sheet-lists
+              .filter
+                .select
+                  .name(@click="showSelect = true") {{cat}}
                   i.icon-menu
-                .name {{hightSheet.name}}
-                .disc {{hightSheet.copywriter}}
-          .sheet-lists
-            .filter
-              .select
-                .name 全部歌单
-                i.icon-menu
-              .select-list
-                li 华语
-                li 电子
-                li 乡村
-            .lists(v-if="sheets")
-              router-link.sheet-list(:to="{path: '/main/sheetdetail', query: {id: item.id}}" v-for="item in sheets")
-                .image-list
-                  .tips {{item.playCount | parseNumber}}
-                  .user {{item.creator.nickname}}
-                  img(:src="item.coverImgUrl + '?param=400y400'")
-                .disc {{item.name}}
+                .select-list
+                  li(@click="getSheetType('华语')") 华语
+                  li(@click="getSheetType('电子')") 电子
+                  li(@click="getSheetType('乡村')") 乡村
+              .lists(v-if="sheets")
+                router-link.sheet-list(:to="{path: '/main/sheetdetail', query: {id: item.id}}" v-for="item in sheets")
+                  .image-list
+                    .tips {{item.playCount | parseNumber}}
+                    .user {{item.creator.nickname}}
+                    img(:src="item.coverImgUrl + '?param=400y400'")
+                  .disc {{item.name}}
+    transition(name="sider-top")
+      SheetType(class="sheet-t" v-if="showSelect" :cat="cat", @selectCat="getSheetType")
 </template>
 <script>
 import Scroll from 'components/scroll'
 import Api from 'api'
 import filter from 'filter'
+import SheetType from './sheet-type'
 import CommonPage from 'components/commonpage'
 export default {
   data () {
@@ -44,12 +47,14 @@ export default {
       cat: '全部歌单',
       limit: 8,
       offset: 0,
-      sheets: []
+      sheets: [],
+      showSelect: false
     }
   },
   components: {
     Scroll,
-    CommonPage
+    CommonPage,
+    SheetType
   },
   methods: {
     initData () {
@@ -62,20 +67,48 @@ export default {
      */
     async getHighFirstSheet () {
       // 获取精品数据
-      let res = await this.$mutils.fetchData(Api.HIGHT_QUALITY_SHEET_LISTS, {limit: 1})
+      let res = await this.$mutils.fetchData(Api.sheet.HIGHT_QUALITY_SHEET_LISTS, {limit: 1})
       // 拿到精品歌单排行第一的数据，放在页面顶端
       this.hightSheet = res.data.playlists[0]
+    },
+
+    /**
+     * 上拉加载更多
+     */
+    getSheetListMore (that) {
+      this.offset = this.offset + this.limit
+      console.log(this.offset)
+      this.getSheetListByOffset()
+      // 更新完成之后需要重新计算滚动高度
+      that.scroll.refresh()
+      that.finishPullUp()
+    },
+
+    /**
+     * 获取歌单分类
+     */
+    getSheetType (type) {
+      // 关闭选择项
+      this.showSelect = false
+
+      if (!type) return
+      // 初始化并请求数据
+      this.offset = 0
+      this.cat = type
+      this.sheets = []
+      this.getSheetListByOffset()
     },
 
     /**
      * 获取歌单列表
      */
     async getSheetListByOffset () {
-      let res = await this.$mutils.fetchData(Api.SHEET_LISTS, {
+      let res = await this.$mutils.fetchData(Api.sheet.SHEET_LISTS, {
         limit: this.limit,
-        offset: this.offset
+        offset: this.offset,
+        cat: this.cat
       })
-      this.sheets = res.data.playlists
+      this.sheets = this.sheets.concat(res.data.playlists)
     }
   },
   filters: {
@@ -237,5 +270,13 @@ export default {
       padding: $auto_padding_l_r / 3 $auto_padding_l_r / 2;
     }
   }
+}
+.sheet-t{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 </style>

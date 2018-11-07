@@ -69,7 +69,7 @@ mutations[types.USER_LOGIN_TYPE_SETTER] = (state, data) => {
  * 调用例子 : /login?email=xxx@163.com&password=yyy
  */
 actions[types.USER_LOGIN] = ({commit}, data) => {
-  let url = data.type === 'phone' ? API.USER_LOGIN_PHONE : API.USER_LOGIN_EMAIL
+  let url = data.type === 'phone' ? API.login.USER_LOGIN_PHONE : API.login.USER_LOGIN_EMAIL
   return new Promise((resolve, reject) => {
     axios.get(url, {
       params: {

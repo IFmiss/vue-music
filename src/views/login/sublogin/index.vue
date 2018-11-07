@@ -1,7 +1,6 @@
 <template lang="pug">
   .sub-login.auto-content
     Commonpage
-      //- .header-slot(slot="header") 1
       .content-slot(slot="content")
         .text-input
           i.icon-mobile

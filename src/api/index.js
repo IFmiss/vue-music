@@ -1,37 +1,67 @@
 const API = {
-  // 登录================================
-  // 手机号
-  USER_LOGIN_PHONE: `/login/cellphone`,
-  // 邮箱
-  USER_LOGIN_EMAIL: `/login`,
-  // 登录刷新  可刷新登录状态
-  USER_LOGIN_REFRESH: `/login/refresh`,
-  // 调用此接口,可获取登录状态
-  USER_LOGIN_STATUS: `/login/status`,
+  /**
+   * ====================
+   * 登录
+   * ====================
+   */
+  login: {
+    // 手机号
+    USER_LOGIN_PHONE: `/login/cellphone`,
+    // 邮箱
+    USER_LOGIN_EMAIL: `/login`,
+    // 登录刷新  可刷新登录状态
+    USER_LOGIN_REFRESH: `/login/refresh`,
+    // 调用此接口,可获取登录状态
+    USER_LOGIN_STATUS: `/login/status`
+  },
 
-  // banner 幻灯片列表
-  BANNER_LISTS: `/banner`,
+  /**
+   * ====================
+   * 用户相关接口
+   * ====================
+   */
+  user: {
+    // 获取用户信息，歌单，收藏，mv，dj数量
+    MINE_AUTO_INFO: `/user/subcount`
+  },
 
-  // 获取推荐歌单
-  RECOMMEND_SHEET_LISTS: `/personalized`,
+  /**
+   * ====================
+   * 发现页面
+   * ====================
+   */
+  find: {
+    // banner 幻灯片列表
+    BANNER_LISTS: `/banner`,
 
-  // 每日推荐歌曲
-  RECOMMEND_SONGS_LISTS: `/recommend/songs`,
+    // 音乐搜索
+    MUSIC_SEARCH: `/search`,
 
-  // 获取精品歌单
-  HIGHT_QUALITY_SHEET_LISTS: `/top/playlist/highquality`,
+    // 最新音乐
+    NEW_SONG_LISTS: `/personalized/newsong`
+  },
 
-  // 调用此接口 , 可获取网友精选碟歌单
-  // parmas: cat=华语 分类
-  SHEET_LISTS: `/top/playlist`,
+  /**
+   * ====================
+   * 歌单
+   * ====================
+   */
+  sheet: {
+    // 获取推荐歌单
+    RECOMMEND_SHEET_LISTS: `/personalized`,
 
-  // 最新音乐
-  NEW_SHEET_LISTS: `/personalized/newsong`,
+    // 每日推荐歌曲
+    RECOMMEND_SONGS_LISTS: `/recommend/songs`,
 
-  // 音乐搜索
-  MUSIC_SEARCH: `/search`,
+    // 获取精品歌单
+    HIGHT_QUALITY_SHEET_LISTS: `/top/playlist/highquality`,
 
-  // 获取用户信息，歌单，收藏，mv，dj数量
-  MINE_AUTO_INFO: `/user/subcount`
+    // 调用此接口 , 可获取网友精选碟歌单
+    // parmas: cat=华语 分类
+    SHEET_LISTS: `/top/playlist`,
+
+    // 获取歌单分类
+    CAT_LISTS: `/playlist/catlist`
+  }
 }
 export default API

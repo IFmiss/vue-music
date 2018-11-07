@@ -13,7 +13,7 @@ let mutations = {}
  */
 actions[types.BANNER_LISTS] = ({commit}) => {
   return new Promise((resolve, reject) => {
-    axios.get(API.BANNER_LISTS).then(res => {
+    axios.get(API.find.BANNER_LISTS).then(res => {
       resolve(res)
     }, err => {
       reject(err)

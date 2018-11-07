@@ -2,10 +2,11 @@
   .common-page
     .auto-header
       .left
-        i.icon-menu(@click="back")
+        slot(v-if="custBack" name="header-l")
+        i.icon-menu(v-else @click="back")
       .title {{title}}
       .right
-        slot(name="header")
+        slot(name="header-r")
     .auto-body
       slot(name="content")
 </template>
@@ -15,6 +16,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    custBack: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -62,6 +67,9 @@ export default {
     }
     .left{
       justify-content: flex-start;
+      span{
+        font-size: $f_small_m;
+      }
     }
     .right{
       justify-content: flex-end;

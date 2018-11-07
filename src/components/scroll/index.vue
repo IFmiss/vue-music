@@ -22,20 +22,31 @@ export default {
       type: Boolean,
       default: true
     },
-    pullDownRefresh: {
+
+    // 是否可以上拉加载
+    needPullUp: {
       type: Boolean,
-      default: true
+      default: false
+    },
+
+    // 是否可以下拉刷新
+    needPullDown: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     initScroll () {
       let data = {}
-      let mouseWheel = {
-        speed: 20,
-        invert: false,
-        easeTime: 300
+      let pullDownRefresh = {
+        threshold: 50,
+        stop: 20
       }
-      if (this.pullDownRefresh) Object.assign(data, {mouseWheel})
+      let pullUpLoad = {
+        threshold: 50
+      }
+      if (this.needPullUp) data.pullDownRefresh = pullDownRefresh
+      if (this.needPullDown) data.pullUpLoad = pullUpLoad
       console.log(data)
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
@@ -45,18 +56,42 @@ export default {
           easeTime: 300
         },
         ...data
-        // pullDownRefresh: {
-        //   threshold: 50,
-        //   stop: 20
-        // }
       })
+
+      // 初始化事件
+      this._initPullUpLoad()
+      this._initpullDownRefresh()
+      this.finishPullUp()
+      this.finishPullDown()
+    },
+    _initPullUpLoad () {
+      if (this.needPullUp) {
+        this.scroll.on('pullingUp', () => {
+          this.$emit('pullingUp', this)
+        })
+      }
+    },
+    _initpullDownRefresh () {
+      if (this.needPullDown) {
+        this.scroll.on('pullingDown', () => {
+          this.$emit('pullingDown', this)
+        })
+      }
+    },
+    finishPullUp () {
+      this.scroll && this.scroll.finishPullUp()
+    },
+    finishPullDown () {
+      this.scroll && this.scroll.finishPullDown()
     },
     refresh () {
       this.scroll && this.scroll.refresh()
     }
   },
   mounted () {
-    this.initScroll()
+    this.$nextTick(() => {
+      this.initScroll()
+    })
   }
 }
 </script>

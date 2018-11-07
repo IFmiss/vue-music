@@ -45,7 +45,7 @@ let vueProject = new Vue({
 }).$mount('#app')
 
 // 初始化用户登陆状态校验
-Vue.prototype.$mutils.fetchData(API.USER_LOGIN_STATUS).then(res => {
+Vue.prototype.$mutils.fetchData(API.login.USER_LOGIN_STATUS).then(res => {
   if (!res.data.bindings[0] || res.data.bindings[0].expired) {
     Vue.prototype.$msg('登陆过期')
     router.push('/login')
