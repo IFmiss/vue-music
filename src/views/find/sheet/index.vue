@@ -31,6 +31,7 @@
                     .user {{item.creator.nickname}}
                     img(:src="item.coverImgUrl + '?param=400y400'")
                   .disc {{item.name}}
+              Loading(v-else :absolute="true")
     transition(name="sider-top")
       SheetType(class="sheet-t" v-if="showSelect" :cat="cat", @selectCat="getSheetType")
 </template>
@@ -40,6 +41,7 @@ import Api from 'api'
 import filter from 'filter'
 import SheetType from './sheet-type'
 import CommonPage from 'components/commonpage'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
@@ -54,7 +56,8 @@ export default {
   components: {
     Scroll,
     CommonPage,
-    SheetType
+    SheetType,
+    Loading
   },
   methods: {
     initData () {
@@ -176,7 +179,7 @@ export default {
   }
 }
 .sheet-lists{
-  padding: $auto_padding_l_r * 2 $auto_padding_l_r;
+  padding: $auto_padding_l_r * 2 $auto_padding_l_r 0 $auto_padding_l_r;
   .filter{
     display: flex;
     width: 100%;

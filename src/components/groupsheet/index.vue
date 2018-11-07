@@ -12,15 +12,20 @@
             i.icon-menu
             span {{item.playCount | parseNumber}}
         .sheet-name {{item.name}}
+    Loading(v-else)
 </template>
 <script>
 import API from 'api'
 import filter from 'filter'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
       sheetList: []
     }
+  },
+  components: {
+    Loading
   },
   props: {
     // 请求的地址

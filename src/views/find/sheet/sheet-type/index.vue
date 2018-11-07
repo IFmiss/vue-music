@@ -11,10 +11,12 @@
             .name {{item.typename}}
             .detail
               .cat-name(v-for="list in item.list", :class="{'active' : cat === list.name, 'hot': list.hot}", @click="selectCat(list.name)") {{list.name}}
+        Loading(v-else)
 </template>
 <script>
 import CommonPage from 'components/commonpage'
 import API from 'api'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
@@ -28,7 +30,8 @@ export default {
     }
   },
   components: {
-    CommonPage
+    CommonPage,
+    Loading
   },
   computed: {
     showCats () {
@@ -74,8 +77,8 @@ export default {
 .content{
   height: 100%;
   overflow: auto;
-  background: $bg_gray;
   .cats-info{
+    background: $bg_gray;
     .all{
       padding: $auto_padding_l_r;
       background: #fff;

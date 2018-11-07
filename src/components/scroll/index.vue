@@ -4,14 +4,22 @@
     .wrapper(ref="wrapper", :style="{background: background}")
       .content
         slot(name="scroll-content")
+        .pullup-wrapper(v-if="needPullUp")
+          .before-trigger(v-if="!isPullUpLoad")
+            Loading(:vertical="true")
 </template>
 <script>
 import BScroll from 'better-scroll'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
-      scroll: null
+      scroll: null,
+      isPullUpLoad: false
     }
+  },
+  components: {
+    Loading
   },
   props: {
     background: {
@@ -121,6 +129,18 @@ export default {
       width: 100%;
       z-index: 1;
       min-height: 100%;
+      .pullup-wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .before-trigger{
+          font-size: $f_small_x;
+          span{
+            color: $color_gray;
+          }
+        }
+      }
     }
   }
 }
