@@ -12,6 +12,9 @@
 - step 3. 启动 NeteaseCloudMusicApi (npm start)  默认 端口为3000
 - setp 4. 启动vue-music (npm run dev)  如果NeteaseCloudMusicApi是默认端口3000， 在vue-music项目中登陆之后基本可以跑通接口了
 
+#### vue-cli3
+项目基于vue-cli3.0搭建的vue开发环境
+
 #### pug
 vue的模版编辑都是基于[pug](https://pug.bootcss.com/api/getting-started.html)的，使用这个模版引擎会使得编写template里的内容会很方便
 
