@@ -10,11 +10,13 @@
           img(src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg")
         .lists(v-if="recommend.length")
           MusicList(v-for="item in recommend" :name="item.name", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :list="item")
+        Loading(v-else :absolute="true")
 </template>
 <script>
 import API from 'api'
 import MusicList from 'components/sheetlist'
 import CommonPage from 'components/commonpage'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
@@ -23,7 +25,8 @@ export default {
   },
   components: {
     CommonPage,
-    MusicList
+    MusicList,
+    Loading
   },
   methods: {
     async initData () {
