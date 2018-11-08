@@ -3,24 +3,75 @@
   .sheet-detail(v-if="!isEmptyDetail")
     CommonPage(title="歌单", :bg="detail.coverImgUrl + '?param=170y170'")
       .content(slot="content")
-        Scroll
-          .scroll-content(slot="scroll-content")
-            .content-main
-              .blur(:style="{background: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
-              .detail-main
-                .sheet-avatar
-                  img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
-                  .tips {{detail.playCount | parseNumber}}
-                  .high-quality(v-if="detail.highQuality")
-                    i.icon-menu
-                  .info i
-                .sheet-disc
-                  .name {{detail.name}}
-                  .user
-                    img(:src="detail.creator.avatarUrl + 'param=120y120'")
-                    span {{detail.creator.nickname}}
-                    i.icon-menu
-              .content-list
+        .scroll-main
+          .content-main
+            .blur(:style="{background: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
+            .detail-main
+              .sheet-avatar
+                img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
+                .tips {{detail.playCount | parseNumber}}
+                .high-quality(v-if="detail.highQuality")
+                  i.icon-menu
+                .info i
+              .sheet-disc
+                .name {{detail.name}}
+                .user
+                  img(:src="detail.creator.avatarUrl + 'param=120y120'")
+                  span {{detail.creator.nickname}}
+                  i.icon-menu
+            .detail-conf
+              .conf-list
+                i.icon-menu
+                span.disc {{detail.commentCount}}
+              .conf-list
+                i.icon-menu
+                span.disc {{detail.shareCount}}
+              .conf-list
+                i.icon-menu
+                span.disc 下载
+              .conf-list
+                i.icon-menu
+                span.disc 多选
+          .content-lists-info
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
+            p 123123
 </template>
 
 <script>
@@ -62,8 +113,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+$opacity: 0.8;
 .content-main{
+  overflow: hidden;
   position: relative;
+  padding-bottom: $auto_padding_l_r * 2;
   .blur{
     overflow: hidden;
     @include blur(20px, auto, center);
@@ -167,17 +221,62 @@ export default {
           color: #fff;
           max-width: p2r(2.6rem);
           @include els();
-          font-size: $f_small_l;
+          font-size: $f_small_x;
           margin-left: $auto_padding_l_r;
+          opacity: $opacity;
         }
         i{
           margin-left: $auto_padding_l_r;
           color: $text_noactive;
-          font-size: $f_small_l;
+          font-size: $f_small_x;
+          opacity: $opacity;
         }
       }
     }
   }
+  .detail-conf{
+    width: 100%;
+    display: flex;
+    padding: $auto_padding_t_b * 1.5 $auto_padding_t_b;
+    box-sizing: border-box;
+    align-items: center;
+    .conf-list{
+      width: 25%;
+      opacity: $opacity;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: $icon_color_nav;
+      i{
+        font-size: $f_auto_l * 1.2;
+      }
+      .disc{
+        margin-top: $auto_padding_t_b;
+        font-size: $f_small_l;
+      }
+    }
+  }
 }
-.content-list{}
+.content-lists-info{
+  width: 100%;
+  border-radius: p2r(0.24rem)  p2r(0.24rem) 0 0;
+  background: #fff;
+  margin-top: - $auto_padding_l_r * 2;
+  overflow: hidden;
+  height: -webkit-fill-available;
+  overflow: auto;
+  z-index: 1;
+  &.fixed{
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    bottom: 0;
+  }
+  p{
+    margin: 0;
+  }
+}
 </style>
