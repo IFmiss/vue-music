@@ -5,9 +5,11 @@
       span {{sheetName}}
       i.icon-circle-right
     .content(v-if="sheetList.length")
-      .sheet-list(v-for="(item, index) in sheetList" v-if="index < 6")
+      router-link.sheet-list(v-for="(item, index) in sheetList" v-if="index < 6", :to="{path: '/main/sheetdetail', query: {id: item.id}}")
         .sheet-image
           img(:src="item.picUrl")
+          .high-quality(v-if="item.highQuality")
+            i.icon-menu
           .tips
             i.icon-menu
             span {{item.playCount | parseNumber}}
@@ -93,12 +95,30 @@ export default {
     flex-wrap: wrap;
     height: auto;
     .sheet-list{
-      width: 30%;
+      width: 32.6%;
       position: relative;
       .sheet-image{
         border-radius: p2r(0.06rem);
         position: relative;
         overflow: hidden;
+        .high-quality{
+          background: $gold_color;
+          width: p2r(1rem);
+          line-height: p2r(0.4rem);
+          transform: rotate(-45deg) translate(-27%, -98%);
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: $auto_padding_l_r / 2 $auto_padding_l_r;
+          i{
+            font-size: $f_small_s / 2;
+            font-weight: 200;
+          }
+        }
         img{
           display: block;
           width: 100%;

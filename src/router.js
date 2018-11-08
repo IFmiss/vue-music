@@ -19,6 +19,7 @@ const Recommend = () => import('./views/find/recommend')
 const Station = () => import('./views/find/station')
 const Daily = () => import('./views/find/daily')
 const Sheet = () => import('./views/find/sheet')
+const SheetDetail = () => import('./views/find/sheet/sheet-detail')
 
 Vue.use(Router)
 
@@ -105,6 +106,16 @@ export default new Router({
           component: Sheet,
           meta: {
             transition: 'fade-left',
+            activeRouter: ['/main/find']
+          }
+        },
+        // 歌单详情
+        {
+          path: '/main/sheetdetail',
+          name: 'sheetdetail',
+          component: SheetDetail,
+          meta: {
+            transition: 'sider-left',
             activeRouter: ['/main/find']
           }
         }

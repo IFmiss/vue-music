@@ -61,7 +61,10 @@ const API = {
     SHEET_LISTS: `/top/playlist`,
 
     // 获取歌单分类
-    CAT_LISTS: `/playlist/catlist`
+    CAT_LISTS: `/playlist/catlist`,
+
+    // 获取歌单详情  参数id为歌单id
+    SHEET_DETAIL_LISTS: `/playlist/detail`
   }
 }
 export default API

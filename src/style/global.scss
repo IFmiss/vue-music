@@ -51,6 +51,18 @@ body {
   opacity: 0;
 }
 
+// sider-left
+.sider-left-enter-to,
+.sider-left-leave-to{
+  transition: all .3s;
+}
+.sider-left-leave-to{
+  transform: translateX(-15px);
+}
+.sider-left-enter{
+  transform: translateX(15px);
+}
+
 // sider-top
 .sider-top-enter-to,
 .sider-top-leave-to{

@@ -78,3 +78,37 @@
 @function lg($direction: 90deg, $colors...) {
 	@return linear-gradient($direction, $colors);
 }
+
+// 添加blur模糊效果
+// 如果不是绝对定位，父元素需要设置相对定位
+// $blur 为模糊的数值
+// $height 区域的高度
+// $position 为位置 默认50%
+@mixin blur($blur, $height, $position: 50%) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: $position;
+	-webkit-filter: blur($blur);
+	filter: blur($blur);
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	&::before{
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+	@if ($height == auto) {
+		bottom: 0;
+	}
+	@else {
+		height: $height;
+	}
+}

@@ -1,6 +1,7 @@
 <template lang="pug">
   .common-page
-    .auto-header
+    .auto-header(:class="{'bg': bg}")
+      .bg(v-if="bg" :style="headerStyle")
       .left
         slot(v-if="custBack" name="header-l")
         i.icon-menu(v-else @click="back")
@@ -20,6 +21,19 @@ export default {
     custBack: {
       type: Boolean,
       default: false
+    },
+    bg: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    headerStyle () {
+      let data = {
+        background: `url(${this.bg})`
+      }
+      if (this.bg) return data
+      return {}
     }
   },
   methods: {
@@ -56,6 +70,11 @@ export default {
     justify-content: center;
     // padding: 0 $auto_padding_l_r;
     box-sizing: border-box;
+    opacity: 1;
+    .bg{
+      @include blur(20px, $auto_h);
+      background-position: calc(50% - $auto_h);
+    }
     .left,.right{
       flex: 0 0 p2r(1.8rem);
       display: flex;
@@ -64,6 +83,12 @@ export default {
         flex: 0 0 p2r(0.7rem);
         margin: 0 p2r(0.2rem);
       }
+    }
+    &.bg{
+      .left,.right,.title{
+        z-index: 1;
+      }
+      background: transparent;
     }
     .left{
       justify-content: flex-start;
