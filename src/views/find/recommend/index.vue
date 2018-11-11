@@ -11,16 +11,16 @@
         // 四个大的按钮
         .vm-lists
           router-link(class="list-entry" to="/")
-            .icon-menu
+            img(src="./../../../assets/images/r1.jpg")
             span.entry-name 私人FM
           router-link(class="list-entry" to="/main/daily")
-            .icon-menu
+            img(src="./../../../assets/images/r2.jpg")
             span.entry-name 每日推荐
           router-link(class="list-entry" to="/main/sheet")
-            .icon-menu
+            img(src="./../../../assets/images/r3.jpg")
             span.entry-name 歌单
           router-link(class="list-entry" to="/")
-            .icon-menu
+            img(src="./../../../assets/images/r4.jpg")
             span.entry-name 排行榜
         GroupSheet(api="RECOMMEND_SHEET_LISTS")
 </template>
@@ -106,13 +106,14 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        .icon-menu{
-          font-size: p2r(0.8rem);
+        img{
+          width: p2r(1rem);
+          height: p2r(1rem);
           color: $primary-color;
         }
         .entry-name{
-          font-size: $f_small_l;
-          margin-top: $auto_padding_t_b;
+          font-size: $f_small_m;
+          margin-top: $auto_padding_t_b / 3;
           color: $text_color;
         }
       }

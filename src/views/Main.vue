@@ -3,10 +3,11 @@
   .vm-main
     .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
     Nav
-    transition(:name="$route.meta.transition" mode="in-out")
-      keep-alive(v-if="$route.meta.keepAlive")
-        router-view(class="model-view")
-      router-view(v-else class="model-view")
+    transition(:name="$route.meta.transition")
+      keep-alive
+        router-view(v-if="$route.meta.keepAlive" class="model-view")
+    transition(:name="$route.meta.transition")
+      router-view(v-if="!$route.meta.keepAlive" class="model-view")
 </template>
 <script>
 import Nav from '@/components/nav'

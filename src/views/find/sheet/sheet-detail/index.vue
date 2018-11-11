@@ -7,7 +7,7 @@
           .content-main
             .blur(:style="{background: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
             .detail-main
-              .sheet-avatar
+              .sheet-avatar(@click="showSheetAvatar")
                 img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
                 .tips {{detail.playCount | parseNumber}}
                 .high-quality(v-if="detail.highQuality")
@@ -72,6 +72,8 @@
             p 123123
             p 123123
             p 123123
+    transition(name="fade")
+      SheetAvatar(v-if="showAvatar", @hideSheetAvatar="hideSheetAvatar" :avatarData="detail")
 </template>
 
 <script>
@@ -79,16 +81,21 @@ import API from 'api'
 import CommonPage from 'components/commonpage'
 import Scroll from 'components/scroll'
 import filter from 'filter'
+import SheetAvatar from './../sheet-avatar'
 export default {
   data () {
     return {
       sheetId: 0,
-      detail: {}
+      // 数据详情
+      detail: {},
+      // 是否显示图片封面
+      showAvatar: false
     }
   },
   components: {
     Scroll,
-    CommonPage
+    CommonPage,
+    SheetAvatar
   },
   computed: {
     isEmptyDetail () {
@@ -99,11 +106,25 @@ export default {
     parseNumber: (value) => filter.parseNumber(value)
   },
   methods: {
+    // 获取专辑数据
     async initData () {
       let res = await this.$mutils.fetchData(API.sheet.SHEET_DETAIL_LISTS, {
         id: this.sheetId
       })
       this.detail = res.data.playlist
+    },
+
+    /**
+     * 显示歌单图片背景
+     */
+    showSheetAvatar () {
+      this.showAvatar = true
+    },
+    /**
+     * 关闭歌单图片背景
+     */
+    hideSheetAvatar () {
+      this.showAvatar = false
     }
   },
   created () {

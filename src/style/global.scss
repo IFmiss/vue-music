@@ -8,7 +8,6 @@ a{
 
 // 让按钮更舒服的点击
 .easy-click{
-  position: relative;
   &::after{
     position: absolute;
     content: '';
@@ -43,7 +42,7 @@ body {
   transition: all .3s;
 }
 .fade-left-leave-to{
-  transform: translateX(-15px);
+  transform: translateX(15px);
   opacity: 0;
 }
 .fade-left-enter{
@@ -73,4 +72,16 @@ body {
 }
 .sider-top-enter{
   transform: translateY(120%);
+}
+
+// fade效果
+.fade-enter-to,
+.fade-leave-to{
+  transition: all .3s;
+}
+.fade-leave-to{
+  opacity: 0;
+}
+.fade-enter{
+  opacity: 0;
 }
