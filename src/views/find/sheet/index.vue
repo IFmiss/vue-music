@@ -5,7 +5,8 @@
       .content(slot="content")
         Scroll(@pullingUp="getSheetListMore", :needPullUp="true")
           .scroll-content(slot="scroll-content")
-            router-link.hight-sheet(to="/main/hightsheet", :style="{background: 'url(' + hightSheet.coverImgUrl + '?param=200y200)'}")
+            router-link.hight-sheet(to="/main/hightsheet")
+              .blur(:style="{backgroundImage: 'url(' + hightSheet.coverImgUrl + '?param=200y200)'}")
               .content
                 img(:src="hightSheet.coverImgUrl + '?param=200y200'")
                 .detail
@@ -125,7 +126,13 @@ export default {
 .hight-sheet{
   height: auto;
   display: block;
+  position: relative;
+  overflow: hidden;
   padding: p2r(0.6rem) $auto_padding_l_r $auto_padding_l_r $auto_padding_l_r;
+  .blur{
+    @include blur(20px, auto);
+    z-index: -1;
+  }
   .content{
     height: auto;
     display: flex;
