@@ -3,9 +3,9 @@
   .sheet-detail(v-if="!isEmptyDetail")
     CommonPage(title="歌单", :bg="detail.coverImgUrl + '?param=170y170'")
       .content(slot="content")
-        .scroll-main
+        .scroll-main(@scroll.native="onScroll")
           .content-main
-            .blur(:style="{background: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
+            .blur(:style="{backgroundImage: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
             .detail-main
               .sheet-avatar(@click="showSheetAvatar")
                 img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
@@ -33,6 +33,8 @@
                 i.icon-menu
                 span.disc 多选
           .content-lists-info
+            .fixed-title
+              p 这是title
             p 123123
             p 123123
             p 123123
@@ -115,6 +117,14 @@ export default {
     },
 
     /**
+     * 滚动事件
+     */
+    onScroll (e) {
+      console.log(e)
+      console.log(e.target.scrollTop)
+    },
+
+    /**
      * 显示歌单图片背景
      */
     showSheetAvatar () {
@@ -136,8 +146,8 @@ export default {
 <style lang="scss" scoped>
 $opacity: 0.8;
 .content-main{
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
   padding-bottom: $auto_padding_l_r * 2;
   .blur{
     overflow: hidden;
@@ -284,8 +294,6 @@ $opacity: 0.8;
   background: #fff;
   margin-top: - $auto_padding_l_r * 2;
   overflow: hidden;
-  height: -webkit-fill-available;
-  overflow: auto;
   z-index: 1;
   &.fixed{
     position: fixed;

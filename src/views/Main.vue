@@ -44,7 +44,7 @@ export default {
     position: fixed;
     top: 0;
     right: 0;
-    height: $HEADER_H_S;
+    height: $auto_h;
     width: p2r(0.7rem);
     display: flex;
     align-items: center;

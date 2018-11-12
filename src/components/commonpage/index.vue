@@ -30,7 +30,7 @@ export default {
   computed: {
     headerStyle () {
       let data = {
-        background: `url(${this.bg})`
+        backgroundImage: `url(${this.bg})`
       }
       if (this.bg) return data
       return {}
@@ -53,6 +53,7 @@ export default {
   bottom: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   // 头部
   .auto-header{
     position: absolute;

@@ -1,6 +1,6 @@
 <template lang="pug">
   .sheet-avatar(@click="hideSheetAvatar")
-    .blur(:style="{background: 'url(' + avatarData.coverImgUrl + ')'}")
+    .blur(:style="{backgroundImage: 'url(' + avatarData.coverImgUrl + ')'}")
     .fix-content
       i.icon-menu.easy-click
       .avatar-content
@@ -41,7 +41,7 @@ export default {
   }
   .fix-content{
     @include fixedfull();
-    overflow: auto;
+    overflow-y: auto;
     i{
       position: fixed;
       top: p2r(0.2rem);
