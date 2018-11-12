@@ -1,6 +1,6 @@
 // 通用音乐歌单列表组件
 <template lang="pug">
-  .music-list(:id="id")
+  .sheet-list(:id="id")
     .music-avatar
       img(:src="avatar + '?param=150y150&quality=100'")
     .music-detail
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.music-list{
+.sheet-list{
   width: 100%;
   height: auto;
   display: flex;

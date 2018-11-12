@@ -33,47 +33,15 @@
                 i.icon-menu
                 span.disc 多选
           .content-lists-info
-            .fixed-title
-              p 这是title
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
-            p 123123
+            .list-title
+              .play
+                i.icon-menu
+                span.label 播放全部
+                span.count (共{{detail.trackCount}}首)
+              .collect
+                span + 收藏 ({{detail.subscribedCount | parseNumber}})
+            .list-content
+              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item")
     transition(name="fade")
       SheetAvatar(v-if="showAvatar", @hideSheetAvatar="hideSheetAvatar" :avatarData="detail")
 </template>
@@ -84,12 +52,15 @@ import CommonPage from 'components/commonpage'
 import Scroll from 'components/scroll'
 import filter from 'filter'
 import SheetAvatar from './../sheet-avatar'
+import MusicList from 'components/musiclist'
 export default {
   data () {
     return {
       sheetId: 0,
       // 数据详情
       detail: {},
+      // 音乐列表
+      tracks: [],
       // 是否显示图片封面
       showAvatar: false
     }
@@ -97,7 +68,8 @@ export default {
   components: {
     Scroll,
     CommonPage,
-    SheetAvatar
+    SheetAvatar,
+    MusicList
   },
   computed: {
     isEmptyDetail () {
@@ -114,6 +86,7 @@ export default {
         id: this.sheetId
       })
       this.detail = res.data.playlist
+      this.tracks = res.data.playlist.tracks
     },
 
     /**
@@ -294,15 +267,51 @@ $opacity: 0.8;
   background: #fff;
   margin-top: - $auto_padding_l_r * 2;
   overflow: hidden;
-  z-index: 1;
-  &.fixed{
-    position: fixed;
-    top: 0;
-    margin-top: 0;
-    left: 0;
-    right: 0;
-    overflow: auto;
-    bottom: 0;
+  position: relative;
+  .list-title{
+    display: flex;
+    align-items: center;
+    &.fixed{
+      position: fixed;
+      top: $auto_h;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: red;
+    }
+    .play{
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      height: p2r(0.8rem);
+      justify-content: flex-start;
+      padding: 0 $auto_padding_l_r;
+      i{
+        color: $color_gray_deep;
+        font-size: $f_small_m;
+        margin-right: $auto_padding_l_r / 2;
+      }
+      .label{
+        color: $color_gray;
+        font-size: $f_small_m;
+        margin-right: $auto_padding_l_r / 2;
+      }
+      .count{
+        color: $color_gray_slow;
+        font-size: $f_small_x;
+      }
+    }
+    .collect{
+      height: p2r(0.8rem);
+      flex: 0 0 p2r(2rem);
+      background: lg(110deg, $primary_color_s, $primary_color_d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 $auto_padding_l_r;
+      font-size: $f_small_m;
+      color: #fff;
+    }
   }
   p{
     margin: 0;
