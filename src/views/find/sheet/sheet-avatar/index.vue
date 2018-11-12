@@ -9,9 +9,8 @@
           .title {{avatarData.name}}
           .tips
             label 标签
-            span 电子
-            span 工作
-          .disc 敲代码听这些音乐一定不会错
+            span(v-for="item in avatarData.tags") {{item}}
+          .disc(v-html="trim(avatarData.description)")
 </template>
 <script>
 export default {
@@ -26,6 +25,9 @@ export default {
   methods: {
     hideSheetAvatar () {
       this.$emit('hideSheetAvatar')
+    },
+    trim (str) {
+      return str.replace(/\n|\r|\n/g, '<br/>')
     }
   }
 }
@@ -38,6 +40,8 @@ export default {
     @include blur(20px, auto);
   }
   .fix-content{
+    @include fixedfull();
+    overflow: auto;
     i{
       position: fixed;
       top: p2r(0.2rem);
@@ -55,6 +59,42 @@ export default {
       }
       .detail-content{
         position: relative;
+        .title{
+          margin-top: $auto_padding_t_b * 2;
+          font-size: $f_auto_l;
+          color:$text_active;
+          position: relative;
+          opacity: 0.95;
+          padding: $auto_padding_t_b * 1.5 $auto_padding_t_b;
+          @include border-1px(rgba(233,233,233,0.26));
+        }
+        .tips{
+          margin-top: $auto_padding_t_b * 2;
+          color:$text_active;
+          opacity: 0.95;
+          text-align: left;
+          padding: $auto_padding_l_r * 1.5 $auto_padding_l_r * 4;
+          label{
+            font-size: $f_small_l;
+          }
+          span {
+            margin-left: $auto_padding_l_r;
+            border: 1px solid rgb(244,244,244);
+            font-size: $f_small_l;
+            line-height: p2r(0.4rem);
+            padding: 0 $auto_padding_l_r;
+            border-radius: p2r(0.2rem);
+          }
+        }
+        .disc{
+          margin-top: $auto_padding_t_b * 2;
+          padding: $auto_padding_t_b / 2 $auto_padding_t_b * 4;
+          font-size: $f_small_x;
+          color:$text_active;
+          opacity: 0.95;
+          text-align: left;
+          line-height: 1.6;
+        }
       }
     }
   }
