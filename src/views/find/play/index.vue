@@ -15,15 +15,26 @@
     .content
       .lrc(v-if="isShowLrc")
       .cd(v-else)
+        TouthBar(@setProgress="setVol", :progress="vol")
+          .left-sider(slot="left-sider")
+            i.icon-menu
+          .right-sider(slot="right-sider")
+            i.icon-menu
       .music-conf
 </template>
 <script>
 import { mapState } from 'vuex'
+import TouthBar from 'components/touchbar'
 export default {
   data () {
     return {
-      isShowLrc: false
+      isShowLrc: false,
+      vol: 100
     }
+  },
+
+  components: {
+    TouthBar
   },
 
   methods: {
@@ -32,6 +43,11 @@ export default {
     },
     getSinger (arr) {
       return arr.map(item => item.name).toString()
+    },
+
+    // 设置音量大小
+    setVol (percent) {
+      this.vol = percent
     }
   },
 
@@ -43,10 +59,15 @@ export default {
         let music = state.Music
         return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
       }
-    })
+    }),
+    getSrc () {
+      return 11111
+    }
   },
   created () {
     // console.log(this.playIndex)
+  },
+  mounted () {
   }
 }
 </script>
