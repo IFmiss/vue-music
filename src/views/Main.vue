@@ -1,6 +1,7 @@
 // 主页 只是个包含底部菜单以及模块内容
 <template lang="pug">
   .vm-main
+    audio
     .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
     Nav
     transition(:name="$route.meta.transition")
@@ -71,6 +72,9 @@ export default {
     left: 0;
     right: 0;
     height: $NAV_H;
+  }
+  audio{
+    display: none;
   }
 }
 </style>
