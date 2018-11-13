@@ -27,3 +27,23 @@ export const MINE_AUTO_INFO = 'MINE_AUTO_INFO'
 
 // 获取banner轮播图信息
 export const BANNER_LISTS = 'BANNER_LISTS'
+
+/**
+ * ================================
+ * ==========  播放相关  ===========
+ * ================================
+ */
+// 播放列表集合
+export const PLAY_MUSIC_LISTS = 'PLAY_MUSIC_LISTS'
+export const PLAY_MUSIC_LISTS_GETTERS = 'PLAY_MUSIC_LISTS_GETTERS'
+export const PLAY_MUSIC_LISTS_SETTERS = 'PLAY_MUSIC_LISTS_SETTERS'
+
+// 播放的索引信息
+export const PLAY_MUSIC_INDEX = 'PLAY_MUSIC_INDEX'
+export const PLAY_MUSIC_INDEX_GETTERS = 'PLAY_MUSIC_INDEX_GETTERS'
+export const PLAY_MUSIC_INDEX_SETTERS = 'PLAY_MUSIC_INDEX_SETTERS'
+
+// 播放的列表id
+export const PLAY_MUSIC_LISTS_ID = 'PLAY_MUSIC_LISTS_ID'
+export const PLAY_MUSIC_LISTS_ID_GETTERS = 'PLAY_MUSIC_LISTS_ID_GETTERS'
+export const PLAY_MUSIC_LISTS_ID_SETTERS = 'PLAY_MUSIC_LISTS_ID_SETTERS'

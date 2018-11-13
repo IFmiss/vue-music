@@ -56,7 +56,7 @@ body {
   transition: all .3s;
 }
 .sider-left-leave-to{
-  transform: translateX(-15px);
+  transform: translateX(15px);
 }
 .sider-left-enter{
   transform: translateX(15px);

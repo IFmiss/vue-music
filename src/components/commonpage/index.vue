@@ -2,6 +2,7 @@
   .common-page
     .auto-header(:class="{'bg': bg}")
       .bg(v-if="bg" :style="headerStyle")
+        .bg-content
       .left
         slot(v-if="custBack" name="header-l")
         i.icon-menu(v-else @click="back")
@@ -14,14 +15,19 @@
 <script>
 export default {
   props: {
+    // 中间的提示文字
     title: {
       type: String,
       default: ''
     },
+
+    // 是否自定义返回效果
     custBack: {
       type: Boolean,
       default: false
     },
+
+    // 是否设置头部背景效果  否则默认为红色
     bg: {
       type: String,
       default: ''
@@ -72,9 +78,11 @@ export default {
     // padding: 0 $auto_padding_l_r;
     box-sizing: border-box;
     opacity: 1;
+    overflow: hidden;
     .bg{
-      @include blur(20px, $auto_h);
-      background-position: calc(50% - $auto_h);
+      @include blur(20px, 250px, 60%);
+      z-index: 1;
+      // background-position: calc(50% - $auto_h);
     }
     .left,.right{
       flex: 0 0 p2r(1.8rem);
@@ -89,7 +97,6 @@ export default {
       .left,.right,.title{
         z-index: 1;
       }
-      background: transparent;
     }
     .left{
       justify-content: flex-start;

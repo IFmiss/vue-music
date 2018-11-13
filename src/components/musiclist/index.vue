@@ -1,6 +1,6 @@
 // 歌单详情列表
 <template lang="pug">
-  .music-list(:id="id")
+  .music-list(@click="saveAddPlay(index)")
     .music-index
       span.index(v-if="!isPlaying") {{index + 1}}
       i.icon-menu(v-else)
@@ -47,6 +47,13 @@ export default {
       default: function () {
         return {}
       }
+    }
+  },
+
+  methods: {
+    // 提示播放的音乐
+    saveAddPlay (index) {
+      this.$emit('play', index)
     }
   },
 

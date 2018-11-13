@@ -5,9 +5,9 @@
     Nav
     transition(:name="$route.meta.transition")
       keep-alive
-        router-view(v-if="$route.meta.keepAlive" class="model-view")
+        router-view(v-if="$route.meta.keepAlive" class="model-view" :class="{'isFull': $route.meta.isFull}")
     transition(:name="$route.meta.transition")
-      router-view(v-if="!$route.meta.keepAlive" class="model-view")
+      router-view(v-if="!$route.meta.keepAlive" class="model-view" :class="{'isFull': $route.meta.isFull}")
 </template>
 <script>
 import Nav from '@/components/nav'
@@ -61,6 +61,9 @@ export default {
     left: 0;
     right: 0;
     bottom: $NAV_H;
+    &.isFull{
+      bottom: 0;
+    }
   }
   .cp-nav{
     position: absolute;

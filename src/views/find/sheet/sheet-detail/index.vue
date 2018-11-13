@@ -41,7 +41,7 @@
               .collect
                 span + 收藏 ({{detail.subscribedCount | parseNumber}})
             .list-content
-              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item")
+              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item", @play="playMusic")
     transition(name="fade")
       SheetAvatar(v-if="showAvatar", @hideSheetAvatar="hideSheetAvatar" :avatarData="detail")
 </template>
@@ -103,11 +103,42 @@ export default {
     showSheetAvatar () {
       this.showAvatar = true
     },
+
     /**
      * 关闭歌单图片背景
      */
     hideSheetAvatar () {
       this.showAvatar = false
+    },
+
+    /**
+     * 播放音乐
+     * 在播放之前，需要进行一下操作
+     * 1. 比对当前播放的歌单是和现在将要播放的歌单是否相同，如果相同，歌单数据将不会变化，只需要变化索引即可
+     * 2. 根据1的判断是否将播放的歌曲集合存储到vuex
+     * 3. 存储播放的索引
+     * 4. 页面跳转到播放页，在播放页拿到将要播放的音乐数据，获取其他数据以及播放
+     */
+    playMusic (index) {
+      this.saveSheetList(index)
+    },
+
+    /**
+     * 保存歌单信息
+     */
+    saveSheetList (index) {
+      let data = {
+        lists: this.tracks,
+        index,
+        id: this.detail.id
+      }
+      this.$store.dispatch('PLAY_MUSIC_LISTS_SETTERS', data)
+      this.$router.push({
+        path: '/main/play',
+        query: {
+          id: data.lists[index].id
+        }
+      })
     }
   },
   created () {

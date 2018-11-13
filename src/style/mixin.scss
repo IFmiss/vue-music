@@ -84,7 +84,7 @@
 // $blur 为模糊的数值
 // $height 区域的高度
 // $position 为位置 默认50%
-@mixin blur($blur, $height, $position: 50%) {
+@mixin blur($blur, $height, $position: 50%, $scale: 1.5) {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -94,8 +94,8 @@
 	background-position: $position;
 	-webkit-filter: blur($blur);
 	filter: blur($blur);
-	-webkit-transform: scale(1.5);
-	transform: scale(1.5);
+	-webkit-transform: scale($scale);
+	transform: scale($scale);
 	overflow: hidden;
 	&::before{
 		content: '';
@@ -106,11 +106,17 @@
 		bottom: 0;
 		z-index: 1;
 		background: rgba(0,0,0,0.1);
+		transition: all 0.3s;
 	}
 	@if ($height == auto) {
 		bottom: 0;
 	}
 	@else {
 		height: $height;
+	}
+	&.draken{
+		&::before{
+			background: rgba(0,0,0,0.3);
+		}
 	}
 }

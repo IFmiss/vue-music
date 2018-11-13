@@ -20,6 +20,7 @@ const Station = () => import('./views/find/station')
 const Daily = () => import('./views/find/daily')
 const Sheet = () => import('./views/find/sheet')
 const SheetDetail = () => import('./views/find/sheet/sheet-detail')
+const Play = () => import('./views/find/play')
 
 Vue.use(Router)
 
@@ -28,6 +29,7 @@ Vue.use(Router)
  * meta对象下的属性意思
  * @param { String }   transition         过渡的动画  fade-left
  * @param { Array }    activeRouter       当前页面是属于四个菜单或者某个路由的关联操作，如果设置了/main/find 则打开该路由的话，底部菜单第一个按钮显示active状态
+ * @param { Boolean }  isFull             是否全屏显示不显示底部菜单
  */
 export default new Router({
   mode: 'history',
@@ -115,8 +117,19 @@ export default new Router({
           name: 'sheetdetail',
           component: SheetDetail,
           meta: {
-            transition: 'sider-left',
+            transition: 'fade-left',
             activeRouter: ['/main/find']
+          }
+        },
+
+        // 播放页面
+        {
+          path: '/main/play',
+          name: 'play',
+          component: Play,
+          meta: {
+            transition: 'fade-left',
+            isFull: true
           }
         }
       ]
