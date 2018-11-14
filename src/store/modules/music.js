@@ -70,11 +70,11 @@ actions[types.MUSIC_IS_PLAYING_SETTERS] = ({commit}, isplay) => {
 /**
  * 用于控制音频的播放类型
  */
-mutations[types.MUSIC_PLAY_TYPE] = (state, type) => {
+mutations[types.MUSIC_PLAY_TYPE_SETTERS] = (state, type) => {
   state[types.MUSIC_PLAY_TYPE] = type
 }
-actions[types.MUSIC_PLAY_TYPE_SETTER] = ({commit}, type) => {
-  commit(types.MUSIC_PLAY_TYPE_SETTER, type)
+actions[types.MUSIC_PLAY_TYPE_SETTERS] = ({commit}, type) => {
+  commit(types.MUSIC_PLAY_TYPE_SETTERS, type)
 }
 
 /**

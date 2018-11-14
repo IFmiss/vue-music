@@ -5,10 +5,9 @@
       .left
         i.icon-menu(@click="back")
       .title
-        .name {{musicPlayingList.name}}
+        .name {{musicPlayingList.name}} - {{playType}}
         .user
-          //- span.user-name {{getSinger(musicPlayingList.ar)}}
-          .user-name {{playIndex}}
+          span.user-name {{getSinger(musicPlayingList.ar)}}
           i.icon-menu
       // 分享
       .right
@@ -24,7 +23,7 @@
       .music-conf
         .music-progress
         .music-play-set
-          .play-type.icon-menu.easy-click(v-if="playType === 'auto'")
+          .play-type.icon-menu.easy-click(@click="music.setPlayType")
           .play-set
             .play-index.icon-menu.easy-click(@click="playPrev")
             .play-puase.easy-click(:class="isPlaying ? 'icon-menu' : 'icon-office'"
@@ -41,7 +40,8 @@ export default {
     return {
       isShowLrc: false,
       vol: 100,
-      audioEle: document.getElementById('myAudio')
+      audioEle: document.getElementById('myAudio'),
+      music: music
     }
   },
 
@@ -78,28 +78,10 @@ export default {
     },
 
     /**
-     * 音乐播放
-     */
-    play () {
-      this.audioEle.play()
-    },
-
-    /**
-     * 音乐暂停
-     */
-    pause () {
-      this.audioEle.pause()
-    },
-
-    /**
      * 音乐播放暂停
      */
     playPause () {
-      if (this.audioEle.paused) {
-        this.play()
-      } else {
-        this.pause()
-      }
+      music.playPause()
     }
   },
 
@@ -138,6 +120,7 @@ export default {
   background-size: 300%;
   background-position: center center;
   .blur{
+    background: #333;
     transition: all 0.3s;
     @include blur(26px, auto, center);
   }
@@ -175,6 +158,9 @@ export default {
       .user{
         margin-top: p2r(0.04rem);
         font-size: $f_small_s;
+        span{
+          margin-right: $auto_padding_l_r / 2;
+        }
       }
     }
   }
