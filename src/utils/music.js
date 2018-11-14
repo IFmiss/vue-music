@@ -1,25 +1,61 @@
 import store from 'store'
 export default {
-  // 播放列表
-  MUSIC_LSITS: store.getters.PLAY_MUSIC_LISTS_GETTERS,
-  // 正在播放的索引
-  PLAY_INDEX: store.getters.PLAY_MUSIC_INDEX_GETTERS,
-  // 正在播放的音乐信息
-  MUSIC_PLAY_LSIT: store.getters.MUSIC_PLAY_LSIT_GETTERS,
-  // 是否是播放状态
-  IS_PALYING: store.getters.MUSIC_IS_PLAYING_GETTERS,
-  // 播放的类型  auto 列表循环， loop 单曲循环， random 列表随机播放
-  PLAY_TYPE: store.getters.MUSIC_PLAY_TYPE_GETTERS,
-  // 音乐列表的数量
-  MUSIC_COUNT: this.MUSIC_LSITS.length,
+  audioEle: document.getElementById('myAudio'),
 
-  playNext: () => {
-    switch (this.PLAY_TYPE) {
+  /**
+   * 播放上一首 下一首歌曲
+   * @param { String }  是下一首还是上一首  'next'  和  'prev' 两种
+   */
+  playNextPrev: (type) => {
+    let playType = store.getters.MUSIC_PLAY_TYPE_GETTERS
+    let playIndex = store.getters.PLAY_MUSIC_INDEX_GETTERS
+    let listCount = store.getters.PLAY_MUSIC_LISTS_GETTERS.length
+    switch (playType) {
       case 'auto':
-        if (this.PLAY_INDEX >= this.MUSIC_COUNT) {
-          store.dispatch('PLAY_MUSIC_INDEX_SETTERS', 0)
+      case 'loop':
+        // 下一曲
+        if (type === 'next') {
+          if (playIndex >= listCount) {
+            store.dispatch('PLAY_MUSIC_INDEX_SETTERS', 0)
+            return
+          }
+          store.dispatch('PLAY_MUSIC_INDEX_SETTERS', playIndex + 1)
         }
-        store.dispatch('PLAY_MUSIC_INDEX_SETTERS', this.PLAY_INDEX++)
+        // 上一曲
+        if (type === 'prev') {
+          if (playIndex <= 0) {
+            store.dispatch('PLAY_MUSIC_INDEX_SETTERS', listCount - 1)
+            return
+          }
+          store.dispatch('PLAY_MUSIC_INDEX_SETTERS', playIndex - 1)
+        }
+        break
+      // 随机不区分上一曲下一曲
+      case 'random':
+        store.dispatch('PLAY_MUSIC_INDEX_SETTERS', Math.floor(Math.random() * listCount))
+        break
     }
+  },
+
+  /**
+   * 播放对应索引的歌曲
+   * @param { Number }  是点击第多少个播放
+   */
+  playIndex: (index) => {
+    store.dispatch('PLAY_MUSIC_INDEX_SETTERS', index)
+  },
+
+  /**
+   * 设置音频的current时间, 存储在vuex中
+   */
+  setCurrentTime: (time) => {
+    store.dispatch('MUSIC_CURRENT_TIME_SETTERS', time)
+  },
+
+  /**
+   * 音频的事件初始化
+   */
+  initAudioEvent: () => {
+
   }
 }

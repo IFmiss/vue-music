@@ -2,12 +2,13 @@ import * as types from './../mutation-types'
 // import axios from 'utils/http'
 // import API from '@/api/index'
 let state = {
-  [types.PLAY_MUSIC_LISTS]: null,
-  [types.PLAY_MUSIC_INDEX]: null,
+  [types.PLAY_MUSIC_LISTS]: [],
+  [types.PLAY_MUSIC_INDEX]: 0,
   // [types.PLAY_MUSIC_LIST]: {},
   [types.PLAY_MUSIC_LISTS_ID]: null,
   [types.MUSIC_IS_PLAYING]: false,
-  [types.MUSIC_PLAY_TYPE]: 'auto'
+  [types.MUSIC_PLAY_TYPE]: 'auto',
+  [types.MUSIC_CURRENT_TIME]: 0
 }
 
 let getters = {
@@ -16,15 +17,12 @@ let getters = {
   // [types.PLAY_MUSIC_LIST_GETTERS]: (state) => state[types.PLAY_MUSIC_LIST],
   [types.PLAY_MUSIC_LISTS_ID_GETTERS]: (state) => state[types.PLAY_MUSIC_LISTS_ID],
   [types.MUSIC_IS_PLAYING_GETTERS]: (state) => state[types.MUSIC_IS_PLAYING],
-  [types.MUSIC_PLAY_TYPE_GETTERS]: (state) => state[types.MUSIC_PLAY_TYPE]
+  [types.MUSIC_PLAY_TYPE_GETTERS]: (state) => state[types.MUSIC_PLAY_TYPE],
+  [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME]
 }
 
 const mutations = {}
 const actions = {}
-
-mutations[types.PLAY_MUSIC_INDEX_SETTERS] = (state, index) => {
-  state[types.PLAY_MUSIC_INDEX] = index
-}
 
 mutations[types.PLAY_MUSIC_LISTS_ID_SETTERS] = (state, id) => {
   state[types.PLAY_MUSIC_LISTS_ID] = id
@@ -77,6 +75,26 @@ mutations[types.MUSIC_PLAY_TYPE] = (state, type) => {
 }
 actions[types.MUSIC_PLAY_TYPE_SETTER] = ({commit}, type) => {
   commit(types.MUSIC_PLAY_TYPE_SETTER, type)
+}
+
+/**
+ * 用于设置播放的索引
+ */
+mutations[types.PLAY_MUSIC_INDEX_SETTERS] = (state, index) => {
+  state[types.PLAY_MUSIC_INDEX] = index
+}
+actions[types.PLAY_MUSIC_INDEX_SETTERS] = ({commit}, index) => {
+  commit(types.PLAY_MUSIC_INDEX_SETTERS, index)
+}
+
+/**
+ * 用于设置播放的current时间
+ */
+mutations[types.MUSIC_CURRENT_TIME_SETTERS] = (state, time) => {
+  state[types.MUSIC_CURRENT_TIME] = time
+}
+actions[types.MUSIC_CURRENT_TIME_SETTERS] = ({commit}, time) => {
+  commit(types.MUSIC_CURRENT_TIME_SETTERS, time)
 }
 
 export default {

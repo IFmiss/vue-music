@@ -7,7 +7,8 @@
       .title
         .name {{musicPlayingList.name}}
         .user
-          span.user-name {{getSinger(musicPlayingList.ar)}}
+          //- span.user-name {{getSinger(musicPlayingList.ar)}}
+          .user-name {{playIndex}}
           i.icon-menu
       // 分享
       .right
@@ -33,7 +34,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-// import music from 'utils/music'
+import music from 'utils/music'
 import TouthBar from 'components/touchbar'
 export default {
   data () {
@@ -66,12 +67,14 @@ export default {
      * 播放下一首
      */
     playNext () {
+      music.playNextPrev('next')
     },
 
     /**
      * 播放上一首
      */
     playPrev () {
+      music.playNextPrev('prev')
     },
 
     /**
