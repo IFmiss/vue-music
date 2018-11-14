@@ -21,15 +21,26 @@
           .right-sider(slot="right-sider")
             i.icon-menu
       .music-conf
+        .music-progress
+        .music-play-set
+          .play-type.icon-menu.easy-click(v-if="playType === 'auto'")
+          .play-set
+            .play-index.icon-menu.easy-click(@click="playPrev")
+            .play-puase.easy-click(:class="isPlaying ? 'icon-menu' : 'icon-office'"
+                                    @click="playPause")
+            .play-index.icon-menu.easy-click(@click="playNext")
+          .play-lists.icon-menu.easy-click
 </template>
 <script>
 import { mapState } from 'vuex'
+// import music from 'utils/music'
 import TouthBar from 'components/touchbar'
 export default {
   data () {
     return {
       isShowLrc: false,
-      vol: 100
+      vol: 100,
+      audioEle: document.getElementById('myAudio')
     }
   },
 
@@ -48,6 +59,44 @@ export default {
     // 设置音量大小
     setVol (percent) {
       this.vol = percent
+      this.audioEle.volume = this.vol / 100
+    },
+
+    /**
+     * 播放下一首
+     */
+    playNext () {
+    },
+
+    /**
+     * 播放上一首
+     */
+    playPrev () {
+    },
+
+    /**
+     * 音乐播放
+     */
+    play () {
+      this.audioEle.play()
+    },
+
+    /**
+     * 音乐暂停
+     */
+    pause () {
+      this.audioEle.pause()
+    },
+
+    /**
+     * 音乐播放暂停
+     */
+    playPause () {
+      if (this.audioEle.paused) {
+        this.play()
+      } else {
+        this.pause()
+      }
     }
   },
 
@@ -57,17 +106,19 @@ export default {
       playIndex: state => state.Music['PLAY_MUSIC_INDEX'],
       musicPlayingList (state) {
         let music = state.Music
+        if (!music['PLAY_MUSIC_LISTS']) return
         return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
-      }
-    }),
-    getSrc () {
-      return 11111
-    }
+      },
+      isPlaying: state => state.Music['MUSIC_IS_PLAYING'],
+      playType: state => state.Music['MUSIC_PLAY_TYPE']
+    })
   },
   created () {
     // console.log(this.playIndex)
   },
   mounted () {
+    // 播放
+    this.playPause()
   }
 }
 </script>
@@ -139,7 +190,39 @@ export default {
     }
     .music-conf{
       flex: 0 0 p2r(2rem);
-      background: red;
+      display: flex;
+      flex-direction: column;
+      padding: $auto_padding_l_r;
+      .music-progress{
+        flex: 0 0 p2r(0.6rem);
+      }
+      .music-play-set{
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        opacity: 0.9;
+        .play-set{
+          flex: 0 0 p2r(4.6rem);
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          .play-index{
+            position: relative;
+            font-size: $f_auto_s * 1.4;
+          }
+          .play-puase{
+            position: relative;
+            font-size: $f_auto_l * 1.5;
+          }
+        }
+        .play-type, .play-lists{
+          position: relative;
+          flex: 0 0 p2r(0.8rem);
+          font-size: $f_small_l;
+        }
+      }
     }
   }
 }

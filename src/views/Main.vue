@@ -1,7 +1,11 @@
 // 主页 只是个包含底部菜单以及模块内容
 <template lang="pug">
   .vm-main
-    audio
+    audio(v-if="musicPlayingList"
+          id="myAudio"
+          @playing="setPlayingState(true)"
+          @pause="setPlayingState(false)"
+          :src="'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3'")
     .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
     Nav
     transition(:name="$route.meta.transition")
@@ -14,6 +18,7 @@
 import Nav from '@/components/nav'
 // import http from '@/utils/http.js'
 // import API from '@/api'
+import { mapState } from 'vuex'
 export default {
   name: 'home',
   data () {
@@ -32,6 +37,18 @@ export default {
   computed: {
     isPlayRouter () {
       return this.$route.path !== '/play'
+    },
+    ...mapState({
+      musicPlayingList (state) {
+        let music = state.Music
+        if (!music['PLAY_MUSIC_LISTS']) return
+        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
+      }
+    })
+  },
+  methods: {
+    setPlayingState (isplay) {
+      this.$store.dispatch('MUSIC_IS_PLAYING_SETTERS', isplay)
     }
   }
 }
