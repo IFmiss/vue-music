@@ -4,21 +4,21 @@ import * as types from './../mutation-types'
 let state = {
   [types.PLAY_MUSIC_LISTS]: [],
   [types.PLAY_MUSIC_INDEX]: 0,
-  // [types.PLAY_MUSIC_LIST]: {},
   [types.PLAY_MUSIC_LISTS_ID]: null,
   [types.MUSIC_IS_PLAYING]: false,
   [types.MUSIC_PLAY_TYPE]: 'auto',
-  [types.MUSIC_CURRENT_TIME]: 0
+  [types.MUSIC_CURRENT_TIME]: 0,
+  [types.MUSIC_DURATION_TIME]: 1
 }
 
 let getters = {
   [types.PLAY_MUSIC_LISTS_GETTERS]: (state) => state[types.PLAY_MUSIC_LISTS],
   [types.PLAY_MUSIC_INDEX_GETTERS]: (state) => state[types.PLAY_MUSIC_INDEX],
-  // [types.PLAY_MUSIC_LIST_GETTERS]: (state) => state[types.PLAY_MUSIC_LIST],
   [types.PLAY_MUSIC_LISTS_ID_GETTERS]: (state) => state[types.PLAY_MUSIC_LISTS_ID],
   [types.MUSIC_IS_PLAYING_GETTERS]: (state) => state[types.MUSIC_IS_PLAYING],
   [types.MUSIC_PLAY_TYPE_GETTERS]: (state) => state[types.MUSIC_PLAY_TYPE],
-  [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME]
+  [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME],
+  [types.MUSIC_DURATION_TIME_GETTER]: (state) => state[types.MUSIC_DURATION_TIME]
 }
 
 const mutations = {}
@@ -27,10 +27,6 @@ const actions = {}
 mutations[types.PLAY_MUSIC_LISTS_ID_SETTERS] = (state, id) => {
   state[types.PLAY_MUSIC_LISTS_ID] = id
 }
-
-// mutations[types.PLAY_MUSIC_LIST_SETTERS] = (state, obj) => {
-//   state[types.PLAY_MUSIC_LIST] = obj
-// }
 
 /**
  * 添加播放列表，此时PLAY_MUSIC_LISTS_ID 也需要变化
@@ -95,6 +91,16 @@ mutations[types.MUSIC_CURRENT_TIME_SETTERS] = (state, time) => {
 }
 actions[types.MUSIC_CURRENT_TIME_SETTERS] = ({commit}, time) => {
   commit(types.MUSIC_CURRENT_TIME_SETTERS, time)
+}
+
+/**
+ * 用于设置音频的duration时长
+ */
+mutations[types.MUSIC_DURATION_TIME_SETTERS] = (state, time) => {
+  state[types.MUSIC_DURATION_TIME] = time
+}
+actions[types.MUSIC_DURATION_TIME_SETTERS] = ({commit}, time) => {
+  commit(types.MUSIC_DURATION_TIME_SETTERS, time)
 }
 
 export default {

@@ -22,6 +22,11 @@
             i.icon-menu
       .music-conf
         .music-progress
+          TouthBar(@setProgress="setProgress", :progress="Math.floor(currentTime / durationTime * 100)")
+            .left(slot="left-sider")
+              span {{currentTime}}
+            .right(slot="right-sider")
+              span {{durationTime}}
         .music-play-set
           .play-type.icon-menu.easy-click(@click="music.setPlayType")
           .play-set
@@ -64,6 +69,12 @@ export default {
     },
 
     /**
+     * 设置进度
+     */
+    setProgress () {
+    },
+
+    /**
      * 播放下一首
      */
     playNext () {
@@ -95,11 +106,13 @@ export default {
         return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
       },
       isPlaying: state => state.Music['MUSIC_IS_PLAYING'],
-      playType: state => state.Music['MUSIC_PLAY_TYPE']
+      playType: state => state.Music['MUSIC_PLAY_TYPE'],
+      currentTime: state => state.Music['MUSIC_CURRENT_TIME'],
+      durationTime: state => state.Music['MUSIC_DURATION_TIME']
     })
   },
   created () {
-    // console.log(this.playIndex)
+    // console.log(document.getElementById('myAudio'))
   },
   mounted () {
     // 播放

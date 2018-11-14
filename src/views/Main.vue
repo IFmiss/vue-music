@@ -1,11 +1,9 @@
 // 主页 只是个包含底部菜单以及模块内容
 <template lang="pug">
   .vm-main
-    audio(v-if="musicPlayingList"
-          id="myAudio"
-          @playing="setPlayingState(true)"
-          @pause="setPlayingState(false)"
-          :src="'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3'")
+    audio(id="myAudio"
+          ref="myAudio"
+          :src="musicPlayingList ? 'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3' : ''")
     .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
     Nav
     transition(:name="$route.meta.transition")
@@ -15,9 +13,8 @@
       router-view(v-if="!$route.meta.keepAlive" class="model-view" :class="{'isFull': $route.meta.isFull}")
 </template>
 <script>
-import Nav from '@/components/nav'
-// import http from '@/utils/http.js'
-// import API from '@/api'
+import Nav from 'components/nav'
+import music from 'utils/music.js'
 import { mapState } from 'vuex'
 export default {
   name: 'home',
@@ -47,9 +44,9 @@ export default {
     })
   },
   methods: {
-    setPlayingState (isplay) {
-      this.$store.dispatch('MUSIC_IS_PLAYING_SETTERS', isplay)
-    }
+  },
+  mounted () {
+    music.initAudioEvent(this.$refs.myAudio)
   }
 }
 </script>

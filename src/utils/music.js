@@ -1,7 +1,7 @@
 import store from 'store'
 import {vueProject} from '@/main.js'
 const Music = {
-  audioEle: document.getElementById('myAudio'),
+  audioEle: store.getters.AUDIO_ELE_GETTERS,
 
   /**
    * 播放上一首 下一首歌曲
@@ -109,8 +109,40 @@ const Music = {
   /**
    * 音频的事件初始化
    */
-  initAudioEvent () {
+  initAudioEvent (ele) {
+    this.audioEle = ele
+    // 播放事件
+    ele.onplaying = () => {
+      console.log('播放事件')
+      store.dispatch('MUSIC_IS_PLAYING_SETTERS', true)
+    }
 
+    // 暂停事件
+    ele.onpause = () => {
+      console.log('暂停事件')
+      store.dispatch('MUSIC_IS_PLAYING_SETTERS', false)
+    }
+
+    // 播放结束事件
+    ele.onended = () => {
+      console.log('播放结束事件')
+      this.playNextPrev('next')
+    }
+
+    ele.onloadedmetadata = (e) => {
+      let dr = Math.floor(e.target.duration)
+      console.log(dr)
+      console.log(vueProject.$dutils.utils.debounce)
+      store.dispatch('MUSIC_DURATION_TIME_SETTERS', dr)
+    }
+
+    // ele.ontimeupdate = vueProject.$dutils.utils.debounce(function (e) {
+    //   // store.dispatch('MUSIC_DURATION_TIME_SETTERS', e.target.currentTime)
+    //   console.log(1)
+    // }, 1000)
+    ele.ontimeupdate = vueProject.$dutils.utils.debounce(function () {
+      console.log(1)
+    }, 1000)
   }
 }
 
