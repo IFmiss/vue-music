@@ -136,12 +136,11 @@ const Music = {
       store.dispatch('MUSIC_DURATION_TIME_SETTERS', dr)
     }
 
-    // ele.ontimeupdate = vueProject.$dutils.utils.debounce(function (e) {
-    //   // store.dispatch('MUSIC_DURATION_TIME_SETTERS', e.target.currentTime)
-    //   console.log(1)
-    // }, 1000)
-    ele.ontimeupdate = vueProject.$dutils.utils.debounce(function () {
-      console.log(1)
+    // 截流
+    ele.ontimeupdate = vueProject.$dutils.utils.throttle(function (e) {
+      let arg = Array.from(arguments)[0]
+      let ct = Math.floor(arg.target.currentTime)
+      store.dispatch('MUSIC_CURRENT_TIME_SETTERS', ct)
     }, 1000)
   }
 }
