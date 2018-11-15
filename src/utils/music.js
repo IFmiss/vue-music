@@ -1,4 +1,5 @@
 import store from 'store'
+import route from '@/router'
 import {vueProject} from '@/main.js'
 const Music = {
   audioEle: store.getters.AUDIO_ELE_GETTERS,
@@ -115,6 +116,24 @@ const Music = {
     } else {
       this.pause()
     }
+  },
+
+  /**
+   * 播放专辑歌曲的操作
+   * @param { Object } data  相关数据
+   * data.lists   播放的列表集合
+   * data.index   播放的索引
+   * data.id      播放的歌单id
+   */
+  saveSheetList (data) {
+    let {lists, index} = data
+    store.dispatch('PLAY_MUSIC_LISTS_SETTERS', data)
+    route.push({
+      path: '/main/play',
+      query: {
+        id: lists[index].id
+      }
+    })
   },
 
   /**

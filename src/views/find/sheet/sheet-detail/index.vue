@@ -53,6 +53,7 @@ import Scroll from 'components/scroll'
 import filter from 'filter'
 import SheetAvatar from './../sheet-avatar'
 import MusicList from 'components/musiclist'
+import music from 'utils/music'
 import { mapState } from 'vuex'
 export default {
   data () {
@@ -137,13 +138,7 @@ export default {
         index,
         id: this.detail.id
       }
-      this.$store.dispatch('PLAY_MUSIC_LISTS_SETTERS', data)
-      this.$router.push({
-        path: '/main/play',
-        query: {
-          id: data.lists[index].id
-        }
-      })
+      music.saveSheetList(data)
     }
   },
   created () {

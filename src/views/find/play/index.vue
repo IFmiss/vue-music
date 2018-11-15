@@ -41,24 +41,28 @@
             .play-puase.easy-click(:class="isPlaying ? 'icon-menu' : 'icon-office'"
                                     @click="playPause")
             .play-index.icon-menu.easy-click(@click="playNext")
-          .play-lists.icon-menu.easy-click
+          .play-lists.icon-menu.easy-click(@click="showSider = true")
+    MusicSiderList(v-if="showSider", @close="showSider = false")
 </template>
 <script>
 import { mapState } from 'vuex'
 import music from 'utils/music'
 import TouthBar from 'components/touchbar'
 import filter from 'filter'
+import MusicSiderList from 'components/musicsiderlist'
 export default {
   data () {
     return {
       isShowLrc: false,
       audioEle: document.getElementById('myAudio'),
-      music: music
+      music: music,
+      showSider: false
     }
   },
 
   components: {
-    TouthBar
+    TouthBar,
+    MusicSiderList
   },
 
   methods: {
