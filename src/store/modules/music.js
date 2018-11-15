@@ -8,7 +8,8 @@ let state = {
   [types.MUSIC_IS_PLAYING]: false,
   [types.MUSIC_PLAY_TYPE]: 'auto',
   [types.MUSIC_CURRENT_TIME]: 0,
-  [types.MUSIC_DURATION_TIME]: 1
+  [types.MUSIC_DURATION_TIME]: 1,
+  [types.MUSIC_VOL]: 100
 }
 
 let getters = {
@@ -18,7 +19,8 @@ let getters = {
   [types.MUSIC_IS_PLAYING_GETTERS]: (state) => state[types.MUSIC_IS_PLAYING],
   [types.MUSIC_PLAY_TYPE_GETTERS]: (state) => state[types.MUSIC_PLAY_TYPE],
   [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME],
-  [types.MUSIC_DURATION_TIME_GETTER]: (state) => state[types.MUSIC_DURATION_TIME]
+  [types.MUSIC_DURATION_TIME_GETTERS]: (state) => state[types.MUSIC_DURATION_TIME],
+  [types.MUSIC_VOL_GETTERS]: (state) => state[types.MUSIC_VOL]
 }
 
 const mutations = {}
@@ -101,6 +103,16 @@ mutations[types.MUSIC_DURATION_TIME_SETTERS] = (state, time) => {
 }
 actions[types.MUSIC_DURATION_TIME_SETTERS] = ({commit}, time) => {
   commit(types.MUSIC_DURATION_TIME_SETTERS, time)
+}
+
+/**
+ * 设置音频播放声音大小
+ */
+mutations[types.MUSIC_VOL_SETTERS] = (state, vol) => {
+  state[types.MUSIC_VOL] = vol
+}
+actions[types.MUSIC_VOL_SETTERS] = ({commit}, vol) => {
+  commit(types.MUSIC_VOL_SETTERS, vol)
 }
 
 export default {

@@ -30,6 +30,7 @@ Vue.use(Router)
  * @param { String }   transition         过渡的动画  fade-left
  * @param { Array }    activeRouter       当前页面是属于四个菜单或者某个路由的关联操作，如果设置了/main/find 则打开该路由的话，底部菜单第一个按钮显示active状态
  * @param { Boolean }  isFull             是否全屏显示不显示底部菜单
+ * @param { Boolean }  keepAlive          页面是否缓存
  */
 export default new Router({
   mode: 'history',
@@ -118,7 +119,8 @@ export default new Router({
           component: SheetDetail,
           meta: {
             transition: 'fade-left',
-            activeRouter: ['/main/find']
+            activeRouter: ['/main/find'],
+            keepAlive: true
           }
         },
 

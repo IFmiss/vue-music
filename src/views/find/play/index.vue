@@ -15,18 +15,16 @@
     .content
       .lrc(v-if="isShowLrc")
       .cd(v-else)
-        TouthBar(@setProgress="setVol", :progress="vol")
+        TouthBar(@setProgress="setVol", :progress="audioVol")
           .left-sider(slot="left-sider")
             i.icon-menu
           .right-sider(slot="right-sider")
             i.icon-menu
       .music-conf
         .music-progress
-          TouthBar(@setProgress="setProgress", :progress="Math.floor(currentTime / durationTime * 100)")
-            .left(slot="left-sider")
-              span {{currentTime}}
-            .right(slot="right-sider")
-              span {{durationTime}}
+          TouthBar(@setProgress="setProgress", :progress="musicProgress")
+            .left(slot="left-sider") {{currentTime | parseMusicTime}}
+            .right(slot="right-sider") {{durationTime | parseMusicTime}}
         .music-play-set
           .play-type.icon-menu.easy-click(@click="music.setPlayType")
           .play-set
@@ -40,11 +38,11 @@
 import { mapState } from 'vuex'
 import music from 'utils/music'
 import TouthBar from 'components/touchbar'
+import filter from 'filter'
 export default {
   data () {
     return {
       isShowLrc: false,
-      vol: 100,
       audioEle: document.getElementById('myAudio'),
       music: music
     }
@@ -64,14 +62,14 @@ export default {
 
     // 设置音量大小
     setVol (percent) {
-      this.vol = percent
-      this.audioEle.volume = this.vol / 100
+      music.setVol(percent)
     },
 
     /**
      * 设置进度
      */
-    setProgress () {
+    setProgress (progress) {
+      music.setProgress(progress)
     },
 
     /**
@@ -108,9 +106,18 @@ export default {
       isPlaying: state => state.Music['MUSIC_IS_PLAYING'],
       playType: state => state.Music['MUSIC_PLAY_TYPE'],
       currentTime: state => state.Music['MUSIC_CURRENT_TIME'],
-      durationTime: state => state.Music['MUSIC_DURATION_TIME']
-    })
+      durationTime: state => state.Music['MUSIC_DURATION_TIME'],
+      audioVol: state => state.Music['MUSIC_VOL']
+    }),
+    musicProgress () {
+      console.log(Math.floor(this.currentTime / this.durationTime * 100))
+      return Math.floor(this.currentTime / this.durationTime * 100)
+    }
   },
+  filters: {
+    parseMusicTime: (value) => filter.parseMusicTime(value)
+  },
+
   created () {
     // console.log(document.getElementById('myAudio'))
   },
@@ -186,9 +193,15 @@ export default {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     .lrc, .cd{
       flex: 1 1 auto;
       overflow: hidden;
+      .left-sider, .right-sider{
+        font-size: $f_small_x;
+        color: #fff;
+        opacity: 0.95;
+      }
     }
     .music-conf{
       flex: 0 0 p2r(2rem);
@@ -197,6 +210,14 @@ export default {
       padding: $auto_padding_l_r;
       .music-progress{
         flex: 0 0 p2r(0.6rem);
+        padding: 0 $auto_padding_l_r;
+        box-sizing: border-box;
+        overflow: hidden;
+        .left, .right{
+          color: #fff;
+          font-size: $f_small_s;
+          opacity: 0.95;
+        }
       }
       .music-play-set{
         flex: 1 1 auto;

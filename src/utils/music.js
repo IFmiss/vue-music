@@ -75,10 +75,21 @@ const Music = {
 
   /**
    * 设置音频的current时间, 存储在vuex中
-   * @param { Number }   time  当前时间
+   * @param { Number }   progress  当前时间与durantion的百分比
    */
-  setCurrentTime (time) {
+  setProgress (progress) {
+    let durationTime = store.getters.MUSIC_DURATION_TIME_GETTERS
+    let time = Math.floor(progress * durationTime / 100)
+    this.audioEle.currentTime = time
     store.dispatch('MUSIC_CURRENT_TIME_SETTERS', time)
+  },
+
+  /**
+   * 设置播放音频音量的大小
+   */
+  setVol (vol) {
+    this.audioEle.volume = vol / 100
+    store.dispatch('MUSIC_VOL_SETTERS', vol)
   },
 
   /**
@@ -110,6 +121,7 @@ const Music = {
    * 音频的事件初始化
    */
   initAudioEvent (ele) {
+    // 存储 audioEle
     this.audioEle = ele
     // 播放事件
     ele.onplaying = () => {
@@ -129,6 +141,7 @@ const Music = {
       this.playNextPrev('next')
     }
 
+    // 音频初始化获取数据
     ele.onloadedmetadata = (e) => {
       let dr = Math.floor(e.target.duration)
       console.log(dr)
@@ -136,7 +149,7 @@ const Music = {
       store.dispatch('MUSIC_DURATION_TIME_SETTERS', dr)
     }
 
-    // 截流
+    // 截流 获取当前的播放进度
     ele.ontimeupdate = vueProject.$dutils.utils.throttle(function (e) {
       let arg = Array.from(arguments)[0]
       let ct = Math.floor(arg.target.currentTime)

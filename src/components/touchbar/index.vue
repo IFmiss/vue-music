@@ -39,6 +39,11 @@ export default {
       this.$emit('setProgress', this.dataProgress)
     }
   },
+  watch: {
+    // progress (n, o) {
+    //   this.dataProgress = n
+    // }
+  },
   mounted () {
     this.barWidth = this.$refs.bar.offsetWidth
   }
@@ -51,6 +56,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
   .left-sider, .right-sider {
     flex: 0 0 p2r(0.9rem);
     display: flex;
@@ -62,7 +69,7 @@ export default {
     padding: 0 $auto_padding_l_r;
     box-sizing: border-box;
     .progress{
-      height: p2r(0.04rem);
+      height: 2px;
       background: rgba(244,244,244,0.9);
       position: relative;
       .current{
