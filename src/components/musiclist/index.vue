@@ -33,6 +33,12 @@ export default {
       default: ''
     },
 
+    // 正在播报的歌单id
+    playSheet: {
+      type: Boolean,
+      default: false
+    },
+
     // 歌手
     singer: {
       type: Array,
@@ -63,7 +69,7 @@ export default {
     },
 
     isPlaying () {
-      return false
+      return this.playSheet
     }
   },
   created () {

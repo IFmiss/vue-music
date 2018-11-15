@@ -41,7 +41,7 @@
               .collect
                 span + 收藏 ({{detail.subscribedCount | parseNumber}})
             .list-content
-              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item", @play="playMusic")
+              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item", :playSheet="playSheet(item.id)", @play="playMusic")
     transition(name="fade")
       SheetAvatar(v-if="showAvatar", @hideSheetAvatar="hideSheetAvatar" :avatarData="detail")
 </template>
@@ -53,6 +53,7 @@ import Scroll from 'components/scroll'
 import filter from 'filter'
 import SheetAvatar from './../sheet-avatar'
 import MusicList from 'components/musiclist'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -74,7 +75,15 @@ export default {
   computed: {
     isEmptyDetail () {
       return JSON.stringify(this.detail) === '{}'
-    }
+    },
+    ...mapState({
+      playSheetId: state => state.Music['PLAY_MUSIC_LISTS_ID'],
+      musicPlayingListId (state) {
+        let music = state.Music
+        if (!music['PLAY_MUSIC_LISTS']) return
+        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']].id
+      }
+    })
   },
   filters: {
     parseNumber: (value) => filter.parseNumber(value)
@@ -87,6 +96,10 @@ export default {
       })
       this.detail = res.data.playlist
       this.tracks = res.data.playlist.tracks
+    },
+
+    playSheet (id) {
+      return this.playSheetId === this.detail.id && this.musicPlayingListId === id
     },
 
     /**
