@@ -2,9 +2,14 @@
 <template lang="pug">
   .sheet-list(:id="id", @click="play(index)")
     .music-avatar
-      img(:src="avatar + '?param=150y150&quality=100'")
+      //- img.avatar(:src="avatar + '?param=150y150&quality=100'" v-if="!playSheet")
+      img.avatar(:src="avatar + '?param=150y150&quality=100'")
+      //- .img(v-else)
+      //-   img.avatar(:src="avatar + '?param=150y150&quality=100'")
+      //-   img.play(src="./../../assets/images/loading.gif")
+    .music-play.icon-menu(v-if="playSheet")
     .music-detail
-      .name {{name}}
+      .name(:class="{active: playSheet}") {{name}}
       .singer {{getSinger}}
     .music-conf
       .mv.icon-menu
@@ -33,8 +38,14 @@ export default {
 
     // 音乐的索引
     index: {
-      ype: Number,
+      type: Number,
       default: 0
+    },
+
+    // 判断音乐列表的播放状态
+    playSheet: {
+      type: Boolean,
+      default: false
     },
 
     // 歌手
@@ -93,6 +104,15 @@ export default {
       border-radius: p2r(0.04rem);
     }
   }
+  .music-play{
+    flex:0 0 p2r(0.4rem);
+    padding-left: p2r(0.06rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: $f_small_x;
+    color: $primary_color;
+  }
   .music-detail{
     flex:1 1 auto;
     display: flex;
@@ -106,6 +126,9 @@ export default {
       @include els();
       width: 100%;
       text-align: left;
+      &.active{
+        color: $primary_color;
+      }
     }
     .singer{
       width: 100%;

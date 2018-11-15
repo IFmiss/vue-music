@@ -2,11 +2,11 @@
 <template lang="pug">
   .music-list(@click="saveAddPlay(index)")
     .music-index
-      span.index(v-if="!isPlaying") {{index + 1}}
+      span.index(v-if="!playSheet") {{index + 1}}
       i.icon-menu(v-else)
     .music-info
       .music-detail
-        .name {{name}}
+        .name(:class="{active: playSheet}") {{name}}
         .singer {{getSinger}}
       .music-conf
         .mv.icon-menu
@@ -66,10 +66,6 @@ export default {
   computed: {
     getSinger () {
       return this.singer.map(item => item.name).toString()
-    },
-
-    isPlaying () {
-      return this.playSheet
     }
   },
   created () {
@@ -121,6 +117,9 @@ export default {
         @include els();
         width: 100%;
         text-align: left;
+        &.active{
+          color:$primary_color;
+        }
       }
       .singer{
         width: 100%;

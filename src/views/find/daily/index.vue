@@ -9,7 +9,7 @@
           .date {{new Date().getDate()}}
           img(src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg")
         .lists(v-if="recommendList.length")
-          SheetList(v-for="(item, index) in recommendList" :name="item.name", :index="index", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :list="item", @play="play")
+          SheetList(v-for="(item, index) in recommendList" :name="item.name", :index="index", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :playSheet="playSheet(item.id)", :list="item", @play="play")
         Loading(v-else :absolute="true")
 </template>
 <script>
@@ -18,6 +18,7 @@ import SheetList from 'components/sheetlist'
 import CommonPage from 'components/commonpage'
 import Loading from 'components/loading'
 import music from 'utils/music'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -65,8 +66,21 @@ export default {
     /**
      * 是否是播放每日推荐的歌曲
      */
-    playSheet () {}
+    playSheet (id) {
+      return this.playSheetId === 0 && this.musicPlayingListId === id
+    }
   },
+  computed: {
+    ...mapState({
+      playSheetId: state => state.Music['PLAY_MUSIC_LISTS_ID'],
+      musicPlayingListId (state) {
+        let music = state.Music
+        if (!music['PLAY_MUSIC_LISTS']) return
+        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']].id
+      }
+    })
+  },
+
   created () {
     this.initData()
   }
