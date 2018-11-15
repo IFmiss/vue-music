@@ -132,6 +132,14 @@ const Music = {
     // 暂停事件
     ele.onpause = () => {
       console.log('暂停事件')
+      if (!this.audioEle.paused) return
+      let cd = document.getElementById('cd')
+      let cdwp = document.getElementById('cdwp')
+      if (cd && cdwp) {
+        let cdTransform = getComputedStyle(cd).transform
+        let wpTransform = getComputedStyle(cdwp).transform
+        cdwp.style.transform = wpTransform === 'none' ? cdTransform : wpTransform.concat(' ', cdTransform)
+      }
       store.dispatch('MUSIC_IS_PLAYING_SETTERS', false)
     }
 

@@ -22,7 +22,8 @@
         .lrc-area
       .cd(v-else @click="toggleType")
         .cd-area
-          img.cd-image(:src="musicPlayingList.al.picUrl + '?param=400y400'")
+          .cd-image-wp(id="cdwp")
+            img.cd-image(id="cd" :src="musicPlayingList.al.picUrl + '?param=400y400'", :class="{'rotate': isPlaying}")
         .mc-conf
           i.icon-menu.collect
           i.icon-menu.download
@@ -228,12 +229,17 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        .cd-image{
+        .cd-image-wp{
           width: p2r(4rem);
           height: p2r(4rem);
-          border-radius: 50%;
-          border: 5px solid rgba(224, 201, 201, 0.3);
-          box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+          margin: 0 auto;
+          .cd-image{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid rgba(224, 201, 201, 0.3);
+            box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+          }
         }
       }
       .mc-conf{

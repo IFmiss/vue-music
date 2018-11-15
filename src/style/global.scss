@@ -85,3 +85,14 @@ body {
 .fade-enter{
   opacity: 0;
 }
+
+// 旋转
+.rotate {
+  animation: round 15s linear infinite;
+}
+
+@keyframes round {
+  100% {
+    transform: rotate(1turn)
+  }
+}
