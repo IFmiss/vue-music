@@ -2,8 +2,7 @@
 <template lang="pug">
   .music-daily
     CommonPage(title="每日推荐")
-      .header(slot="header-r")
-        i.icon-menu
+      i.icon-menu(slot="header-r")
       .content(slot="content")
         .banner
           .date {{new Date().getDate()}}
