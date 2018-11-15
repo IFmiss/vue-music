@@ -2,7 +2,7 @@
   .sheet-avatar(@click="hideSheetAvatar")
     .blur(:style="{backgroundImage: 'url(' + avatarData.coverImgUrl + ')'}")
     .fix-content
-      i.icon-menu.easy-click
+      i.icon-menu.easy-click(@click="hideSheetAvatar")
       .avatar-content
         img(:src="avatarData.coverImgUrl")
         .detail-content

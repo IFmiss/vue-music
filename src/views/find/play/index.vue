@@ -1,6 +1,6 @@
 <template lang="pug">
   .play
-    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + musicPlayingList.al.picUrl + ')'}")
+    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + musicPlayingList.al.picUrl + '?param=400y400)'}")
     .auto-header
       .left
         i.icon-menu(@click="back")
@@ -13,13 +13,21 @@
       .right
         i.icon-menu
     .content
-      .lrc(v-if="isShowLrc")
-      .cd(v-else)
+      .lrc(v-if="isShowLrc" @click="toggleType")
         TouthBar(@setProgress="setVol", :progress="audioVol")
           .left-sider(slot="left-sider")
             i.icon-menu
           .right-sider(slot="right-sider")
             i.icon-menu
+        .lrc-area
+      .cd(v-else @click="toggleType")
+        .cd-area
+          img.cd-image(:src="musicPlayingList.al.picUrl + '?param=400y400'")
+        .mc-conf
+          i.icon-menu.collect
+          i.icon-menu.download
+          i.icon-menu.commen
+          i.icon-menu.set
       .music-conf
         .music-progress
           TouthBar(@setProgress="setProgress", :progress="musicProgress")
@@ -70,6 +78,13 @@ export default {
      */
     setProgress (progress) {
       music.setProgress(progress)
+    },
+
+    /**
+     * 切换显示类型
+     */
+    toggleType () {
+      this.isShowLrc = !this.isShowLrc
     },
 
     /**
@@ -201,6 +216,39 @@ export default {
         font-size: $f_small_x;
         color: #fff;
         opacity: 0.95;
+      }
+    }
+    .cd{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      .cd-area{
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .cd-image{
+          width: p2r(4rem);
+          height: p2r(4rem);
+          border-radius: 50%;
+          border: 5px solid rgba(224, 201, 201, 0.3);
+          box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+        }
+      }
+      .mc-conf{
+        flex: 0 0 p2r(1rem);
+        width: 100%;
+        padding: $auto_padding_l_r $auto_padding_l_r * 9;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        i{
+          font-size: $f_small_l;
+          color: $border_color;
+          opacity: 0.8;
+        }
       }
     }
     .music-conf{

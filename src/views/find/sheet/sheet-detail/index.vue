@@ -3,7 +3,7 @@
   .sheet-detail(v-if="!isEmptyDetail")
     CommonPage(title="歌单", :bg="detail.coverImgUrl + '?param=170y170'")
       .content(slot="content")
-        .scroll-main(@scroll.native="onScroll")
+        .scroll-main
           .content-main
             .blur(:style="{backgroundImage: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
             .detail-main
@@ -87,14 +87,6 @@ export default {
       })
       this.detail = res.data.playlist
       this.tracks = res.data.playlist.tracks
-    },
-
-    /**
-     * 滚动事件
-     */
-    onScroll (e) {
-      console.log(e)
-      console.log(e.target.scrollTop)
     },
 
     /**
