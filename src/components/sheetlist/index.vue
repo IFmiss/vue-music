@@ -1,6 +1,6 @@
 // 通用音乐歌单列表组件
 <template lang="pug">
-  .sheet-list(:id="id")
+  .sheet-list(:id="id", @click="play(index)")
     .music-avatar
       img(:src="avatar + '?param=150y150&quality=100'")
     .music-detail
@@ -31,6 +31,12 @@ export default {
       default: ''
     },
 
+    // 音乐的索引
+    index: {
+      ype: Number,
+      default: 0
+    },
+
     // 歌手
     singer: {
       type: Array,
@@ -51,6 +57,11 @@ export default {
   computed: {
     getSinger () {
       return this.singer.map(item => item.name).toString()
+    }
+  },
+  methods: {
+    play (index) {
+      this.$emit('play', index)
     }
   },
   created () {

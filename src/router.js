@@ -119,8 +119,7 @@ export default new Router({
           component: SheetDetail,
           meta: {
             transition: 'fade-left',
-            activeRouter: ['/main/find'],
-            keepAlive: true
+            activeRouter: ['/main/find']
           }
         },
 

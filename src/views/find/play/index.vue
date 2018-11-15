@@ -143,7 +143,7 @@ export default {
   },
   mounted () {
     // 播放
-    this.playPause()
+    music.play()
   }
 }
 </script>

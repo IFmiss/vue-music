@@ -8,32 +8,64 @@
         .banner
           .date {{new Date().getDate()}}
           img(src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg")
-        .lists(v-if="recommend.length")
-          MusicList(v-for="item in recommend" :name="item.name", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :list="item")
+        .lists(v-if="recommendList.length")
+          SheetList(v-for="(item, index) in recommendList" :name="item.name", :index="index", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :list="item", @play="play")
         Loading(v-else :absolute="true")
 </template>
 <script>
 import API from 'api'
-import MusicList from 'components/sheetlist'
+import SheetList from 'components/sheetlist'
 import CommonPage from 'components/commonpage'
 import Loading from 'components/loading'
+import music from 'utils/music'
 export default {
   data () {
     return {
-      recommend: []
+      recommendList: [],
+      recommendId: 0
     }
   },
   components: {
     CommonPage,
-    MusicList,
+    SheetList,
     Loading
   },
   methods: {
     async initData () {
       let res = await this.$mutils.fetchData(API.sheet.RECOMMEND_SONGS_LISTS)
-      this.recommend = res.data.recommend
-      console.log(this.recommend)
-    }
+      let data = res.data.recommend
+      this.parsePlayInfo(data)
+      console.log(this.recommendList)
+    },
+
+    /**
+     * 每日的歌曲和歌单给的数据是不一样的所以需要改写一下数据格式
+     */
+    parsePlayInfo (data) {
+      this.recommendList = data.map(item => {
+        item.ar = item.artists
+        item.al = item.album
+        return item
+      })
+    },
+
+    /**
+     * 播放每日推荐
+     */
+    play (index) {
+      let data = {
+        lists: this.recommendList,
+        index,
+        id: this.recommendId
+      }
+      console.log(data)
+      music.saveSheetList(data)
+    },
+
+    /**
+     * 是否是播放每日推荐的歌曲
+     */
+    playSheet () {}
   },
   created () {
     this.initData()

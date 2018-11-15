@@ -4,7 +4,7 @@
     audio(id="myAudio"
           ref="myAudio"
           :src="musicPlayingList ? 'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3' : ''")
-    .fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter")
+    router-link.fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter", to="/main/play")
     Nav
     transition(:name="$route.meta.transition")
       keep-alive
