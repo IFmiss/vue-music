@@ -5,7 +5,7 @@
       .content(slot="content")
         Scroll(@pullingUp="getSheetListMore", :needPullUp="true")
           .scroll-content(slot="scroll-content")
-            router-link.hight-sheet(to="/main/hightsheet")
+            router-link.hight-sheet(to="/main/hightsheet" v-if="hightSheet.name")
               .blur(:style="{backgroundImage: 'url(' + hightSheet.coverImgUrl + '?param=200y200)'}")
               .content
                 img(:src="hightSheet.coverImgUrl + '?param=200y200'")
@@ -16,7 +16,7 @@
                     i.icon-menu
                   .name {{hightSheet.name}}
                   .disc {{hightSheet.copywriter}}
-            .sheet-lists
+            .sheet-lists(v-if="hightSheet.name")
               .filter
                 .select
                   .name(@click="showSelect = true") {{cat}}
