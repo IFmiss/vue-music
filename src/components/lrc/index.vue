@@ -4,6 +4,7 @@
       .lrc-list(v-for="(item, index) in lrcs", :class="{active: activeIndex === index}") {{item.lrc}}
     .lrc-tip(v-if="hasLrc === 2") 纯音乐，请欣赏
     .lrc-tip(v-if="hasLrc === 0") 歌词加载中, 请稍等...
+    .lrc-tip(v-if="hasLrc === 3") 暂无歌词
 </template>
 <script>
 import API from 'api'
@@ -47,6 +48,7 @@ export default {
         this.hasLrc = 1
         this.lrcs = music.parseLrc(lrcs)
       }
+      this.hasLrc = 3
     },
 
     /**
