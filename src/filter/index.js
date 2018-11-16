@@ -13,8 +13,8 @@ export default {
     let t = Math.floor(value)
     let m = Math.floor(t / 60)
     let s = t % 60
-    let strS = (Array(2).join('0') + s).slice(-2)
-    let strM = (Array(2).join('0') + m).slice(-2)
+    let strS = String(s).padStart(2, '0')
+    let strM = String(m).padStart(2, '0')
     return strM + ' : ' + strS
   }
 }

@@ -65,6 +65,16 @@ const API = {
 
     // 获取歌单详情  参数id为歌单id
     SHEET_DETAIL_LISTS: `/playlist/detail`
+  },
+
+  /**
+   * ====================
+   * 音乐详情
+   * ====================
+   */
+  music: {
+    // 获取歌词
+    MUSIC_LRC: '/lyric'
   }
 }
 export default API

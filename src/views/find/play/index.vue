@@ -14,12 +14,15 @@
         i.icon-menu
     .content
       .lrc(v-if="isShowLrc" @click="toggleType")
-        TouthBar(@setProgress="setVol", :progress="audioVol")
-          .left-sider(slot="left-sider")
-            i.icon-menu
-          .right-sider(slot="right-sider")
-            i.icon-menu
-        .lrc-area
+        .vol
+          TouthBar(@setProgress="setVol", :progress="audioVol")
+            .left-sider(slot="left-sider")
+              i.icon-menu
+            .right-sider(slot="right-sider")
+              i.icon-menu
+        .lrc-area(ref="lrcarea")
+          .full-lrc
+          Lrc(:songId="musicPlayingList.id", :currentT="currentTime")
       .cd(v-else @click="toggleType")
         .cd-area
           .cd-image-wp(id="cdwp")
@@ -32,8 +35,10 @@
       .music-conf
         .music-progress
           TouthBar(@setProgress="setProgress", :progress="musicProgress")
-            .left(slot="left-sider") {{currentTime | parseMusicTime}}
-            .right(slot="right-sider") {{durationTime | parseMusicTime}}
+            .left(slot="left-sider")
+              span {{currentTime | parseMusicTime}}
+            .right(slot="right-sider")
+              span {{durationTime | parseMusicTime}}
         .music-play-set
           .play-type.icon-menu.easy-click(@click="music.setPlayType")
           .play-set
@@ -49,6 +54,7 @@ import { mapState } from 'vuex'
 import music from 'utils/music'
 import TouthBar from 'components/touchbar'
 import filter from 'filter'
+import Lrc from 'components/lrc'
 import MusicSiderList from 'components/musicsiderlist'
 export default {
   data () {
@@ -62,7 +68,8 @@ export default {
 
   components: {
     TouthBar,
-    MusicSiderList
+    MusicSiderList,
+    Lrc
   },
 
   methods: {
@@ -130,7 +137,6 @@ export default {
       audioVol: state => state.Music['MUSIC_VOL']
     }),
     musicProgress () {
-      console.log(Math.floor(this.currentTime / this.durationTime * 100))
       return Math.floor(this.currentTime / this.durationTime * 100)
     }
   },
@@ -221,6 +227,31 @@ export default {
         font-size: $f_small_x;
         color: #fff;
         opacity: 0.95;
+        width: p2r(0.8rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .lrc{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      .vol{
+        flex: 0 0 p2r(0.8rem);
+        padding: 0 $auto_padding_l_r;
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 100%;
+      }
+      .lrc-area{
+        flex: 1 1 auto;
+        width: 100%;
+        overflow: hidden;
+        .full-lrc{
+          margin-top: 50%;
+        }
       }
     }
     .cd{
@@ -267,7 +298,7 @@ export default {
       flex-direction: column;
       padding: $auto_padding_l_r;
       .music-progress{
-        flex: 0 0 p2r(0.6rem);
+        flex: 0 0 p2r(0.8rem);
         padding: 0 $auto_padding_l_r;
         box-sizing: border-box;
         overflow: hidden;
@@ -275,6 +306,10 @@ export default {
           color: #fff;
           font-size: $f_small_s;
           opacity: 0.95;
+          width: p2r(0.8rem);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
       .music-play-set{
