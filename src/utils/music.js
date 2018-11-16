@@ -174,13 +174,11 @@ const Music = {
     this.audioEle = ele
     // 播放事件
     ele.onplaying = () => {
-      console.log('播放事件')
       store.dispatch('MUSIC_IS_PLAYING_SETTERS', true)
     }
 
     // 暂停事件
     ele.onpause = () => {
-      console.log('暂停事件')
       if (!this.audioEle.paused) return
       let cd = document.getElementById('cd')
       let cdwp = document.getElementById('cdwp')
@@ -194,15 +192,12 @@ const Music = {
 
     // 播放结束事件
     ele.onended = () => {
-      console.log('播放结束事件')
       this.playNextPrev('next')
     }
 
     // 音频初始化获取数据
     ele.onloadedmetadata = (e) => {
       let dr = Math.floor(e.target.duration)
-      console.log(dr)
-      console.log(vueProject.$dutils.utils.debounce)
       store.dispatch('MUSIC_DURATION_TIME_SETTERS', dr)
     }
 
