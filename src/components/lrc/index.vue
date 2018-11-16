@@ -38,10 +38,13 @@ export default {
         id: this.songId
       })
       // 是否存在
-      if (res.data.qfy) {
+      if (res.data.nolyric) {
         this.hasLrc = 2
-      } else {
+        return
+      }
+      if (res.data.lrc && res.data.lrc.lyric) {
         let lrcs = res.data.lrc.lyric
+        this.hasLrc = 1
         this.lrcs = music.parseLrc(lrcs)
       }
     },
@@ -53,7 +56,6 @@ export default {
       if (this.activeIndex < 0) return
       if (this.$refs.lrc.childNodes && this.$refs.lrc.childNodes[this.activeIndex] && this.$refs.lrc.childNodes[this.activeIndex].offsetTop) {
         let scrollT = this.$refs.lrc.childNodes[this.activeIndex].offsetTop
-        console.log('this. is a test')
         this.$refs.lrc.style.WebkitTransform = `translate3d(0, -${scrollT}px, 0)`
         this.$refs.lrc.style.transform = `transform: translate3d(0, -${scrollT}px, 0)`
       }
@@ -67,7 +69,6 @@ export default {
         if (this.currentT > this.lrcs[i].t) {
           activeIndex = i
         } else {
-          console.log(1)
           break
         }
       }
@@ -87,9 +88,6 @@ export default {
     }
   },
 
-  created () {
-    this.initLrc()
-  },
   mounted () {
     this.scrollLrc()
   }

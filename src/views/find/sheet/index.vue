@@ -80,7 +80,7 @@ export default {
      */
     getSheetListMore (that) {
       this.offset = this.offset + this.limit
-      console.log(this.offset)
+
       this.getSheetListByOffset()
       // 更新完成之后需要重新计算滚动高度
       that.scroll.refresh()

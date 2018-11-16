@@ -35,7 +35,6 @@ export default {
       let res = await this.$mutils.fetchData(API.sheet.RECOMMEND_SONGS_LISTS)
       let data = res.data.recommend
       this.parsePlayInfo(data)
-      console.log(this.recommendList)
     },
 
     /**
@@ -58,7 +57,6 @@ export default {
         index,
         id: this.recommendId
       }
-      console.log(data)
       music.saveSheetList(data)
     },
 

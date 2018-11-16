@@ -1,4 +1,5 @@
 const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
@@ -13,6 +14,22 @@ module.exports = {
   // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码。这个值会在 @vue/cli-plugin-eslint 被安装之后生效。
   lintOnSave: 'error',
   productionSourceMap: false,
+  configureWebpack:{
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            compress: {
+              warnings: false,
+              drop_console: true, //console
+              drop_debugger: false,
+              pure_funcs: ['console.log']//移除console
+            }
+          }
+        })
+      ]
+    }
+  },
   css: {
     loaderOptions: {
       sass: {

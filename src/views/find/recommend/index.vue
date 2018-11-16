@@ -47,12 +47,10 @@ export default {
     async getBanner () {
       let res = await this.$store.dispatch('BANNER_LISTS')
       this.banners = res.data.banners
-      console.log(this.banners)
     }
   },
   mounted () {
     this.getBanner()
-    console.log(this.$route)
   }
 }
 </script>

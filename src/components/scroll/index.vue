@@ -55,7 +55,6 @@ export default {
       }
       if (this.needPullDown) data.pullDownRefresh = pullDownRefresh
       if (this.needPullUp) data.pullUpLoad = pullUpLoad
-      console.log(data)
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
         mouseWheel: {
