@@ -47,6 +47,7 @@ export default {
         let lrcs = res.data.lrc.lyric
         this.hasLrc = 1
         this.lrcs = music.parseLrc(lrcs)
+        return
       }
       this.hasLrc = 3
     },
