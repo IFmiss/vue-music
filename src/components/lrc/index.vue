@@ -83,6 +83,7 @@ export default {
     songId: {
       immediate: true,
       handler: function (val, oldVal) {
+        this.hasLrc = 0
         this.initLrc()
       }
     },
