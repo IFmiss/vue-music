@@ -15,7 +15,9 @@ export default {
       lrcs: [],
       t: null,
       // 0 加载   1 有歌词   2 没有歌词 定义为纯音乐
-      hasLrc: 0
+      hasLrc: 0,
+      // dom 元素的lists
+      lrcLists: null
     }
   },
 
@@ -57,8 +59,8 @@ export default {
      */
     scrollLrc () {
       if (this.activeIndex < 0) return
-      if (this.$refs.lrc.childNodes && this.$refs.lrc.childNodes[this.activeIndex] && this.$refs.lrc.childNodes[this.activeIndex].offsetTop) {
-        let scrollT = this.$refs.lrc.childNodes[this.activeIndex].offsetTop
+      if (this.lrcLists && this.lrcLists[this.activeIndex]) {
+        let scrollT = this.lrcLists[this.activeIndex].offsetTop
         this.$refs.lrc.style.WebkitTransform = `translate3d(0, -${scrollT}px, 0)`
         this.$refs.lrc.style.transform = `transform: translate3d(0, -${scrollT}px, 0)`
       }
@@ -93,6 +95,7 @@ export default {
   },
 
   mounted () {
+    this.lrcLists = document.getElementsByClassName('lrc-list')
     this.scrollLrc()
   }
 }

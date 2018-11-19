@@ -191,8 +191,11 @@ export default {
       align-items: center;
       i, span{
         flex: 0 0 p2r(0.7rem);
-        margin: 0 p2r(0.2rem);
+        margin: 0 p2r(0.1rem);
       }
+    }
+    .right{
+      justify-content: flex-end;
     }
     .title{
       flex: 1 1 auto;

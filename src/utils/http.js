@@ -21,7 +21,7 @@ http.interceptors.request.use(function (config) {
 })
 
 /**
- * 相应拦截
+ * 响应拦截
  */
 http.interceptors.response.use(res => {
   if (res.data.code === 200) {

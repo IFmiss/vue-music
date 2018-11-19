@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     isPlayRouter () {
-      return this.$route.path !== '/play'
+      return (!this.$route.path.includes('/main/play') && this.musicPlayingList)
     },
     ...mapState({
       musicPlayingList (state) {
@@ -44,6 +44,12 @@ export default {
     })
   },
   methods: {
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to.path.includes('/main/play'))
+      console.log(from.path.includes('/main/play'))
+    }
   },
   mounted () {
     music.initAudioEvent(this.$refs.myAudio)

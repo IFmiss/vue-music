@@ -66,6 +66,7 @@ export default {
       })
 
       // 初始化事件
+      this._resize()
       this._initPullUpLoad()
       this._initpullDownRefresh()
       this.finishPullUp()
@@ -84,6 +85,24 @@ export default {
           this.$emit('pullingDown', this)
         })
       }
+    },
+    _resize () {
+      window.addEventListener('resize', () => {
+        if (!this.scroll || !this.scroll.enabled) {
+          return
+        }
+        clearTimeout(this.resizeTimer)
+        this.resizeTimer = setTimeout(() => {
+          if (this.scroll.isInTransition) {
+            this._onScrollEnd()
+          } else {
+            if (this.autoPlay) {
+              this._play()
+            }
+          }
+          this.refresh()
+        }, 60)
+      })
     },
     finishPullUp () {
       this.scroll && this.scroll.finishPullUp()
