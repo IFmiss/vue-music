@@ -75,17 +75,6 @@ const Music = {
   },
 
   /**
-   * 设置音频的current时间, 存储在vuex中
-   * @param { Number }   progress  当前时间与durantion的百分比
-   */
-  setProgress (progress) {
-    let durationTime = store.getters.MUSIC_DURATION_TIME_GETTERS
-    let time = Math.floor(progress * durationTime / 100)
-    this.audioEle.currentTime = time
-    store.dispatch('MUSIC_CURRENT_TIME_SETTERS', time)
-  },
-
-  /**
    * 设置播放音频音量的大小
    */
   setVol (vol) {

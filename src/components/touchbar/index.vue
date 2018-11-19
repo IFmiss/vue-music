@@ -3,8 +3,11 @@
     slot.left-sider(name="left-sider")
     .bar
       .progress(ref="bar")
-        .current(:style="{width: dataProgress + '%'}")
-        .range(:style="{left: dataProgress + '%'}", @touchstart="rangeTouchStart", @touchmove="rangeTouchMove", @touchend="rangeTouchEnd")
+        .current(ref="current")
+        .range(ref="range"
+                @touchstart="rangeTouchStart"
+                @touchmove="rangeTouchMove"
+                @touchend="rangeTouchEnd")
     slot.right-sider(name="right-sider")
 </template>
 <script>
@@ -15,17 +18,19 @@ export default {
       startPageX: null,
       movePageX: null,
       percent: 0,
-      dataProgress: this.progress
+      dataProgress: this.progress,
+      initiated: false
     }
   },
   props: {
     progress: {
       type: Number,
-      default: 20
+      default: 0
     }
   },
   methods: {
     rangeTouchStart (e) {
+      this.initiated = true
       this.startPageX = e.touches[0].pageX
       this.startOffsetLeft = e.target.offsetLeft
     },
@@ -34,15 +39,33 @@ export default {
       // this.dataProgress = (this.dataProgress + Math.floor(this.movePageX / this.barWidth * 100))
       let moveDisctance = Math.min(this.barWidth, Math.max(0, this.startOffsetLeft + (this.movePageX - this.startPageX)))
       this.dataProgress = Math.floor(moveDisctance / this.barWidth * 100)
+      this.offset(this.dataProgress)
+      this.$emit('setPercent', this.dataProgress)
     },
-    rangeTouchEnd () {
+    rangeTouchEnd (e) {
+      this.initiated = false
       this.$emit('setProgress', this.dataProgress)
+    },
+    setProgressOffset (progress) {
+      if (progress >= 0 && !this.initiated) {
+        this.$nextTick(() => {
+          this.$refs.current.style.width = progress + '%'
+          this.$refs.range.style.left = progress + '%'
+        })
+      }
+    },
+    offset (progress) {
+      this.$refs.current.style.width = progress + '%'
+      this.$refs.range.style.left = progress + '%'
     }
   },
   watch: {
-    // progress (n, o) {
-    //   this.dataProgress = n
-    // }
+    progress: {
+      immediate: true,
+      handler: function (val, oldVal) {
+        this.setProgressOffset(val)
+      }
+    }
   },
   mounted () {
     this.barWidth = this.$refs.bar.offsetWidth
@@ -75,6 +98,7 @@ export default {
       .current{
         background: $primary_color;
         height: 100%;
+        width: 0;
       }
       .range{
         width: p2r(0.2rem);
@@ -83,7 +107,7 @@ export default {
         background: #fff;
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 0;
         transform: translate(-50%, -50%);
         &.music{
           &::before{

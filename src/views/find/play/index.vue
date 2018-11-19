@@ -5,7 +5,7 @@
       .left
         i.icon-menu(@click="back")
       .title
-        .name {{musicPlayingList.name}} - {{playType}}
+        .name {{musicPlayingList.name}}
         .user
           span.user-name {{getSinger(musicPlayingList.ar)}}
           i.icon-menu
@@ -34,7 +34,9 @@
           i.icon-menu.set
       .music-conf
         .music-progress
-          TouthBar(@setProgress="setProgress", :progress="musicProgress")
+          TouthBar(@setProgress="setProgress"
+                  :progress="percent"
+                  @setPercent="setPercent")
             .left(slot="left-sider")
               span {{currentTime | parseMusicTime}}
             .right(slot="right-sider")
@@ -62,7 +64,8 @@ export default {
       isShowLrc: false,
       audioEle: document.getElementById('myAudio'),
       music: music,
-      showSider: false
+      showSider: false,
+      currentT: null
     }
   },
 
@@ -89,7 +92,13 @@ export default {
      * 设置进度
      */
     setProgress (progress) {
-      music.setProgress(progress)
+      const currentTime = this.audioEle.duration * progress / 100
+      this.currentT = this.audioEle.currentTime = currentTime
+      this.$store.dispatch('MUSIC_CURRENT_TIME_SETTERS', this.currentT)
+    },
+
+    setPercent (progress) {
+      this.currentT = this.audioEle.duration * progress / 100
     },
 
     /**
@@ -138,6 +147,9 @@ export default {
     }),
     musicProgress () {
       return Math.floor(this.currentTime / this.durationTime * 100)
+    },
+    percent () {
+      return Math.floor(this.currentTime / this.audioEle.duration * 100)
     }
   },
   filters: {
