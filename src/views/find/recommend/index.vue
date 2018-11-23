@@ -6,7 +6,7 @@
         .sider
           swiper(v-if="banners.length" class="main-sider" :options="swiperOption")
             swiper-slide(v-for="item in banners")
-              img(:src="item.imageUrl")
+              img(:src="item.imageUrl" @click="bannerClick(item)")
             .swiper-pagination(slot="pagination")
         // 四个大的按钮
         .vm-lists
@@ -19,7 +19,7 @@
           router-link(class="list-entry" to="/main/sheet")
             img(src="./../../../assets/images/r3.jpg")
             span.entry-name 歌单
-          router-link(class="list-entry" to="/")
+          router-link(class="list-entry" to="/main/rank")
             img(src="./../../../assets/images/r4.jpg")
             span.entry-name 排行榜
         GroupSheet(api="RECOMMEND_SHEET_LISTS")
@@ -47,6 +47,21 @@ export default {
     async getBanner () {
       let res = await this.$store.dispatch('BANNER_LISTS')
       this.banners = res.data.banners
+    },
+    /**
+     * 点击banner的事件
+     */
+    bannerClick (item) {
+      if (item.url) {
+        window.location.href = item
+        return
+      }
+      this.$router.push({
+        path: '/main/sheetdetail',
+        query: {
+          id: item.targetId
+        }
+      })
     }
   },
   mounted () {
