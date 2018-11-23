@@ -16,8 +16,8 @@
               .sheet-disc
                 .name {{detail.name}}
                 .user
-                  img(:src="detail.creator.avatarUrl + 'param=120y120'")
-                  span {{detail.creator.nickname}}
+                  //- img(:src="detail.creator.avatarUrl + 'param=120y120'")
+                  //- span {{detail.creator.nickname}}
                   i.icon-menu
             .detail-conf
               .conf-list
@@ -89,12 +89,13 @@ export default {
   methods: {
     // 获取专辑数据
     async initData () {
-      const fetchUrl = this.$route.query.type === 'album' ? API.sheet.SHEET_ALBUM_LISTS : API.sheet.SHEET_DETAIL_LISTS
+      const isAlbum = this.$route.query.type === 'album'
+      const fetchUrl = isAlbum ? API.sheet.SHEET_ALBUM_LISTS : API.sheet.SHEET_DETAIL_LISTS
       let res = await this.$mutils.fetchData(fetchUrl, {
         id: this.sheetId
       })
-      this.detail = res.data.playlist
-      this.tracks = res.data.playlist.tracks
+      this.detail = isAlbum ? res.data.album : res.data.playlist
+      this.tracks = isAlbum ? res.data.songs : res.data.playlist.tracks
     },
 
     playSheet (id) {

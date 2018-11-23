@@ -52,16 +52,39 @@ export default {
      * 点击banner的事件
      */
     bannerClick (item) {
+      switch (item.targetType) {
+        case 1:
+          this.$router.push({
+            path: '/main/play',
+            query: {
+              id: item.targetId
+            }
+          })
+          break
+        case 10:
+          this.$router.push({
+            path: '/main/listdetail',
+            query: {
+              id: item.targetId,
+              type: 'album'
+            }
+          })
+          break
+        case 1000:
+          this.$router.push({
+            path: '/main/listdetail',
+            query: {
+              id: item.targetId,
+              type: 'sheet'
+            }
+          })
+          break
+        default:
+          return
+      }
       if (item.url) {
         window.location.href = item
-        return
       }
-      this.$router.push({
-        path: '/main/listdetail',
-        query: {
-          id: item.targetId
-        }
-      })
     }
   },
   mounted () {
