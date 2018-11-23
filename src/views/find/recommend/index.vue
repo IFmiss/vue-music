@@ -57,7 +57,7 @@ export default {
         return
       }
       this.$router.push({
-        path: '/main/sheetdetail',
+        path: '/main/listdetail',
         query: {
           id: item.targetId
         }

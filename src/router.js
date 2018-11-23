@@ -117,8 +117,8 @@ export default new Router({
         },
         // 歌单详情
         {
-          path: '/main/sheetdetail',
-          name: 'sheetdetail',
+          path: '/main/listdetail',
+          name: 'listdetail',
           component: SheetDetail,
           meta: {
             transition: 'fade-left',

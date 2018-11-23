@@ -5,7 +5,7 @@
       span {{sheetName}}
       i.icon-circle-right
     .content(v-if="sheetList.length")
-      router-link.sheet-list(v-for="(item, index) in sheetList" v-if="index < 6", :to="{path: '/main/sheetdetail', query: {id: item.id}}")
+      router-link.sheet-list(v-for="(item, index) in sheetList" v-if="index < 6", :to="{path: '/main/listdetail', query: {id: item.id}}")
         .sheet-image
           img(:src="item.picUrl")
           .high-quality(v-if="item.highQuality")

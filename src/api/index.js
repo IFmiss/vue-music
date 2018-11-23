@@ -67,7 +67,10 @@ const API = {
     SHEET_DETAIL_LISTS: `/playlist/detail`,
 
     // 获取排行榜信息
-    RANK_SHEET_LISTS: `/toplist/detail`
+    RANK_SHEET_LISTS: `/toplist/detail`,
+
+    // 获取专辑列表信息  参数id
+    SHEET_ALBUM_LISTS: `/album`
   },
 
   /**

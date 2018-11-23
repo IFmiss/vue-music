@@ -89,7 +89,8 @@ export default {
   methods: {
     // 获取专辑数据
     async initData () {
-      let res = await this.$mutils.fetchData(API.sheet.SHEET_DETAIL_LISTS, {
+      const fetchUrl = this.$route.query.type === 'album' ? API.sheet.SHEET_ALBUM_LISTS : API.sheet.SHEET_DETAIL_LISTS
+      let res = await this.$mutils.fetchData(fetchUrl, {
         id: this.sheetId
       })
       this.detail = res.data.playlist

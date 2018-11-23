@@ -5,7 +5,7 @@
         .main-content(v-if="official && official.length")
           .title 云音乐官方榜
           .lists-rank
-            router-link.list(v-for="item in official", :to="{path: '/main/sheetdetail', query: {id: item.id}}")
+            router-link.list(v-for="item in official", :to="{path: '/main/listdetail', query: {id: item.id}}")
               .img-info
                 img(:src="item.coverImgUrl")
                 .tips {{item.updateFrequency}}
@@ -13,7 +13,7 @@
                 .list-three(v-for="(list, index) in item.tracks") {{index + 1}}. {{list.first}} - {{list.second}}
           .title 全球榜
           .global-rank(v-if="unOfficial && unOfficial.length")
-            router-link.sheet-list(v-for="item in unOfficial" :to="{path: '/main/sheetdetail', query: {id: item.id}}")
+            router-link.sheet-list(v-for="item in unOfficial" :to="{path: '/main/listdetail', query: {id: item.id}}")
               .sheet-image
                 img(:src="item.coverImgUrl")
                 .high-quality(v-if="item.highQuality")
