@@ -23,6 +23,7 @@ const Daily = () => import('./views/find/daily')
 const Sheet = () => import('./views/find/sheet')
 const SheetDetail = () => import('./views/find/sheet/sheet-detail')
 const Play = () => import('./views/find/play')
+const Rank = () => import('./views/find/rank')
 
 Vue.use(Router)
 
@@ -133,6 +134,15 @@ export default new Router({
           meta: {
             transition: 'fade-left',
             isFull: true
+          }
+        },
+        // 排行榜页面
+        {
+          path: '/main/rank',
+          name: 'rank',
+          component: Rank,
+          meta: {
+            transition: 'fade-left'
           }
         }
       ]

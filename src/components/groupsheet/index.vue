@@ -18,7 +18,6 @@
 </template>
 <script>
 import API from 'api'
-import filter from 'filter'
 import Loading from 'components/loading'
 export default {
   data () {
@@ -49,10 +48,6 @@ export default {
         return {}
       }
     }
-  },
-
-  filters: {
-    parseNumber: (value) => filter.parseNumber(value)
   },
 
   methods: {

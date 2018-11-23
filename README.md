@@ -2,7 +2,7 @@
 
 这是新的vue音乐播放器 UI 基本是仿照网易云音乐IOS系统的UI
 
-新的代码才刚开始，不建议继续看以前[v1.0](https://github.com/IFmiss/vue-music/tree/v1.0)的代码，因为真的很烂，所以我必须要写一个稍微靠谱一点的播放器，不能让你们和我一样踩同样的坑
+新的代码才刚开始，不建议继续看以前[v1.0](https://github.com/IFmiss/vue-music/tree/v1.0)的代码，因为真的有待完善，所以我必须要写一个稍微靠谱一点的播放器，不能让你们和我一样踩同样的坑
 
 最新的播放器会使用 [NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi/#/)的API，有兴趣可以看看
 

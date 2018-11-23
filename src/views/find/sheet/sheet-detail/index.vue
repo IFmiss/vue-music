@@ -50,7 +50,6 @@
 import API from 'api'
 import CommonPage from 'components/commonpage'
 import Scroll from 'components/scroll'
-import filter from 'filter'
 import SheetAvatar from './../sheet-avatar'
 import MusicList from 'components/musiclist'
 import music from 'utils/music'
@@ -86,9 +85,7 @@ export default {
       }
     })
   },
-  filters: {
-    parseNumber: (value) => filter.parseNumber(value)
-  },
+
   methods: {
     // 获取专辑数据
     async initData () {

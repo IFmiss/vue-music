@@ -116,6 +116,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
+      console.log('this.initScroll()')
       this.initScroll()
     })
   }

@@ -22,6 +22,7 @@ import Mutils from 'utils'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import 'style/view.scss'
+import filters from 'filter'
 
 Vue.use(VueAwesomeSwiper)
 
@@ -54,4 +55,10 @@ Vue.prototype.$mutils.fetchData(API.login.USER_LOGIN_STATUS).then(res => {
   console.log(err)
   router.push('/login')
 })
+
+// 注册filter
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 export {vueProject}

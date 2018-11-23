@@ -30,7 +30,7 @@
                   .image-list
                     .tips {{item.playCount | parseNumber}}
                     .user {{item.creator.nickname}}
-                    img(:src="item.coverImgUrl + '?param=400y400'")
+                    img(:src="item.coverImgUrl + '?param=300y300'")
                   .disc {{item.name}}
     transition(name="sider-top")
       SheetType(class="sheet-t" v-if="showSelect" :cat="cat", @selectCat="getSheetType")
@@ -38,7 +38,6 @@
 <script>
 import Scroll from 'components/scroll'
 import Api from 'api'
-import filter from 'filter'
 import SheetType from './sheet-type'
 import CommonPage from 'components/commonpage'
 import Loading from 'components/loading'
@@ -114,9 +113,7 @@ export default {
       this.sheets = this.sheets.concat(res.data.playlists)
     }
   },
-  filters: {
-    parseNumber: (value) => filter.parseNumber(value)
-  },
+
   created () {
     this.initData()
   }

@@ -55,7 +55,6 @@
 import { mapState } from 'vuex'
 import music from 'utils/music'
 import TouthBar from 'components/touchbar'
-import filter from 'filter'
 import Lrc from 'components/lrc'
 import MusicSiderList from 'components/musicsiderlist'
 export default {
@@ -151,9 +150,6 @@ export default {
     percent () {
       return Math.floor(this.currentTime / this.audioEle.duration * 100)
     }
-  },
-  filters: {
-    parseMusicTime: (value) => filter.parseMusicTime(value)
   },
 
   created () {
