@@ -5,8 +5,18 @@
       .content(slot="content")
         .scroll-main
           .content-main
-            .blur(:style="{backgroundImage: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
-            .detail-main
+            .blur(v-if="isAlbum" :style="{backgroundImage: 'url(' + detail.blurPicUrl + '?param=170y170)'}")
+            .blur(v-else :style="{backgroundImage: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
+            .detail-main(v-if="isAlbum")
+              .sheet-avatar(@click="showSheetAvatar")
+                img.avatar(:src="detail.blurPicUrl + 'param=300y300'")
+                .info i
+              .sheet-disc
+                .name {{detail.name}}
+                .user
+                  span {{detail.artists[0].name}}
+                  i.icon-menu
+            .detail-main(v-else)
               .sheet-avatar(@click="showSheetAvatar")
                 img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
                 .tips {{detail.playCount | parseNumber}}
@@ -16,8 +26,8 @@
               .sheet-disc
                 .name {{detail.name}}
                 .user
-                  //- img(:src="detail.creator.avatarUrl + 'param=120y120'")
-                  //- span {{detail.creator.nickname}}
+                  img(:src="detail.creator.avatarUrl + 'param=120y120'")
+                  span {{detail.creator.nickname}}
                   i.icon-menu
             .detail-conf
               .conf-list
@@ -83,19 +93,21 @@ export default {
         if (!music['PLAY_MUSIC_LISTS']) return
         return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']].id
       }
-    })
+    }),
+    isAlbum () {
+      return this.$route.query.type === 'album'
+    }
   },
 
   methods: {
     // 获取专辑数据
     async initData () {
-      const isAlbum = this.$route.query.type === 'album'
-      const fetchUrl = isAlbum ? API.sheet.SHEET_ALBUM_LISTS : API.sheet.SHEET_DETAIL_LISTS
+      const fetchUrl = this.isAlbum ? API.sheet.SHEET_ALBUM_LISTS : API.sheet.SHEET_DETAIL_LISTS
       let res = await this.$mutils.fetchData(fetchUrl, {
         id: this.sheetId
       })
-      this.detail = isAlbum ? res.data.album : res.data.playlist
-      this.tracks = isAlbum ? res.data.songs : res.data.playlist.tracks
+      this.detail = this.isAlbum ? res.data.album : res.data.playlist
+      this.tracks = this.isAlbum ? res.data.songs : res.data.playlist.tracks
     },
 
     playSheet (id) {
