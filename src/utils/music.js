@@ -1,6 +1,7 @@
 import store from 'store'
 import route from '@/router'
 import {vueProject} from '@/main.js'
+import API from 'api'
 const Music = {
   audioEle: store.getters.AUDIO_ELE_GETTERS,
 
@@ -44,11 +45,10 @@ const Music = {
    * 播放对应索引的歌曲
    * @param { Number }  index  是点击第多少个播放
    */
-  playIndex (index) {
+  async playIndex (index) {
+    let playId = store.getters.PLAY_MUSIC_LISTS_GETTERS[index].id
     store.dispatch('PLAY_MUSIC_INDEX_SETTERS', index)
-    vueProject.$nextTick(() => {
-      this.play()
-    })
+    await this.initMusic(playId)
   },
 
   /**
@@ -151,6 +151,49 @@ const Music = {
       path: '/main/play',
       query: {
         id: lists[index].id
+      }
+    })
+  },
+
+  /**
+   * 初始化音频
+   */
+  async initMusic (id) {
+    // 动态设置url的qurey id
+    location.href = location.origin + '/#/main/play?id=' + id
+
+    // 判断是否可以播放音乐，可以则播放，否则提示无法播放且console
+    this.checkMusic(id).then(async res => {
+      // 此时这首歌可以播放
+      // 请求数据
+      let musicRes = await vueProject.$mutils.fetchData(API.music.MUSIC_DETAIL, {
+        ids: id
+      })
+      // 判断有没有播放列表集合，没有存储单曲作为歌曲列表集合
+      if (!store.getters.PLAY_MUSIC_LISTS_GETTERS.length) {
+        store.dispatch('PLAY_MUSIC_LISTS_SETTERS', {
+          id: musicRes.data.songs[0].id,
+          index: 0,
+          lists: musicRes.data.songs
+        })
+      }
+      store.dispatch('MUSIC_PLAYING_DETAIL_SETTERS', musicRes.data.songs[0])
+      vueProject.$nextTick(() => {
+        this.play()
+      })
+    }, err => {
+      vueProject.$msg({text: '暂无权限播放'})
+      console.log(err)
+    })
+  },
+
+  async checkMusic (id) {
+    return new Promise(async (resolve, reject) => {
+      let res = await vueProject.$mutils.fetchData(API.music.CHECK_MUSIC, {id})
+      if (res.data.success) {
+        resolve(res)
+      } else {
+        reject(res)
       }
     })
   },

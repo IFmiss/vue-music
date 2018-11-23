@@ -2,14 +2,24 @@ import * as types from './../mutation-types'
 // import axios from 'utils/http'
 // import API from '@/api/index'
 let state = {
+  // 播放的列表集合
   [types.PLAY_MUSIC_LISTS]: [],
+  // 音乐播放的当前索引
   [types.PLAY_MUSIC_INDEX]: 0,
+  // 音乐播放的播放集ID
   [types.PLAY_MUSIC_LISTS_ID]: null,
+  // 音乐播放状态
   [types.MUSIC_IS_PLAYING]: false,
+  // 音乐播放类型   auto  loop  random
   [types.MUSIC_PLAY_TYPE]: 'auto',
+  // 当前音乐时长
   [types.MUSIC_CURRENT_TIME]: 0,
+  // 音乐时长
   [types.MUSIC_DURATION_TIME]: 1,
-  [types.MUSIC_VOL]: 100
+  // 音量
+  [types.MUSIC_VOL]: 100,
+  // 音乐播放详细信息
+  [types.MUSIC_PLAYING_DETAIL]: {}
 }
 
 let getters = {
@@ -20,7 +30,8 @@ let getters = {
   [types.MUSIC_PLAY_TYPE_GETTERS]: (state) => state[types.MUSIC_PLAY_TYPE],
   [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME],
   [types.MUSIC_DURATION_TIME_GETTERS]: (state) => state[types.MUSIC_DURATION_TIME],
-  [types.MUSIC_VOL_GETTERS]: (state) => state[types.MUSIC_VOL]
+  [types.MUSIC_VOL_GETTERS]: (state) => state[types.MUSIC_VOL],
+  [types.MUSIC_PLAYING_DETAIL_GETTERS]: (state) => state[types.MUSIC_PLAYING_DETAIL]
 }
 
 const mutations = {}
@@ -113,6 +124,16 @@ mutations[types.MUSIC_VOL_SETTERS] = (state, vol) => {
 }
 actions[types.MUSIC_VOL_SETTERS] = ({commit}, vol) => {
   commit(types.MUSIC_VOL_SETTERS, vol)
+}
+
+/**
+ * 音频的播放详情
+ */
+mutations[types.MUSIC_PLAYING_DETAIL_SETTERS] = (state, detail) => {
+  state[types.MUSIC_PLAYING_DETAIL] = detail
+}
+actions[types.MUSIC_PLAYING_DETAIL_SETTERS] = ({commit}, detail) => {
+  commit(types.MUSIC_PLAYING_DETAIL_SETTERS, detail)
 }
 
 export default {

@@ -77,7 +77,11 @@ const API = {
    */
   music: {
     // 获取歌词
-    MUSIC_LRC: '/lyric'
+    MUSIC_LRC: '/lyric',
+    // 获取音乐详情
+    MUSIC_DETAIL: '/song/detail',
+    // 检查音乐是否可以播放
+    CHECK_MUSIC: '/check/music'
   }
 }
 export default API

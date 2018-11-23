@@ -1,13 +1,13 @@
 <template lang="pug">
-  .play
-    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + musicPlayingList.al.picUrl + '?param=400y400)'}")
+  .play(v-if="musicPlayingDetail && musicPlayingDetail.id")
+    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + musicPlayingDetail.al.picUrl + '?param=400y400)'}")
     .auto-header
       .left
         i.icon-menu(@click="back")
       .title
-        .name {{musicPlayingList.name}}
+        .name {{musicPlayingDetail.name}}
         .user
-          span.user-name {{getSinger(musicPlayingList.ar)}}
+          span.user-name {{getSinger(musicPlayingDetail.ar)}}
           i.icon-menu
       // 分享
       .right
@@ -22,11 +22,11 @@
               i.icon-menu
         .lrc-area(ref="lrcarea")
           .full-lrc
-          Lrc(:songId="musicPlayingList.id", :currentT="currentTime")
+          Lrc(:songId="musicPlayingDetail.id", :currentT="currentTime")
       .cd(v-else @click="toggleType")
         .cd-area
           .cd-image-wp(id="cdwp")
-            img.cd-image(id="cd" :src="musicPlayingList.al.picUrl + '?param=400y400'", :class="{'rotate': isPlaying}")
+            img.cd-image(id="cd" :src="musicPlayingDetail.al.picUrl + '?param=400y400'", :class="{'rotate': isPlaying}")
         .mc-conf
           i.icon-menu.collect
           i.icon-menu.download
@@ -91,13 +91,21 @@ export default {
      * 设置进度
      */
     setProgress (progress) {
-      const currentTime = this.audioEle.duration * progress / 100
-      this.currentT = this.audioEle.currentTime = currentTime
+      if (this.audioEle.duration) {
+        const currentTime = this.audioEle.duration * progress / 100
+        this.currentT = this.audioEle.currentTime = currentTime
+      } else {
+        this.currentT = 0
+      }
       this.$store.dispatch('MUSIC_CURRENT_TIME_SETTERS', this.currentT)
     },
 
     setPercent (progress) {
-      this.currentT = this.audioEle.duration * progress / 100
+      if (this.audioEle.duration) {
+        this.currentT = this.audioEle.duration * progress / 100
+      } else {
+        this.currentT = 0
+      }
     },
 
     /**
@@ -126,6 +134,14 @@ export default {
      */
     playPause () {
       music.playPause()
+    },
+
+    /**
+     * 初始化音乐，请求数据以及设置playingList
+     */
+    initMusic () {
+      let id = this.$route.query.id || this.musicPlayId
+      music.initMusic(id)
     }
   },
 
@@ -133,31 +149,22 @@ export default {
     ...mapState({
       musicPlayLists: state => state.Music['PLAY_MUSIC_LISTS'],
       playIndex: state => state.Music['PLAY_MUSIC_INDEX'],
-      musicPlayingList (state) {
-        let music = state.Music
-        if (!music['PLAY_MUSIC_LISTS']) return
-        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
-      },
+      musicPlayId: state => state.Music['PLAY_MUSIC_LISTS'][state.Music['PLAY_MUSIC_INDEX']].id,
+      musicPlayingDetail: state => state.Music['MUSIC_PLAYING_DETAIL'],
       isPlaying: state => state.Music['MUSIC_IS_PLAYING'],
       playType: state => state.Music['MUSIC_PLAY_TYPE'],
       currentTime: state => state.Music['MUSIC_CURRENT_TIME'],
       durationTime: state => state.Music['MUSIC_DURATION_TIME'],
       audioVol: state => state.Music['MUSIC_VOL']
     }),
-    musicProgress () {
-      return Math.floor(this.currentTime / this.durationTime * 100)
-    },
     percent () {
-      return Math.floor(this.currentTime / this.audioEle.duration * 100)
+      let dur = this.durationTime || 0
+      return Math.floor(this.currentTime / dur * 100)
     }
   },
 
   created () {
-    // console.log(document.getElementById('myAudio'))
-  },
-  mounted () {
-    // 播放
-    music.play()
+    this.initMusic()
   }
 }
 </script>

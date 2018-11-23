@@ -3,7 +3,7 @@
   .vm-main
     audio(id="myAudio"
           ref="myAudio"
-          :src="musicPlayingList ? 'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3' : ''")
+          :src="musicPlayingList && musicPlayingList.id ? 'http://music.163.com/song/media/outer/url?id=' + musicPlayingList.id + '.mp3' : ''")
     router-link.fix-music-btn.icon-menu.easy-click(v-show="isPlayRouter", to="/main/play")
     Nav
     transition(:name="$route.meta.transition")
@@ -36,11 +36,7 @@ export default {
       return (!this.$route.path.includes('/main/play') && this.musicPlayingList)
     },
     ...mapState({
-      musicPlayingList (state) {
-        let music = state.Music
-        if (!music['PLAY_MUSIC_LISTS']) return
-        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']]
-      }
+      musicPlayingList: state => state.Music['MUSIC_PLAYING_DETAIL']
     })
   },
   methods: {
