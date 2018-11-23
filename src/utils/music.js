@@ -160,7 +160,12 @@ const Music = {
    */
   async initMusic (id) {
     // 动态设置url的qurey id
-    location.href = location.origin + '/#/main/play?id=' + id
+    route.replace({
+      path: '/main/play',
+      query: {
+        id
+      }
+    })
 
     // 判断是否可以播放音乐，可以则播放，否则提示无法播放且console
     this.checkMusic(id).then(async res => {

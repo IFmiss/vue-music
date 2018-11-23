@@ -64,6 +64,7 @@ export default {
     background: rgba(0,0,0,0.3);
   }
   .sider-content{
+    padding: $auto_padding_t_b / 2 0;
     position: absolute;
     left: 0;
     right: 0;
