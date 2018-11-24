@@ -2,6 +2,8 @@ import store from 'store'
 import route from '@/router'
 import {vueProject} from '@/main.js'
 import API from 'api'
+import Vibrant from 'node-vibrant'
+
 const Music = {
   audioEle: store.getters.AUDIO_ELE_GETTERS,
 
@@ -169,7 +171,6 @@ const Music = {
 
     // 判断是否可以播放音乐，可以则播放，否则提示无法播放且console
     this.checkMusic(id).then(async res => {
-      alert(res)
       // 此时这首歌可以播放
       // 请求数据
       let musicRes = await vueProject.$mutils.fetchData(API.music.MUSIC_DETAIL, {
@@ -184,6 +185,7 @@ const Music = {
         })
       }
       store.dispatch('MUSIC_PLAYING_DETAIL_SETTERS', musicRes.data.songs[0])
+      this.initMusicColor(musicRes.data.songs[0])
       vueProject.$nextTick(() => {
         this.play()
       })
@@ -191,6 +193,13 @@ const Music = {
       vueProject.$msg({text: '暂无权限播放'})
       console.log(err)
     })
+  },
+
+  initMusicColor (res) {
+    // Vibrant
+    let pic = res.al.picUrl
+    let v = Vibrant.from(pic).useQuantizer(Vibrant.Quantizer.WebWorker)
+    console.log(v)
   },
 
   async checkMusic (id) {

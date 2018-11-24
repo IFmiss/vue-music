@@ -142,6 +142,10 @@ export default {
     initMusic () {
       let id = this.$route.query.id || this.musicPlayId
       music.initMusic(id)
+    },
+
+    initMusicColor () {
+      music.initMusicColor()
     }
   },
 
