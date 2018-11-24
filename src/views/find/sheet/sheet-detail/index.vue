@@ -8,7 +8,7 @@
             .blur(:style="{backgroundImage: 'url(' + imageSrc + ')'}")
             .detail-main(v-if="isAlbum")
               .sheet-avatar(@click="showSheetAvatar")
-                img.avatar(:src="$mutils.changeImageSize(detail.blurPicUrl)")
+                img.avatar(v-imgsize="detail.blurPicUrl")
                 .info i
               .sheet-disc
                 .name {{detail.name}}
@@ -17,7 +17,7 @@
                   i.icon-menu
             .detail-main(v-else)
               .sheet-avatar(@click="showSheetAvatar")
-                img.avatar(:src="$mutils.changeImageSize(detail.coverImgUrl)")
+                img.avatar(v-imgsize="detail.coverImgUrl")
                 .tips {{detail.playCount | parseNumber}}
                 .high-quality(v-if="detail.highQuality")
                   i.icon-menu
@@ -25,7 +25,7 @@
               .sheet-disc
                 .name {{detail.name}}
                 .user
-                  img(:src="$mutils.changeImageSize(detail.creator.avatarUrl, 120)")
+                  img(v-imgsize="{url: detail.creator.avatarUrl, w: 120}")
                   span {{detail.creator.nickname}}
                   i.icon-menu
             .detail-conf

@@ -8,7 +8,7 @@
             router-link.hight-sheet(to="/main/hightsheet" v-if="hightSheet.name")
               .blur(:style="{backgroundImage: 'url(' + $mutils.changeImageSize(hightSheet.coverImgUrl, 200) + ')'}")
               .content
-                img(:src="$mutils.changeImageSize(hightSheet.coverImgUrl)")
+                img(v-imgsize="hightSheet.coverImgUrl")
                 .detail
                   .title
                     i.icon-menu.rank
@@ -30,7 +30,7 @@
                   .image-list
                     .tips {{item.playCount | parseNumber}}
                     .user {{item.creator.nickname}}
-                    img(:src="$mutils.changeImageSize(item.coverImgUrl)")
+                    img(v-imgsize="item.coverImgUrl")
                   .disc {{item.name}}
     transition(name="sider-top")
       SheetType(class="sheet-t" v-if="showSelect" :cat="cat", @selectCat="getSheetType")

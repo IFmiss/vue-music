@@ -26,7 +26,7 @@
       .cd(v-else @click="toggleType")
         .cd-area
           .cd-image-wp(id="cdwp")
-            img.cd-image(id="cd" :src="$mutils.changeImageSize(musicPlayingDetail.al.picUrl, 300)", :class="{'rotate': isPlaying}")
+            img.cd-image(id="cd" v-imgsize="musicPlayingDetail.al.picUrl", :class="{'rotate': isPlaying}")
         .mc-conf
           i.icon-menu.collect
           i.icon-menu.download

@@ -169,6 +169,7 @@ const Music = {
 
     // 判断是否可以播放音乐，可以则播放，否则提示无法播放且console
     this.checkMusic(id).then(async res => {
+      alert(res)
       // 此时这首歌可以播放
       // 请求数据
       let musicRes = await vueProject.$mutils.fetchData(API.music.MUSIC_DETAIL, {

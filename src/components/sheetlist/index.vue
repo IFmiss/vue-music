@@ -2,7 +2,7 @@
 <template lang="pug">
   .sheet-list(:id="id", @click="play(index)")
     .music-avatar
-      img.avatar(:src="$mutils.changeImageSize(avatar, 100)")
+      img.avatar(v-imgsize="{url: avatar, w: 100}")
     .music-play.icon-menu(v-if="playSheet")
     .music-detail
       .name(:class="{active: playSheet}") {{name}}

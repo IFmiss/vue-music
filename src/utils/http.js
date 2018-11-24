@@ -24,10 +24,12 @@ http.interceptors.request.use(function (config) {
  * 响应拦截
  */
 http.interceptors.response.use(res => {
+  console.log(res)
   if (res.data.code === 200) {
     return res
   }
-  if (res.data.message) {
+
+  if ('success' in res.data) {
     return res
   }
   let msg = res.data.msg ? res.data.msg : '数据请求报错'

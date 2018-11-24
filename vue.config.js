@@ -39,5 +39,6 @@ module.exports = {
       .set('store', resolve('src/store'))
       .set('api', resolve('src/api'))
       .set('filter', resolve('src/filter'))
+      .set('directive', resolve('src/directive'))
   }
 }

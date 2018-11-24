@@ -24,6 +24,9 @@ import 'swiper/dist/css/swiper.css'
 import 'style/view.scss'
 import filters from 'filter'
 
+// 引入指令
+import 'directive/imgsize'
+
 Vue.use(VueAwesomeSwiper)
 
 Vue.use(Msg, {
