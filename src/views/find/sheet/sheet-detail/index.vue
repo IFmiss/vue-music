@@ -5,11 +5,10 @@
       .content(slot="content")
         .scroll-main
           .content-main
-            .blur(v-if="isAlbum" :style="{backgroundImage: 'url(' + detail.blurPicUrl + '?param=170y170)'}")
-            .blur(v-else :style="{backgroundImage: 'url(' + detail.coverImgUrl + '?param=170y170)'}")
+            .blur(:style="{backgroundImage: 'url(' + imageSrc + ')'}")
             .detail-main(v-if="isAlbum")
               .sheet-avatar(@click="showSheetAvatar")
-                img.avatar(:src="detail.blurPicUrl + 'param=300y300'")
+                img.avatar(:src="$mutils.changeImageSize(detail.blurPicUrl)")
                 .info i
               .sheet-disc
                 .name {{detail.name}}
@@ -18,7 +17,7 @@
                   i.icon-menu
             .detail-main(v-else)
               .sheet-avatar(@click="showSheetAvatar")
-                img.avatar(:src="detail.coverImgUrl + 'param=300y300'")
+                img.avatar(:src="$mutils.changeImageSize(detail.coverImgUrl)")
                 .tips {{detail.playCount | parseNumber}}
                 .high-quality(v-if="detail.highQuality")
                   i.icon-menu
@@ -26,7 +25,7 @@
               .sheet-disc
                 .name {{detail.name}}
                 .user
-                  img(:src="detail.creator.avatarUrl + 'param=120y120'")
+                  img(:src="$mutils.changeImageSize(detail.creator.avatarUrl, 120)")
                   span {{detail.creator.nickname}}
                   i.icon-menu
             .detail-conf

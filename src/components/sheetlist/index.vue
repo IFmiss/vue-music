@@ -2,11 +2,7 @@
 <template lang="pug">
   .sheet-list(:id="id", @click="play(index)")
     .music-avatar
-      //- img.avatar(:src="avatar + '?param=150y150&quality=100'" v-if="!playSheet")
-      img.avatar(:src="avatar + '?param=150y150&quality=100'")
-      //- .img(v-else)
-      //-   img.avatar(:src="avatar + '?param=150y150&quality=100'")
-      //-   img.play(src="./../../assets/images/loading.gif")
+      img.avatar(:src="$mutils.changeImageSize(avatar, 100)")
     .music-play.icon-menu(v-if="playSheet")
     .music-detail
       .name(:class="{active: playSheet}") {{name}}

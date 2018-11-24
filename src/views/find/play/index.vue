@@ -1,6 +1,6 @@
 <template lang="pug">
   .play(v-if="musicPlayingDetail && musicPlayingDetail.id")
-    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + musicPlayingDetail.al.picUrl + '?param=400y400)'}")
+    .blur(:class="{'draken': isShowLrc}" :style="{backgroundImage: 'url(' + $mutils.changeImageSize(musicPlayingDetail.al.picUrl, 300) + ')'}")
     .auto-header
       .left
         i.icon-menu(@click="back")
@@ -26,7 +26,7 @@
       .cd(v-else @click="toggleType")
         .cd-area
           .cd-image-wp(id="cdwp")
-            img.cd-image(id="cd" :src="musicPlayingDetail.al.picUrl + '?param=400y400'", :class="{'rotate': isPlaying}")
+            img.cd-image(id="cd" :src="$mutils.changeImageSize(musicPlayingDetail.al.picUrl, 300)", :class="{'rotate': isPlaying}")
         .mc-conf
           i.icon-menu.collect
           i.icon-menu.download
