@@ -30,5 +30,12 @@ export default {
         reject(err)
       })
     })
+  },
+
+  /**
+   * 返回图片的不同宽度的地址
+   */
+  changeImageSize (src, w = 300) {
+    return `${src}?param=${w}y${w}`
   }
 }

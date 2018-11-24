@@ -1,7 +1,7 @@
 // 这是歌单的详情页面  包含歌单的一系列操作
 <template lang="pug">
   .sheet-detail(v-if="!isEmptyDetail")
-    CommonPage(title="歌单", :bg="detail.coverImgUrl + '?param=170y170'")
+    CommonPage(title="歌单", :bg="imageSrc")
       .content(slot="content")
         .scroll-main
           .content-main
@@ -96,6 +96,10 @@ export default {
     }),
     isAlbum () {
       return this.$route.query.type === 'album'
+    },
+    imageSrc () {
+      let src = this.isAlbum ? this.detail.blurPicUrl : this.detail.coverImgUrl
+      return this.$mutils.changeImageSize(src)
     }
   },
 

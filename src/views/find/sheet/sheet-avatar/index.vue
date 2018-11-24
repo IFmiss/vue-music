@@ -1,10 +1,10 @@
 <template lang="pug">
   .sheet-avatar(@click="hideSheetAvatar")
-    .blur(:style="{backgroundImage: 'url(' + avatarData.coverImgUrl + ')'}")
+    .blur(:style="{backgroundImage: 'url(' + imageSrc + ')'}")
     .fix-content
       i.icon-menu.easy-click(@click="hideSheetAvatar")
       .avatar-content
-        img(:src="avatarData.coverImgUrl")
+        img(:src="imageSrc")
         .detail-content
           .title {{avatarData.name}}
           .tips
@@ -20,6 +20,13 @@ export default {
       default: function () {
         return {}
       }
+    }
+  },
+  computed: {
+    imageSrc () {
+      let isAlbum = this.$route.query.type === 'album'
+      let src = isAlbum ? this.avatarData.blurPicUrl : this.avatarData.coverImgUrl
+      return this.$mutils.changeImageSize(src)
     }
   },
   methods: {
