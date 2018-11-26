@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       isShowLrc: false,
-      audioEle: document.getElementById('myAudio'),
+      audioEle: null,
       music: music,
       showSider: false,
       currentT: null
@@ -174,6 +174,12 @@ export default {
 
   created () {
     this.initMusic()
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      this.audioEle = document.getElementById('myAudio')
+    })
   }
 }
 </script>

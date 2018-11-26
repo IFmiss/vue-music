@@ -7,9 +7,6 @@ import 'amfe-flexible'
 // 图标字体
 import '@/assets/font-icon/style.css'
 
-// 引入接口api地址
-import API from 'api'
-
 // 提示组件
 import Msg from 'vue-message'
 
@@ -48,20 +45,16 @@ let vueProject = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// 初始化用户登陆状态校验
-Vue.prototype.$mutils.fetchData(API.login.USER_LOGIN_STATUS).then(res => {
-  if (!res.data.bindings[0] || res.data.bindings[0].expired) {
-    Vue.prototype.$msg('登陆过期')
-    router.push('/login')
-  }
-}, err => {
-  console.log(err)
-  router.push('/login')
-})
-
 // 注册filter
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
+})
+
+// 初始化用户登陆状态校验
+store.dispatch('LOGIN_STATUS_SETTERS').then(() => {
+  vueProject.$msg('登陆校验成功')
+}, () => {
+  vueProject.$msg('登陆校验失败')
 })
 
 export {vueProject}

@@ -6,7 +6,7 @@
       .serch-area
         i.left.icon-pencil.easy-click
         // 控制区域
-        input(type="text" class="serach-input" value="111")
+        input(type="text" class="serach-input" value="", placeholder="搜索")
       .nav-bar
         router-link(to="/main/find/recommend" class="nav-bar-router") 个性推荐
         router-link(to="/main/find/station" class="nav-bar-router") 主播电台

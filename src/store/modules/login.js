@@ -1,59 +1,18 @@
 import * as types from 'store/mutation-types'
 import axios from 'utils/http'
 import API from '@/api/index'
+import router from '@/router'
+
 let state = {
-  [types.USER_INFO_RES]: {},
-  [types.USER_ACCOUNRT_RES]: {},
-  [types.USER_PROFILE_RES]: {},
-  [types.USER_BINDINGS_RES]: [],
-  [types.USER_LOGIN_TYPE_RES]: null
+  [types.LOGIN_STATUS]: {}
 }
 
 const getters = {
-  [types.USER_INFO_GETTER]: state => state.USER_INFO_RES,
-  [types.USER_ACCOUNRT_GETTER]: state => state.USER_ACCOUNRT_RES,
-  [types.USER_PROFILE_GETTER]: state => state.USER_PROFILE_RES,
-  [types.USER_BINDINGS_GETTER]: state => state.USER_BINDINGS_RES,
-  [types.USER_LOGIN_TYPE_GETTER]: state => state.USER_LOGIN_TYPE_RES
+  [types.LOGIN_STATUS_GETTER]: state => state.LOGIN_STATUS
 }
 
 let actions = {}
 let mutations = {}
-
-/**
- * 登录获取所有用户信息
- */
-mutations[types.USER_INFO_SETTER] = (state, data) => {
-  state[types.USER_INFO_RES] = data
-}
-
-/**
- * 账户信息
- */
-mutations[types.USER_ACCOUNRT_SETTER] = (state, data) => {
-  state[types.USER_ACCOUNRT_RES] = data
-}
-
-/**
- * 个人信息
- */
-mutations[types.USER_PROFILE_SETTER] = (state, data) => {
-  state[types.USER_PROFILE_RES] = data
-}
-
-/**
- * 绑定信息
- */
-mutations[types.USER_BINDINGS_SETTER] = (state, data) => {
-  state[types.USER_BINDINGS_RES] = data
-}
-
-/**
- * 登陆类型信息
- */
-mutations[types.USER_LOGIN_TYPE_SETTER] = (state, data) => {
-  state[types.USER_LOGIN_TYPE_RES] = data
-}
 
 /**
  * 登录获取用户信息
@@ -76,14 +35,34 @@ actions[types.USER_LOGIN] = ({commit}, data) => {
         ...data
       }
     }).then(res => {
-      // 返回的数据添加到不同的state
-      commit(types.USER_INFO_SETTER, res.data)
-      commit(types.USER_ACCOUNRT_SETTER, res.data.account)
-      commit(types.USER_PROFILE_SETTER, res.data.profile)
-      commit(types.USER_BINDINGS_SETTER, res.data.bindings)
-      commit(types.USER_LOGIN_TYPE_SETTER, res.data.loginType)
       resolve(res)
     }, err => {
+      reject(err)
+    })
+  })
+}
+
+/**
+ * 获取用户的登陆状态
+ */
+mutations[types.LOGIN_STATUS_SETTERS] = (state, data) => {
+  state[types.LOGIN_STATUS] = data
+}
+
+actions[types.LOGIN_STATUS_SETTERS] = ({commit}, data) => {
+  return new Promise((resolve, reject) => {
+    axios.get(API.login.USER_LOGIN_STATUS).then(res => {
+      if (!res.data.bindings[0] || res.data.bindings[0].expired) {
+        commit(types.LOGIN_STATUS_SETTERS, {})
+        reject(new Error('登陆过期'))
+        router.push('/login')
+        return
+      }
+      commit(types.LOGIN_STATUS_SETTERS, res.data.profile)
+      resolve(res)
+    }, err => {
+      commit(types.LOGIN_STATUS_SETTERS, {})
+      router.push('/login')
       reject(err)
     })
   })
