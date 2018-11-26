@@ -15,7 +15,9 @@
     .content
       .lrc(v-if="isShowLrc" @click="toggleType")
         .vol
-          TouthBar(@setProgress="setVol", :progress="audioVol")
+          TouthBar(@setProgress="setVol"
+                  color="rgba(77, 77, 77, 0.7)"
+                  :progress="audioVol")
             .left-sider(slot="left-sider")
               i.icon-menu
             .right-sider(slot="right-sider")
@@ -35,6 +37,7 @@
       .music-conf
         .music-progress
           TouthBar(@setProgress="setProgress"
+                  :color="musicColor"
                   :progress="percent"
                   @setPercent="setPercent")
             .left(slot="left-sider")
@@ -159,7 +162,8 @@ export default {
       playType: state => state.Music['MUSIC_PLAY_TYPE'],
       currentTime: state => state.Music['MUSIC_CURRENT_TIME'],
       durationTime: state => state.Music['MUSIC_DURATION_TIME'],
-      audioVol: state => state.Music['MUSIC_VOL']
+      audioVol: state => state.Music['MUSIC_VOL'],
+      musicColor: state => state.Music['MUSIC_PLAYING_COLOR']
     }),
     percent () {
       let dur = this.durationTime || 0

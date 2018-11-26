@@ -15,11 +15,13 @@ let state = {
   // 当前音乐时长
   [types.MUSIC_CURRENT_TIME]: 0,
   // 音乐时长
-  [types.MUSIC_DURATION_TIME]: 1,
+  [types.MUSIC_DURATION_TIME]: 0,
   // 音量
   [types.MUSIC_VOL]: 100,
   // 音乐播放详细信息
-  [types.MUSIC_PLAYING_DETAIL]: {}
+  [types.MUSIC_PLAYING_DETAIL]: {},
+  // 音乐播放的颜色
+  [types.MUSIC_PLAYING_COLOR]: 'rgb(203, 40, 41)'
 }
 
 let getters = {
@@ -31,7 +33,8 @@ let getters = {
   [types.MUSIC_CURRENT_TIME_GETTERS]: (state) => state[types.MUSIC_CURRENT_TIME],
   [types.MUSIC_DURATION_TIME_GETTERS]: (state) => state[types.MUSIC_DURATION_TIME],
   [types.MUSIC_VOL_GETTERS]: (state) => state[types.MUSIC_VOL],
-  [types.MUSIC_PLAYING_DETAIL_GETTERS]: (state) => state[types.MUSIC_PLAYING_DETAIL]
+  [types.MUSIC_PLAYING_DETAIL_GETTERS]: (state) => state[types.MUSIC_PLAYING_DETAIL],
+  [types.MUSIC_PLAYING_COLOR_GETTERS]: (state) => state[types.MUSIC_PLAYING_COLOR]
 }
 
 const mutations = {}
@@ -134,6 +137,16 @@ mutations[types.MUSIC_PLAYING_DETAIL_SETTERS] = (state, detail) => {
 }
 actions[types.MUSIC_PLAYING_DETAIL_SETTERS] = ({commit}, detail) => {
   commit(types.MUSIC_PLAYING_DETAIL_SETTERS, detail)
+}
+
+/**
+ * 音频专辑的相近颜色设定
+ */
+mutations[types.MUSIC_PLAYING_COLOR_SETTERS] = (state, color) => {
+  state[types.MUSIC_PLAYING_COLOR] = color
+}
+actions[types.MUSIC_PLAYING_COLOR_SETTERS] = ({commit}, color) => {
+  commit(types.MUSIC_PLAYING_COLOR_SETTERS, color)
 }
 
 export default {

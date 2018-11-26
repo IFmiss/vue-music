@@ -195,11 +195,18 @@ const Music = {
     })
   },
 
+  // 获取图片的颜色以设置进度条的颜色
   initMusicColor (res) {
     // Vibrant
     let pic = res.al.picUrl
-    let v = Vibrant.from(pic).useQuantizer(Vibrant.Quantizer.WebWorker)
-    console.log(v)
+    Vibrant.from(pic).getPalette()
+    .then((palette) => {
+      // palette.DarkMuted
+      store.dispatch(
+        'MUSIC_PLAYING_COLOR_SETTERS',
+        `rgba(${palette.LightMuted.r}, ${palette.LightMuted.g}, ${palette.LightMuted.b}, 0.9)`
+      )
+    })
   },
 
   async checkMusic (id) {
@@ -251,8 +258,10 @@ const Music = {
     // 截流 获取当前的播放进度
     ele.ontimeupdate = vueProject.$dutils.utils.throttle(function (e) {
       let arg = Array.from(arguments)[0]
-      let ct = Math.floor(arg.target.currentTime)
-      store.dispatch('MUSIC_CURRENT_TIME_SETTERS', ct)
+      if (arg.target && arg.target.currentTime) {
+        let ct = Math.floor(arg.target.currentTime)
+        store.dispatch('MUSIC_CURRENT_TIME_SETTERS', ct)
+      }
     }, 1000)
   }
 }

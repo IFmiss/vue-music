@@ -16,5 +16,10 @@ Vue.directive('imgsize', {
       return
     }
     el.src = binding.value + '?param=300y300'
+  },
+  update (el, binding) {
+    let w = binding.value.w || 300
+    let value = binding.value.w ? binding.value.url : binding.value
+    el.src = `${value}?param=${w}y${w}`
   }
 })

@@ -3,8 +3,8 @@
     slot.left-sider(name="left-sider")
     .bar
       .progress(ref="bar")
-        .current(ref="current")
-        .range(ref="range"
+        .current(ref="current", :style="{background: color}")
+        .range(ref="range" class="{'music', type === 'progress'}"
                 @touchstart="rangeTouchStart"
                 @touchmove="rangeTouchMove"
                 @touchend="rangeTouchEnd")
@@ -26,6 +26,15 @@ export default {
     progress: {
       type: Number,
       default: 0
+    },
+    color: {
+      type: String,
+      default: 'rgb(203, 40, 41)'
+    },
+    // 类型 默认auto   progress类型则是设置range大小
+    type: {
+      type: String,
+      default: 'auto'
     }
   },
   methods: {
@@ -96,7 +105,6 @@ export default {
       background: rgba(244,244,244,0.9);
       position: relative;
       .current{
-        background: $primary_color;
         height: 100%;
         width: 0;
       }
