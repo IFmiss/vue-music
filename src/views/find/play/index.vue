@@ -16,7 +16,7 @@
       .lrc(v-if="isShowLrc" @click="toggleType")
         .vol
           TouthBar(@setProgress="setVol"
-                  color="rgba(77, 77, 77, 0.7)"
+                  color="rgba(77, 77, 77, 0.2)"
                   :progress="audioVol")
             .left-sider(slot="left-sider")
               i.icon-menu
@@ -39,6 +39,7 @@
           TouthBar(@setProgress="setProgress"
                   :color="musicColor"
                   :progress="percent"
+                  type='progress'
                   @setPercent="setPercent")
             .left(slot="left-sider")
               span {{currentTime | parseMusicTime}}

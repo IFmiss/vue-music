@@ -70,7 +70,11 @@ const API = {
     RANK_SHEET_LISTS: `/toplist/detail`,
 
     // 获取专辑列表信息  参数id
-    SHEET_ALBUM_LISTS: `/album`
+    SHEET_ALBUM_LISTS: `/album`,
+
+    // 歌单收藏 | 取消收藏
+    // t : 类型,1:收藏,2:取消收藏 id : 歌单 id
+    SHEET_SUBSCRIBE: `/playlist/subscribe`
   },
 
   /**

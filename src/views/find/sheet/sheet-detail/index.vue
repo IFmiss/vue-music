@@ -48,7 +48,8 @@
                 span.label 播放全部
                 span.count (共{{detail.trackCount}}首)
               .collect
-                span + 收藏 ({{detail.subscribedCount | parseNumber}})
+                span(v-if="!detail.subscribed" @click="subscribe") + 收藏 ({{detail.subscribedCount | parseNumber}})
+                span(v-else @click="subscribe") 已收藏
             .list-content
               MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item", :playSheet="playSheet(item.id)", @play="playMusic")
     transition(name="fade")
@@ -109,8 +110,10 @@ export default {
       let res = await this.$mutils.fetchData(fetchUrl, {
         id: this.sheetId
       })
-      this.detail = this.isAlbum ? res.data.album : res.data.playlist
-      this.tracks = this.isAlbum ? res.data.songs : res.data.playlist.tracks
+      let detail = this.isAlbum ? res.data.album : res.data.playlist
+      this.$set(this, 'detail', detail)
+      let tracks = this.isAlbum ? res.data.songs : res.data.playlist.tracks
+      this.$set(this, 'tracks', tracks)
     },
 
     playSheet (id) {
@@ -129,6 +132,18 @@ export default {
      */
     hideSheetAvatar () {
       this.showAvatar = false
+    },
+
+    /**
+     * 歌单收藏
+     */
+    subscribe () {
+      this.$mutils.fetchData(API.sheet.SHEET_SUBSCRIBE, {
+        t: this.detail.subscribed ? 2 : 1,
+        id: this.detail.id
+      }).then(res => {
+        this.$set(this.detail, 'subscribed', !this.detail.subscribed)
+      })
     },
 
     /**

@@ -4,10 +4,11 @@
     .bar
       .progress(ref="bar")
         .current(ref="current", :style="{background: color}")
-        .range(ref="range" class="{'music', type === 'progress'}"
+        .range(ref="range" :class="type === 'progress' ? 'music' : ''"
                 @touchstart="rangeTouchStart"
                 @touchmove="rangeTouchMove"
                 @touchend="rangeTouchEnd")
+          .icon(v-if="type === 'progress'", :style="{background: color}")
     slot.right-sider(name="right-sider")
 </template>
 <script>
@@ -118,15 +119,18 @@ export default {
         left: 0;
         transform: translate(-50%, -50%);
         &.music{
-          &::before{
+          width: p2r(0.3rem);
+          height: p2r(0.3rem);
+          border-radius: p2r(0.3rem) / 2;
+          .icon{
             position: absolute;
             top: 50%;
             left: 50%;
             background: $primary_color;
             transform: translate(-50%, -50%);
-            width: p2r(0.08rem);
-            height: p2r(0.08rem);
-            border-radius: p2r(0.08rem) / 2;
+            width: p2r(0.09rem);
+            height: p2r(0.09rem);
+            border-radius: p2r(0.09rem) / 2;
           }
         }
       }
