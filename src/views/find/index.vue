@@ -6,7 +6,9 @@
       .serch-area
         i.left.icon-pencil.easy-click
         // 控制区域
-        input(type="text" class="serach-input" value="", placeholder="搜索")
+        .input(@click="openSearch")
+          i.icon-menu
+          span 搜索
       .nav-bar
         router-link(to="/main/find/recommend" class="nav-bar-router") 个性推荐
         router-link(to="/main/find/station" class="nav-bar-router") 主播电台
@@ -18,6 +20,11 @@
 export default {
   created () {
     // alert(1)
+  },
+  methods: {
+    openSearch () {
+      this.$router.push('/main/search')
+    }
   }
 }
 </script>
@@ -33,7 +40,7 @@ export default {
     width: 100%;
     background: $primary-color;
     .serch-area{
-      height: $HEADER_H_S;
+      height: $auto_h;
       width: 100%;
       background: $primary-color;
       display: flex;
@@ -44,27 +51,40 @@ export default {
         color: $icon-f;
         font-size: $f_auto_l;
       }
-      .serach-input{
+      .input{
         flex:1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         margin-right: p2r(0.9rem);
         height: p2r(0.52rem);
         border-radius: p2r(0.26rem);
         border: none;
         outline: none;
         background: rgba(255,255,255,0.1);
+        z-index: 1;
         color: rgba(255,255,255,0.8);
         text-indent: p2r(0.1rem);
         font-size: $f_small_l;
+        padding: 0 p2r(0.04rem);
+        box-sizing: border-box;
+        i{
+          margin: p2r(0.04rem);
+          font-size: $f_small_s;
+        }
+        span{
+          font-size: $f_small_l;
+        }
       }
     }
     .nav-bar{
-      height: $HEADER_H - $HEADER_H_S;
+      height: $HEADER_H - $auto_h;
       display: flex;
       align-items: center;
       justify-content: center;
       .nav-bar-router{
         color: #fff;
-        height: $HEADER_H - $HEADER_H_S - p2r(0.15rem);
+        height: $HEADER_H - $auto_h - p2r(0.1rem);
         font-size: $f_small_m;
         text-align: center;
         width: p2r(1.5rem);

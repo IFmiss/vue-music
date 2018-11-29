@@ -24,6 +24,7 @@ const Sheet = () => import('./views/find/sheet')
 const SheetDetail = () => import('./views/find/sheet/sheet-detail')
 const Play = () => import('./views/find/play')
 const Rank = () => import('./views/find/rank')
+const Search = () => import('./views/find/search')
 
 Vue.use(Router)
 
@@ -57,6 +58,7 @@ export default new Router({
           meta: {
             keepAlive: true
           },
+          // 推荐
           children: [
             {
               path: '/main/find/recommend',
@@ -73,21 +75,25 @@ export default new Router({
             }
           ]
         },
+        // 个人中心
         {
           path: '/main/account',
           name: 'account',
           component: Account
         },
+        // 视频
         {
           path: '/main/video',
           name: 'video',
           component: Video
         },
+        // 我的
         {
           path: '/main/mine',
           name: 'mine',
           component: Mine
         },
+        // 朋友
         {
           path: '/main/firends',
           name: 'firends',
@@ -143,6 +149,16 @@ export default new Router({
           component: Rank,
           meta: {
             transition: 'fade-left'
+          }
+        },
+        // 搜索页面
+        {
+          path: '/main/search',
+          name: 'search',
+          component: Search,
+          meta: {
+            transition: 'fade-top',
+            activeRouter: ['/main/find']
           }
         }
       ]

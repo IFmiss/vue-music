@@ -6,9 +6,9 @@ $text_active: #fff;
 
 $text_noactive: #e1e1e1;
 
-$primary_color: #333;
+// $primary_color: #333;
 
-// $primary_color: rgb(203, 40, 41);
+$primary_color: rgb(203, 40, 41);
 
 // 浅色主色
 $primary_color_s: #e75e4e;
@@ -68,7 +68,7 @@ $f_small_l: p2r(0.28rem);
 $NAV_H: p2r(0.9rem);
 
 // 头部内容高度
-$HEADER_H: p2r(1.45rem);
+$HEADER_H: p2r(1.55rem);
 
 // 仅仅搜索头部的高度
 $HEADER_H_S: p2r(0.86rem);
