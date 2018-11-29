@@ -21,7 +21,9 @@ let state = {
   // 音乐播放详细信息
   [types.MUSIC_PLAYING_DETAIL]: {},
   // 音乐播放的颜色
-  [types.MUSIC_PLAYING_COLOR]: 'rgb(203, 40, 41)'
+  [types.MUSIC_PLAYING_COLOR]: 'rgb(203, 40, 41)',
+  // 音乐左上角显示隐藏的控制
+  [types.MUSIC_SHOW_FIXED_MENU]: true
 }
 
 let getters = {
@@ -34,7 +36,8 @@ let getters = {
   [types.MUSIC_DURATION_TIME_GETTERS]: (state) => state[types.MUSIC_DURATION_TIME],
   [types.MUSIC_VOL_GETTERS]: (state) => state[types.MUSIC_VOL],
   [types.MUSIC_PLAYING_DETAIL_GETTERS]: (state) => state[types.MUSIC_PLAYING_DETAIL],
-  [types.MUSIC_PLAYING_COLOR_GETTERS]: (state) => state[types.MUSIC_PLAYING_COLOR]
+  [types.MUSIC_PLAYING_COLOR_GETTERS]: (state) => state[types.MUSIC_PLAYING_COLOR],
+  [types.MUSIC_SHOW_FIXED_MENU_GETTERS]: (state) => state[types.MUSIC_SHOW_FIXED_MENU]
 }
 
 const mutations = {}
@@ -147,6 +150,16 @@ mutations[types.MUSIC_PLAYING_COLOR_SETTERS] = (state, color) => {
 }
 actions[types.MUSIC_PLAYING_COLOR_SETTERS] = ({commit}, color) => {
   commit(types.MUSIC_PLAYING_COLOR_SETTERS, color)
+}
+
+/**
+ * 页面固定右上角菜单设定
+ */
+mutations[types.MUSIC_SHOW_FIXED_MENU_SETTERS] = (state, status) => {
+  state[types.MUSIC_SHOW_FIXED_MENU] = status
+}
+actions[types.MUSIC_SHOW_FIXED_MENU_SETTERS] = ({commit}, status) => {
+  commit(types.MUSIC_SHOW_FIXED_MENU_SETTERS, status)
 }
 
 export default {

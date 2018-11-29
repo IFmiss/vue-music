@@ -35,6 +35,7 @@ Vue.use(Router)
  * @param { Array }    activeRouter       当前页面是属于四个菜单或者某个路由的关联操作，如果设置了/main/find 则打开该路由的话，底部菜单第一个按钮显示active状态
  * @param { Boolean }  isFull             是否全屏显示不显示底部菜单
  * @param { Boolean }  keepAlive          页面是否缓存
+ * @param { Boolean }  showFixedMenu      右上角是否显示播放的固定菜单入口
  */
 export default new Router({
   // mode: 'history',
@@ -158,7 +159,9 @@ export default new Router({
           component: Search,
           meta: {
             transition: 'fade-top',
-            activeRouter: ['/main/find']
+            activeRouter: ['/main/find'],
+            hideFixedMenu: true,
+            keepAlive: true
           }
         }
       ]

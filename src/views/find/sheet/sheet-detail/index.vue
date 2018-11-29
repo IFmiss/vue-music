@@ -124,6 +124,7 @@ export default {
      * 显示歌单图片背景
      */
     showSheetAvatar () {
+      this.$store.dispatch('MUSIC_SHOW_FIXED_MENU_SETTERS', false)
       this.showAvatar = true
     },
 
@@ -132,6 +133,7 @@ export default {
      */
     hideSheetAvatar () {
       this.showAvatar = false
+      this.$store.dispatch('MUSIC_SHOW_FIXED_MENU_SETTERS', true)
     },
 
     /**

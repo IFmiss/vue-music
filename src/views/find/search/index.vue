@@ -4,7 +4,7 @@
     .header
       .input-area
         i.icon-menu
-        input(ref="searchRef", v-model="keyword", type="search")
+        input(ref="searchRef", v-model="keywords", type="search")
       .span.easy-click(@click="back") 取消
     .content
       //- SearchingPanel
@@ -13,11 +13,15 @@
       .result-content
         Loading(v-if="isLoad")
         .result-detail(v-else)
+          MusicList(v-if="songs" v-for="(song, index) in songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
 </template>
 <script>
 import Loading from 'components/loading'
 import API from 'api'
 import SearchingPanel from './searchingPanel'
+import MusicList from 'components/musiclist'
+import music from 'utils/music'
+import { mapState } from 'vuex'
 export default {
   // type: 搜索类型；默认为 1 即单曲 , 取值意义 :
   // 1: 单曲
@@ -31,12 +35,11 @@ export default {
   // 1014: 视频
   data () {
     return {
-      keyword: '',
+      keywords: '许嵩',
       currentType: 0,
       limit: 30,
       offset: 0,
       isLoad: true,
-      searchData: {},
       type: [
         {
           name: '综合',
@@ -78,12 +81,15 @@ export default {
           name: '视频',
           code: 1014
         }
-      ]
+      ],
+      // 歌曲
+      songs: []
     }
   },
   components: {
     SearchingPanel,
-    Loading
+    Loading,
+    MusicList
   },
   methods: {
     back () {
@@ -93,10 +99,11 @@ export default {
      * 选择类型
      */
     selectType (code) {
-      if (!this.$dutils.utils.strTrim(this.keyword, 0)) {
+      if (!this.$dutils.utils.strTrim(this.keywords, 0)) {
         this.$msg('请输入搜索的内容')
         return
       }
+      this.isLoad = true
       this.currentType = code
       this.offset = 0
       this.getSearchData()
@@ -111,22 +118,89 @@ export default {
         res = await this.$mutils.fetchData(API.search.SEARCH_SUGGEST, {
           limit: this.limit,
           offset: this.offset,
-          keywords: this.keyword
+          keywords: this.keywords
         })
-        this.isLoad = false
       } else {
         res = await this.$mutils.fetchData(API.search.SEARCH_MAIN, {
           limit: this.limit,
           offset: this.offset,
-          keywords: this.keyword,
+          keywords: this.keywords,
           type: this.currentType
         })
       }
-      this.searchData = res.data.result
+      this.isLoad = false
+      // 设置歌曲
+      this.songs = res.data.result.songs || []
+    },
+    /**
+     * 播放单曲 搜索的歌单id 我们设置为 -2
+     * 由于需要判断音乐是否是播放状态，以及存储播放的列表
+     * 而且由于者些并不是正常的歌单，没有歌单id
+     * 所以规定搜索列表的id都是 -2
+     */
+    playSheet (id) {
+      return this.playSheetId === -2 && this.musicPlayingListId === id
+    },
+
+    // 播放点击的音乐
+    playMusic (index) {
+      this.saveSheetList(index)
+    },
+
+    /**
+     * 保存歌单信息
+     */
+    saveSheetList (index) {
+      let data = {
+        lists: this.songs,
+        index,
+        id: -2
+      }
+      music.saveSheetList(data)
+    },
+
+    /**
+     * url地址的替换
+     * 动态配置url
+     */
+    replaceUrl () {
+      this.$router.replace({
+        path: '/main/search',
+        query: {
+          limit: this.limit || 30,
+          type: this.currentType || 0,
+          keywords: this.keywords,
+          offset: this.offset || 0
+        }
+      })
+    },
+    /**
+     * 初始化data的数据
+     */
+    initDataInfo () {
+      this.limit = Number(this.$route.query.limit) || 30
+      this.currentType = Number(this.$route.query.type) || 0
+      this.keywords = this.$route.query.keywords || ''
+      this.offset = Number(this.$route.query.offset) || 0
+
+      this.getSearchData()
     }
+  },
+  computed: {
+    ...mapState({
+      playSheetId: state => state.Music['PLAY_MUSIC_LISTS_ID'],
+      musicPlayingListId (state) {
+        let music = state.Music
+        if (!music['PLAY_MUSIC_LISTS']) return
+        return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']].id
+      }
+    })
+  },
+  activated () {
   },
   mounted () {
     this.$refs.searchRef.focus()
+    this.initDataInfo()
   }
 }
 </script>

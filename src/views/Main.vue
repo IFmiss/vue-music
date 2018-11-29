@@ -33,10 +33,11 @@ export default {
   },
   computed: {
     isPlayRouter () {
-      return (!this.$route.path.includes('/main/play') && !this.$dutils.exp.isEmptyObject(this.musicPlayingList))
+      return (!this.$route.meta.hideFixedMenu && !this.$dutils.exp.isEmptyObject(this.musicPlayingList) && this.menuStatus)
     },
     ...mapState({
-      musicPlayingList: state => state.Music['MUSIC_PLAYING_DETAIL']
+      musicPlayingList: state => state.Music['MUSIC_PLAYING_DETAIL'],
+      menuStatus: state => state.Music['MUSIC_SHOW_FIXED_MENU']
     })
   },
   methods: {
