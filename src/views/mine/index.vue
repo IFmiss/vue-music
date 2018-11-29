@@ -1,7 +1,7 @@
 // 我的模块
 <template lang="pug">
   .vm-mine
-    Scroll(background="rgb(203, 40, 41)")
+    Scroll
       .scroll-header(slot="scroll-header")
         i.cloud.icon-menu.easy-click
         span.title 我的
@@ -193,7 +193,7 @@ export default {
                 width: p2r(0.4rem);
                 flex: 0 0 p2r(0.4rem);
                 height: auto;
-                background: red;
+                background: $primary_color;
               }
             }
             .vip{

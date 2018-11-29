@@ -1,6 +1,6 @@
 <template lang="pug">
   .recommend
-    Scroll(ref="scroll", background="rgb(203, 40, 41)")
+    Scroll(ref="scroll")
       .scroll-content(slot="scroll-content")
         // SWIPER
         .sider

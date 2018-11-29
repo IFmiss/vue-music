@@ -337,7 +337,7 @@ $opacity: 0.8;
       left: 0;
       right: 0;
       height: 20px;
-      background: red;
+      background: $primary_color;
     }
     .play{
       display: flex;

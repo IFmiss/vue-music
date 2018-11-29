@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     isPlayRouter () {
-      return (!this.$route.path.includes('/main/play') && this.musicPlayingList)
+      return (!this.$route.path.includes('/main/play') && !this.$dutils.exp.isEmptyObject(this.musicPlayingList))
     },
     ...mapState({
       musicPlayingList: state => state.Music['MUSIC_PLAYING_DETAIL']
