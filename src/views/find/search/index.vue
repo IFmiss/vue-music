@@ -14,13 +14,15 @@
         .result-content
           Loading(v-if="isLoad")
           .result-detail(v-else)
-            MusicList(v-if="songs && songs.length" v-for="(song, index) in songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
+            MusicList(v-if="result && result.songs && result.songs.length" v-for="(song, index) in result.songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
+            SSheetList(v-if="result && result.playlists && result.playlists.length" v-for="sheet in result.playlists", :list="sheet")
 </template>
 <script>
 import Loading from 'components/loading'
 import API from 'api'
 import SearchingPanel from './searchingPanel'
 import MusicList from 'components/musiclist'
+import SSheetList from './searchSheet'
 import music from 'utils/music'
 import { mapState } from 'vuex'
 export default {
@@ -38,7 +40,7 @@ export default {
     return {
       keywords: '',
       currentType: 0,
-      limit: 30,
+      limit: 40,
       offset: 0,
       isLoad: true,
       type: [
@@ -83,14 +85,15 @@ export default {
           code: 1014
         }
       ],
-      // 歌曲
-      songs: []
+      // 搜索结果
+      result: []
     }
   },
   components: {
     SearchingPanel,
     Loading,
-    MusicList
+    MusicList,
+    SSheetList
   },
   methods: {
     back () {
@@ -135,7 +138,7 @@ export default {
 
       this.isLoad = false
       // 设置歌曲
-      this.songs = res.data.result.songs || []
+      this.result = res.data.result || []
     },
 
     /**
@@ -198,7 +201,7 @@ export default {
      */
     saveSheetList (index) {
       let data = {
-        lists: this.songs,
+        lists: this.result.songs,
         index,
         id: -2
       }
