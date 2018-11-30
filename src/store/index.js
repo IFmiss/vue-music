@@ -4,11 +4,11 @@ import Login from './modules/login'
 import Mine from './modules/mine'
 import Find from './modules/find'
 import Music from './modules/music'
-import createLogger from 'vuex/dist/logger'
+// import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
-  plugins: [createLogger()],
+  // plugins: [createLogger()],
   modules: {
     Login,
     Mine,

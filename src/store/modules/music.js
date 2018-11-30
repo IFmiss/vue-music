@@ -65,7 +65,7 @@ actions[types.PLAY_MUSIC_LISTS_SETTERS] = ({commit}, data) => {
     commit(types.PLAY_MUSIC_LISTS_ID_SETTERS, data.id)
   }
   if (data.index >= 0) {
-    commit(types.PLAY_MUSIC_INDEX_SETTERS, data.index)
+    commit(types.PLAY_MUSIC_INDEX_SETTERS, Number(data.index))
     // commit(types.PLAY_MUSIC_LIST_SETTERS, data.lists[data.index])
   }
 }

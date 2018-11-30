@@ -7,13 +7,14 @@
         input(ref="searchRef", v-model="keywords", type="search")
       .span.easy-click(@click="back") 取消
     .content
-      //- SearchingPanel
-      .result-type
-        .type(v-for="item in type" :class="{'active': currentType === item.code}" @click="selectType(item.code)") {{item.name}}
-      .result-content
-        Loading(v-if="isLoad")
-        .result-detail(v-else)
-          MusicList(v-if="songs" v-for="(song, index) in songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
+      SearchingPanel(v-if="showRecommend", @search="searchItem")
+      .result-info(v-else)
+        .result-type
+          .type(v-for="item in type" :class="{'active': currentType === item.code}" @click="selectType(item.code)") {{item.name}}
+        .result-content
+          Loading(v-if="isLoad")
+          .result-detail(v-else)
+            MusicList(v-if="songs && songs.length" v-for="(song, index) in songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
 </template>
 <script>
 import Loading from 'components/loading'
@@ -35,7 +36,7 @@ export default {
   // 1014: 视频
   data () {
     return {
-      keywords: '许嵩',
+      keywords: '',
       currentType: 0,
       limit: 30,
       offset: 0,
@@ -113,6 +114,7 @@ export default {
      * 获取搜索返回的数据结果
      */
     async getSearchData () {
+      this.isLoad = true
       let res
       if (this.currentType === 0) {
         res = await this.$mutils.fetchData(API.search.SEARCH_SUGGEST, {
@@ -128,10 +130,43 @@ export default {
           type: this.currentType
         })
       }
+
+      this.saveSearchDataInfo(this.keywords)
+
       this.isLoad = false
       // 设置歌曲
       this.songs = res.data.result.songs || []
     },
+
+    /**
+     * 搜索点击的内容
+     */
+    searchItem (item) {
+      this.keywords = item
+      this.$router.replace({
+        path: '/main/search',
+        query: {
+          limit: this.limit,
+          offset: 0,
+          keywords: item,
+          type: 0
+        }
+      })
+      this.$refs.searchRef.focus()
+      this.initDataInfo()
+      this.initSearchEvent()
+    },
+
+    /**
+     * 存储搜索数据至本地，且去重
+     */
+    saveSearchDataInfo (keywords) {
+      let data = JSON.parse(localStorage.getItem(API.storage.SEARCH_LISTS)) || []
+      data.unshift(keywords)
+      let storageD = this.$dutils.store.getRandomDataFromArr(data, 10)
+      localStorage.setItem(API.storage.SEARCH_LISTS, JSON.stringify(storageD))
+    },
+
     /**
      * 播放单曲 搜索的歌单id 我们设置为 -2
      * 由于需要判断音乐是否是播放状态，以及存储播放的列表
@@ -140,6 +175,17 @@ export default {
      */
     playSheet (id) {
       return this.playSheetId === -2 && this.musicPlayingListId === id
+    },
+
+    /**
+     * 搜素请求再input变化的时候请求数据，需要一个防抖操作
+     */
+    initSearchEvent () {
+      this.$refs.searchRef.oninput = this.$dutils.utils.debounce(() => {
+        if (!this.showRecommend) {
+          this.getSearchData()
+        }
+      }, 1000, false)
     },
 
     // 播放点击的音乐
@@ -183,6 +229,7 @@ export default {
       this.keywords = this.$route.query.keywords || ''
       this.offset = Number(this.$route.query.offset) || 0
 
+      if (!this.keywords) return
       this.getSearchData()
     }
   },
@@ -194,13 +241,15 @@ export default {
         if (!music['PLAY_MUSIC_LISTS']) return
         return music['PLAY_MUSIC_LISTS'][music['PLAY_MUSIC_INDEX']].id
       }
-    })
-  },
-  activated () {
+    }),
+    showRecommend () {
+      return this.$dutils.utils.strTrim(this.keywords, 0).length === 0
+    }
   },
   mounted () {
     this.$refs.searchRef.focus()
     this.initDataInfo()
+    this.initSearchEvent()
   }
 }
 </script>
@@ -271,46 +320,53 @@ export default {
     .result-type::-webkit-scrollbar {
       display: none
     }
-    .result-type{
-      width: 100%;
-      height: p2r(0.56rem);
-      line-height: p2r(0.4rem);
-      overflow-y: auto;
-      text-align: left;
-      font-size: 0;
-      padding: 0 $auto_padding_l_r;
-      background: $primary_color;
-      white-space: nowrap;
-      box-sizing: border-box;
-      .type{
-        font-size: $f_small_m;
-        color: $text_noactive;
-        display: inline-block;
-        margin: 0 $auto_padding_l_r * 1.8;
-        &.active{
-          color: $text_active;
-          position: relative;
-          &::before{
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: - p2r(0.1rem);
-            height: p2r(0.04rem);
-            border-radius: p2r(0.02rem);
-            background: #fff;
-            transform: translate3d(-50%, 0, 0);
-            width: 60%;
+    .result-info{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      .result-type{
+        width: 100%;
+        height: p2r(0.56rem);
+        line-height: p2r(0.4rem);
+        overflow-y: auto;
+        text-align: left;
+        font-size: 0;
+        padding: 0 $auto_padding_l_r;
+        background: $primary_color;
+        white-space: nowrap;
+        box-sizing: border-box;
+        .type{
+          font-size: $f_small_m;
+          color: $text_noactive;
+          display: inline-block;
+          margin: 0 $auto_padding_l_r * 1.8;
+          &.active{
+            color: $text_active;
+            position: relative;
+            &::before{
+              content: '';
+              position: absolute;
+              left: 50%;
+              bottom: - p2r(0.1rem);
+              height: p2r(0.04rem);
+              border-radius: p2r(0.02rem);
+              background: #fff;
+              transform: translate3d(-50%, 0, 0);
+              width: 60%;
+            }
           }
         }
       }
-    }
-    .result-content{
-      position: absolute;
-      top: p2r(0.56rem);
-      bottom: 0;
-      overflow: auto;
-      left: 0;
-      right: 0;
+      .result-content{
+        position: absolute;
+        top: p2r(0.56rem);
+        bottom: 0;
+        overflow: auto;
+        left: 0;
+        right: 0;
+      }
     }
   }
 }

@@ -42,12 +42,12 @@ export default {
   },
   methods: {
   },
-  watch: {
-    $route (to, from) {
-      console.log(to.path.includes('/main/play'))
-      console.log(from.path.includes('/main/play'))
-    }
-  },
+  // watch: {
+  //   $route (to, from) {
+  //     console.log(to.path.includes('/main/play'))
+  //     console.log(from.path.includes('/main/play'))
+  //   }
+  // },
   mounted () {
     music.initAudioEvent(this.$refs.myAudio)
   }

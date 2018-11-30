@@ -4,7 +4,7 @@
     .search-lists-a
       .a-name 热门搜索
       .search-lists
-        .list(v-for="item in hots")
+        .list(v-for="item in hots", @click="searchItem(item.first)")
           .name {{item.first}}
           .tip(v-if="item.iconType === 1") 热
     .search-lists-a
@@ -12,7 +12,7 @@
         .name 搜索历史
         i.icon-menu.easy-click(@click="deleteHistory")
       .search-lists(v-if="history.length")
-        .list(v-for="list in history")
+        .list(v-for="list in history", @click="searchItem(list)")
           .name {{list}}
       .none-list(v-else) 暂无搜索记录
 </template>
@@ -37,7 +37,14 @@ export default {
      * 本地存储的搜索历史
      */
     initHistorySearch () {
-      this.history = JSON.parse(localStorage.getItem('searchLists')) || []
+      this.history = JSON.parse(localStorage.getItem(API.storage.SEARCH_LISTS)) || []
+    },
+
+    /**
+     * 点击列表搜索对应内容
+     */
+    searchItem (name) {
+      this.$emit('search', name)
     },
 
     /**
@@ -45,7 +52,8 @@ export default {
      */
     deleteHistory () {
       if (window.confirm('确认删除搜索记录?')) {
-        localStorage.removeItem('searchLists')
+        localStorage.removeItem(API.storage.SEARCH_LISTS)
+        this.history = []
         this.$msg('删除成功')
       }
     }

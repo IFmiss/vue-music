@@ -193,8 +193,27 @@ const Music = {
       })
     }, err => {
       vueProject.$msg({text: '暂无权限播放'})
+      // 需要重置index的值(通过当前播放的音乐id与lists的集合比对拿到索引至重新修改索引值)
+      this.resetMusicIndex()
+      route.go(-1)
       console.log(err)
     })
+  },
+
+  /**
+   * 重置索引，当点击播放的音乐无效的时候
+   */
+  resetMusicIndex () {
+    let playingList = store.getters.MUSIC_PLAYING_DETAIL_GETTERS
+    let playLists = store.getters.PLAY_MUSIC_LISTS_GETTERS
+    if (vueProject.$dutils.exp.isEmptyObject(playingList) || !playLists.length) return
+    let index = function () {
+      for (let i = 0; i < playLists.length; i++) {
+        if (playLists[i].id === playingList.id) return i
+      }
+      return 0
+    }
+    store.dispatch('PLAY_MUSIC_INDEX_SETTERS', Number(index()))
   },
 
   // 获取图片的颜色以设置进度条的颜色
@@ -213,11 +232,11 @@ const Music = {
 
   async checkMusic (id) {
     return new Promise(async (resolve, reject) => {
-      let res = await vueProject.$mutils.fetchData(API.music.CHECK_MUSIC, {id})
-      if (res.data.success) {
+      try {
+        let res = await vueProject.$mutils.fetchData(API.music.CHECK_MUSIC, {id})
         resolve(res)
-      } else {
-        reject(res)
+      } catch (e) {
+        reject(e)
       }
     })
   },
