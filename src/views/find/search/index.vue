@@ -14,15 +14,31 @@
         .result-content
           Loading(v-if="isLoad")
           .result-detail(v-else)
-            MusicList(v-if="result && result.songs && result.songs.length" v-for="(song, index) in result.songs", :index="index" :name="song.name", :singer="song.artists", :id="song.id", :list="song", :playSheet="playSheet(song.id)", @play="playMusic")
-            SSheetList(v-if="result && result.playlists && result.playlists.length" v-for="sheet in result.playlists", :list="sheet")
+            .title-tip(v-if="currentType === 0 && result.songs && result.songs.length") 单曲
+            MusicList(v-if="result.songs && result.songs.length"
+                      v-for="(song, index) in result.songs"
+                      :index="index" :name="song.name"
+                      :singer="song.artists"
+                      :id="song.id"
+                      :list="song"
+                      :playSheet="playSheet(song.id)"
+                      @play="playMusic")
+
+            .title-tip(v-if="currentType === 0 && result.playlists && result.playlists.length") 歌单
+            SSheet(v-if="result.playlists && result.playlists.length" v-for="sheet in result.playlists"
+                  :list="sheet")
+
+            //- .title-tip(v-if="currentType === 0 && result.albums && result.albums.length") 单曲
+            SAlbum(v-if="result.albums && currentType !== 0 && result.albums.length" v-for="album in result.albums"
+                  :list="album")
 </template>
 <script>
 import Loading from 'components/loading'
 import API from 'api'
 import SearchingPanel from './searchingPanel'
 import MusicList from 'components/musiclist'
-import SSheetList from './searchSheet'
+import SSheet from './sheet'
+import SAlbum from './album'
 import music from 'utils/music'
 import { mapState } from 'vuex'
 export default {
@@ -93,7 +109,8 @@ export default {
     SearchingPanel,
     Loading,
     MusicList,
-    SSheetList
+    SSheet,
+    SAlbum
   },
   methods: {
     back () {
@@ -369,6 +386,14 @@ export default {
         overflow: auto;
         left: 0;
         right: 0;
+        .result-detail{
+          position: relative;
+          .title-tip{
+            text-align: left;
+            font-size: $f_small_l;
+            padding: $auto_padding_l_r * 2 $auto_padding_l_r * 1.5 $auto_padding_l_r $auto_padding_l_r * 1.5;
+          }
+        }
       }
     }
   }
