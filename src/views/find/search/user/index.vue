@@ -20,9 +20,6 @@ export default {
         return {}
       }
     }
-  },
-  created () {
-    console.log(this.list)
   }
 }
 </script>
@@ -32,7 +29,7 @@ export default {
   display: flex;
   align-self: center;
   justify-content: center;
-  padding: $auto_padding_l_r;
+  padding: $auto_padding_l_r $auto_padding_l_r * 1.5;
   box-sizing: border-box;
   @include border-1px();
   .avatar{
@@ -67,13 +64,14 @@ export default {
           text-align: left;
         }
         i{
-          flex: 0 0 p2r(0.4rem);
+          flex: 0 0 p2r(0.6rem);
+          text-align: center;
           font-size: $f_small_x;
           &.nan{
-            color: blue;
+            color: #33CCFF;
           }
           &.nv{
-            color: red;
+            color: #FF99CC;
           }
         }
       }

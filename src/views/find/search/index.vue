@@ -32,8 +32,12 @@
             SAlbum(v-if="result.albums && currentType !== 0 && result.albums.length" v-for="album in result.albums"
                   :list="album")
 
-            Suser(v-if="result.userprofiles && currentType !== 0 && result.userprofiles.length" v-for="user in result.userprofiles"
+            SUser(v-if="result.userprofiles && currentType !== 0 && result.userprofiles.length" v-for="user in result.userprofiles"
                   :list="user")
+
+            .title-tip(v-if="currentType === 0 && result.artists && result.artists.length") 歌手
+            SSinger(v-if="result.artists && result.artists.length" v-for="singer in result.artists"
+                  :list="singer", :size="currentType === 0 ? 'big' : ''")
 </template>
 <script>
 import Loading from 'components/loading'
@@ -42,7 +46,8 @@ import SearchingPanel from './searchingPanel'
 import MusicList from 'components/musiclist'
 import SSheet from './sheet'
 import SAlbum from './album'
-import Suser from './user'
+import SUser from './user'
+import SSinger from './singer'
 import music from 'utils/music'
 import { mapState } from 'vuex'
 export default {
@@ -115,7 +120,8 @@ export default {
     MusicList,
     SSheet,
     SAlbum,
-    Suser
+    SUser,
+    SSinger
   },
   methods: {
     back () {
