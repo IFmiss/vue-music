@@ -29,12 +29,18 @@
                   span {{detail.creator.nickname}}
                   i.icon-menu
             .detail-conf
-              .conf-list
+              .conf-list(v-if="!isAlbum")
                 i.icon-menu
                 span.disc {{detail.commentCount}}
-              .conf-list
+              .conf-list(v-else)
+                i.icon-menu
+                span.disc {{detail.info.commentCount}}
+              .conf-list(v-if="!isAlbum")
                 i.icon-menu
                 span.disc {{detail.shareCount}}
+              .conf-list(v-else)
+                i.icon-menu
+                span.disc {{detail.info.shareCount}}
               .conf-list
                 i.icon-menu
                 span.disc 下载

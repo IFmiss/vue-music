@@ -31,6 +31,9 @@
             //- .title-tip(v-if="currentType === 0 && result.albums && result.albums.length") 单曲
             SAlbum(v-if="result.albums && currentType !== 0 && result.albums.length" v-for="album in result.albums"
                   :list="album")
+
+            Suser(v-if="result.userprofiles && currentType !== 0 && result.userprofiles.length" v-for="user in result.userprofiles"
+                  :list="user")
 </template>
 <script>
 import Loading from 'components/loading'
@@ -39,6 +42,7 @@ import SearchingPanel from './searchingPanel'
 import MusicList from 'components/musiclist'
 import SSheet from './sheet'
 import SAlbum from './album'
+import Suser from './user'
 import music from 'utils/music'
 import { mapState } from 'vuex'
 export default {
@@ -102,7 +106,7 @@ export default {
         }
       ],
       // 搜索结果
-      result: []
+      result: {}
     }
   },
   components: {
@@ -110,7 +114,8 @@ export default {
     Loading,
     MusicList,
     SSheet,
-    SAlbum
+    SAlbum,
+    Suser
   },
   methods: {
     back () {
@@ -155,7 +160,7 @@ export default {
 
       this.isLoad = false
       // 设置歌曲
-      this.result = res.data.result || []
+      this.result = res.data.result || {}
     },
 
     /**

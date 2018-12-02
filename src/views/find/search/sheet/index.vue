@@ -7,7 +7,7 @@
       .disc
         .count {{list.trackCount}} 首音乐
         .user(v-if="list.creator && list.creator.nickname") by {{list.creator.nickname}}
-        .playCount 播放 {{list.playCount || parseNumber}}次
+        .playCount 播放 {{ list.playCount | parseNumber }}次
 </template>
 <script>
 export default {

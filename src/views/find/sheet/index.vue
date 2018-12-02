@@ -1,7 +1,7 @@
 // 歌单内容，显示歌单的页面
 <template lang="pug">
   .sheet
-    CommonPage(title="歌单")
+    CommonPage(title="歌单", bg="#fff")
       .content(slot="content")
         Scroll(@pullingUp="getSheetListMore", :needPullUp="true")
           .scroll-content(slot="scroll-content")

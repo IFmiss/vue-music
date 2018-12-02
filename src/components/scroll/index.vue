@@ -1,7 +1,7 @@
 <template lang="pug">
   .bt-scroll
     slot(name="scroll-header")
-    .wrapper(ref="wrapper")
+    .wrapper(ref="wrapper", style="{background: background}")
       .content
         slot(name="scroll-content")
         .pullup-wrapper(v-if="needPullUp")
@@ -116,7 +116,10 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.initScroll()
+      let _this = this
+      setTimeout(function () {
+        _this.initScroll()
+      })
     })
   }
 }
@@ -132,7 +135,7 @@ export default {
   .wrapper{
     width: 100%;
     height: 100%;
-    background: $primary-color;
+    // background: $primary-color;
     &::after{
       content: '';
       position: absolute;

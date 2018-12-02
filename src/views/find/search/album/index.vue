@@ -1,6 +1,6 @@
 // 搜索的歌单显示效果
 <template lang="pug">
-  router-link.s-sheet(v-if="list && list.name", :to="{path: '/main/listdetail', query: {id: list.id}}")
+  router-link.s-album(v-if="list && list.name", :to="{path: '/main/listdetail', query: {id: list.id, type: 'album'}}")
     .img
       img(v-imgsize="list.picUrl")
     .right-info
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .s-sheet{
+  .s-album{
     position: relative;
     @include border-1px(#eee);
     display: flex;
