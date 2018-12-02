@@ -13,7 +13,7 @@
           .type(v-for="item in type" :class="{'active': currentType === item.code}" @click="selectType(item.code)") {{item.name}}
         .result-content
           Loading(v-if="isLoad")
-          .result-detail(v-else)
+          .result-detail(v-else-if="isEmptyResult")
             .title-tip(v-if="currentType === 0 && result.songs && result.songs.length") 单曲
             MusicList(v-if="result.songs && result.songs.length"
                       v-for="(song, index) in result.songs"
@@ -38,6 +38,8 @@
             .title-tip(v-if="currentType === 0 && result.artists && result.artists.length") 歌手
             SSinger(v-if="result.artists && result.artists.length" v-for="singer in result.artists"
                   :list="singer", :size="currentType === 0 ? 'big' : ''")
+          .result-detail(v-else)
+            .none 暂无数据
 </template>
 <script>
 import Loading from 'components/loading'
@@ -275,6 +277,14 @@ export default {
     }),
     showRecommend () {
       return this.$dutils.utils.strTrim(this.keywords, 0).length === 0
+    },
+    // 是否是空的数据集合
+    isEmptyResult () {
+      return this.result.songs ||
+            this.result.playlists ||
+            this.result.albums ||
+            this.result.userprofiles ||
+            this.result.artists
     }
   },
   mounted () {
@@ -403,6 +413,11 @@ export default {
             text-align: left;
             font-size: $f_small_l;
             padding: $auto_padding_l_r * 2 $auto_padding_l_r * 1.5 $auto_padding_l_r $auto_padding_l_r * 1.5;
+          }
+          .none{
+            padding: $auto_padding_l_r * 4 $auto_padding_l_r * 1.5;
+            font-size: $f_small_l;
+            color: $icon_color_nav;
           }
         }
       }
