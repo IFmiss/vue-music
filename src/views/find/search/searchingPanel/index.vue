@@ -3,10 +3,11 @@
   .search-panel
     .search-lists-a
       .a-name 热门搜索
-      .search-lists
+      .search-lists(v-if="hots.length")
         .list(v-for="item in hots", @click="searchItem(item.first)")
           .name {{item.first}}
           .tip(v-if="item.iconType === 1") 热
+      Loading(v-else)
     .search-lists-a
       .a-name.config
         .name 搜索历史
@@ -18,12 +19,16 @@
 </template>
 <script>
 import API from 'api'
+import Loading from 'components/loading'
 export default {
   data () {
     return {
       hots: [],
       history: []
     }
+  },
+  components: {
+    Loading
   },
   methods: {
     /**

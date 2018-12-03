@@ -1,29 +1,15 @@
-// 搜索的歌单显示效果
+// 搜索的电台显示效果
 <template lang="pug">
-  router-link.s-album(v-if="list && list.name", :to="{path: '/main/listdetail', query: {id: list.id, type: 'album'}}")
+  router-link.s-dj(v-if="list && list.id", :to="{path: '/main/dj', query: {id: list.id}}")
     .img
       img(v-imgsize="list.picUrl")
     .right-info
       .name {{list.name}}
       .disc
-        .user {{getArtists}}
-        .push-t {{getDate}}
+        .user {{list.dj.nickname}}
 </template>
 <script>
 export default {
-  computed: {
-    // 获取艺术家信息[]解析
-    getArtists () {
-      if (this.list.artists && this.list.artists.length) {
-        return this.list.artists.map(item => item.name).join(' / ')
-      }
-      return this.list.artist.name
-    },
-    // 发布时间
-    getDate () {
-      return this.$dutils.utils.formatDate('yyyy-MM-dd', new Date(this.list.publishTime))
-    }
-  },
   props: {
     list: {
       type: Object,
@@ -36,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .s-album{
+  .s-dj{
     position: relative;
     @include border-1px(#eee);
     display: flex;
@@ -54,17 +40,6 @@ export default {
         height: 100%;
         border-radius: p2r(0.06rem);
       }
-      &::before{
-        content: '';
-        background: url('./../../../../assets/images/ablum.png') 0 0 no-repeat;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: - p2r(0.2rem);
-        bottom: 0;
-        z-index: 1;
-        background-size: cover;
-      }
     }
     .right-info{
       flex:1 1 auto;
@@ -74,7 +49,7 @@ export default {
       justify-content: space-around;
       height: p2r(1rem);
       align-items: flex-start;
-      margin-left: $auto_padding_l_r * 3;
+      margin-left: $auto_padding_l_r * 1.5;
       .name{
         font-size: $f_small_l;
         font-weight: 600;

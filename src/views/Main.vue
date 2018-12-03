@@ -58,6 +58,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
   .fix-music-btn{
     position: fixed;
     top: 0;

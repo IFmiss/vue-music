@@ -38,6 +38,9 @@
             .title-tip(v-if="currentType === 0 && result.artists && result.artists.length") 歌手
             SSinger(v-if="result.artists && result.artists.length" v-for="singer in result.artists"
                   :list="singer", :size="currentType === 0 ? 'big' : ''")
+            // 电台
+            SDj(v-if="result.djRadios && result.djRadios.length" v-for="radio in result.djRadios"
+                  :list="radio")
           .result-detail(v-else)
             .none 暂无数据
 </template>
@@ -49,6 +52,7 @@ import MusicList from 'components/musiclist'
 import SSheet from './sheet'
 import SAlbum from './album'
 import SUser from './user'
+import SDj from './radio'
 import SSinger from './singer'
 import music from 'utils/music'
 import { mapState } from 'vuex'
@@ -96,14 +100,6 @@ export default {
           code: 1002
         },
         {
-          name: 'MV',
-          code: 1004
-        },
-        {
-          name: '歌词',
-          code: 1006
-        },
-        {
           name: '电台',
           code: 1009
         },
@@ -123,7 +119,8 @@ export default {
     SSheet,
     SAlbum,
     SUser,
-    SSinger
+    SSinger,
+    SDj
   },
   methods: {
     back () {
@@ -284,7 +281,8 @@ export default {
             this.result.playlists ||
             this.result.albums ||
             this.result.userprofiles ||
-            this.result.artists
+            this.result.artists ||
+            this.result.djRadios
     }
   },
   mounted () {
