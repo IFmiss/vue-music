@@ -37,7 +37,7 @@ Vue.use(Router)
  * @param { Boolean }  keepAlive          页面是否缓存
  * @param { Boolean }  showFixedMenu      右上角是否显示播放的固定菜单入口
  */
-export default new Router({
+const myRouter = new Router({
   // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -180,3 +180,9 @@ export default new Router({
     }
   ]
 })
+
+// 身份过期暂未实用路由守卫验证，直接在mian.js请求接口验证
+// myRouter.beforeEach((to, from, next) => {
+// })
+
+export default myRouter

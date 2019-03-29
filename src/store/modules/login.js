@@ -8,7 +8,7 @@ let state = {
 }
 
 const getters = {
-  [types.LOGIN_STATUS_GETTER]: state => state.LOGIN_STATUS
+  [types.LOGIN_STATUS_GETTERS]: state => state.LOGIN_STATUS
 }
 
 let actions = {}
