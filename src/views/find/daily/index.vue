@@ -8,7 +8,7 @@
           .date {{new Date().getDate()}}
           img(src="https://s2.music.126.net/style/web2/img/recmd_daily.jpg")
         .lists(v-if="recommendList.length")
-          SheetList(v-for="(item, index) in recommendList" :name="item.name", :index="index", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :playSheet="playSheet(item.id)", :list="item", @play="play")
+          SheetList(v-for="(item, index) in recommendList" :key="index" :name="item.name", :index="index", :singer="item.artists", :avatar="item.album.picUrl", :id="item.id", :playSheet="playSheet(item.id)", :list="item", @play="play")
         Loading(v-else :absolute="true")
 </template>
 <script>
@@ -78,7 +78,7 @@ export default {
     })
   },
 
-  created () {
+  activated () {
     this.initData()
   }
 }

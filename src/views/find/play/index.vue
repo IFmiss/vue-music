@@ -172,11 +172,8 @@ export default {
     }
   },
 
-  created () {
+  activated () {
     this.initMusic()
-  },
-
-  mounted () {
     this.$nextTick(() => {
       this.audioEle = document.getElementById('myAudio')
     })

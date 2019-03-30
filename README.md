@@ -6,7 +6,7 @@
 
 最新的播放器会使用 [NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi/#/)的API，有兴趣可以看看
 
-#### 项目安装 
+#### 项目安装 (保证vue-music和NeteaseCloudMusicApi为同级文件夹)
 - step 1. 将最新的vue-music代码拉到本地
 - step 2. 将NeteaseCloudMusicApi拉到本地
 - step 3. 启动 NeteaseCloudMusicApi (npm start)  默认 端口为3000

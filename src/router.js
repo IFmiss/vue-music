@@ -80,25 +80,37 @@ const myRouter = new Router({
         {
           path: '/main/account',
           name: 'account',
-          component: Account
+          component: Account,
+          meta: {
+            keepAlive: true
+          }
         },
         // 视频
         {
           path: '/main/video',
           name: 'video',
-          component: Video
+          component: Video,
+          meta: {
+            keepAlive: true
+          }
         },
         // 我的
         {
           path: '/main/mine',
           name: 'mine',
-          component: Mine
+          component: Mine,
+          meta: {
+            keepAlive: true
+          }
         },
         // 朋友
         {
           path: '/main/firends',
           name: 'firends',
-          component: Firends
+          component: Firends,
+          meta: {
+            keepAlive: true
+          }
         },
 
         // 每日推荐
@@ -107,6 +119,7 @@ const myRouter = new Router({
           name: 'daily',
           component: Daily,
           meta: {
+            keepAlive: true,
             transition: 'fade-left',
             activeRouter: ['/main/find']
           }
@@ -118,6 +131,7 @@ const myRouter = new Router({
           name: 'sheet',
           component: Sheet,
           meta: {
+            keepAlive: true,
             transition: 'fade-left',
             activeRouter: ['/main/find']
           }
@@ -128,6 +142,7 @@ const myRouter = new Router({
           name: 'listdetail',
           component: SheetDetail,
           meta: {
+            keepAlive: true,
             transition: 'fade-left',
             activeRouter: ['/main/find']
           }
@@ -139,6 +154,7 @@ const myRouter = new Router({
           name: 'play',
           component: Play,
           meta: {
+            keepAlive: true,
             transition: 'fade-left',
             isFull: true
           }
@@ -149,6 +165,7 @@ const myRouter = new Router({
           name: 'rank',
           component: Rank,
           meta: {
+            keepAlive: true,
             transition: 'fade-left'
           }
         },
@@ -180,9 +197,5 @@ const myRouter = new Router({
     }
   ]
 })
-
-// 身份过期暂未实用路由守卫验证，直接在mian.js请求接口验证
-// myRouter.beforeEach((to, from, next) => {
-// })
 
 export default myRouter

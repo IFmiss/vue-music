@@ -26,7 +26,7 @@
                   li(@click="getSheetType('电子')") 电子
                   li(@click="getSheetType('乡村')") 乡村
               .lists(v-if="sheets")
-                router-link.sheet-list(:to="{path: '/main/listdetail', query: {id: item.id}}" v-for="item in sheets")
+                router-link.sheet-list(:to="{path: '/main/listdetail', query: {id: item.id}}" v-for="item in sheets" :key="item.id")
                   .image-list
                     .tips {{item.playCount | parseNumber}}
                     .user {{item.creator.nickname}}
@@ -114,7 +114,7 @@ export default {
     }
   },
 
-  created () {
+  activated () {
     this.initData()
   }
 }

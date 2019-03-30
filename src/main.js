@@ -57,4 +57,4 @@ store.dispatch('LOGIN_STATUS_SETTERS').then(() => {
   vueProject.$msg('登陆校验失败')
 })
 
-export {vueProject}
+export default vueProject

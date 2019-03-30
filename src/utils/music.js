@@ -1,6 +1,6 @@
 import store from 'store'
 import route from '@/router'
-import {vueProject} from '@/main.js'
+import vueProject from '@/main.js'
 import API from 'api'
 import Vibrant from 'node-vibrant'
 

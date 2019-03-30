@@ -57,7 +57,15 @@
                 span(v-if="!detail.subscribed" @click="subscribe") + 收藏 ({{detail.subscribedCount | parseNumber}})
                 span(v-else @click="subscribe") 已收藏
             .list-content
-              MusicList(v-for="(item, index) in tracks" :index="index" :name="item.name", :singer="item.ar", :id="item.id", :list="item", :playSheet="playSheet(item.id)", @play="playMusic")
+              MusicList(v-for="(item, index) in tracks"
+                        :index="index"
+                        :key="index"
+                        :name="item.name"
+                        :singer="item.ar"
+                        :id="item.id"
+                        :list="item"
+                        :playSheet="playSheet(item.id)"
+                        @play="playMusic")
     transition(name="fade")
       SheetAvatar(v-if="showAvatar", @hideSheetAvatar="hideSheetAvatar" :avatarData="detail")
 </template>
@@ -178,7 +186,7 @@ export default {
       music.saveSheetList(data)
     }
   },
-  created () {
+  activated () {
     this.sheetId = this.$route.query.id
     this.initData()
   }

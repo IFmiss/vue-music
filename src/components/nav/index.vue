@@ -56,6 +56,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #fff;
   @include border-1px(#a1a1a1, top);
   .model-router{
     flex: 0 0 20%;
