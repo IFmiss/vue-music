@@ -9,7 +9,7 @@
 #### 项目安装 (保证vue-music和NeteaseCloudMusicApi为同级文件夹)
 - step 1. 将最新的vue-music代码拉到本地
 - step 2. 将NeteaseCloudMusicApi拉到本地
-- step 3. 启动 NeteaseCloudMusicApi (npm start)  默认 端口为3000
+- step 3. 启动 NeteaseCloudMusicApi (npm start)  默认 端口为3000   如果觉得麻烦可以直接访问 https://daiwei.site/netease 调用api
 - setp 4. 启动vue-music (npm run dev)  如果NeteaseCloudMusicApi是默认端口3000， 在vue-music项目中登陆之后基本可以跑通接口了
 
 #### vue-cli3
