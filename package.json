@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "better-scroll": "^1.12.6",
     "d-js-utils": "^1.0.8",
     "node-vibrant": "^3.0.0",
