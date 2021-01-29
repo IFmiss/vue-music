@@ -1,4 +1,8 @@
-# vue-music
+## 3.0都来了 学啥2.0 啊 🐶
+## 代码已不维护，可移步 https://github.com/IFmiss/vue-website
+## [demo地址](https://v2.daiwei.site/);
+
+### vue-music
 
 这是新的vue音乐播放器 UI 基本是仿照网易云音乐IOS系统的UI
 
